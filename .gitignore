@@ -8,3 +8,7 @@ node_modules/
 Brukertester/
 uploads/
 ref/
+
+# Løse skjermbilder i prosjektmappen
+Frame*.png
+Screenshot*.png
