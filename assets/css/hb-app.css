@@ -389,8 +389,8 @@ a { color: var(--fg-link); text-underline-offset: 3px; }
 .hb-choice--plain:has(input:checked) { background: none; border: 0; }
 
 /* ─── Kalkulator ─────────────────────────────────────────────────────
-   Brukertest: Odd og Sverre trodde 80 000 var beløpet de kunne få.
-   Odd oppdaget aldri 300 000-taket. Solveig ba om alt i én visning.
+   Brukertest: Tom og Magne trodde 80 000 var beløpet de kunne få.
+   Tom oppdaget aldri 300 000-taket. Ingunn ba om alt i én visning.
    Derfor: ett panel med tall, søylediagram og alle fire grensene.
    ──────────────────────────────────────────────────────────────────── */
 
