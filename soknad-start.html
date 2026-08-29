@@ -19,11 +19,10 @@
 
     <!-- Veilederen. Samme figur og samme grønne ramme som i resten av
          Husbankens søknadsflyter. -->
-    <div class="hb-guide">
+    <div class="hb-guide" style="margin-top:var(--space-6)">
       <span data-avatar></span>
-      <span class="hb-guide__name" data-veileder></span>
       <h2 style="font-size:var(--text-lg);line-height:var(--lh-lg);margin-bottom:var(--space-2)">
-        Hei, <span data-fornavn>Kari</span>!
+        Hei, <span data-fornavn>Bodil</span>!
       </h2>
       <p>
         Dette tilskuddet er for deg som skal oppgradere boligen så den blir
@@ -192,12 +191,11 @@
 <script src="assets/js/hb.js"></script>
 <script>
   const d = hbLes();
-  hbMonter({ kontekst: 'Lån og tilskudd fra Husbanken', bruker: d.navn || 'Kari Nordbø' });
+  hbMonter({ kontekst: 'Lån og tilskudd fra Husbanken', bruker: d.navn || 'Bodil Innbygger' });
 
   document.querySelectorAll('[data-fornavn]').forEach(e =>
-    e.textContent = (d.navn || 'Kari Nordbø').split(' ')[0]);
+    e.textContent = (d.navn || 'Bodil Innbygger').split(' ')[0]);
   document.querySelectorAll('[data-avatar]').forEach(e => e.innerHTML = HB_AVATAR);
-  document.querySelectorAll('[data-veileder]').forEach(e => e.textContent = HB_VEILEDER + ' fra Husbanken');
   document.querySelectorAll('[data-frist]').forEach(e => e.textContent = HB_REGLER.frist);
   document.querySelectorAll('[data-kal]').forEach(e => e.innerHTML = HB_IKON.kalender);
   document.querySelectorAll('[data-pil]').forEach(e => e.innerHTML = HB_IKON.pil);

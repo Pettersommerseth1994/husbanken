@@ -139,7 +139,7 @@
 <script src="assets/js/soknad.js"></script>
 <script>
   const d = hbLes();
-  hbMonter({ kontekst: 'Søknad om tilskudd til aldersvennlig oppgradering', bruker: d.navn || 'Kari Nordbø' });
+  hbMonter({ kontekst: 'Søknad om tilskudd til aldersvennlig oppgradering', bruker: d.navn || 'Bodil Innbygger' });
 
   const ref = d.referanse || 'HB-2026-482913';
   document.querySelectorAll('[data-ref]').forEach(e => e.textContent = ref);
@@ -152,7 +152,7 @@
   const b = hbBeregn(d.belop || 0);
   const valgte = (d.tiltak || []).map(id => (TILTAK.find(t => t.id === id) || {}).navn).filter(Boolean);
   document.getElementById('kvitt-sammendrag').innerHTML = `
-    <dt>Søker</dt><dd>${d.navn || 'Kari Nordbø'}</dd>
+    <dt>Søker</dt><dd>${d.navn || 'Bodil Innbygger'}</dd>
     <dt>Bolig</dt><dd>${d.adresse || 'Bjerkeveien 14 B, 0765 Oslo'}</dd>
     <dt>Oppgraderinger</dt><dd>${valgte.join('<br>') || '–'}</dd>
     <dt>Oppgraderingen koster</dt><dd>${hbKr(d.belop || 0)}</dd>

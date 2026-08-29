@@ -82,11 +82,30 @@ const HB_IKON = {
   lås: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.5" y="10" width="15" height="10.5" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7.4a4 4 0 0 1 8 0V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
 };
 
-/* Veilederen Bodil. Ligger som egen bildefil, ikke inline, slik at den
-   kan gjenbrukes og caches. Se assets/img/bodil.svg. */
-const HB_VEILEDER = 'Bodil';
-const HB_AVATAR = `<img class="hb-guide__avatar" src="assets/img/bodil.svg"
-     width="140" height="100" alt="Illustrasjon av ${HB_VEILEDER}, veilederen din">`;
+/* Veilederen «Bodil», samme figur som i Husbankens egne søknadsflyter:
+   grønn organisk flate, mørkt pageklipp, enkelt ansikt og skuldre. */
+const HB_AVATAR = `
+<svg class="hb-guide__avatar" viewBox="0 0 100 100" role="img" aria-label="Illustrasjon av veilederen" focusable="false">
+  <defs>
+    <clipPath id="hb-blob">
+      <path d="M50 4c23 0 42 16 44 36 2 20-12 38-30 44-15 5-33 3-45-8C7 65 2 48 8 33 14 16 30 4 50 4Z"/>
+    </clipPath>
+  </defs>
+  <path d="M50 4c23 0 42 16 44 36 2 20-12 38-30 44-15 5-33 3-45-8C7 65 2 48 8 33 14 16 30 4 50 4Z" fill="#B7D89B"/>
+  <g clip-path="url(#hb-blob)">
+    <!-- skuldre -->
+    <path d="M22 92c2-13 13-21 28-21s26 8 28 21" fill="#fff" stroke="#2C4656" stroke-width="2.6" stroke-linejoin="round"/>
+    <!-- hår bak -->
+    <path d="M27 44c0-15 10-25 23-25s23 10 23 25c0 12-1 22-3 28-1 3-4 4-6 2-3-3-4-9-4-17H40c0 8-1 14-4 17-2 2-5 1-6-2-2-6-3-16-3-28Z" fill="#1D2B11"/>
+    <!-- ansikt -->
+    <path d="M50 26c9 0 14 6 14 16 0 11-6 20-14 20s-14-9-14-20c0-10 5-16 14-16Z" fill="#fff" stroke="#2C4656" stroke-width="2.4"/>
+    <!-- pannelugg -->
+    <path d="M36 36c0-11 6-17 14-17s14 6 14 17c-3-6-8-9-14-9s-11 3-14 9Z" fill="#1D2B11"/>
+    <circle cx="44.5" cy="42" r="2" fill="#2C4656"/>
+    <circle cx="56.5" cy="42" r="2" fill="#2C4656"/>
+    <path d="M46 51c1.6 1.6 6.4 1.6 8 0" stroke="#2C4656" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>`;
 
 /* ═══ 5. Felles topp og bunn ══════════════════════════════════════ */
 
@@ -103,7 +122,7 @@ const HB_NAV = [
 function hbHeader(opts = {}) {
   const {
     kontekst = 'Lån og tilskudd fra Husbanken',
-    bruker = null,          // f.eks. 'Kari Nordbø' når man er logget inn
+    bruker = null,          // f.eks. 'Bodil Innbygger' når man er logget inn
     minimal = false         // BankID-siden viser bare logo
   } = opts;
 
