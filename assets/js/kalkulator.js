@@ -2,9 +2,9 @@
    Kalkulatoren
 
    Brukertestene pekte på tre konkrete feil vi må designe bort:
-     · Tom og Magne trodde 80 000 var beløpet de kunne få.
-     · Tom oppdaget aldri 300 000-taket.
-     · Ingunn forstod tallene, men glemte 80 000 fordi det stod
+     · Odd og Sverre trodde 80 000 var beløpet de kunne få.
+     · Odd oppdaget aldri 300 000-taket.
+     · Solveig forstod tallene, men glemte 80 000 fordi det stod
        et annet sted enn prosenten, og ba selv om alt i én visning.
 
    Derfor: én boks som samtidig viser minstekrav, sats, kostnadstak

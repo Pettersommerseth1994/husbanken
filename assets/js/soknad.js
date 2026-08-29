@@ -39,9 +39,10 @@ let kalkApi = null;  // referanse til kalkulatoren i steg 4
 
 /* ═══ Små byggeklosser ════════════════════════════════════════════ */
 
-const guide = (tekst, navn = 'Bodil') => `
-  <div class="hb-guide" style="margin-block:var(--space-5)">
+const guide = tekst => `
+  <div class="hb-guide" style="margin-bottom:var(--space-5)">
     ${HB_AVATAR}
+    <span class="hb-guide__name">${HB_VEILEDER} fra Husbanken</span>
     <p style="margin:0">${tekst}</p>
   </div>`;
 
@@ -62,7 +63,7 @@ const SIDER = {
       <div class="hb-summary" style="margin-bottom:var(--space-5)">
         <div class="hb-summary__group">
           <dl>
-            <dt>Navn</dt><dd>${D.navn || 'Bodil Innbygger'}</dd>
+            <dt>Navn</dt><dd>${D.navn || 'Kari Nordbø'}</dd>
             <dt>Fødselsnummer</dt><dd class="hb-num">${D.fnr || '130456 12345'}</dd>
             <dt>Adresse</dt><dd>${D.adresse || 'Bjerkeveien 14 B, 0765 Oslo'}</dd>
           </dl>
@@ -733,7 +734,7 @@ function soknadStart() {
   const q = new URLSearchParams(location.search);
   if (q.has('demo')) {
     D = hbOppdater({
-      innlogget: true, navn: 'Bodil Innbygger', fnr: '130456 12345',
+      innlogget: true, navn: 'Kari Nordbø', fnr: '130456 12345',
       fodselsaar: 1956, adresse: 'Bjerkeveien 14 B, 0765 Oslo',
       alder: 'selv', tlf: '90012345', eierform: 'eier', borettslag: 'nei',
       borHer: true, tiltak: ['bad', 'lys'],
