@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────────────
-   Søknadsflyten — seks steg
+   Søknadsflyten, seks steg
 
    Gjennomgående grep fra brukertestene:
      · Målgruppen er redd for å gjøre feil. Hjelpetekstene sier derfor
@@ -104,8 +104,8 @@ const SIDER = {
             <strong>Da kan du dessverre ikke få dette tilskuddet.</strong>
             <p class="hb-small" style="margin:4px 0 0">
               Ordningen gjelder husstander der minst én person er over 62 år.
-              Kommunen din har andre ordninger som kanskje passer bedre —
-              <a href="#">se tilskudd fra kommunen</a>, eller ring oss på
+              Kommunen din har andre ordninger som kanskje passer bedre.
+              <a href="#">Se tilskudd fra kommunen</a>, eller ring oss på
               <a href="tel:${HB_REGLER.telefonRaw}">${HB_REGLER.telefon}</a>.
             </p>
           </div>
@@ -275,8 +275,8 @@ const SIDER = {
           Beskriv kort hva som skal gjøres <span class="hb-muted" style="font-weight:400">(valgfritt)</span>
         </label>
         <span class="hb-field__help">
-          Skriv med dine egne ord. To setninger holder. Du kan ikke skrive noe galt her —
-          det er bare for at saksbehandleren skal forstå prosjektet.
+          Skriv med dine egne ord. To setninger holder. Du kan ikke skrive noe
+          galt her. Det er bare for at saksbehandleren skal forstå prosjektet.
         </span>
         <textarea class="hb-input" id="beskrivelse" rows="4"
           placeholder="For eksempel: Vi skal bytte badekaret med en dusj uten kant, og sette opp håndtak.">${D.beskrivelse || ''}</textarea>
@@ -289,7 +289,7 @@ const SIDER = {
           <p class="hb-small" style="margin:4px 0 0">
             Du kan ikke gjøre jobben selv eller la familie gjøre den gratis. Du trenger
             en regning fra et registrert firma. Det er greit å bruke et lite lokalt
-            firma — det trenger ikke være en stor entreprenør.
+            firma. Det trenger ikke være en stor entreprenør.
           </p>
         </div>
       </div>
@@ -299,7 +299,7 @@ const SIDER = {
       beskrivelse: document.getElementById('beskrivelse').value.trim()
     }),
     valider: d => d.tiltak.length ? [] :
-      [['feil-tiltak', 'Huk av minst én oppgradering. Er du usikker på hva som passer, ring oss på ' + HB_REGLER.telefon + ' — vi hjelper deg å velge.']]
+      [['feil-tiltak', 'Huk av minst én oppgradering. Er du usikker på hva som passer, ring oss på ' + HB_REGLER.telefon + '. Vi hjelper deg å velge.']]
   },
 
   /* ─── 4. Kostnad ───────────────────────────────────────────────── */
@@ -308,7 +308,7 @@ const SIDER = {
     ingress: 'Bruk summen fra tilbudet eller prisoverslaget du har fått.',
     html: () => `
       ${guide(`Her ser du med en gang hva du får. Blir jobben dyrere eller billigere
-               enn tilbudet, er det helt greit — vi regner ut på nytt når du sender
+               enn tilbudet, er det helt greit. Vi regner ut på nytt når du sender
                inn den betalte regningen.`)}
       <div id="kalk-soknad"></div>
       ${feil('feil-belop')}
@@ -344,7 +344,7 @@ const SIDER = {
 
   /* ─── 5. Dokumentasjon ─────────────────────────────────────────────
      Brukertest: fem av åtte slet med opplasting. Problemet ligger før
-     filvelgeren — kjeden e-post → lagre → finne igjen. Derfor: kamera
+     filvelgeren, i kjeden e-post, lagre, finne igjen. Derfor: kamera
      som førstevalg, e-post og telefon som likeverdige veier ut, og en
      kvittering som er umulig å overse. 50 MB-varselet er flyttet vekk
      fra utgangstilstanden.
@@ -353,10 +353,10 @@ const SIDER = {
     h1: 'Legg ved tilbudet',
     ingress: 'Vi trenger å se hva håndverkeren har gitt deg pris på.',
     html: () => `
-      ${guide(`Har du papiret liggende foran deg? Ta bilde av det med mobilen — det er
-               den enkleste veien. Du trenger verken skanner eller e-post.`)}
+      ${guide(`Har du papiret liggende foran deg? Ta bilde av det med mobilen.
+               Det er den enkleste veien, og du trenger verken skanner eller e-post.`)}
 
-      <h2 style="font-size:var(--text-lg)">Tilbud eller prisoverslag <span class="hb-muted" style="font-weight:400">— må legges ved</span></h2>
+      <h2 style="font-size:var(--text-lg)">Tilbud eller prisoverslag <span class="hb-muted" style="font-weight:400">(må legges ved)</span></h2>
 
       <div class="hb-upload">
         <p class="hb-small" style="margin-top:0">Velg måten som passer deg:</p>
@@ -404,14 +404,14 @@ const SIDER = {
           <span class="hb-accordion__icon">${HB_IKON.chevronHvit}</span>
         </button>
         <div class="hb-accordion__panel" id="op2" hidden>
-          <p>Bilde (JPG eller PNG) eller PDF. Opptil 50 MB per fil — det er mer enn
+          <p>Bilde (JPG eller PNG) eller PDF. Opptil 50 MB per fil, som er mer enn
              nok til et vanlig mobilbilde.</p>
           <p>Har du flere ark, tar du ett bilde av hvert og laster opp alle sammen.</p>
         </div>
       </div>
 
       <div id="leie-vedlegg" hidden style="margin-top:var(--space-5)">
-        <h2 style="font-size:var(--text-lg)">Bekreftelse fra utleier <span class="hb-muted" style="font-weight:400">— må legges ved</span></h2>
+        <h2 style="font-size:var(--text-lg)">Bekreftelse fra utleier <span class="hb-muted" style="font-weight:400">(må legges ved)</span></h2>
         <p class="hb-small">
           Fordi du leier boligen. En e-post fra utleier der det står hva som skal gjøres
           og at det er greit, holder fint.
@@ -494,7 +494,7 @@ const SIDER = {
 
       return `
         ${guide(`Du gjør ikke noe galt ved å sende inn. Mangler vi noe, ringer eller
-                 skriver vi til deg — vi avslår ikke uten å ha spurt først.`)}
+                 skriver vi til deg. Vi avslår ikke uten å ha spurt først.`)}
 
         <div class="hb-panel hb-panel--filled" style="margin-bottom:var(--space-5)">
           <span class="hb-small">Du søker om</span>
@@ -662,7 +662,7 @@ function tegn() {
   rot.querySelector('[data-neste]').addEventListener('click', neste);
   rot.querySelector('[data-senere]').addEventListener('click', lagre);
 
-  /* Flytt fokus til overskriften, ikke til toppen av dokumentet — da
+  /* Flytt fokus til overskriften, ikke til toppen av dokumentet. Da
      hører skjermleserbrukere hvilket steg de nå står på. */
   document.getElementById('stegtittel').focus();
   window.scrollTo({ top: 0, behavior: 'auto' });
@@ -713,7 +713,7 @@ function gåTil(n) {
   steg = Math.max(1, Math.min(STEG.length, n));
   hbOppdater({ steg });
   /* Ett steg = én oppføring i historikken. «Tilbake» i nettleseren
-     oppfører seg da likt som «Forrige» — ingen loop. */
+     oppfører seg da likt som «Forrige», uten loop. */
   history.replaceState({ steg }, '', '#steg-' + steg);
   tegn();
 }

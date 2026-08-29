@@ -8,7 +8,7 @@
        et annet sted enn prosenten, og ba selv om alt i én visning.
 
    Derfor: én boks som samtidig viser minstekrav, sats, kostnadstak
-   og makstilskudd — og en fast skala 0–500 000 slik at de to grensene
+   og makstilskudd, med en fast skala 0–500 000 slik at de to grensene
    ligger på samme sted uansett hva du taster inn.
    ────────────────────────────────────────────────────────────────── */
 
@@ -68,7 +68,7 @@ function hbKalkulatorHTML(id, opts = {}) {
       <div class="hb-legend" aria-hidden="true">
         <span><i style="background:var(--hb-green-600)"></i> Gir tilskudd</span>
         <span><i style="background:var(--hb-slate-300)"></i> Under minstekravet</span>
-        <span><i style="background:repeating-linear-gradient(135deg,var(--hb-slate-200) 0 6px,var(--hb-slate-100) 6px 12px);border:1px solid var(--hb-slate-300)"></i> Over taket — gir ikke mer</span>
+        <span><i style="background:repeating-linear-gradient(135deg,var(--hb-slate-200) 0 6px,var(--hb-slate-100) 6px 12px);border:1px solid var(--hb-slate-300)"></i> Over taket, gir ikke mer</span>
       </div>
     </div>
 
@@ -171,8 +171,9 @@ function hbKalkulatorInit(id, ved = null) {
            Tilskudd er penger du ikke betaler tilbake.`;
     }
 
-    /* Forskutteringen — sju av åtte pekte på denne som den reelle stopperen.
-       Da skal den stå i klartekst her, ikke dukke opp som en overraskelse. */
+    /* Forskutteringen. Sju av åtte pekte på denne som den reelle
+       stopperen, så den skal stå i klartekst her og ikke dukke opp
+       som en overraskelse senere. */
     const fBoks = el('[data-forskudd]');
     if (b.tilskudd > 0) {
       fBoks.hidden = false;
@@ -209,4 +210,125 @@ function hbKalkulatorInit(id, ved = null) {
   sett(verdi);
 
   return { sett, hent: () => verdi, beregn: () => hbBeregn(verdi) };
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   Eksempelkortene
+
+   Konkret forslag fra brukertest 7: to eller tre eksempelcase som
+   viser regnestykket før man går inn i søknaden. Kortene bygges av
+   samme funksjon som kalkulatoren regner med, slik at de aldri kan
+   komme i utakt med HB_REGLER.
+   ══════════════════════════════════════════════════════════════════ */
+
+const HB_EKSEMPLER = [
+  {
+    belop: 75000,
+    variant: 'zero',
+    merke: 'Under minstekravet',
+    ikon: 'varsel',
+    prosa: (b, R) => `
+      <p>
+        Du får ingenting, fordi oppgraderingen må koste minst
+        <strong>${hbKr(R.minstekostnad)}</strong> for at du skal kunne søke.
+        Du mangler <strong>${hbKr(b.mangler)}</strong>.
+      </p>
+      <p>
+        Kravet gjelder <em>hele søknaden</em>, ikke hvert enkelt tiltak. Har du
+        tenkt å bytte dusjen for ${hbKr(b.kostnad)}, kan du ta med lys i trappa
+        i samme søknad og komme over kravet.
+      </p>`
+  },
+  {
+    belop: 100000,
+    variant: 'mid',
+    merke: 'Det vanligste tilfellet',
+    ikon: 'hake',
+    prosa: (b, R) => `
+      <p>
+        Du er over minstekravet på ${hbKr(R.minstekostnad)} og under taket på
+        ${hbKr(R.kostnadstak)}. Da får du
+        <strong>${Math.round(R.sats * 100)} % av hele summen</strong>.
+        ${Math.round(R.sats * 100)} % av ${hbKr(b.kostnad)} er ${hbKr(b.tilskudd)}.
+      </p>
+      <p>
+        Merk at prosenten regnes av <em>alt</em> du oppgraderer for, ikke bare av
+        det som ligger over ${hbKr(R.minstekostnad)}.
+      </p>`
+  },
+  {
+    belop: 400000,
+    variant: 'capped',
+    merke: 'Over taket',
+    ikon: 'hake',
+    prosa: (b, R) => `
+      <p>
+        Vi regner ikke tilskudd av mer enn <strong>${hbKr(R.kostnadstak)}</strong>,
+        uansett hvor stort prosjektet er. Du får derfor
+        ${Math.round(R.sats * 100)} % av ${hbKr(R.kostnadstak)}, som er
+        ${hbKr(b.tilskudd)}.
+      </p>
+      <p>
+        De siste <strong>${hbKr(b.overTaket)}</strong> gir ingen ekstra kroner.
+        ${hbKr(R.maksTilskudd)} er det høyeste beløpet noen kan få.
+      </p>`
+  }
+];
+
+function hbEksemplerHTML() {
+  const R = HB_REGLER;
+  const pst = v => Math.max(0, Math.min(100, (v / R.sliderMaks) * 100));
+
+  return HB_EKSEMPLER.map((e, i) => {
+    const b = hbBeregn(e.belop);
+    const under  = b.status === 'under' ? pst(b.kostnad) : 0;
+    const betalt = b.status === 'under' ? 0 : pst(Math.min(b.kostnad, R.kostnadstak));
+    const over   = pst(b.overTaket);
+
+    return `
+<article class="hb-case hb-case--${e.variant}">
+  <p class="hb-case__band">
+    ${HB_IKON[e.ikon]}
+    <span>Eksempel ${i + 1}. ${e.merke}</span>
+  </p>
+
+  <div class="hb-case__inner">
+    <p class="hb-case__cost">
+      Du oppgraderer for
+      <b>${hbKr(b.kostnad)}</b>
+    </p>
+
+    <span class="hb-case__bar" role="img"
+          aria-label="Beløpet sett mot minstekravet på ${hbKr(R.minstekostnad)} og taket på ${hbKr(R.kostnadstak)}">
+      <i class="b-under" style="width:${under}%"></i>
+      <i class="b-paid"  style="width:${betalt}%"></i>
+      <i class="b-over"  style="width:${over}%"></i>
+      <u class="b-tick" style="left:${pst(R.minstekostnad)}%"></u>
+      <u class="b-tick" style="left:${pst(R.kostnadstak)}%"></u>
+    </span>
+    <span class="hb-case__scale" aria-hidden="true">
+      <span style="left:${pst(R.minstekostnad)}%">minst ${hbTall(R.minstekostnad)}</span>
+      <span style="left:${pst(R.kostnadstak)}%">tak ${hbTall(R.kostnadstak)}</span>
+    </span>
+
+    <p class="hb-case__result">
+      <span class="hb-case__result-label">Du får</span>
+      <strong class="hb-case__get">${hbKr(b.tilskudd)}</strong>
+    </p>
+
+    <div class="hb-case__body">${e.prosa(b, R)}</div>
+
+    <p class="hb-case__own">
+      <span>Du betaler selv</span>
+      <b>${hbKr(b.egenandel)}</b>
+    </p>
+
+    <button type="button" class="hb-btn hb-btn--secondary hb-btn--block"
+            data-case="${e.belop}"
+            aria-label="Legg ${hbKr(b.kostnad)} inn i kalkulatoren over">
+      ${HB_IKON.pilOpp} Prøv ${hbKr(b.kostnad)}
+    </button>
+  </div>
+</article>`;
+  }).join('');
 }

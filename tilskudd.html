@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tilskudd til aldersvennlig oppgradering — Husbanken</title>
-<meta name="description" content="Er du over 62 år kan du få dekket 20 % av det du oppgraderer boligen for, opptil 60 000 kroner. Tilskudd er penger du ikke betaler tilbake.">
+<title>Tilskudd til aldersvennlig oppgradering | Husbanken</title>
+<meta name="description" content="Er du over 62 år kan du få dekket 25 % av det du oppgraderer boligen for, opptil 75 000 kroner. Tilskudd er penger du ikke betaler tilbake.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
 <link rel="stylesheet" href="assets/css/hb-app.css">
 <link rel="icon" href="ds/logo/husbanken-primary.png">
@@ -35,19 +35,31 @@
       <span class="hb-tag hb-tag--new">Ny ordning</span>
       <h1 style="margin-top:var(--space-3)">Tilskudd til aldersvennlig oppgradering</h1>
       <p class="hb-lead">
-        Er du over 62 år, kan du få dekket <strong>20 %</strong> av det du oppgraderer
+        Er du over 62 år, kan du få dekket <strong>25 %</strong> av det du oppgraderer
         boligen for. <strong>Tilskudd er penger du får og ikke skal betale tilbake.</strong>
         Det er ikke et lån, og det er ikke noe vi krever inn igjen senere.
       </p>
 
       <div class="hb-keyfigures">
-        <div class="hb-card">
-          <span class="hb-small hb-muted">Du kan få mest</span>
-          <strong>60 000 kr</strong>
+        <div class="hb-key">
+          <span class="hb-key__label">Du får dekket</span>
+          <strong class="hb-key__val">25 %</strong>
+          <span class="hb-key__note">av det oppgraderingen koster</span>
         </div>
-        <div class="hb-card">
-          <span class="hb-small hb-muted">Du må oppgradere for minst</span>
-          <strong>80 000 kr</strong>
+        <div class="hb-key">
+          <span class="hb-key__label">Du kan få opptil</span>
+          <strong class="hb-key__val">75 000 kr</strong>
+          <span class="hb-key__note">når du oppgraderer for 300 000 kr eller mer</span>
+        </div>
+        <div class="hb-key">
+          <span class="hb-key__label">Oppgraderingen må koste minst</span>
+          <strong class="hb-key__val">80 000 kr</strong>
+          <span class="hb-key__note">du kan slå sammen flere tiltak i én søknad</span>
+        </div>
+        <div class="hb-key hb-key--free">
+          <span class="hb-key__label">Må du betale tilbake?</span>
+          <strong class="hb-key__val">Nei, aldri</strong>
+          <span class="hb-key__note">tilskudd er ikke et lån</span>
         </div>
       </div>
 
@@ -96,85 +108,7 @@
         beløpet inn i kalkulatoren over.
       </p>
 
-      <div class="hb-cardgrid hb-cardgrid--3" style="margin-top:var(--space-4)">
-
-        <!-- Case 1 — under minstekravet -->
-        <article class="hb-case hb-case--zero">
-          <span class="hb-case__tag">Eksempel 1 · Under minstekravet</span>
-          <span class="hb-case__cost">Du oppgraderer for 75 000 kr</span>
-          <div class="hb-case__body">
-            <span class="hb-small hb-muted">Du får</span>
-            <span class="hb-case__get">0 kr</span>
-            <p>
-              Du får ingenting, fordi oppgraderingen må koste minst
-              <strong>80 000 kr</strong> for at du skal kunne søke. Du mangler
-              <strong>5 000 kr</strong>.
-            </p>
-            <p>
-              Kravet gjelder <em>hele søknaden</em>, ikke hvert enkelt tiltak. Har du
-              tenkt å bytte dusjen for 75 000 kr, kan du ta med lys i trappa i samme
-              søknad og komme over kravet.
-            </p>
-            <p><strong>Du betaler selv:</strong> 75 000 kr.</p>
-          </div>
-          <p class="hb-case__cta">
-            <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-case="75000">
-              Prøv 75 000 kr i kalkulatoren
-            </button>
-          </p>
-        </article>
-
-        <!-- Case 2 — normaltilfellet -->
-        <article class="hb-case">
-          <span class="hb-case__tag">Eksempel 2 · Vanligst</span>
-          <span class="hb-case__cost">Du oppgraderer for 100 000 kr</span>
-          <div class="hb-case__body">
-            <span class="hb-small hb-muted">Du får</span>
-            <span class="hb-case__get">20 000 kr</span>
-            <p>
-              Du er over minstekravet på 80 000 kr, og under taket på 300 000 kr.
-              Da får du <strong>20 % av hele summen</strong>: 20 % av 100 000 kr er
-              20 000 kr.
-            </p>
-            <p>
-              Merk at prosenten regnes av <em>alt</em> du oppgraderer for — ikke bare
-              av det som ligger over 80 000 kr.
-            </p>
-            <p><strong>Du betaler selv:</strong> 80 000 kr.</p>
-          </div>
-          <p class="hb-case__cta">
-            <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-case="100000">
-              Prøv 100 000 kr i kalkulatoren
-            </button>
-          </p>
-        </article>
-
-        <!-- Case 3 — over taket -->
-        <article class="hb-case hb-case--capped">
-          <span class="hb-case__tag">Eksempel 3 · Over taket</span>
-          <span class="hb-case__cost">Du oppgraderer for 400 000 kr</span>
-          <div class="hb-case__body">
-            <span class="hb-small hb-muted">Du får</span>
-            <span class="hb-case__get">60 000 kr</span>
-            <p>
-              Vi regner ikke tilskudd av mer enn <strong>300 000 kr</strong>, uansett
-              hvor stort prosjektet er. Du får derfor 20 % av 300 000 kr, som er
-              60 000 kr.
-            </p>
-            <p>
-              De siste <strong>100 000 kr</strong> gir ingen ekstra kroner.
-              60 000 kr er det høyeste beløpet noen kan få.
-            </p>
-            <p><strong>Du betaler selv:</strong> 340 000 kr.</p>
-          </div>
-          <p class="hb-case__cta">
-            <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-case="400000">
-              Prøv 400 000 kr i kalkulatoren
-            </button>
-          </p>
-        </article>
-
-      </div>
+      <div class="hb-cardgrid hb-cardgrid--3" id="eksempelkort" style="margin-top:var(--space-4)"></div>
     </div>
   </section>
 
@@ -216,8 +150,8 @@
     <div class="hb-shell hb-shell--wide">
       <h2>De seks godkjente oppgraderingene</h2>
       <p style="max-width:60ch">
-        Du må gjøre minst én av disse. Du kan gjerne gjøre flere i samme søknad — da
-        legger vi kostnadene sammen.
+        Du må gjøre minst én av disse. Du kan gjerne gjøre flere i samme søknad.
+        Da legger vi kostnadene sammen.
       </p>
 
       <div class="hb-cardgrid hb-cardgrid--3" style="margin-top:var(--space-4)">
@@ -264,8 +198,8 @@
   <!-- ══ Slik søker du ═════════════════════════════════════════════
        Brukertest: Britt oppdaget først helt til slutt at man må be om
        utbetaling. Magne ville kontaktet Husbanken før han søkte. Ingunn
-       etterlyste en veiledet vei inn. Derfor er hele løpet — også det
-       som skjer etter innsending — listet opp her.
+       etterlyste en veiledet vei inn. Derfor er hele løpet listet opp
+       her, også det som skjer etter innsending.
        ═══════════════════════════════════════════════════════════════ -->
   <section class="hb-section" style="background:var(--hb-slate-50)" id="slik-soker-du">
     <div class="hb-shell">
@@ -285,7 +219,7 @@
           <ul class="hb-prose">
             <li><strong>Kommunen din</strong> har som regel en ergoterapeut som kommer hjem til deg og ser på boligen.</li>
             <li><strong>Fastlegen</strong> kan henvise deg videre.</li>
-            <li><strong>Husbanken på telefon</strong> — vi kan snakke deg gjennom hva ordningen dekker.</li>
+            <li><strong>Husbanken på telefon.</strong> Vi kan snakke deg gjennom hva ordningen dekker.</li>
           </ul>
           <p class="hb-small hb-muted">Du trenger ikke ha snakket med noen for å søke. Men mange synes det er lettere.</p>
         </li>
@@ -294,7 +228,7 @@
           <h3>Be om et tilbud eller prisoverslag</h3>
           <p>
             Kontakt en håndverker eller et firma og be om pris på jobben. Du trenger
-            det skriftlig — på papir, som PDF, eller som et bilde av arket.
+            det skriftlig, enten på papir, som PDF, eller som et bilde av arket.
           </p>
           <p>
             Summen må være <strong>minst 80 000 kroner</strong>. Er du under, kan du
@@ -303,7 +237,7 @@
         </li>
 
         <li>
-          <h3>Søk her på husbanken.no — før arbeidet starter</h3>
+          <h3>Søk her på husbanken.no, før arbeidet starter</h3>
           <p>
             Du logger inn med BankID. Vi henter navn, adresse og fødselsnummer
             automatisk, så du slipper å skrive det inn.
@@ -322,7 +256,7 @@
             <strong>fire uker</strong> etter søknadsfristen.
           </p>
           <p>
-            Sier vi ja, kaller vi det et <strong>tilsagn</strong> — det er et løfte om
+            Sier vi ja, kaller vi det et <strong>tilsagn</strong>. Det er et løfte om
             at pengene står klare til deg. Du får det både på Min side og i posten.
           </p>
         </li>
@@ -335,7 +269,7 @@
           </p>
           <p>
             Ta vare på regningen. Blir jobben dyrere eller billigere enn tilbudet, er
-            det greit — men tilskuddet regnes av det du faktisk betalte, og aldri av
+            det greit. Men tilskuddet regnes av det du faktisk betalte, og aldri av
             mer enn 300 000 kroner.
           </p>
         </li>
@@ -354,7 +288,7 @@
         </li>
 
         <li>
-          <h3>Be om utbetaling — det skjer ikke av seg selv</h3>
+          <h3>Be om utbetaling, det skjer ikke av seg selv</h3>
           <p>
             Når arbeidet er ferdig, må du <strong>selv be om å få pengene</strong>.
             Du logger inn på Min side, laster opp den betalte regningen og trykker
@@ -376,7 +310,7 @@
   <!-- ══ Spørsmål og svar ══════════════════════════════════════════
        Brukertest: fire av åtte oppdaget ikke at trekkspill kunne åpnes.
        Her har hver knapp blå venstrekant, egen bakgrunn, rund pil og
-       ordet «Vis» — ingen grønt-på-grønt, og ingenting som krever hover.
+       ordet «Vis». Ingen grønt-på-grønt, og ingenting som krever hover.
        ═══════════════════════════════════════════════════════════════ -->
   <section class="hb-section" id="sporsmal">
     <div class="hb-shell">
@@ -416,8 +350,8 @@
             <li>Bor du i borettslag eller sameie og skal gjøre noe utvendig: vedtaket
                 eller e-posten fra styret.</li>
           </ul>
-          <p>Du kan <strong>ta bilde av papirene med mobilen</strong> — det holder,
-             så lenge alt er lesbart. Du trenger ikke skanner.</p>
+          <p>Du kan <strong>ta bilde av papirene med mobilen</strong>. Det holder,
+             så lenge alt er lesbart, og du trenger ikke skanner.</p>
         </div>
       </div>
 
@@ -429,8 +363,8 @@
         </button>
         <div class="hb-accordion__panel" id="fa3" hidden>
           <p><strong>Ja</strong>, så lenge du bor der og eieren sier ja til arbeidet.</p>
-          <p>Du trenger en skriftlig bekreftelse fra eieren. Den kan være helt enkel —
-             en e-post der det står hva som skal gjøres og at eieren godtar det, holder.
+          <p>Du trenger en skriftlig bekreftelse fra eieren. Den kan være helt enkel.
+             En e-post der det står hva som skal gjøres og at eieren godtar det, holder.
              Vi har et ferdig skjema du kan sende videre hvis du vil.</p>
         </div>
       </div>
@@ -515,13 +449,16 @@
 <script>
   hbMonter({ kontekst: 'Lån og tilskudd fra Husbanken' });
 
-  /* ?belop=400000 dyplenker til et bestemt tall — nyttig når ordningen
+  /* ?belop=400000 dyplenker til et bestemt tall. Nyttig når ordningen
      skal demonstreres for andre. */
   const startBelop = hbParseTall(new URLSearchParams(location.search).get('belop')) || 250000;
   document.getElementById('kalk').innerHTML = hbKalkulatorHTML('kalk-info', { start: startBelop });
   const kalk = hbKalkulatorInit('kalk-info');
 
-  /* Eksempelkortene mater kalkulatoren, så folk ser at det er samme regnestykke. */
+  /* Kortene bygges av samme funksjon som kalkulatoren regner med, og
+     mater beløpet tilbake dit, så folk ser at det er ett regnestykke. */
+  document.getElementById('eksempelkort').innerHTML = hbEksemplerHTML();
+
   document.querySelectorAll('[data-case]').forEach(btn => {
     btn.addEventListener('click', () => {
       kalk.sett(Number(btn.dataset.case));

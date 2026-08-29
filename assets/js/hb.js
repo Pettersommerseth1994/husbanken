@@ -1,18 +1,17 @@
 /* ──────────────────────────────────────────────────────────────────
-   Husbanken — felles skript for prototypen
+   Husbanken, felles skript for prototypen
    Ingen rammeverk, ingen byggesteg. Fungerer på file:// og GitHub Pages.
    ────────────────────────────────────────────────────────────────── */
 
-/* ═══ 1. Regelverket — ett sted ══════════════════════════════════════
-   Tallene under er dem Husbanken har oppgitt for prototypen.
-   Publisert utkast på husbanken.no opererer med 25 % og tak på
-   75 000 kr. Endre her, så følger kalkulator, eksempler og søknad etter.
+/* ═══ 1. Regelverket, samlet ett sted ════════════════════════════════
+   Endre her, så følger kalkulator, eksempler, tekster og validering
+   etter. Tallene stemmer med utkastet på husbanken.no per 4.8.2026.
    ─────────────────────────────────────────────────────────────────── */
 const HB_REGLER = {
   minstekostnad: 80000,   // du må oppgradere for minst dette
-  sats: 0.20,             // du får denne andelen
+  sats: 0.25,             // du får denne andelen
   kostnadstak: 300000,    // vi regner ikke på beløp over dette
-  get maksTilskudd() { return Math.round(this.kostnadstak * this.sats); }, // 60 000
+  get maksTilskudd() { return Math.round(this.kostnadstak * this.sats); }, // 75 000
   sliderMaks: 500000,
   sliderSteg: 5000,
   frist: '1. november 2026',
@@ -83,7 +82,7 @@ const HB_IKON = {
   lås: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.5" y="10" width="15" height="10.5" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7.4a4 4 0 0 1 8 0V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
 };
 
-/* Veilederen «Bodil» — samme figur som i Husbankens egne søknadsflyter:
+/* Veilederen «Bodil», samme figur som i Husbankens egne søknadsflyter:
    grønn organisk flate, mørkt pageklipp, enkelt ansikt og skuldre. */
 const HB_AVATAR = `
 <svg class="hb-guide__avatar" viewBox="0 0 100 100" role="img" aria-label="Illustrasjon av veilederen" focusable="false">
@@ -140,7 +139,7 @@ function hbHeader(opts = {}) {
 <header class="hb-topbar">
   <div class="hb-shell hb-shell--wide">
     <div class="hb-topbar__row">
-      <a class="hb-logo" href="index.html" aria-label="Husbanken — til forsiden">
+      <a class="hb-logo" href="index.html" aria-label="Husbanken, til forsiden">
         <img src="ds/logo/husbanken-primary.png" alt="Husbanken">
       </a>
       ${minimal ? '' : brukerBlokk}
@@ -234,7 +233,7 @@ function hbInitMeny() {
 
 /* Trekkspill. Brukertest: fire av åtte oppdaget ikke at boksene kunne
    åpnes. Vi bruker derfor eksplisitt «Vis»/«Skjul»-tekst i tillegg til
-   pilen, og markerer knappen som en knapp — ikke som en flate. */
+   pilen, og markerer knappen som en knapp, ikke som en flate. */
 function hbInitTrekkspill(rot = document) {
   rot.querySelectorAll('[data-trekkspill]').forEach(boks => {
     if (boks.dataset.klar === '1') return;

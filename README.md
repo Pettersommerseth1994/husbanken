@@ -1,10 +1,10 @@
-# Tilskudd til aldersvennlig oppgradering — klikkbar prototype
+# Tilskudd til aldersvennlig oppgradering, klikkbar prototype
 
 Designflyt for Husbankens nye tilskuddsordning, fra forsiden på husbanken.no,
 gjennom BankID-innlogging, til ferdig innsendt søknad og kvittering.
 
-Bygget på Husbankens designsystem (`ds/`). Statiske filer — ingen byggesteg,
-ingen avhengigheter, ingen backend. Kjører like godt lokalt som på GitHub Pages.
+Bygget på Husbankens designsystem (`ds/`). Statiske filer, uten byggesteg,
+avhengigheter eller backend. Kjører like godt lokalt som på GitHub Pages.
 
 ## Kjør lokalt
 
@@ -36,15 +36,14 @@ informasjonssiden og valideringen i søknaden leser alle derfra.
 ```js
 const HB_REGLER = {
   minstekostnad: 80000,   // du må oppgradere for minst dette
-  sats: 0.20,             // du får denne andelen
+  sats: 0.25,             // du får denne andelen
   kostnadstak: 300000,    // vi regner ikke på beløp over dette
-  // maks tilskudd = 60 000 kr
+  // maks tilskudd = 75 000 kr
 };
 ```
 
-> **Merk:** husbanken.no oppgir per 4. august 2026 **25 %** og maks **75 000 kr**.
-> Prototypen bruker tallene fra oppdraget — 20 % og maks 60 000 kr. Avviket bør
-> avklares før dette vises fram utenfor teamet.
+Sats og kostnadstak stemmer med utkastet på husbanken.no per 4. august 2026.
+Minstekravet på 80 000 kr er hentet fra kriteriene i søknadsutkastet.
 
 ## Snarveier når prototypen skal demonstreres
 
@@ -60,8 +59,8 @@ kvitteringen tømmer alt.
 ## Skjermstørrelser
 
 Mobil først. Verifisert uten horisontal skroll på 320, 375, 768 og 1280 px.
-Trykkflater er 56–64 px, brødteksten 18 px — begge deler fordi målgruppen er 62+
-og fordi to av åtte testdeltakere brukte bare mobil, to nettbrett.
+Trykkflater er 56–64 px og brødteksten 18 px, fordi målgruppen er 62+ og fordi
+to av åtte testdeltakere brukte bare mobil, to nettbrett.
 
 ## Publisering på GitHub Pages
 
@@ -77,7 +76,7 @@ Siden blir liggende på <https://pettersommerseth1994.github.io/husbanken/>.
 ## Mappestruktur
 
 ```
-ds/                  Husbankens designsystem — tokens, skrifter, logo. Urørt.
+ds/                  Husbankens designsystem: tokens, skrifter, logo. Urørt.
 assets/css/          Komponentlag bygget kun på tokens fra ds/
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -89,5 +88,5 @@ ref/, uploads/       Referansemateriale fra Husbanken
 ## Forbehold
 
 Klikkbar prototype for designarbeid. Testdata og illustrasjoner. De seks
-godkjente oppgraderingene er plausible eksempler — forskriften er ikke publisert.
-Ingen data sendes noe sted, og ingen del av dette er bindende.
+godkjente oppgraderingene er plausible eksempler, siden forskriften ikke er
+publisert. Ingen data sendes noe sted, og ingen del av dette er bindende.

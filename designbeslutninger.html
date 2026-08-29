@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Designbeslutninger — prototype for aldersvennlig oppgradering</title>
+<title>Designbeslutninger | prototype for aldersvennlig oppgradering</title>
 <link rel="stylesheet" href="ds/colors_and_type.css">
 <link rel="stylesheet" href="assets/css/hb-app.css">
 <link rel="icon" href="ds/logo/husbanken-primary.png">
@@ -119,12 +119,15 @@
         få alt i samme visning.
       </p>
       <p><strong>Grepet:</strong> kalkulatoren viser minstekrav, sats, kostnadstak og
-        makstilskudd i én og samme boks — i overskriften, i søylen, i tallradene og i
-        hovedsvaret. Søylen har fast skala 0–500 000 slik at de to grensene ligger på
-        samme sted uansett hva man taster inn; da ser man beløpet sitt bevege seg
+        makstilskudd i én og samme boks, både i overskriften, i søylen, i tallradene og
+        i hovedsvaret. Søylen har fast skala 0–500 000 slik at de to grensene ligger på
+        samme sted uansett hva man taster inn. Da ser man beløpet sitt bevege seg
         <em>forbi</em> dem. Delen over taket er skravert, ikke grønn, med teksten
         «gir ikke mer». Hovedsvaret er ett stort tall med etiketten «Du får i
         tilskudd», som er vanskelig å forveksle med et krav.</p>
+      <p>Det samme svarer de fire nøkkeltallene øverst på siden på, i kortform.
+        Den fjerde boksen sier «Må du betale tilbake? Nei, aldri», fordi det var
+        det spørsmålet flest satt igjen med.</p>
       <p class="hb-small hb-muted">Se <a href="tilskudd.html#kalkulator">kalkulatoren</a>.</p>
     </div>
 
@@ -132,11 +135,15 @@
       <span class="hb-finding__count">Forslag fra test 7</span>
       <h3>Bygg regnestykket visuelt og tidlig</h3>
       <p><strong>Grepet:</strong> tre eksempelcase ligger rett under kalkulatoren på
-        informasjonssiden — 75 000 som gir null, 100 000 som gir 20 000, og 400 000
-        som treffer taket og gir 60 000. Hvert kort har en knapp som legger beløpet
-        inn i kalkulatoren, slik at det er tydelig at det er samme regnestykke og ikke
-        tre løsrevne eksempler. Kalkulatoren gjentas inne i steg 4 av søknaden, med
-        samme utseende.</p>
+        informasjonssiden. 75 000 gir null, 100 000 gir 25 000, og 400 000 treffer
+        taket og gir 75 000. Hvert kort har en knapp som legger beløpet inn i
+        kalkulatoren, slik at det er tydelig at det er samme regnestykke og ikke tre
+        løsrevne eksempler.</p>
+      <p>Fargen på båndet øverst i kortet følger hvor mye man får: grått gir null,
+        mellomgrønt gir noe, mørkegrønt er taket. Hvert kort har også en
+        miniatyrsøyle med samme farger som kalkulatoren, slik at koblingen er synlig
+        uten at den må forklares. Kortene bygges av samme funksjon som kalkulatoren
+        regner med, så de kan ikke komme i utakt med regelverket.</p>
       <p class="hb-small hb-muted">Se <a href="tilskudd.html#eksempler">eksemplene</a>.</p>
     </div>
 
@@ -150,7 +157,7 @@
       </p>
       <p><strong>Grepet:</strong> knappen har blå venstrekant, egen bakgrunnsfarge,
         ordet «Vis» som endres til «Skjul», og en rund blå pil som roterer. Ingenting
-        krever hover. Grønt på grønt er fjernet — trekkspill er alltid blått mot lys
+        krever hover. Grønt på grønt er fjernet, og trekkspill er alltid blått mot lys
         grå. Trykkflaten er 64 px høy.</p>
       <p class="hb-small hb-muted">Se <a href="tilskudd.html#sporsmal">spørsmål og svar</a>.</p>
     </div>
@@ -165,14 +172,14 @@
         e-post → lagre → finne igjen.
       </p>
       <p><strong>Grepet:</strong> «Ta bilde av papiret» er primærknappen og bruker
-        mobilkameraet direkte — den hopper over hele kjeden. «Velg fil» er sekundær.
+        mobilkameraet direkte, slik at hele kjeden hoppes over. «Velg fil» er sekundær.
         Under ligger tre likeverdige veier ut: videresend e-posten til en
         vedleggsadresse med referansenummeret i emnefeltet, ring oss, eller send i
         posten. Det står eksplisitt at søknaden kan sendes nå og vedlegget ettersendes
         uten at det går ut over saken. 50 MB-varselet er flyttet ut av
         utgangstilstanden og inn i «Hvilke filtyper og størrelser går an?».
         Kvitteringen på mottatt fil er en grønn ramme med hake, filnavn, størrelse og
-        ordet «Mottatt» — ikke en diskret linje.</p>
+        ordet «Mottatt», ikke en diskret linje.</p>
     </div>
 
     <div class="hb-finding">
@@ -185,7 +192,7 @@
         mindre oppgradering krever det» betyr.
       </p>
       <p><strong>Grepet:</strong> hjelpetekstene sier hva som er greit, ikke bare hva
-        som er forbudt. Det står eksplisitt at helseopplysninger ikke kreves — både på
+        som er forbudt. Det står eksplisitt at helseopplysninger ikke kreves, både på
         informasjonssiden og i personvernboksen. Beskrivelsesfeltet i steg 3 sier «Du
         kan ikke skrive noe galt her». Bekreftelsesboksen i steg 6 heter
         «Opplysningene stemmer så langt jeg vet», ikke en erklæring om riktighet, og
@@ -221,9 +228,9 @@
     <div class="hb-finding">
       <span class="hb-finding__count">Britt oppdaget det til slutt</span>
       <h3>Etterspillet</h3>
-      <p><strong>Grepet:</strong> kvitteringen er bygget etter Skatteetaten-modellen —
+      <p><strong>Grepet:</strong> kvitteringen er bygget etter Skatteetaten-modellen:
         bekreft først, forklar så. Referansenummeret står stort fordi det er det man
-        trenger igjen. Saksbehandlingstiden står i klartekst. «Be om utbetaling — det
+        trenger igjen. Saksbehandlingstiden står i klartekst. «Be om utbetaling, det
         skjer ikke automatisk» er et eget, uthevet steg både i «Slik søker du» på
         informasjonssiden og på kvitteringen, med en merknad om at dette er steget
         flest glemmer. Kvitteringen kommer tre steder: Min side, posten og eventuelt
@@ -243,8 +250,8 @@
         med beløpet. Steg 6 i «Slik søker du» heter «Betal regningen selv», og peker
         videre til startlån fra kommunen.</p>
       <p><strong>Det vi ikke kan gjøre:</strong> dette er det sterkeste signalet i
-        datasettet, og det er et forskriftsspørsmål — ikke et designspørsmål. Ingen
-        tekstendring fjerner at folk må ha 80 000 til 340 000 kroner tilgjengelig i
+        datasettet, og det er et forskriftsspørsmål, ikke et designspørsmål. Ingen
+        tekstendring fjerner at folk må ha 80 000 til 325 000 kroner tilgjengelig i
         flere måneder. Bør spilles inn til forskriftsarbeidet.</p>
     </div>
 
@@ -258,7 +265,7 @@
               <td>Over Apples og Googles minstekrav på 44–48 px. Målgruppen er 62+, og to av åtte brukte bare mobil.</td></tr>
           <tr><td>18 px brødtekst</td>
               <td>Designsystemets standard, beholdt uendret. Ingen tekst under 14 px i grensesnittet.</td></tr>
-          <tr><td>Mobil først, testet på 375, 768 og 1280 px</td>
+          <tr><td>Mobil først, testet på 320, 375, 768 og 1280 px</td>
               <td>To av åtte brukte nettbrett. Brukertestrapporten ber eksplisitt om retest på iPad og mobil, ikke Mac.</td></tr>
           <tr><td>Ett spørsmål per skjermbilde</td>
               <td>Kortere skjermbilder gir færre steder å gå seg vill, og framdriftsindikatoren blir troverdig.</td></tr>
@@ -270,15 +277,15 @@
       </table>
     </div>
 
-    <div class="hb-note hb-note--warn" style="margin-top:var(--space-5)">
-      <span class="hb-note__icon" data-varsel></span>
+    <div class="hb-note" style="margin-top:var(--space-5)">
+      <span class="hb-note__icon" data-info></span>
       <div>
-        <strong>Beløpene i prototypen avviker fra utkastet på husbanken.no</strong>
+        <strong>Beløpene</strong>
         <p class="hb-small" style="margin:4px 0 0">
-          Prototypen bruker 20 % med tak på 300 000 kroner, altså maks 60 000 kroner,
-          slik oppdraget spesifiserte. Siden på husbanken.no oppgir per 4. august 2026
-          25 % og maks 75 000 kroner. Avviket må avklares før dette vises fram utenfor
-          teamet. Endres i <code>HB_REGLER</code>.
+          Prototypen bruker 25 % med kostnadstak på 300 000 kroner, altså maks
+          75 000 kroner. Det stemmer med utkastet på husbanken.no per 4. august 2026.
+          Minstekravet på 80 000 kroner er hentet fra kriteriene i søknadsutkastet.
+          Alle tre tallene endres ett sted, i <code>HB_REGLER</code>.
         </p>
       </div>
     </div>

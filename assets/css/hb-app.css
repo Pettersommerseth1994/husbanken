@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────────────
-   Husbanken — komponentlag for prototypen
+   Husbanken, komponentlag for prototypen
    Bygger utelukkende på tokens fra ds/colors_and_type.css.
    Mobile first. Brytpunkt 640px (nettbrett) og 1024px (desktop).
    ────────────────────────────────────────────────────────────────── */
@@ -32,7 +32,7 @@ img { max-width: 100%; height: auto; }
    klassen over nettleserens [hidden]-regel, og skjulte bokser vises. */
 [hidden] { display: none !important; }
 
-/* Synlig fokus overalt — kritisk for tastatur og for svaksynte. */
+/* Synlig fokus overalt. Kritisk for tastatur og for svaksynte. */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -110,7 +110,7 @@ main { flex: 1 0 auto; }
 }
 .hb-userchip:hover { background: var(--hb-green-200); }
 
-/* Kontekstbånd — «Lån og tilskudd fra Husbanken» */
+/* Kontekstbånd, «Lån og tilskudd fra Husbanken» */
 .hb-contextbar {
   border-bottom: 1px solid var(--hb-slate-200);
   background: var(--bg-default);
@@ -366,7 +366,7 @@ a { color: var(--fg-link); text-underline-offset: 3px; }
   margin-top: var(--space-2);
 }
 
-/* Radio og checkbox — store trykkflater */
+/* Radio og checkbox, store trykkflater */
 .hb-choice {
   display: flex; align-items: flex-start; gap: var(--space-3);
   padding: var(--space-3);
@@ -494,35 +494,137 @@ a { color: var(--fg-link); text-underline-offset: 3px; }
 .hb-result__hero .hb-result__val { font-size: var(--text-3xl); line-height: var(--lh-3xl); display: block; color: var(--hb-green-800); }
 .hb-result__hero--zero .hb-result__val { color: var(--hb-slate-700); }
 
-/* ─── Eksempelcase ───────────────────────────────────────────────── */
+/* ─── Eksempelcase ───────────────────────────────────────────────────
+   Tre kort som viser samme regnestykke med ulikt utfall. Fargen på
+   båndet følger hvor mye man får: grå gir null, mellomgrønn gir noe,
+   mørk grønn er taket. Miniatyrsøylen bruker samme fargespråk som
+   kalkulatoren, slik at koblingen er synlig uten forklaring.
+   ──────────────────────────────────────────────────────────────────── */
 
 .hb-case {
-  border: 1px solid var(--hb-slate-200);
-  border-top: 6px solid var(--hb-green-600);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
   display: flex; flex-direction: column;
   background: #fff;
+  border: 1px solid var(--hb-slate-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--duration-base) var(--ease-out);
 }
-.hb-case--zero { border-top-color: var(--hb-slate-400); }
-.hb-case--capped { border-top-color: var(--hb-green-800); }
-.hb-case__tag {
+.hb-case:hover { box-shadow: var(--shadow-2); }
+
+/* Farget bånd øverst */
+.hb-case__band {
+  display: flex; align-items: center; gap: var(--space-2);
+  background: var(--case-band, var(--hb-green-700));
+  color: #fff;
+  padding: 12px var(--space-4);
+  font: 600 var(--text-sm)/1.35 var(--font-sans);
+}
+.hb-case__band svg { flex: 0 0 auto; }
+
+.hb-case__inner {
+  display: flex; flex-direction: column; flex: 1 1 auto;
+  padding: var(--space-4);
+  gap: var(--space-3);
+}
+
+.hb-case__cost {
+  margin: 0;
+  font: 400 var(--text-base)/var(--lh-base) var(--font-sans);
+  color: var(--fg-subtle);
+}
+.hb-case__cost b {
   display: block;
-  font: 600 var(--text-xs)/1.2 var(--font-sans);
-  text-transform: uppercase; letter-spacing: .06em;
-  color: var(--fg-subtle); margin-bottom: var(--space-2);
+  font: 600 var(--text-lg)/1.25 var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-default);
 }
-.hb-case__cost { display: block; font: 600 var(--text-xl)/1.2 var(--font-sans); font-variant-numeric: tabular-nums; margin-bottom: var(--space-2); }
+
+/* Miniatyrsøyle, samme skala og farger som i kalkulatoren */
+.hb-case__bar {
+  position: relative;
+  display: flex; height: 12px; border-radius: var(--radius-pill);
+  background: var(--hb-slate-100); overflow: hidden;
+}
+.hb-case__bar .b-tick {
+  position: absolute; top: 0; bottom: 0; width: 2px;
+  background: rgba(255, 255, 255, .85);
+  box-shadow: 0 0 0 1px rgba(44, 70, 86, .25);
+  transform: translateX(-1px);
+}
+.hb-case__scale {
+  position: relative; display: block; height: 18px;
+  font: 400 var(--text-xs)/1.3 var(--font-sans); color: var(--fg-subtle);
+  margin-top: -4px;
+}
+.hb-case__scale span {
+  position: absolute; top: 0; transform: translateX(-50%);
+  white-space: nowrap;
+}
+.hb-case__bar i { display: block; height: 100%; }
+.hb-case__bar .b-under { background: var(--hb-slate-300); }
+.hb-case__bar .b-paid  { background: var(--case-band, var(--hb-green-700)); }
+.hb-case__bar .b-over  {
+  background: repeating-linear-gradient(135deg,
+    var(--hb-slate-200) 0 5px, var(--hb-slate-100) 5px 10px);
+}
+
+/* Hovedsvaret */
+.hb-case__result {
+  background: var(--case-tint, var(--hb-green-100));
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+.hb-case__result-label {
+  display: block;
+  font: 400 var(--text-sm)/var(--lh-sm) var(--font-sans);
+  color: var(--fg-default);
+}
 .hb-case__get {
   display: block;
-  font: 600 var(--text-2xl)/1.15 var(--font-display);
-  color: var(--hb-green-800); font-variant-numeric: tabular-nums;
-  margin-block: var(--space-2) var(--space-1);
+  font: 600 var(--text-3xl)/1.1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+  color: var(--case-ink, var(--hb-green-800));
+  margin-top: 2px;
 }
-.hb-case--zero .hb-case__get { color: var(--hb-slate-600); }
-.hb-case__body { flex: 1 1 auto; font-size: var(--text-sm); line-height: var(--lh-sm); }
+
+.hb-case__body {
+  flex: 1 1 auto;
+  font-size: var(--text-sm); line-height: var(--lh-sm);
+}
 .hb-case__body p { margin-bottom: var(--space-2); }
-.hb-case__cta { margin-top: var(--space-3); }
+.hb-case__body p:last-child { margin-bottom: 0; }
+
+/* Egenandel, som en avsluttende kvitteringslinje */
+.hb-case__own {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: var(--space-3);
+  border-top: 1px solid var(--hb-slate-200);
+  padding-top: var(--space-3);
+  font-size: var(--text-sm);
+}
+.hb-case__own b {
+  font: 600 var(--text-base)/1.2 var(--font-sans);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* Fargevarianter */
+.hb-case--zero {
+  --case-band: var(--hb-slate-600);
+  --case-tint: var(--hb-slate-100);
+  --case-ink:  var(--hb-slate-700);
+}
+.hb-case--mid {
+  --case-band: var(--hb-green-600);
+  --case-tint: var(--hb-green-100);
+  --case-ink:  var(--hb-green-800);
+}
+.hb-case--capped {
+  --case-band: var(--hb-green-800);
+  --case-tint: var(--hb-green-200);
+  --case-ink:  var(--hb-green-900);
+}
 
 /* ─── Trinn / «slik søker du» ────────────────────────────────────── */
 
@@ -676,21 +778,46 @@ a { color: var(--fg-link); text-underline-offset: 3px; }
   .hb-accordion__panel[hidden] { display: block !important; }
 }
 
-/* ─── Nøkkeltall i hero ──────────────────────────────────────────── */
+/* ─── Nøkkeltall i hero ──────────────────────────────────────────────
+   Fire tall som svarer på det folk lurer på først. Den fjerde boksen
+   svarer på tilbakebetaling, som var det klart sterkeste funnet i
+   brukertestene: fem av åtte var usikre på om pengene måtte betales
+   tilbake.
+   ──────────────────────────────────────────────────────────────────── */
 
 .hb-keyfigures {
   display: grid; grid-template-columns: 1fr;
-  gap: var(--space-2); margin-top: var(--space-4); max-width: 520px;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
 }
 @media (min-width: 380px) { .hb-keyfigures { grid-template-columns: 1fr 1fr; } }
-.hb-keyfigures .hb-card {
+
+.hb-key {
+  background: #fff;
+  border: 1px solid var(--hb-slate-200);
+  border-left: 5px solid var(--hb-green-600);
+  border-radius: var(--radius-md);
   padding: var(--space-3);
-  display: flex; flex-direction: column; justify-content: space-between;
-  gap: var(--space-2);
+  display: flex; flex-direction: column; gap: 2px;
 }
-.hb-keyfigures strong {
-  display: block;
-  font: 600 var(--text-xl)/1.2 var(--font-sans);
+.hb-key__label {
+  font: 400 var(--text-sm)/var(--lh-sm) var(--font-sans);
+  color: var(--fg-subtle);
+}
+.hb-key__val {
+  font: 600 var(--text-xl)/1.15 var(--font-sans);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  color: var(--fg-default);
+  margin-top: 2px;
 }
+.hb-key__note {
+  font: 400 var(--text-sm)/var(--lh-sm) var(--font-sans);
+  color: var(--fg-subtle);
+  margin-top: 2px;
+}
+.hb-key--free {
+  background: var(--hb-green-100);
+  border-color: var(--hb-green-200);
+  border-left-color: var(--hb-green-800);
+}
+.hb-key--free .hb-key__val { color: var(--hb-green-800); }
