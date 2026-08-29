@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forside for privatpersoner — Husbanken</title>
+<meta name="description" content="Har du behov for å skaffe ny bolig, eller trenger du hjelp til å beholde boligen du har?">
+<link rel="stylesheet" href="ds/colors_and_type.css">
+<link rel="stylesheet" href="assets/css/hb-app.css">
+<link rel="icon" href="ds/logo/husbanken-primary.png">
+</head>
+<body>
+
+<div id="hb-topp"></div>
+
+<main id="hovedinnhold">
+
+  <!-- ── Hero ────────────────────────────────────────────────────── -->
+  <section class="hb-section" style="background:var(--hb-green-100)">
+    <div class="hb-shell hb-shell--wide">
+      <h1 style="max-width:16ch">Forside for privatpersoner</h1>
+      <p class="hb-lead" style="max-width:52ch">
+        Har du behov for å skaffe ny bolig, eller trenger du hjelp til å
+        beholde boligen du har?
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Nytt tilskudd — hovedinngangen i denne prototypen ───────── -->
+  <section class="hb-section">
+    <div class="hb-shell hb-shell--wide">
+      <div class="hb-panel" style="display:grid;gap:var(--space-4)">
+        <div>
+          <span class="hb-tag hb-tag--new">Nytt</span>
+          <span class="hb-tag hb-tag--free">Penger du ikke betaler tilbake</span>
+        </div>
+        <div style="display:grid;gap:var(--space-4);align-items:center" class="hb-hero-split">
+          <div>
+            <h2>Tilskudd til aldersvennlig oppgradering</h2>
+            <p class="hb-lead">
+              Er du over 62 år, kan du få dekket <strong>20 %</strong> av det du
+              oppgraderer boligen for — opptil <strong>60 000 kroner</strong>.
+              Tilskudd er penger du får, ikke et lån.
+            </p>
+            <p class="hb-small hb-muted">
+              Søknadsfrist <span data-frist></span>.
+              Det tar 5–10 minutter å søke.
+            </p>
+            <p style="margin-top:var(--space-4)">
+              <a class="hb-btn hb-btn--primary" href="tilskudd.html">
+                Se hva du kan få <span data-pil></span>
+              </a>
+            </p>
+          </div>
+          <div style="text-align:center">
+            <img src="assets/img/bygge-nybygg.svg" alt="" width="201" height="148" style="max-width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Snarveier ───────────────────────────────────────────────── -->
+  <section class="hb-section" style="padding-top:0">
+    <div class="hb-shell hb-shell--wide">
+      <h2>Våre tjenester for privatpersoner</h2>
+      <div class="hb-cardgrid hb-cardgrid--3">
+
+        <a class="hb-card hb-card--link" href="tilskudd.html">
+          <h3>Tilskudd til aldersvennlig oppgradering</h3>
+          <p class="hb-small">
+            For deg over 62 år som vil tilpasse boligen slik at den fungerer
+            bedre i årene som kommer.
+          </p>
+        </a>
+
+        <a class="hb-card hb-card--link" href="#">
+          <h3>Bostøtte</h3>
+          <p class="hb-small">
+            En støtteordning for deg som har lav inntekt og høye boutgifter.
+          </p>
+        </a>
+
+        <a class="hb-card hb-card--link" href="#">
+          <h3>Startlån og tilskudd</h3>
+          <p class="hb-small">
+            Fra kommunen, for deg som ikke får vanlig boliglån i banken.
+          </p>
+        </a>
+
+        <a class="hb-card hb-card--link" href="#">
+          <h3>Lån fra Husbanken</h3>
+          <p class="hb-small">
+            Lån til miljøvennlige og tilgjengelige boliger.
+          </p>
+        </a>
+
+        <a class="hb-card hb-card--link" href="#">
+          <h3>For lånekunder</h3>
+          <p class="hb-small">
+            Betalingsplan, renter, avdragsfrihet og endringer på lånet ditt.
+          </p>
+        </a>
+
+        <a class="hb-card hb-card--link" href="#">
+          <h3>For deg som har søkt</h3>
+          <p class="hb-small">
+            Følg saken din, last opp dokumentasjon og be om utbetaling.
+          </p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Hjelp ───────────────────────────────────────────────────── -->
+  <section class="hb-section" style="padding-top:0">
+    <div class="hb-shell hb-shell--wide">
+      <div class="hb-help" id="hjelp">
+        <h3>Vil du heller snakke med noen?</h3>
+        <p>Ring oss, så hjelper vi deg gjennom hele søknaden. Det er helt greit å ringe før du begynner.</p>
+        <a class="hb-help__phone" data-tlf href="#"></a>
+        <p class="hb-small" style="margin-top:var(--space-3)">Hverdager 09.00–15.00.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="hb-bunn"></div>
+
+<script src="assets/js/hb.js"></script>
+<script>
+  hbMonter({ kontekst: 'Lån og tilskudd fra Husbanken' });
+  document.querySelectorAll('[data-frist]').forEach(e => e.textContent = HB_REGLER.frist);
+  document.querySelectorAll('[data-pil]').forEach(e => e.innerHTML = HB_IKON.pil);
+  document.querySelectorAll('[data-tlf]').forEach(e => {
+    e.href = 'tel:' + HB_REGLER.telefonRaw;
+    e.innerHTML = HB_IKON.telefon + '<span>' + HB_REGLER.telefon + '</span>';
+  });
+</script>
+<style>
+  @media (min-width: 900px) {
+    .hb-hero-split { grid-template-columns: 1.6fr 1fr; }
+  }
+</style>
+</body>
+</html>

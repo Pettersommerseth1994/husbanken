@@ -1,0 +1,10 @@
+.DS_Store
+**/.DS_Store
+node_modules/
+
+# Kildemateriale, ikke del av leveransen. Holdes utenfor et offentlig
+# repo fordi det inneholder rådata fra brukertester med navngitte
+# deltakere, og interne PDF-er fra Husbanken.
+Brukertester/
+uploads/
+ref/

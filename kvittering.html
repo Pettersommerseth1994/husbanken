@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kvittering — søknaden er mottatt — Husbanken</title>
+<link rel="stylesheet" href="ds/colors_and_type.css">
+<link rel="stylesheet" href="assets/css/hb-app.css">
+<link rel="icon" href="ds/logo/husbanken-primary.png">
+</head>
+<body>
+
+<div id="hb-topp"></div>
+
+<main id="hovedinnhold" class="hb-section" style="padding-top:var(--space-5)">
+  <div class="hb-shell">
+
+    <!-- Mottaksbekreftelse etter Skatteetaten-modellen: bekreft først,
+         forklar så. Referansenummeret står stort fordi det er det man
+         trenger igjen når man ringer eller ettersender vedlegg. -->
+    <div class="hb-receipt">
+      <div class="hb-receipt__head">
+        <div style="width:72px;height:72px;border-radius:50%;background:var(--hb-green-700);display:grid;place-items:center;margin:0 auto var(--space-3)">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12.8 9.8 17.6 19 8" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1 style="font-size:var(--text-2xl);line-height:var(--lh-2xl);margin-bottom:var(--space-2)">
+          Vi har mottatt søknaden din
+        </h1>
+        <p style="margin:0">Søknaden er registrert hos Husbanken <span data-dato></span>.</p>
+        <span class="hb-small" style="display:block;margin-top:var(--space-4)">Referansenummer</span>
+        <p class="hb-receipt__ref" data-ref>HB-2026-000000</p>
+      </div>
+
+      <div class="hb-receipt__body">
+        <h2 style="font-size:var(--text-lg)">Dette søkte du om</h2>
+        <div class="hb-summary" style="margin-bottom:var(--space-5)">
+          <div class="hb-summary__group">
+            <dl id="kvitt-sammendrag"></dl>
+          </div>
+        </div>
+
+        <div class="hb-actions__row" style="display:grid;gap:var(--space-3)">
+          <button type="button" class="hb-btn hb-btn--secondary" onclick="window.print()">
+            Skriv ut eller lagre som PDF
+          </button>
+        </div>
+
+        <div class="hb-note" style="margin-top:var(--space-4)">
+          <span class="hb-note__icon" data-info></span>
+          <div>
+            <strong>Du får kvitteringen tre steder</strong>
+            <p class="hb-small" style="margin:4px 0 0">
+              På Min side, i posten om noen dager, og på e-post hvis du oppga adresse.
+              Du trenger ikke gjøre noe for å få den.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saksbehandlingstid, i klartekst -->
+    <div class="hb-deadline" style="margin-top:var(--space-5)">
+      <span data-kal></span>
+      <div>
+        <span class="hb-deadline__label">Når får du svar?</span>
+        <p style="margin:0">
+          Innen <strong>fire uker etter søknadsfristen <span data-frist></span></strong>.
+          Vi behandler alle søknadene samlet etter fristen, så det hjelper ikke å ha
+          søkt tidlig.
+        </p>
+      </div>
+    </div>
+
+    <!-- Brukertest: Britt oppdaget først helt til slutt at man må be om
+         utbetaling. Det står derfor som eget, uthevet steg her — på den
+         siden alle faktisk ser. -->
+    <h2 style="margin-top:var(--space-6)">Slik får du pengene</h2>
+    <ol class="hb-steps" style="margin-top:var(--space-4)">
+      <li>
+        <h3>Vent på svaret vårt</h3>
+        <p>Sier vi ja, kalles det et <strong>tilsagn</strong> — et løfte om at pengene
+           står klare til deg. <strong>Ikke start arbeidet før du har fått det.</strong></p>
+      </li>
+      <li>
+        <h3>Få arbeidet gjort</h3>
+        <p>Du har to år på deg fra du fikk svaret. Ta vare på regningen.</p>
+      </li>
+      <li>
+        <h3>Betal håndverkeren selv</h3>
+        <p>Husbanken betaler ikke direkte til firmaet, og ikke på forskudd.
+           Du legger ut for hele beløpet.</p>
+      </li>
+      <li>
+        <h3>Be om utbetaling — det skjer ikke automatisk</h3>
+        <p>
+          Dette er det steget flest glemmer. Når arbeidet er ferdig, logger du inn på
+          Min side, laster opp den betalte regningen og trykker
+          <strong>«Be om utbetaling»</strong>.
+        </p>
+        <p class="hb-small">
+          Vi sender deg en påminnelse på SMS når det nærmer seg. Pengene kommer på
+          konto omtrent tre uker etter at du har bedt om dem.
+        </p>
+      </li>
+    </ol>
+
+    <!-- Ettersending — knyttet til referansenummeret over -->
+    <div class="hb-panel" style="margin-top:var(--space-6)">
+      <h3>Mangler du et vedlegg?</h3>
+      <p class="hb-small">
+        Du kan ettersende helt fram til søknadsfristen, uten at det går ut over
+        søknaden. Send til
+        <a href="mailto:vedlegg@husbanken.no">vedlegg@husbanken.no</a> og skriv
+        <strong data-ref-kort>referansenummeret</strong> i emnefeltet, eller
+        <a href="#">last opp på Min side</a>.
+      </p>
+    </div>
+
+    <div class="hb-help" style="margin-top:var(--space-5)">
+      <h3>Lurer du på noe?</h3>
+      <p>Ha referansenummeret klart, så finner vi saken din med en gang.</p>
+      <a class="hb-help__phone" data-tlf href="#"></a>
+    </div>
+
+    <p style="margin-top:var(--space-6);display:flex;gap:var(--space-3);flex-wrap:wrap">
+      <a class="hb-btn hb-btn--secondary" href="index.html">Til forsiden</a>
+      <a class="hb-btn hb-btn--tertiary" href="#" data-nullstill>Nullstill prototypen og prøv igjen</a>
+    </p>
+
+  </div>
+</main>
+
+<div id="hb-bunn"></div>
+
+<script src="assets/js/hb.js"></script>
+<script src="assets/js/soknad.js"></script>
+<script>
+  const d = hbLes();
+  hbMonter({ kontekst: 'Søknad om tilskudd til aldersvennlig oppgradering', bruker: d.navn || 'Bodil Innbygger' });
+
+  const ref = d.referanse || 'HB-2026-482913';
+  document.querySelectorAll('[data-ref]').forEach(e => e.textContent = ref);
+  document.querySelectorAll('[data-ref-kort]').forEach(e => e.textContent = ref);
+
+  document.querySelectorAll('[data-dato]').forEach(e =>
+    e.textContent = new Date().toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' }));
+
+  /* Sammendrag */
+  const b = hbBeregn(d.belop || 0);
+  const valgte = (d.tiltak || []).map(id => (TILTAK.find(t => t.id === id) || {}).navn).filter(Boolean);
+  document.getElementById('kvitt-sammendrag').innerHTML = `
+    <dt>Søker</dt><dd>${d.navn || 'Bodil Innbygger'}</dd>
+    <dt>Bolig</dt><dd>${d.adresse || 'Bjerkeveien 14 B, 0765 Oslo'}</dd>
+    <dt>Oppgraderinger</dt><dd>${valgte.join('<br>') || '–'}</dd>
+    <dt>Oppgraderingen koster</dt><dd>${hbKr(d.belop || 0)}</dd>
+    <dt>Du søker om</dt><dd><strong>${hbKr(b.tilskudd)}</strong></dd>
+    <dt>Vedlegg</dt><dd>${[...(d.filer || []), ...(d.filerUtleier || [])].map(f => f.navn).join('<br>') || '–'}</dd>`;
+
+  document.querySelectorAll('[data-frist]').forEach(e => e.textContent = HB_REGLER.frist);
+  document.querySelectorAll('[data-kal]').forEach(e => e.innerHTML = HB_IKON.kalender);
+  document.querySelectorAll('[data-info]').forEach(e => e.innerHTML = HB_IKON.info);
+  document.querySelectorAll('[data-tlf]').forEach(e => {
+    e.href = 'tel:' + HB_REGLER.telefonRaw;
+    e.innerHTML = HB_IKON.telefon + '<span>' + HB_REGLER.telefon + '</span>';
+  });
+
+  document.querySelector('[data-nullstill]').addEventListener('click', ev => {
+    ev.preventDefault();
+    hbTøm();
+    location.href = 'index.html';
+  });
+</script>
+</body>
+</html>

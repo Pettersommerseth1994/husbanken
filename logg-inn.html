@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logg inn med BankID — Husbanken</title>
+<link rel="stylesheet" href="ds/colors_and_type.css">
+<link rel="stylesheet" href="assets/css/hb-app.css">
+<link rel="icon" href="ds/logo/husbanken-primary.png">
+</head>
+<body>
+
+<div id="hb-topp"></div>
+
+<main id="hovedinnhold" class="hb-section">
+  <div class="hb-shell">
+
+    <div class="hb-bankid">
+
+      <p style="margin-bottom:var(--space-4)">
+        <a href="tilskudd.html">&larr; Tilbake til tilskuddssiden</a>
+      </p>
+
+      <h1 style="font-size:var(--text-2xl);line-height:var(--lh-2xl)">Logg inn for å søke</h1>
+      <p>
+        Vi bruker BankID for å vite hvem du er. Da slipper du å skrive inn navn,
+        adresse og fødselsnummer selv.
+      </p>
+
+      <div class="hb-bankid__box" style="margin-top:var(--space-4)">
+        <div class="hb-bankid__head">
+          <span class="hb-bankid__logo">BankID</span>
+          <span class="hb-small">Husbanken</span>
+        </div>
+
+        <div class="hb-bankid__body">
+
+          <div class="hb-bankid__demo" style="margin-bottom:var(--space-4)">
+            <strong>Dette er en prototype.</strong> Feltene er allerede fylt ut med
+            testdata. Ikke skriv inn ditt eget fødselsnummer — trykk bare
+            «Neste».
+          </div>
+
+          <!-- Steg 1 -->
+          <div data-steg="1">
+            <div class="hb-field">
+              <label class="hb-field__label" for="fnr">Fødselsnummer (11 siffer)</label>
+              <input class="hb-input hb-num" id="fnr" type="text" inputmode="numeric"
+                     value="13045612345" readonly aria-readonly="true">
+            </div>
+            <button type="button" class="hb-btn hb-btn--primary hb-btn--block" data-neste-1>Neste</button>
+          </div>
+
+          <!-- Steg 2 -->
+          <div data-steg="2" hidden>
+            <div class="hb-field">
+              <span class="hb-field__label">Åpne BankID-appen på telefonen</span>
+              <span class="hb-field__help">Kontroller at referansen under er lik den i appen.</span>
+              <div class="hb-panel hb-panel--filled" style="text-align:center;padding:var(--space-4)">
+                <span class="hb-small">Referanse</span>
+                <strong style="display:block;font:600 var(--text-xl)/1.2 var(--font-mono);letter-spacing:.1em">
+                  GRØNN HAGE 42
+                </strong>
+              </div>
+            </div>
+            <div class="hb-field">
+              <label class="hb-field__label" for="kode">Personlig passord</label>
+              <input class="hb-input" id="kode" type="password" value="demo1234" readonly aria-readonly="true">
+            </div>
+            <button type="button" class="hb-btn hb-btn--primary hb-btn--block" data-neste-2>Logg inn</button>
+            <p style="text-align:center;margin-top:var(--space-3)">
+              <button type="button" class="hb-btn hb-btn--tertiary" data-tilbake>Avbryt</button>
+            </p>
+          </div>
+
+          <!-- Steg 3 -->
+          <div data-steg="3" hidden style="text-align:center;padding-block:var(--space-4)">
+            <div style="width:64px;height:64px;border-radius:50%;background:var(--hb-green-700);display:grid;place-items:center;margin:0 auto var(--space-3)">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12.8 9.8 17.6 19 8" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 style="font-size:var(--text-lg)">Du er logget inn som Bodil Innbygger</h2>
+            <p class="hb-small hb-muted">Sender deg videre til søknaden …</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="hb-note" style="margin-top:var(--space-4)">
+        <span class="hb-note__icon" data-info></span>
+        <div>
+          <strong>Har du ikke BankID?</strong>
+          <p class="hb-small" style="margin:4px 0 0">
+            Du kan søke på papir i stedet, eller ringe oss på
+            <a data-tlf-lenke href="#"></a> så fyller vi ut sammen med deg over telefon.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<div id="hb-bunn"></div>
+
+<script src="assets/js/hb.js"></script>
+<script>
+  hbMonter({ minimal: true });
+
+  const vis = n => {
+    document.querySelectorAll('[data-steg]').forEach(d => d.hidden = d.dataset.steg !== String(n));
+  };
+
+  document.querySelector('[data-neste-1]').addEventListener('click', () => vis(2));
+  document.querySelector('[data-tilbake]').addEventListener('click', () => vis(1));
+  document.querySelector('[data-neste-2]').addEventListener('click', () => {
+    vis(3);
+    /* Testperson hentet fra «Folkeregisteret» */
+    hbOppdater({
+      navn: 'Bodil Innbygger',
+      fnr: '130456 12345',
+      fodselsaar: 1956,
+      adresse: 'Bjerkeveien 14 B, 0765 Oslo',
+      eierform: 'eier',
+      innlogget: true
+    });
+    setTimeout(() => { location.href = 'soknad-start.html'; }, 1600);
+  });
+
+  document.querySelectorAll('[data-info]').forEach(e => e.innerHTML = HB_IKON.info);
+  document.querySelectorAll('[data-tlf-lenke]').forEach(e => {
+    e.href = 'tel:' + HB_REGLER.telefonRaw;
+    e.textContent = HB_REGLER.telefon;
+  });
+</script>
+</body>
+</html>

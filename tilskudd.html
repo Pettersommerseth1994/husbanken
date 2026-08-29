@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tilskudd til aldersvennlig oppgradering — Husbanken</title>
+<meta name="description" content="Er du over 62 år kan du få dekket 20 % av det du oppgraderer boligen for, opptil 60 000 kroner. Tilskudd er penger du ikke betaler tilbake.">
+<link rel="stylesheet" href="ds/colors_and_type.css">
+<link rel="stylesheet" href="assets/css/hb-app.css">
+<link rel="icon" href="ds/logo/husbanken-primary.png">
+</head>
+<body>
+
+<div id="hb-topp"></div>
+
+<div class="hb-shell">
+  <nav class="hb-crumbs" aria-label="Du er her">
+    <ol>
+      <li><a href="index.html">Privat</a></li>
+      <li>Tilskudd til aldersvennlig oppgradering</li>
+    </ol>
+  </nav>
+</div>
+
+<main id="hovedinnhold">
+
+  <!-- ══ Hero ════════════════════════════════════════════════════════
+       Brukertest, det sterkeste funnet av alle: fem av åtte snublet på
+       ordet «tilskudd». Åke trodde det måtte betales tilbake, Britt
+       kjente ikke ordet. Derfor står forklaringen i ingressen, ikke i
+       en ordliste lenger nede.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hb-section" style="background:var(--hb-green-100);padding-bottom:var(--space-6)">
+    <div class="hb-shell">
+      <span class="hb-tag hb-tag--new">Ny ordning</span>
+      <h1 style="margin-top:var(--space-3)">Tilskudd til aldersvennlig oppgradering</h1>
+      <p class="hb-lead">
+        Er du over 62 år, kan du få dekket <strong>20 %</strong> av det du oppgraderer
+        boligen for. <strong>Tilskudd er penger du får og ikke skal betale tilbake.</strong>
+        Det er ikke et lån, og det er ikke noe vi krever inn igjen senere.
+      </p>
+
+      <div class="hb-keyfigures">
+        <div class="hb-card">
+          <span class="hb-small hb-muted">Du kan få mest</span>
+          <strong>60 000 kr</strong>
+        </div>
+        <div class="hb-card">
+          <span class="hb-small hb-muted">Du må oppgradere for minst</span>
+          <strong>80 000 kr</strong>
+        </div>
+      </div>
+
+      <p style="margin-top:var(--space-5)">
+        <a class="hb-btn hb-btn--primary hb-btn--block" href="logg-inn.html" style="max-width:420px">
+          Søk om tilskudd <span data-pil></span>
+        </a>
+      </p>
+      <p class="hb-small" style="margin-top:var(--space-2)">
+        Du logger inn med BankID. <a href="#slik-soker-du">Se hvordan du søker først</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ Søknadsfrist ══════════════════════════════════════════════ -->
+  <section class="hb-shell" style="margin-top:var(--space-5)">
+    <div class="hb-deadline">
+      <span data-kal></span>
+      <div>
+        <span class="hb-deadline__label">Neste søknadsfrist</span>
+        <p style="margin:0"><span data-frist></span></p>
+        <p class="hb-small" style="margin:var(--space-1) 0 0">
+          Du må søke <strong>før</strong> du setter i gang arbeidet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Kalkulator ════════════════════════════════════════════════ -->
+  <section class="hb-section" id="kalkulator">
+    <div class="hb-shell">
+      <div id="kalk"></div>
+    </div>
+  </section>
+
+  <!-- ══ Tre eksempler ═════════════════════════════════════════════
+       Konkret forslag fra brukertest 7: to–tre eksempelcase som viser
+       regnestykket før man går inn i søknaden. Kortene setter tallene
+       inn i kalkulatoren over, så det er samme regnestykke.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hb-section" style="background:var(--hb-slate-50);padding-top:var(--space-6)" id="eksempler">
+    <div class="hb-shell hb-shell--wide">
+      <h2>Tre eksempler</h2>
+      <p style="max-width:60ch">
+        De samme reglene gir ganske ulikt svar. Trykk på et eksempel for å legge
+        beløpet inn i kalkulatoren over.
+      </p>
+
+      <div class="hb-cardgrid hb-cardgrid--3" style="margin-top:var(--space-4)">
+
+        <!-- Case 1 — under minstekravet -->
+        <article class="hb-case hb-case--zero">
+          <span class="hb-case__tag">Eksempel 1 · Under minstekravet</span>
+          <span class="hb-case__cost">Du oppgraderer for 75 000 kr</span>
+          <div class="hb-case__body">
+            <span class="hb-small hb-muted">Du får</span>
+            <span class="hb-case__get">0 kr</span>
+            <p>
+              Du får ingenting, fordi oppgraderingen må koste minst
+              <strong>80 000 kr</strong> for at du skal kunne søke. Du mangler
+              <strong>5 000 kr</strong>.
+            </p>
+            <p>
+              Kravet gjelder <em>hele søknaden</em>, ikke hvert enkelt tiltak. Har du
+              tenkt å bytte dusjen for 75 000 kr, kan du ta med lys i trappa i samme
+              søknad og komme over kravet.
+            </p>
+            <p><strong>Du betaler selv:</strong> 75 000 kr.</p>
+          </div>
+          <p class="hb-case__cta">
+            <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-case="75000">
+              Prøv 75 000 kr i kalkulatoren
+            </button>
+          </p>
+        </article>
+
+        <!-- Case 2 — normaltilfellet -->
+        <article class="hb-case">
+          <span class="hb-case__tag">Eksempel 2 · Vanligst</span>
+          <span class="hb-case__cost">Du oppgraderer for 100 000 kr</span>
+          <div class="hb-case__body">
+            <span class="hb-small hb-muted">Du får</span>
+            <span class="hb-case__get">20 000 kr</span>
+            <p>
+              Du er over minstekravet på 80 000 kr, og under taket på 300 000 kr.
+              Da får du <strong>20 % av hele summen</strong>: 20 % av 100 000 kr er
+              20 000 kr.
+            </p>
+            <p>
+              Merk at prosenten regnes av <em>alt</em> du oppgraderer for — ikke bare
+              av det som ligger over 80 000 kr.
+            </p>
+            <p><strong>Du betaler selv:</strong> 80 000 kr.</p>
+          </div>
+          <p class="hb-case__cta">
+            <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-case="100000">
+              Prøv 100 000 kr i kalkulatoren
+            </button>
+          </p>
+        </article>
+
+        <!-- Case 3 — over taket -->
+        <article class="hb-case hb-case--capped">
+          <span class="hb-case__tag">Eksempel 3 · Over taket</span>
+          <span class="hb-case__cost">Du oppgraderer for 400 000 kr</span>
+          <div class="hb-case__body">
+            <span class="hb-small hb-muted">Du får</span>
+            <span class="hb-case__get">60 000 kr</span>
+            <p>
+              Vi regner ikke tilskudd av mer enn <strong>300 000 kr</strong>, uansett
+              hvor stort prosjektet er. Du får derfor 20 % av 300 000 kr, som er
+              60 000 kr.
+            </p>
+            <p>
+              De siste <strong>100 000 kr</strong> gir ingen ekstra kroner.
+              60 000 kr er det høyeste beløpet noen kan få.
+            </p>
+            <p><strong>Du betaler selv:</strong> 340 000 kr.</p>
+          </div>
+          <p class="hb-case__cta">
+            <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-case="400000">
+              Prøv 400 000 kr i kalkulatoren
+            </button>
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Hvem kan få ═══════════════════════════════════════════════ -->
+  <section class="hb-section" id="hvem">
+    <div class="hb-shell">
+      <h2>Hvem kan få tilskudd?</h2>
+      <div class="hb-criteria" style="margin-top:var(--space-3)">
+        <h3>Du må oppfylle alle punktene</h3>
+        <ul>
+          <li>Du er <strong>over 62 år</strong>, eller du bor sammen med noen som er det.</li>
+          <li>Du <strong>eier eller leier</strong> boligen, og du <strong>bor i den</strong>.</li>
+          <li>Du skal gjøre <strong>minst én av seks godkjente oppgraderinger</strong>.</li>
+          <li>Du legger ved et <strong>tilbud eller prisoverslag</strong> fra en fagperson.</li>
+          <li>Oppgraderingen koster <strong>minst 80 000 kroner</strong> til sammen.</li>
+          <li>Du søker <strong>før</strong> du setter i gang arbeidet.</li>
+        </ul>
+      </div>
+
+      <!-- Brukertest: målgruppen er redd for å gjøre feil, og for å
+           rapportere noe galt uten å vite det. Vi sier derfor rett ut
+           hva vi ikke spør om. -->
+      <div class="hb-note" style="margin-top:var(--space-4)">
+        <span class="hb-note__icon" data-info></span>
+        <div>
+          <strong>Du trenger ikke dokumentere helsa di.</strong>
+          <p class="hb-small" style="margin:4px 0 0">
+            Vi spør ikke om diagnoser, legeerklæring eller funksjonsnivå. Ordningen
+            handler om boligen, ikke om deg. Du trenger heller ikke å ha søkt om noe
+            annet fra før.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Godkjente oppgraderinger ══════════════════════════════════ -->
+  <section class="hb-section" style="padding-top:0" id="oppgraderinger">
+    <div class="hb-shell hb-shell--wide">
+      <h2>De seks godkjente oppgraderingene</h2>
+      <p style="max-width:60ch">
+        Du må gjøre minst én av disse. Du kan gjerne gjøre flere i samme søknad — da
+        legger vi kostnadene sammen.
+      </p>
+
+      <div class="hb-cardgrid hb-cardgrid--3" style="margin-top:var(--space-4)">
+        <div class="hb-card">
+          <h3>1. Trinnfri adkomst</h3>
+          <p class="hb-small">Fjerne terskler og trinn, lage rampe, eller senke inngangspartiet slik at du kommer inn uten å måtte løfte beina høyt.</p>
+        </div>
+        <div class="hb-card">
+          <h3>2. Bad og toalett</h3>
+          <p class="hb-small">Dusj uten kant, støttehåndtak, plass til å snu seg, eller flytte badet til inngangsplanet.</p>
+        </div>
+        <div class="hb-card">
+          <h3>3. Trapp og rekkverk</h3>
+          <p class="hb-small">Rekkverk på begge sider, merking av trinn i kontrastfarge, eller trappeheis.</p>
+        </div>
+        <div class="hb-card">
+          <h3>4. Dører og passasjer</h3>
+          <p class="hb-small">Utvide døråpninger, automatisk døråpner, eller fjerne trange svinger i gangen.</p>
+        </div>
+        <div class="hb-card">
+          <h3>5. Belysning</h3>
+          <p class="hb-small">Bedre lys i trapp, gang, bad og på uteplassen. Lys som slår seg på av seg selv om natta.</p>
+        </div>
+        <div class="hb-card">
+          <h3>6. Trygghet i boligen</h3>
+          <p class="hb-small">Komfyrvakt, vannlekkasjestopper, røykvarslere som er koblet sammen, og fallsikring på uteplass.</p>
+        </div>
+      </div>
+
+      <div class="hb-note hb-note--warn" style="margin-top:var(--space-4)">
+        <span class="hb-note__icon" data-varsel></span>
+        <div>
+          <strong>Arbeidet må gjøres av en fagperson.</strong>
+          <p class="hb-small" style="margin:4px 0 0">
+            Du kan ikke gjøre jobben selv, og du kan ikke få tilskudd for arbeid en
+            venn eller et familiemedlem gjør gratis. Du trenger en regning fra et
+            registrert foretak. Materialer du kjøper selv teller ikke alene.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Slik søker du ═════════════════════════════════════════════
+       Brukertest: Britt oppdaget først helt til slutt at man må be om
+       utbetaling. Magne ville kontaktet Husbanken før han søkte. Ingunn
+       etterlyste en veiledet vei inn. Derfor er hele løpet — også det
+       som skjer etter innsending — listet opp her.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hb-section" style="background:var(--hb-slate-50)" id="slik-soker-du">
+    <div class="hb-shell">
+      <h2>Slik søker du, steg for steg</h2>
+      <p style="max-width:60ch">
+        Hele løpet, fra du begynner å tenke på det til pengene er på konto.
+        Selve søknaden tar 5–10 minutter når du har papirene klare.
+      </p>
+
+      <ol class="hb-steps" style="margin-top:var(--space-5)">
+
+        <li>
+          <h3>Finn ut hva boligen trenger</h3>
+          <p>
+            Er du usikker på hvor du skal begynne, er dette gratis hjelp du kan be om:
+          </p>
+          <ul class="hb-prose">
+            <li><strong>Kommunen din</strong> har som regel en ergoterapeut som kommer hjem til deg og ser på boligen.</li>
+            <li><strong>Fastlegen</strong> kan henvise deg videre.</li>
+            <li><strong>Husbanken på telefon</strong> — vi kan snakke deg gjennom hva ordningen dekker.</li>
+          </ul>
+          <p class="hb-small hb-muted">Du trenger ikke ha snakket med noen for å søke. Men mange synes det er lettere.</p>
+        </li>
+
+        <li>
+          <h3>Be om et tilbud eller prisoverslag</h3>
+          <p>
+            Kontakt en håndverker eller et firma og be om pris på jobben. Du trenger
+            det skriftlig — på papir, som PDF, eller som et bilde av arket.
+          </p>
+          <p>
+            Summen må være <strong>minst 80 000 kroner</strong>. Er du under, kan du
+            ta med flere av de seks oppgraderingene i samme tilbud.
+          </p>
+        </li>
+
+        <li>
+          <h3>Søk her på husbanken.no — før arbeidet starter</h3>
+          <p>
+            Du logger inn med BankID. Vi henter navn, adresse og fødselsnummer
+            automatisk, så du slipper å skrive det inn.
+          </p>
+          <p>
+            <strong>Ikke la håndverkeren begynne før du har fått svar.</strong>
+            Arbeid som allerede er satt i gang, gir ikke tilskudd.
+          </p>
+          <p class="hb-small hb-muted">Du kan ta pause underveis. Svarene lagres automatisk.</p>
+        </li>
+
+        <li>
+          <h3>Vent på svar fra oss</h3>
+          <p>
+            Du får en bekreftelse med en gang du har sendt inn, og et svar innen
+            <strong>fire uker</strong> etter søknadsfristen.
+          </p>
+          <p>
+            Sier vi ja, kaller vi det et <strong>tilsagn</strong> — det er et løfte om
+            at pengene står klare til deg. Du får det både på Min side og i posten.
+          </p>
+        </li>
+
+        <li>
+          <h3>Få arbeidet gjort</h3>
+          <p>
+            Nå kan håndverkeren sette i gang. Du har <strong>to år</strong> på deg
+            fra du fikk svaret.
+          </p>
+          <p>
+            Ta vare på regningen. Blir jobben dyrere eller billigere enn tilbudet, er
+            det greit — men tilskuddet regnes av det du faktisk betalte, og aldri av
+            mer enn 300 000 kroner.
+          </p>
+        </li>
+
+        <li>
+          <h3>Betal regningen selv</h3>
+          <p>
+            Du betaler håndverkeren i sin helhet. Husbanken betaler ikke direkte til
+            firmaet, og vi betaler ikke ut på forskudd.
+          </p>
+          <p class="hb-small">
+            Har du ikke penger å legge ut? Snakk med kommunen om
+            <a href="#">startlån</a>, eller ring oss på
+            <a data-tlf-lenke href="#"></a> før du søker.
+          </p>
+        </li>
+
+        <li>
+          <h3>Be om utbetaling — det skjer ikke av seg selv</h3>
+          <p>
+            Når arbeidet er ferdig, må du <strong>selv be om å få pengene</strong>.
+            Du logger inn på Min side, laster opp den betalte regningen og trykker
+            «Be om utbetaling».
+          </p>
+          <p>Pengene kommer på konto omtrent tre uker senere.</p>
+        </li>
+
+      </ol>
+
+      <p style="margin-top:var(--space-6)">
+        <a class="hb-btn hb-btn--primary" href="logg-inn.html">
+          Start søknaden <span data-pil></span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ Spørsmål og svar ══════════════════════════════════════════
+       Brukertest: fire av åtte oppdaget ikke at trekkspill kunne åpnes.
+       Her har hver knapp blå venstrekant, egen bakgrunn, rund pil og
+       ordet «Vis» — ingen grønt-på-grønt, og ingenting som krever hover.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hb-section" id="sporsmal">
+    <div class="hb-shell">
+      <h2>Spørsmål vi får ofte</h2>
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="fa1">
+          <span class="hb-accordion__title">Må jeg betale tilbake tilskuddet?</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="fa1" hidden>
+          <p><strong>Nei.</strong> Et tilskudd er penger du får. Det er ikke et lån, det
+             er ingen renter, og det er ikke noe vi krever inn igjen.</p>
+          <p>Det eneste unntaket er hvis du har gitt oss uriktige opplysninger med vilje,
+             eller hvis arbeidet aldri ble gjort. Da ber vi om pengene tilbake.</p>
+          <p>Tilskuddet er ikke skattepliktig, og du skal ikke føre det opp i
+             skattemeldingen.</p>
+        </div>
+      </div>
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="fa2">
+          <span class="hb-accordion__title">Hva må jeg laste opp?</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="fa2" hidden>
+          <p><strong>Alle må legge ved:</strong></p>
+          <ul class="hb-prose">
+            <li>Tilbudet eller prisoverslaget fra håndverkeren.</li>
+          </ul>
+          <p><strong>Bare hvis det gjelder deg:</strong></p>
+          <ul class="hb-prose">
+            <li>Leier du boligen: en skriftlig bekreftelse fra den som eier den, på at
+                du får lov til å gjøre arbeidet.</li>
+            <li>Bor du i borettslag eller sameie og skal gjøre noe utvendig: vedtaket
+                eller e-posten fra styret.</li>
+          </ul>
+          <p>Du kan <strong>ta bilde av papirene med mobilen</strong> — det holder,
+             så lenge alt er lesbart. Du trenger ikke skanner.</p>
+        </div>
+      </div>
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="fa3">
+          <span class="hb-accordion__title">Jeg leier boligen. Kan jeg søke?</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="fa3" hidden>
+          <p><strong>Ja</strong>, så lenge du bor der og eieren sier ja til arbeidet.</p>
+          <p>Du trenger en skriftlig bekreftelse fra eieren. Den kan være helt enkel —
+             en e-post der det står hva som skal gjøres og at eieren godtar det, holder.
+             Vi har et ferdig skjema du kan sende videre hvis du vil.</p>
+        </div>
+      </div>
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="fa4">
+          <span class="hb-accordion__title">Kan jeg søke for noen andre?</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="fa4" hidden>
+          <p>Ja. Du kan søke på vegne av noen hvis du er verge, eller hvis du har fått
+             fullmakt. Du logger inn med din egen BankID og velger hvem du søker for.</p>
+          <p>Er du pårørende og bare vil hjelpe til, kan dere sitte sammen og bruke
+             søkerens egen BankID. Det er ofte enklest.</p>
+        </div>
+      </div>
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="fa5">
+          <span class="hb-accordion__title">Hvilke opplysninger henter dere om meg?</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="fa5" hidden>
+          <p>Når du logger inn med BankID, henter vi automatisk:</p>
+          <ul class="hb-prose">
+            <li>Navn, fødselsnummer og adresse fra Folkeregisteret.</li>
+            <li>Hvem som står som eier av boligen, fra Kartverket.</li>
+          </ul>
+          <p>Vi henter <strong>ikke</strong> helseopplysninger, inntekt eller
+             kontoopplysninger. Vi spør deg om kontonummeret når du senere ber om
+             utbetaling.</p>
+          <p>Opplysningene brukes bare til å behandle søknaden din, og slettes etter
+             ti år. <a href="#">Les mer om personvern</a>.</p>
+        </div>
+      </div>
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="fa6">
+          <span class="hb-accordion__title">Hva om jeg gjør en feil i søknaden?</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="fa6" hidden>
+          <p>Da retter vi det opp sammen. Du gjør ikke noe ulovlig ved å skrive feil
+             beløp eller huke av feil rute.</p>
+          <p>Mangler vi noe, ringer eller skriver vi til deg og spør. Du får alltid
+             sjansen til å rette opp før vi avgjør saken. Du kan også endre søknaden
+             selv helt til søknadsfristen går ut.</p>
+        </div>
+      </div>
+
+      <a class="hb-totop" href="#hovedinnhold"><span data-pilopp></span> Tilbake til toppen</a>
+    </div>
+  </section>
+
+  <!-- ══ Hjelp ═════════════════════════════════════════════════════ -->
+  <section class="hb-section" style="padding-top:0">
+    <div class="hb-shell">
+      <div class="hb-help">
+        <h3>Vil du heller snakke med noen?</h3>
+        <p>
+          Ring oss, så går vi gjennom det sammen. Vi kan svare på om noe er dekket,
+          hjelpe deg med å fylle ut, og ta imot vedlegg på e-post hvis opplasting er
+          vanskelig.
+        </p>
+        <a class="hb-help__phone" data-tlf href="#"></a>
+        <p class="hb-small" style="margin-top:var(--space-3)">
+          Hverdager 09.00–15.00. Du kan også sende oss papirene i posten.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="hb-bunn"></div>
+
+<script src="assets/js/hb.js"></script>
+<script src="assets/js/kalkulator.js"></script>
+<script>
+  hbMonter({ kontekst: 'Lån og tilskudd fra Husbanken' });
+
+  /* ?belop=400000 dyplenker til et bestemt tall — nyttig når ordningen
+     skal demonstreres for andre. */
+  const startBelop = hbParseTall(new URLSearchParams(location.search).get('belop')) || 250000;
+  document.getElementById('kalk').innerHTML = hbKalkulatorHTML('kalk-info', { start: startBelop });
+  const kalk = hbKalkulatorInit('kalk-info');
+
+  /* Eksempelkortene mater kalkulatoren, så folk ser at det er samme regnestykke. */
+  document.querySelectorAll('[data-case]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      kalk.sett(Number(btn.dataset.case));
+      document.getElementById('kalkulator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('kalk-info-belop').focus({ preventScroll: true });
+    });
+  });
+
+  /* Ikoner og gjentatte verdier */
+  document.querySelectorAll('[data-frist]').forEach(e => e.textContent = HB_REGLER.frist);
+  document.querySelectorAll('[data-pil]').forEach(e => e.innerHTML = HB_IKON.pil);
+  document.querySelectorAll('[data-pilopp]').forEach(e => e.innerHTML = HB_IKON.pilOpp);
+  document.querySelectorAll('[data-kal]').forEach(e => e.innerHTML = HB_IKON.kalender);
+  document.querySelectorAll('[data-info]').forEach(e => e.innerHTML = HB_IKON.info);
+  document.querySelectorAll('[data-varsel]').forEach(e => e.innerHTML = HB_IKON.varsel);
+  document.querySelectorAll('[data-chev]').forEach(e => e.innerHTML = HB_IKON.chevronHvit);
+  document.querySelectorAll('[data-tlf]').forEach(e => {
+    e.href = 'tel:' + HB_REGLER.telefonRaw;
+    e.innerHTML = HB_IKON.telefon + '<span>' + HB_REGLER.telefon + '</span>';
+  });
+  document.querySelectorAll('[data-tlf-lenke]').forEach(e => {
+    e.href = 'tel:' + HB_REGLER.telefonRaw;
+    e.textContent = HB_REGLER.telefon;
+  });
+</script>
+</body>
+</html>

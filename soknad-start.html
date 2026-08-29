@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Søknad om tilskudd til aldersvennlig oppgradering — Husbanken</title>
+<link rel="stylesheet" href="ds/colors_and_type.css">
+<link rel="stylesheet" href="assets/css/hb-app.css">
+<link rel="icon" href="ds/logo/husbanken-primary.png">
+</head>
+<body>
+
+<div id="hb-topp"></div>
+
+<main id="hovedinnhold" class="hb-section" style="padding-top:var(--space-5)">
+  <div class="hb-shell">
+
+    <h1>Søknad om tilskudd til aldersvennlig oppgradering</h1>
+
+    <!-- Veilederen. Samme figur og samme grønne ramme som i resten av
+         Husbankens søknadsflyter. -->
+    <div class="hb-guide" style="margin-top:var(--space-6)">
+      <span data-avatar></span>
+      <h2 style="font-size:var(--text-lg);line-height:var(--lh-lg);margin-bottom:var(--space-2)">
+        Hei, <span data-fornavn>Bodil</span>!
+      </h2>
+      <p>
+        Dette tilskuddet er for deg som skal oppgradere boligen så den blir
+        aldersvennlig. <strong>Tilskudd er penger du får og ikke betaler tilbake.</strong>
+        Jeg forklarer underveis hvis noe er uklart.
+      </p>
+
+      <div class="hb-criteria" style="margin-top:var(--space-4)">
+        <h3>For å få tilskudd må du</h3>
+        <ul>
+          <li>være <strong>over 62 år</strong> eller bo med en over 62 år</li>
+          <li><strong>eie eller leie</strong> boligen, og <strong>bo</strong> i den</li>
+          <li>gjøre minst 1 av 6 <a href="tilskudd.html#oppgraderinger">godkjente oppgraderinger</a></li>
+          <li>legge ved et <a href="tilskudd.html#sporsmal">tilbud eller prisoverslag</a></li>
+          <li>oppgradere for minst <strong>80 000 kroner</strong></li>
+          <li><strong>søke før</strong> du setter i gang arbeidet</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:var(--space-4)">
+        <a class="hb-link-discreet" href="tilskudd.html">Mer om tilskuddet</a>
+      </p>
+    </div>
+
+    <!-- Regnestykket, i kortform. Brukertestene viste at folk trenger
+         summen før de begynner, ikke etter. Full kalkulator ligger et
+         klikk unna, og igjen inne i steg 4. -->
+    <div class="hb-panel hb-panel--filled" style="margin-top:var(--space-4)">
+      <h3 style="font-size:var(--text-base);font-family:var(--font-sans)">Kort om beløpene</h3>
+      <div class="hb-result__row" style="border-color:var(--hb-green-400)">
+        <span class="hb-result__key">Du må oppgradere for minst</span>
+        <span class="hb-result__val">80 000 kr</span>
+      </div>
+      <div class="hb-result__row" style="border-color:var(--hb-green-400)">
+        <span class="hb-result__key">Du får dekket</span>
+        <span class="hb-result__val">20 %</span>
+      </div>
+      <div class="hb-result__row" style="border-color:var(--hb-green-400)">
+        <span class="hb-result__key">Vi regner ikke av mer enn</span>
+        <span class="hb-result__val">300 000 kr</span>
+      </div>
+      <div class="hb-result__row">
+        <span class="hb-result__key"><strong>Du kan derfor maks få</strong></span>
+        <span class="hb-result__val">60 000 kr</span>
+      </div>
+      <p style="margin-top:var(--space-3)">
+        <a href="tilskudd.html#kalkulator">Regn ut hva akkurat du kan få</a>
+      </p>
+    </div>
+
+    <!-- Søknadsfrist -->
+    <div class="hb-deadline" style="margin-top:var(--space-4)">
+      <span data-kal></span>
+      <div>
+        <span class="hb-deadline__label">Neste søknadsfrist</span>
+        <p style="margin:0"><span data-frist></span></p>
+        <p style="margin:var(--space-2) 0 0"><a href="#frister">Se de neste fristene</a></p>
+      </div>
+    </div>
+
+    <!-- Før du søker -->
+    <h2 style="margin-top:var(--space-6)">Før du søker</h2>
+    <ul class="hb-prose">
+      <li>Sørg for at du har klar et <strong>tilbud eller prisoverslag</strong>.</li>
+      <li>Hvis du leier boligen, må du legge ved <strong>samtykke fra eieren</strong>.</li>
+      <li>Det tar <strong>5–10 minutter</strong> å søke hvis du har dokumentasjonen klar.</li>
+      <li>Du kan ta en pause når som helst. Svarene dine lagres automatisk.</li>
+      <li>Arbeidet må gjøres av en fagperson. Du kan ikke gjøre det selv.</li>
+    </ul>
+
+    <!-- Trekkspill med tydelig affordance -->
+    <div style="margin-top:var(--space-5)">
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="ds1">
+          <span class="hb-accordion__title">Dokumentasjon du må laste opp</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="ds1" hidden>
+          <p><strong>Alle må legge ved ett dokument:</strong></p>
+          <ul class="hb-prose">
+            <li>Tilbudet eller prisoverslaget fra håndverkeren, der prisen står.</li>
+          </ul>
+          <p><strong>Bare hvis det gjelder deg:</strong></p>
+          <ul class="hb-prose">
+            <li>Leier du boligen: bekreftelse fra eieren på at du får gjøre arbeidet.</li>
+            <li>Borettslag eller sameie, og arbeidet er utvendig: vedtaket fra styret.</li>
+          </ul>
+          <p>
+            Du kan <strong>ta bilde med mobilen</strong> hvis du har papiret liggende
+            foran deg. Da slipper du hele veien om e-post og nedlasting.
+          </p>
+          <p class="hb-small hb-muted">
+            Er opplasting vanskelig, kan du sende dokumentene på e-post eller i posten
+            i stedet. Vi viser deg hvordan når du kommer dit.
+          </p>
+        </div>
+      </div>
+
+      <div class="hb-accordion" data-trekkspill>
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="ds2">
+          <span class="hb-accordion__title">Vi henter og bruker personopplysninger om deg</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="ds2" hidden>
+          <p>Vi henter automatisk:</p>
+          <ul class="hb-prose">
+            <li>Navn, fødselsnummer og adresse fra <strong>Folkeregisteret</strong>.</li>
+            <li>Hvem som eier boligen, fra <strong>Kartverket</strong>.</li>
+          </ul>
+          <p>
+            Vi henter <strong>ikke</strong> helseopplysninger. Du skal ikke sende oss
+            legeerklæring eller opplysninger om diagnoser — det er ikke relevant for
+            denne ordningen.
+          </p>
+          <p>
+            Opplysningene brukes bare til å behandle søknaden. <a href="#">Les mer om
+            hvordan Husbanken behandler personopplysninger</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="hb-accordion" data-trekkspill id="frister">
+        <button type="button" class="hb-accordion__btn" aria-expanded="false" aria-controls="ds3">
+          <span class="hb-accordion__title">De neste søknadsfristene</span>
+          <span class="hb-accordion__state">Vis</span>
+          <span class="hb-accordion__icon" data-chev></span>
+        </button>
+        <div class="hb-accordion__panel" id="ds3" hidden>
+          <ul class="hb-prose">
+            <li><strong>1. november 2026</strong> — svar innen 1. desember 2026</li>
+            <li><strong>1. mars 2027</strong> — svar innen 1. april 2027</li>
+            <li><strong>1. september 2027</strong> — svar innen 1. oktober 2027</li>
+          </ul>
+          <p>Rekker du ikke fristen, kan du la søknaden ligge lagret og sende den til neste runde.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Start -->
+    <p style="margin-top:var(--space-6)">
+      <a class="hb-btn hb-btn--primary hb-btn--block" href="soknad.html" data-start-lenke>
+        Start søknaden <span data-pil></span>
+      </a>
+    </p>
+
+    <p style="margin-top:var(--space-4)">
+      Søker du på vegne av noen?<br>
+      <a href="#">Søk som verge eller med fullmakt</a>
+    </p>
+
+    <div class="hb-help" style="margin-top:var(--space-6)">
+      <h3>Usikker på om dette er noe for deg?</h3>
+      <p>Ring oss før du begynner. Vi kan gå gjennom hva du har tenkt å gjøre og si om det er dekket.</p>
+      <a class="hb-help__phone" data-tlf href="#"></a>
+    </div>
+
+  </div>
+</main>
+
+<div id="hb-bunn"></div>
+
+<script src="assets/js/hb.js"></script>
+<script>
+  const d = hbLes();
+  hbMonter({ kontekst: 'Lån og tilskudd fra Husbanken', bruker: d.navn || 'Bodil Innbygger' });
+
+  document.querySelectorAll('[data-fornavn]').forEach(e =>
+    e.textContent = (d.navn || 'Bodil Innbygger').split(' ')[0]);
+  document.querySelectorAll('[data-avatar]').forEach(e => e.innerHTML = HB_AVATAR);
+  document.querySelectorAll('[data-frist]').forEach(e => e.textContent = HB_REGLER.frist);
+  document.querySelectorAll('[data-kal]').forEach(e => e.innerHTML = HB_IKON.kalender);
+  document.querySelectorAll('[data-pil]').forEach(e => e.innerHTML = HB_IKON.pil);
+  document.querySelectorAll('[data-chev]').forEach(e => e.innerHTML = HB_IKON.chevronHvit);
+  document.querySelectorAll('[data-tlf]').forEach(e => {
+    e.href = 'tel:' + HB_REGLER.telefonRaw;
+    e.innerHTML = HB_IKON.telefon + '<span>' + HB_REGLER.telefon + '</span>';
+  });
+
+  /* Har man vært innom før, tilbyr vi å fortsette der man slapp. */
+  if (d.steg && d.steg > 1) {
+    const lenke = document.querySelector('[data-start-lenke]');
+    lenke.innerHTML = 'Fortsett søknaden ' + HB_IKON.pil;
+    lenke.insertAdjacentHTML('afterend',
+      '<span class="hb-small hb-muted" style="display:block;margin-top:var(--space-2)">' +
+      'Du var på steg ' + d.steg + ' av 6. Svarene dine er lagret.</span>');
+  }
+</script>
+</body>
+</html>

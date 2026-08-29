@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designbeslutninger — prototype for aldersvennlig oppgradering</title>
+<link rel="stylesheet" href="ds/colors_and_type.css">
+<link rel="stylesheet" href="assets/css/hb-app.css">
+<link rel="icon" href="ds/logo/husbanken-primary.png">
+<style>
+  .hb-table-wrap { overflow-x: auto; margin-block: var(--space-4); }
+  table.hb { width: 100%; border-collapse: collapse; min-width: 640px; }
+  table.hb th, table.hb td {
+    text-align: left; vertical-align: top;
+    padding: var(--space-3); border-bottom: 1px solid var(--hb-slate-200);
+    font-size: var(--text-sm); line-height: var(--lh-sm);
+  }
+  table.hb th { background: var(--hb-slate-50); font-weight: 600; }
+  table.hb td:first-child { font-weight: 600; white-space: nowrap; }
+  .hb-finding {
+    border-left: 5px solid var(--hb-green-700);
+    padding: var(--space-3) 0 var(--space-3) var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .hb-finding h3 { margin-bottom: var(--space-2); }
+  .hb-finding__count {
+    display: inline-block; background: var(--hb-green-100); color: var(--hb-green-800);
+    border-radius: var(--radius-pill); padding: 2px 12px;
+    font: 600 var(--text-xs)/1.6 var(--font-sans); margin-bottom: var(--space-2);
+  }
+  .hb-finding--open { border-left-color: var(--hb-red-700); }
+  .hb-finding--open .hb-finding__count { background: var(--hb-red-100); color: var(--hb-red-700); }
+</style>
+</head>
+<body>
+
+<div id="hb-topp"></div>
+
+<div class="hb-shell">
+  <nav class="hb-crumbs" aria-label="Du er her">
+    <ol>
+      <li><a href="index.html">Prototypen</a></li>
+      <li>Designbeslutninger</li>
+    </ol>
+  </nav>
+</div>
+
+<main id="hovedinnhold" class="hb-section" style="padding-top:var(--space-4)">
+  <div class="hb-shell">
+
+    <h1>Designbeslutninger</h1>
+    <p class="hb-lead">
+      Hva vi har gjort i prototypen, og hvorfor. Hvert grep er knyttet til et
+      konkret funn fra brukertestene med åtte deltakere 25. og 27. august 2026.
+    </p>
+
+    <div class="hb-note">
+      <span class="hb-note__icon" data-info></span>
+      <div>
+        <strong>Kort om deltakerne</strong>
+        <p class="hb-small" style="margin:4px 0 0">
+          Åke, Tom, Kjersti, Ingunn, Knut, Ingrid, Magne og Britt. Aldersspenn
+          omtrent 62–76. To brukte bare mobil, to nettbrett, resten PC eller Mac.
+          Ingen kjente ordningen fra før.
+        </p>
+      </div>
+    </div>
+
+    <!-- ══ Sidekart ══ -->
+    <h2 style="margin-top:var(--space-6)">Sidene i prototypen</h2>
+    <div class="hb-table-wrap">
+      <table class="hb">
+        <thead>
+          <tr><th>Side</th><th>Hva den gjør</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="index.html">index.html</a></td>
+              <td>Husbankens forside for privatpersoner. Inngangen til ordningen ligger som et eget, uthevet felt over tjenestekortene.</td></tr>
+          <tr><td><a href="tilskudd.html">tilskudd.html</a></td>
+              <td>Informasjonssiden. Kalkulator, tre eksempelcase, hvem som kan få, de seks oppgraderingene, steg-for-steg og spørsmål og svar.</td></tr>
+          <tr><td><a href="logg-inn.html">logg-inn.html</a></td>
+              <td>BankID-innlogging med dummydata i tre skjermbilder.</td></tr>
+          <tr><td><a href="soknad-start.html">soknad-start.html</a></td>
+              <td>Introsiden til søknaden, bygget etter skjermbildet fra Husbanken.</td></tr>
+          <tr><td><a href="soknad.html">soknad.html</a></td>
+              <td>Selve søknaden i seks steg. Lagrer underveis i nettleseren.</td></tr>
+          <tr><td><a href="kvittering.html">kvittering.html</a></td>
+              <td>Mottaksbekreftelse med referansenummer, saksbehandlingstid og veien til utbetaling.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ══ Funn → grep ══ -->
+    <h2 style="margin-top:var(--space-6)">Fra funn til grep</h2>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">5 av 8 snublet</span>
+      <h3>Begrepet «tilskudd» bærer ikke</h3>
+      <p class="hb-small">
+        Åke trodde det måtte betales tilbake. Kjersti blandet lån og tilskudd. Knut
+        trodde det var begge deler. Ingrid var usikker på om hun ville få krav om
+        tilbakebetaling. Britt kjente ikke ordet.
+      </p>
+      <p><strong>Grepet:</strong> forklaringen er flyttet inn i ingressen, ikke ned i
+        en ordliste. Setningen «Tilskudd er penger du får og ikke skal betale tilbake»
+        står i hero på informasjonssiden, i veilederboksen på introsiden, og som en
+        merkelapp på forsiden. Første spørsmål i spørsmål-og-svar er «Må jeg betale
+        tilbake tilskuddet?», og svaret begynner med et fritt&shy;stående <em>Nei</em>.
+        Ordet «tilsagn» forklares på kvitteringen der det først dukker opp.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">2 av 8 gjorde samme feil</span>
+      <h3>Regnestykket leses feil</h3>
+      <p class="hb-small">
+        Tom og Magne trodde uavhengig av hverandre at 80 000 var beløpet de kunne få,
+        ikke minstekravet. Tom oppdaget aldri 300 000-taket. Ingunn forstod tallene,
+        men glemte 80 000 fordi det stod et annet sted enn prosenten, og ba selv om å
+        få alt i samme visning.
+      </p>
+      <p><strong>Grepet:</strong> kalkulatoren viser minstekrav, sats, kostnadstak og
+        makstilskudd i én og samme boks — i overskriften, i søylen, i tallradene og i
+        hovedsvaret. Søylen har fast skala 0–500 000 slik at de to grensene ligger på
+        samme sted uansett hva man taster inn; da ser man beløpet sitt bevege seg
+        <em>forbi</em> dem. Delen over taket er skravert, ikke grønn, med teksten
+        «gir ikke mer». Hovedsvaret er ett stort tall med etiketten «Du får i
+        tilskudd», som er vanskelig å forveksle med et krav.</p>
+      <p class="hb-small hb-muted">Se <a href="tilskudd.html#kalkulator">kalkulatoren</a>.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">Forslag fra test 7</span>
+      <h3>Bygg regnestykket visuelt og tidlig</h3>
+      <p><strong>Grepet:</strong> tre eksempelcase ligger rett under kalkulatoren på
+        informasjonssiden — 75 000 som gir null, 100 000 som gir 20 000, og 400 000
+        som treffer taket og gir 60 000. Hvert kort har en knapp som legger beløpet
+        inn i kalkulatoren, slik at det er tydelig at det er samme regnestykke og ikke
+        tre løsrevne eksempler. Kalkulatoren gjentas inne i steg 4 av søknaden, med
+        samme utseende.</p>
+      <p class="hb-small hb-muted">Se <a href="tilskudd.html#eksempler">eksemplene</a>.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">4 av 8 så det ikke</span>
+      <h3>Trekkspillet er usynlig</h3>
+      <p class="hb-small">
+        Knut lot være å klikke på de grønne boksene fordi han ikke trodde de var
+        klikkbare. Ingrid så ikke grønne knapper mot grønn bakgrunn. Magne og Britt
+        fikk ingen hover-hint på touch.
+      </p>
+      <p><strong>Grepet:</strong> knappen har blå venstrekant, egen bakgrunnsfarge,
+        ordet «Vis» som endres til «Skjul», og en rund blå pil som roterer. Ingenting
+        krever hover. Grønt på grønt er fjernet — trekkspill er alltid blått mot lys
+        grå. Trykkflaten er 64 px høy.</p>
+      <p class="hb-small hb-muted">Se <a href="tilskudd.html#sporsmal">spørsmål og svar</a>.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">5 av 8 slet</span>
+      <h3>Filopplasting stopper folk</h3>
+      <p class="hb-small">
+        Kjersti mislyktes og måtte ha hjelp. Ingrid hadde aldri lastet opp fil via
+        mobil. Magne sa han ville brukt barnebarnet. Tom hadde aldri hentet et vedlegg
+        ut av e-posten. Det egentlige problemet ligger før filvelgeren: kjeden
+        e-post → lagre → finne igjen.
+      </p>
+      <p><strong>Grepet:</strong> «Ta bilde av papiret» er primærknappen og bruker
+        mobilkameraet direkte — den hopper over hele kjeden. «Velg fil» er sekundær.
+        Under ligger tre likeverdige veier ut: videresend e-posten til en
+        vedleggsadresse med referansenummeret i emnefeltet, ring oss, eller send i
+        posten. Det står eksplisitt at søknaden kan sendes nå og vedlegget ettersendes
+        uten at det går ut over saken. 50 MB-varselet er flyttet ut av
+        utgangstilstanden og inn i «Hvilke filtyper og størrelser går an?».
+        Kvitteringen på mottatt fil er en grønn ramme med hake, filnavn, størrelse og
+        ordet «Mottatt» — ikke en diskret linje.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">Gjennomgående i runde to</span>
+      <h3>Målgruppen er redd for å gjøre feil</h3>
+      <p class="hb-small">
+        Ingrid formulerte det best: folk er redde for å rapportere feil eller gjøre
+        noe ulovlig uten å vite det. Magne syntes teksten var juridisk tung. Ingunn
+        lurte på om hun måtte dokumentere helsetilstand. Britt visste ikke hva «med
+        mindre oppgradering krever det» betyr.
+      </p>
+      <p><strong>Grepet:</strong> hjelpetekstene sier hva som er greit, ikke bare hva
+        som er forbudt. Det står eksplisitt at helseopplysninger ikke kreves — både på
+        informasjonssiden og i personvernboksen. Beskrivelsesfeltet i steg 3 sier «Du
+        kan ikke skrive noe galt her». Bekreftelsesboksen i steg 6 heter
+        «Opplysningene stemmer så langt jeg vet», ikke en erklæring om riktighet, og
+        forklarer at feil kan rettes uten konsekvenser. Egen post i spørsmål og svar:
+        «Hva om jeg gjør en feil i søknaden?». At arbeidet må gjøres av fagperson står
+        i steg 3, ikke først på slutten.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">6 av 8 ville ringt</span>
+      <h3>Telefon slår nettside</h3>
+      <p class="hb-small">
+        Knut sterkest: «jeg ringer bestandig». Ingunn ba om å få snakke med et
+        menneske. Magne ville kontaktet Husbanken før han søkte i det hele tatt.
+      </p>
+      <p><strong>Grepet:</strong> telefonnummeret står som en stor, trykkbar knapp på
+        forsiden, informasjonssiden, introsiden, hvert eneste steg i søknaden og på
+        kvitteringen. Nummeret er aldri noe man må lete etter. Formuleringen «Det er
+        helt greit å ringe før du begynner» er tatt med fordi Magne var i tvil om det.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">Test 7</span>
+      <h3>Navigasjonsloopen</h3>
+      <p class="hb-small">Tilbakeknappen sendte folk i loop, «har skjedd nesten hver gang». Dobbelt innhold vist på to sider.</p>
+      <p><strong>Grepet:</strong> søknaden er én side der stegene byttes ut, og hvert
+        steg skriver én oppføring i nettleserhistorikken. «Forrige» og nettleserens
+        tilbakeknapp gjør nå nøyaktig det samme. Fokus flyttes til stegoverskriften ved
+        bytte, slik at skjermlesere leser opp hvor man er. «Tilbake til toppen» er lagt
+        inn på de lange sidene, og innholdet er ryddet så ingenting står to steder.</p>
+    </div>
+
+    <div class="hb-finding">
+      <span class="hb-finding__count">Britt oppdaget det til slutt</span>
+      <h3>Etterspillet</h3>
+      <p><strong>Grepet:</strong> kvitteringen er bygget etter Skatteetaten-modellen —
+        bekreft først, forklar så. Referansenummeret står stort fordi det er det man
+        trenger igjen. Saksbehandlingstiden står i klartekst. «Be om utbetaling — det
+        skjer ikke automatisk» er et eget, uthevet steg både i «Slik søker du» på
+        informasjonssiden og på kvitteringen, med en merknad om at dette er steget
+        flest glemmer. Kvitteringen kommer tre steder: Min side, posten og eventuelt
+        e-post, og kan skrives ut eller lagres som PDF direkte.</p>
+    </div>
+
+    <div class="hb-finding hb-finding--open">
+      <span class="hb-finding__count">7 av 8 · ikke løst med design</span>
+      <h3>Forskutteringen er den reelle stopperen</h3>
+      <p class="hb-small">
+        Tom, Kjersti og Britt pekte på den. Ingrid sa rett ut at hun antagelig ikke
+        ville hatt mulighet. Knut var den eneste som syntes egenandelen var rimelig.
+      </p>
+      <p><strong>Det vi har gjort:</strong> gjort den synlig tidlig i stedet for å la
+        den komme som en overraskelse. Kalkulatoren viser hele tiden hva man må legge
+        ut, og en gul boks sier rett ut: «Du må legge ut for hele regningen først»,
+        med beløpet. Steg 6 i «Slik søker du» heter «Betal regningen selv», og peker
+        videre til startlån fra kommunen.</p>
+      <p><strong>Det vi ikke kan gjøre:</strong> dette er det sterkeste signalet i
+        datasettet, og det er et forskriftsspørsmål — ikke et designspørsmål. Ingen
+        tekstendring fjerner at folk må ha 80 000 til 340 000 kroner tilgjengelig i
+        flere måneder. Bør spilles inn til forskriftsarbeidet.</p>
+    </div>
+
+    <!-- ══ Andre valg ══ -->
+    <h2 style="margin-top:var(--space-6)">Andre valg verdt å nevne</h2>
+    <div class="hb-table-wrap">
+      <table class="hb">
+        <thead><tr><th>Valg</th><th>Begrunnelse</th></tr></thead>
+        <tbody>
+          <tr><td>Trykkflater 56–64 px</td>
+              <td>Over Apples og Googles minstekrav på 44–48 px. Målgruppen er 62+, og to av åtte brukte bare mobil.</td></tr>
+          <tr><td>18 px brødtekst</td>
+              <td>Designsystemets standard, beholdt uendret. Ingen tekst under 14 px i grensesnittet.</td></tr>
+          <tr><td>Mobil først, testet på 375, 768 og 1280 px</td>
+              <td>To av åtte brukte nettbrett. Brukertestrapporten ber eksplisitt om retest på iPad og mobil, ikke Mac.</td></tr>
+          <tr><td>Ett spørsmål per skjermbilde</td>
+              <td>Kortere skjermbilder gir færre steder å gå seg vill, og framdriftsindikatoren blir troverdig.</td></tr>
+          <tr><td>Automatisk lagring</td>
+              <td>Lagres i nettleseren ved hvert stegbytte. «Fortsett senere» er synlig på alle steg, slik skjermbildene fra Husbanken viser.</td></tr>
+          <tr><td>Regelverket samlet i én variabel</td>
+              <td><code>HB_REGLER</code> i <code>assets/js/hb.js</code>. Sats, minstekrav og tak endres ett sted, og kalkulator, eksempler og validering følger etter.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hb-note hb-note--warn" style="margin-top:var(--space-5)">
+      <span class="hb-note__icon" data-varsel></span>
+      <div>
+        <strong>Beløpene i prototypen avviker fra utkastet på husbanken.no</strong>
+        <p class="hb-small" style="margin:4px 0 0">
+          Prototypen bruker 20 % med tak på 300 000 kroner, altså maks 60 000 kroner,
+          slik oppdraget spesifiserte. Siden på husbanken.no oppgir per 4. august 2026
+          25 % og maks 75 000 kroner. Avviket må avklares før dette vises fram utenfor
+          teamet. Endres i <code>HB_REGLER</code>.
+        </p>
+      </div>
+    </div>
+
+    <a class="hb-totop" href="#hovedinnhold"><span data-pilopp></span> Tilbake til toppen</a>
+
+  </div>
+</main>
+
+<div id="hb-bunn"></div>
+
+<script src="assets/js/hb.js"></script>
+<script>
+  hbMonter({ kontekst: 'Prototype · aldersvennlig oppgradering' });
+  document.querySelectorAll('[data-info]').forEach(e => e.innerHTML = HB_IKON.info);
+  document.querySelectorAll('[data-varsel]').forEach(e => e.innerHTML = HB_IKON.varsel);
+  document.querySelectorAll('[data-pilopp]').forEach(e => e.innerHTML = HB_IKON.pilOpp);
+</script>
+</body>
+</html>
