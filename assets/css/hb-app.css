@@ -161,10 +161,10 @@ main { flex: 1 0 auto; }
 
 /* ─── Typografi-hjelpere ─────────────────────────────────────────── */
 
-/* Norske sammensatte ord blir lange. Bare h1 settes så stort at ett ord
-   kan bli bredere enn skjermen, så orddeling begrenses til den. */
+/* Norske sammensatte ord kan bli bredere enn en smal mobilskjerm.
+   Automatisk orddeling deler også ord som hadde plass, så i stedet
+   settes mykt bindestrek (&shy;) manuelt i de få lange ordene. */
 h1, h2, h3, h4 { overflow-wrap: break-word; }
-h1 { hyphens: auto; }
 
 h1 { font: 600 var(--text-3xl)/var(--lh-3xl) var(--font-display); letter-spacing: -.02em; margin: 0 0 var(--space-3); }
 h2 { font: 600 var(--text-2xl)/var(--lh-2xl) var(--font-display); letter-spacing: -.01em; margin: 0 0 var(--space-3); }
