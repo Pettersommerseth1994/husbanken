@@ -1,0 +1,803 @@
+/* ──────────────────────────────────────────────────────────────────
+   Husbanken, papirskjema
+
+   Komponentlaget for skjemaene som skal skrives ut på A4, bygget kun på
+   tokens fra ds/colors_and_type.css. Samme visuelle språk som skjemaet for
+   å be om utbetaling av lån (HB 7.S.21), slik at skjemaene i familien ser
+   like ut på papir.
+
+   Skjemaene er utfyllbare i nettleseren og skrives ut derfra. Alt som
+   bare gjelder skjermen (verktøylinja) skjules i @media print.
+   ────────────────────────────────────────────────────────────────── */
+
+/* ───────────────────────── SIDE / UTSKRIFT ───────────────────────── */
+@page {
+  size: A4;
+  margin: 0;
+}
+html, body { background: var(--hb-slate-50); }
+body {
+  font-family: var(--font-sans);
+  color: var(--fg-default);
+  font-size: 9.5pt;
+  line-height: 13pt;
+  margin: 0;
+  padding: 24px 0;
+}
+
+/* A4 = 210 × 297 mm. Millimeter gir riktige mål på papir. */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #fff;
+  margin: 0 auto 18px;
+  padding: 14mm 16mm 12mm 16mm;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  position: relative;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.page:last-child { page-break-after: auto; margin-bottom: 0; }
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .page { box-shadow: none; margin: 0; }
+}
+
+/* ───────────────────────── SIDETOPP ───────────────────────── */
+.pg-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8pt;
+  line-height: 1.2;
+  color: var(--hb-slate-500);
+  border-bottom: 0.5pt solid var(--hb-slate-200);
+  padding-bottom: 4mm;
+  margin-bottom: 5mm;
+}
+.pg-meta .left { display: flex; align-items: center; gap: 6mm; }
+.pg-meta .logo { height: 6.5mm; width: auto; display: block; }
+.pg-meta .doc-id { font-weight: 600; color: var(--hb-slate-700); letter-spacing: 0.02em; text-transform: uppercase; font-size: 8pt; }
+.pg-meta .right { text-align: right; }
+
+/* ───────────────────────── TITTELFELT (side 1) ───────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 30mm;
+  gap: 6mm;
+  align-items: center;
+  padding-bottom: 5mm;
+  border-bottom: 0.75pt solid var(--hb-slate-700);
+  margin-bottom: 5mm;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19pt;
+  line-height: 23pt;
+  letter-spacing: -0.01em;
+  color: var(--hb-slate-700);
+  margin: 0 0 2mm;
+}
+.hero .eyebrow {
+  font-size: 8pt;
+  line-height: 11pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hb-green-700);
+  font-weight: 600;
+  margin-bottom: 1.5mm;
+}
+.hero p.lede {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: 11pt;
+  line-height: 15pt;
+  color: var(--hb-slate-700);
+  margin: 0;
+  max-width: 130mm;
+}
+.hero .illus {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ───────────────────────── INTROPANEL ───────────────────────── */
+.intro-panel {
+  background: var(--hb-green-100);
+  border-radius: 3mm;
+  padding: 4mm 4mm 4mm 11mm;
+  position: relative;
+  margin-bottom: 5mm;
+  font-size: 9pt;
+  line-height: 13pt;
+}
+.intro-panel .icon {
+  position: absolute;
+  left: 4mm;
+  top: 4mm;
+  width: 5mm;
+  height: 5mm;
+}
+.intro-panel h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 10.5pt;
+  line-height: 14pt;
+  margin: 0 0 1mm;
+  color: var(--hb-slate-700);
+}
+.intro-panel p { margin: 0 0 1.5mm; }
+.intro-panel ul { margin: 0.5mm 0 0; padding-left: 4mm; }
+.intro-panel li { margin-bottom: 0.5mm; }
+.intro-panel p:last-child, .intro-panel ul:last-child { margin-bottom: 0; }
+
+/* ───────────────────────── NØKKELTALL ─────────────────────────
+   Papirversjonen av .hb-keyfigures. Brukertestene viste at minstekrav,
+   sats, kostnadstak og «må jeg betale tilbake» må stå i samme visning.
+   ─────────────────────────────────────────────────────────────── */
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5mm;
+  margin-bottom: 5mm;
+}
+.fact {
+  background: #fff;
+  border: 0.6pt solid var(--hb-slate-200);
+  border-left: 1.2mm solid var(--hb-green-600);
+  border-radius: 1.5mm;
+  padding: 2.5mm 3mm;
+}
+.fact .lbl  { display: block; font-size: 8pt; line-height: 11pt; color: var(--hb-slate-500); }
+.fact .val  { display: block; font-size: 14pt; line-height: 17pt; font-weight: 600; color: var(--hb-slate-700); font-variant-numeric: tabular-nums; }
+.fact .note { display: block; font-size: 8pt; line-height: 11pt; color: var(--hb-slate-500); }
+.fact--free { background: var(--hb-green-100); border-color: var(--hb-green-200); border-left-color: var(--hb-green-800); }
+.fact--free .val { color: var(--hb-green-800); }
+
+/* ───────────────────────── HVOR I LØPET ─────────────────────────
+   Fire ruter som viser hvor man er. «Be om utbetaling» er steget flest
+   glemmer, så utbetalingsskjemaet åpner med å plassere det.
+   ─────────────────────────────────────────────────────────────── */
+.route {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2mm;
+  margin-bottom: 5mm;
+}
+.route-step {
+  background: var(--hb-slate-50);
+  border: 0.6pt solid var(--hb-slate-200);
+  border-radius: 1.5mm;
+  padding: 2.5mm 3mm 3mm;
+}
+.route-step .n {
+  display: block;
+  font-size: 8pt;
+  line-height: 11pt;
+  font-weight: 600;
+  color: var(--hb-slate-400);
+  margin-bottom: 0.5mm;
+}
+.route-step .t {
+  display: block;
+  font-size: 8.5pt;
+  line-height: 11.5pt;
+  font-weight: 600;
+  color: var(--hb-slate-700);
+}
+.route-step--now {
+  background: var(--hb-green-100);
+  border-color: var(--hb-green-200);
+  border-left: 1.2mm solid var(--hb-green-700);
+}
+.route-step--now .n { color: var(--hb-green-700); }
+.route-step .here {
+  display: block;
+  margin-top: 1mm;
+  font-size: 7.5pt;
+  line-height: 10pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hb-green-800);
+}
+
+/* ───────────────────────── PERSONALIA ───────────────────────── */
+.personalia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 4mm;
+  border: 0.75pt solid var(--hb-slate-300);
+  border-radius: 1.5mm;
+  padding: 3mm 3.5mm 0;
+  margin-bottom: 5mm;
+}
+.personalia .field { margin-bottom: 3mm; }
+.personalia .field.full { grid-column: 1 / -1; }
+.personalia .field-label {
+  display: block;
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: var(--hb-slate-700);
+  margin-bottom: 1mm;
+  letter-spacing: 0.01em;
+}
+.personalia .field-input {
+  border-bottom: 0.6pt solid var(--hb-slate-400);
+  height: 6mm;
+}
+
+/* ───────────────────────── SEKSJONER ───────────────────────── */
+.section { margin-bottom: 5mm; break-inside: avoid; }
+.section:last-of-type { margin-bottom: 0; }
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 3.5mm;
+  border-bottom: 1.25pt solid var(--hb-slate-700);
+  padding-bottom: 2mm;
+  margin-bottom: 3mm;
+}
+.section-header .step {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16pt;
+  line-height: 1;
+  color: var(--hb-green-700);
+  letter-spacing: -0.01em;
+}
+.section-header h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 13pt;
+  line-height: 17pt;
+  color: var(--hb-slate-700);
+  margin: 0;
+  flex: 1;
+}
+.section-intro {
+  font-size: 9.5pt;
+  line-height: 13.5pt;
+  color: var(--hb-slate-700);
+  max-width: 160mm;
+  margin: 0 0 3mm;
+}
+
+/* ───────────────────────── SPØRSMÅL OG SVAR ───────────────────────── */
+.q { margin-bottom: 3.5mm; break-inside: avoid; }
+.q:last-child { margin-bottom: 0; }
+.q-label {
+  display: block;
+  font-weight: 600;
+  font-size: 10pt;
+  line-height: 13.5pt;
+  color: var(--hb-slate-700);
+  margin: 0 0 1.2mm;
+}
+.q-help {
+  font-size: 8.5pt;
+  line-height: 12pt;
+  color: var(--hb-slate-500);
+  margin: 0 0 1.5mm;
+  max-width: 160mm;
+}
+
+/* Én linje tekst */
+.input-line {
+  border: 0.6pt solid var(--hb-slate-500);
+  border-radius: 1mm;
+  height: 8mm;
+  background: #fff;
+}
+.input-line.short  { width: 60mm; }
+.input-line.medium { width: 100mm; }
+.input-line.long   { width: 165mm; }
+.input-line.date   { width: 38mm; }
+
+/* Ett siffer per rute (fødselsnummer, kontonummer, saksnummer) */
+.input-boxes { display: flex; gap: 1mm; }
+.input-boxes.tight { gap: 0; }
+.input-boxes .box {
+  width: 6mm;
+  height: 8mm;
+  border: 0.6pt solid var(--hb-slate-500);
+  border-radius: 1mm;
+  background: #fff;
+}
+.input-boxes .sep { width: 2mm; }
+
+/* Beløp, med «Kroner» utenfor ruta slik husbanken.no gjør det */
+.input-money {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5mm;
+  width: auto;
+}
+.input-money .field-wrap {
+  border: 0.7pt solid var(--hb-slate-700);
+  border-radius: 1.5mm;
+  background: #fff;
+  height: 9mm;
+  width: 70mm;
+  display: flex;
+  align-items: center;
+  padding: 0 3mm;
+}
+.input-money .field { flex: 1; border: none; height: 100%; }
+.input-money .affix {
+  font-size: 10pt;
+  color: var(--hb-slate-700);
+  white-space: nowrap;
+}
+.input-money--sm .field-wrap { width: 44mm; height: 8mm; }
+
+/* Flere linjer tekst */
+.input-area {
+  border: 0.6pt solid var(--hb-slate-500);
+  border-radius: 1mm;
+  height: 24mm;
+  background: repeating-linear-gradient(to bottom, transparent 0 7mm, var(--hb-slate-200) 7mm 7.05mm);
+}
+.input-area.tall { height: 50mm; }
+
+/* Sirkler og firkanter */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8mm;
+  margin-top: 0.5mm;
+}
+.options.row { flex-direction: row; gap: 8mm; }
+.options.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8mm 6mm;
+}
+.opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5mm;
+  font-size: 10pt;
+  line-height: 13.5pt;
+  color: var(--hb-slate-700);
+}
+.opt .mark {
+  width: 4mm;
+  height: 4mm;
+  border: 0.7pt solid var(--hb-slate-700);
+  border-radius: 99mm;
+  flex-shrink: 0;
+  background: #fff;
+  margin-top: 1.2mm;
+}
+.opt.checkbox .mark { border-radius: 0.5mm; }
+.opt .opt-body { flex: 1; }
+.opt .opt-help {
+  display: block;
+  color: var(--hb-slate-500);
+  font-size: 8.5pt;
+  line-height: 12pt;
+  margin-top: 0.3mm;
+}
+
+/* Underspørsmål. Hjelpeteksten sier når det skal fylles ut. */
+.sub-q {
+  margin-top: 2.5mm;
+  margin-left: 5mm;
+  padding-left: 3.5mm;
+  border-left: 1.5pt solid var(--hb-green-400);
+}
+
+/* To felter side om side */
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm 6mm;
+}
+.field-grid .full { grid-column: 1 / -1; }
+.field-grid .sub-label {
+  display: block;
+  font-size: 8.5pt;
+  color: var(--hb-slate-500);
+  font-weight: 500;
+  margin-bottom: 1mm;
+}
+
+/* ───────────────────────── MERKNADER ───────────────────────── */
+.callout {
+  background: var(--hb-green-100);
+  border-radius: 2mm;
+  padding: 3mm 3.5mm 3mm 10mm;
+  position: relative;
+  margin: 1mm 0 3mm;
+  font-size: 9pt;
+  line-height: 12.5pt;
+  color: var(--hb-slate-700);
+  max-width: 165mm;
+}
+.callout .icon {
+  position: absolute;
+  left: 3mm;
+  top: 3mm;
+  width: 4.5mm;
+  height: 4.5mm;
+}
+.callout strong { font-weight: 600; }
+.callout p { margin: 0 0 1.5mm; }
+.callout p:last-child { margin-bottom: 0; }
+.callout ul { margin: 1mm 0 0; padding-left: 4mm; }
+.callout ul + p { margin-top: 2mm; }
+.callout li { margin-bottom: 0.5mm; }
+.callout li:last-child { margin-bottom: 0; }
+/* Gul: noe du må være forberedt på. Rød: dette stopper søknaden. */
+.callout--warn { background: rgb(255, 244, 224); }
+.callout--stop { background: var(--hb-red-100); }
+
+/* ───────────────────────── REGNESTYKKET ─────────────────────────
+   Samme regnestykke som kalkulatoren på husbanken.no, satt opp slik at
+   det kan fylles ut med penn. De tre nederste linjene kan stå åpne.
+   ─────────────────────────────────────────────────────────────── */
+.calc {
+  border: 0.75pt solid var(--hb-slate-300);
+  border-radius: 2mm;
+  overflow: hidden;
+  background: #fff;
+}
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr 56mm;
+  align-items: center;
+  gap: 4mm;
+  padding: 2.2mm 3.5mm;
+  border-bottom: 0.5pt solid var(--hb-slate-200);
+}
+.calc-row:last-child { border-bottom: 0; }
+.calc-row .lbl { font-size: 9.5pt; line-height: 13pt; color: var(--hb-slate-700); }
+.calc-row .lbl strong { font-weight: 600; }
+.calc-row .lbl .hint {
+  display: block;
+  font-size: 8pt;
+  line-height: 11pt;
+  color: var(--hb-slate-500);
+}
+.calc-row--sum { background: var(--hb-green-100); }
+.calc-row--sum .lbl { font-weight: 600; }
+
+/* Liten blokk med overskrift, brukt der noe skal stå for seg selv
+   uten å være et spørsmål. Samme avstander som et spørsmål. */
+.block { margin-bottom: 5mm; break-inside: avoid; }
+.block-title {
+  display: block;
+  font-weight: 600;
+  font-size: 10pt;
+  line-height: 13.5pt;
+  color: var(--hb-slate-700);
+  margin: 0 0 1.5mm;
+}
+
+/* Tre eksempler, samme tall som eksempelkortene på husbanken.no */
+.examples {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  line-height: 12.5pt;
+  margin-top: 1mm;
+}
+.examples th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 8.5pt;
+  color: var(--hb-slate-500);
+  border-bottom: 0.75pt solid var(--hb-slate-300);
+  padding: 0 3mm 1.5mm 0;
+}
+.examples td {
+  padding: 1.5mm 3mm 1.5mm 0;
+  border-bottom: 0.5pt solid var(--hb-slate-200);
+  font-variant-numeric: tabular-nums;
+  color: var(--hb-slate-700);
+}
+.examples tr:last-child td { border-bottom: 0; }
+.examples .get { font-weight: 600; color: var(--hb-green-800); }
+.examples .zero { color: var(--hb-slate-500); }
+
+/* ───────────────────────── VEDLEGG ───────────────────────── */
+.attachment-block {
+  border: 0.75pt dashed var(--hb-slate-400);
+  border-radius: 2mm;
+  padding: 4mm;
+  background: var(--hb-slate-50);
+  display: flex;
+  gap: 4mm;
+  align-items: flex-start;
+}
+.attachment-block + .attachment-block { margin-top: 3mm; }
+.attachment-block .att-icon {
+  width: 8mm;
+  height: 8mm;
+  flex-shrink: 0;
+  margin-top: 1mm;
+}
+.attachment-block .att-body { flex: 1; }
+.attachment-block .att-title {
+  font-weight: 600;
+  font-size: 10.5pt;
+  margin-bottom: 1.5mm;
+  color: var(--hb-slate-700);
+}
+.attachment-block .att-lede {
+  margin: 0 0 1mm;
+  font-size: 9.5pt;
+  line-height: 13.5pt;
+  color: var(--hb-slate-700);
+}
+.attachment-block .att-note {
+  margin: 2mm 0 0;
+  font-size: 8.5pt;
+  line-height: 12pt;
+  color: var(--hb-slate-500);
+}
+.attachment-block .att-list {
+  margin: 1mm 0 0;
+  padding-left: 4mm;
+  font-size: 9.5pt;
+  line-height: 13.5pt;
+  color: var(--hb-slate-700);
+}
+.attachment-block .att-list li { margin-bottom: 1mm; }
+.attachment-block .att-list li:last-child { margin-bottom: 0; }
+.attachment-block .att-checks {
+  margin-top: 3mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2mm 6mm;
+}
+.attachment-block .att-checks .opt { font-size: 9.5pt; line-height: 13pt; }
+.attachment-block--optional { border-style: dotted; }
+
+/* ───────────────────────── UNDERSKRIFT ───────────────────────── */
+.signature {
+  padding-top: 4mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm 8mm;
+}
+.sig-block .sig-label {
+  font-size: 8.5pt;
+  color: var(--hb-slate-500);
+  margin-top: 1mm;
+}
+.sig-line {
+  border-bottom: 0.6pt solid var(--hb-slate-700);
+  height: 12mm;
+}
+
+/* ───────────────────────── SIDEBUNN ───────────────────────── */
+.pg-footer {
+  margin-top: auto;
+  padding-top: 3mm;
+  border-top: 0.5pt solid var(--hb-slate-200);
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;
+  color: var(--hb-slate-500);
+}
+.pg-footer .return-addr { max-width: 110mm; line-height: 11pt; }
+.pg-footer .pg-num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--hb-slate-700); }
+
+/* ───────────────────────── INNSENDING ───────────────────────── */
+.submit-info {
+  background: #fff;
+  border: 0.75pt solid var(--hb-slate-300);
+  border-radius: 3mm;
+  padding: 4mm 5mm;
+  margin-top: 3mm;
+}
+.submit-info h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 11pt;
+  margin: 0 0 2mm;
+  color: var(--hb-slate-700);
+}
+.submit-info ol {
+  margin: 0;
+  padding-left: 5mm;
+  font-size: 9.5pt;
+  line-height: 13.5pt;
+}
+.submit-info ol li { margin-bottom: 1.5mm; }
+.submit-info ol li:last-child { margin-bottom: 0; }
+
+/* Telefonfeltet. Seks av åtte i brukertestene ville helst ringt, så
+   nummeret står som eget felt nederst, ikke bare i sidebunnen. */
+.phone-panel {
+  margin-top: 3mm;
+  background: var(--hb-green-100);
+  border-radius: 3mm;
+  padding: 4mm 5mm;
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+}
+.phone-panel .num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17pt;
+  line-height: 1;
+  color: var(--hb-green-800);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.phone-panel .txt { font-size: 9pt; line-height: 12.5pt; color: var(--hb-slate-700); }
+.phone-panel .txt strong { font-weight: 600; }
+
+/* utility */
+.mt-2 { margin-top: 2mm; }
+.mt-4 { margin-top: 4mm; }
+.small { font-size: 9pt; line-height: 12.5pt; color: var(--hb-slate-500); }
+
+/* ──────────────────── UTFYLLBARE FELTER ────────────────────
+   Skjemaet fylles ut i nettleseren og skrives ut derfra. Feltene ser
+   like ut tomme som utskrevet, slik at ett skjema dekker begge veier.
+   ─────────────────────────────────────────────────────────── */
+input, textarea, button {
+  font: inherit;
+  color: inherit;
+  box-sizing: border-box;
+  background: transparent;
+}
+input:focus, textarea:focus { outline: 2px solid var(--hb-green-500); outline-offset: 1px; }
+
+.personalia .field-input {
+  height: 6mm;
+  border: none;
+  border-bottom: 0.6pt solid var(--hb-slate-400);
+  width: 100%;
+  padding: 0 1mm;
+  font-size: 10pt;
+  border-radius: 0;
+}
+.personalia .field-input:focus { border-bottom-color: var(--hb-green-700); border-bottom-width: 1pt; outline: none; }
+
+input.input-line, textarea.input-area {
+  width: 100%;
+  border: 0.6pt solid var(--hb-slate-500);
+  border-radius: 1mm;
+  padding: 0 2.5mm;
+  font-size: 10pt;
+  background: #fff;
+}
+input.input-line { height: 8mm; }
+input.input-line.short  { width: 60mm; }
+input.input-line.medium { width: 100mm; }
+input.input-line.long   { width: 165mm; }
+input.input-line.date   { width: 38mm; }
+input.input-line::placeholder, textarea.input-area::placeholder { color: var(--hb-slate-400); letter-spacing: 0.04em; }
+textarea.input-area {
+  height: 24mm;
+  padding: 1.5mm 2.5mm;
+  font-family: inherit;
+  resize: none;
+  line-height: 7mm;
+  background: repeating-linear-gradient(to bottom, transparent 0 7mm, var(--hb-slate-200) 7mm 7.05mm);
+}
+textarea.input-area.tall { height: 50mm; }
+
+.input-money input.field {
+  width: 100%;
+  border: none;
+  font-size: 11pt;
+  height: 100%;
+  min-width: 0;
+  outline: none;
+  background: transparent;
+  color: var(--hb-slate-700);
+  font-variant-numeric: tabular-nums;
+}
+
+.input-boxes input.box {
+  width: 6mm;
+  height: 8mm;
+  border: 0.6pt solid var(--hb-slate-500);
+  border-radius: 1mm;
+  background: #fff;
+  text-align: center;
+  padding: 0;
+  font-size: 11pt;
+  font-variant-numeric: tabular-nums;
+}
+
+.opt input[type="radio"], .opt input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.opt { cursor: pointer; }
+.opt .mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.12s, background 0.12s;
+}
+.opt input[type="radio"]:checked + .mark { border-color: var(--hb-green-700); border-width: 1.2pt; }
+.opt input[type="radio"]:checked + .mark::after {
+  content: "";
+  width: 2.2mm;
+  height: 2.2mm;
+  border-radius: 99mm;
+  background: var(--hb-green-700);
+}
+.opt input[type="checkbox"]:checked + .mark { background: var(--hb-green-700); border-color: var(--hb-green-700); }
+.opt input[type="checkbox"]:checked + .mark::after {
+  content: "";
+  width: 2.5mm;
+  height: 1.3mm;
+  border-left: 1pt solid #fff;
+  border-bottom: 1pt solid #fff;
+  transform: rotate(-45deg) translate(0.2mm, -0.2mm);
+}
+.opt input:focus-visible + .mark { box-shadow: 0 0 0 2px var(--hb-green-500); }
+
+.sig-line[contenteditable="true"] {
+  outline: none;
+  padding: 0 1mm 1mm;
+  font-family: "Caveat", "Brush Script MT", cursive;
+  font-size: 14pt;
+  color: var(--hb-slate-700);
+}
+.sig-line[contenteditable="true"]:focus { background: var(--hb-green-100); border-bottom-color: var(--hb-green-700); }
+.sig-line[contenteditable="true"].blokk {
+  font-family: inherit;
+  font-size: 11pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Underspørsmål vises alltid i full styrke. Hjelpeteksten forteller når
+   de skal fylles ut, framfor at feltet blir grått og ser stengt ut. */
+.sub-q[data-active="false"] { opacity: 1; }
+
+/* ───────────────────────── VERKTØYLINJE (bare skjerm) ───────────────────────── */
+.toolbar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--hb-slate-300);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+.toolbar button {
+  border: none;
+  background: var(--hb-slate-100);
+  color: var(--hb-slate-700);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.12s;
+}
+.toolbar button:hover { background: var(--hb-slate-200); }
+.toolbar button.primary { background: var(--hb-green-700); color: #fff; }
+.toolbar button.primary:hover { background: var(--hb-green-800); }
+.toolbar .saved-indicator {
+  font-size: 11px;
+  color: var(--hb-slate-500);
+  align-self: center;
+  padding: 0 6px;
+  min-width: 60px;
+}
+@media print { .toolbar { display: none; } }

@@ -1,0 +1,24 @@
+<svg width="201" height="148" viewBox="0 0 201 148" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+  <!-- Betalt regning og penger tilbake på konto. Samme flate stil og
+       palett som assets/img/bygge-nybygg.svg. -->
+  <path d="M46 16C86 0 148 6 174 34C199 61 197 108 166 128C133 149 66 148 36 126C6 104 6 34 46 16Z" fill="#E6F2DC"/>
+  <circle cx="172" cy="26" r="10" fill="#B7D89B"/>
+
+  <!-- regningen -->
+  <rect x="59.5" y="23.5" width="83" height="101" rx="3" fill="#ffffff" stroke="#2C4656" stroke-width="3"/>
+  <rect x="71" y="37" width="42" height="6" rx="3" fill="#2C4656"/>
+  <rect x="71" y="53" width="60" height="5" rx="2.5" fill="#B7D89B"/>
+  <rect x="71" y="65" width="60" height="5" rx="2.5" fill="#B7D89B"/>
+  <rect x="71" y="77" width="38" height="5" rx="2.5" fill="#B7D89B"/>
+  <rect x="71" y="94" width="34" height="7" rx="3.5" fill="#669A3C"/>
+
+  <!-- betalt -->
+  <circle cx="138" cy="110" r="19" fill="#669A3C"/>
+  <path d="M129 110.5L135.5 117L148 103" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- pengene tilbake -->
+  <circle cx="40" cy="97" r="15.5" fill="#B7D89B" stroke="#2C4656" stroke-width="3"/>
+  <circle cx="40" cy="97" r="7" stroke="#2C4656" stroke-width="2.4"/>
+  <circle cx="52" cy="122" r="15.5" fill="#B7D89B" stroke="#2C4656" stroke-width="3"/>
+  <circle cx="52" cy="122" r="7" stroke="#2C4656" stroke-width="2.4"/>
+</svg>

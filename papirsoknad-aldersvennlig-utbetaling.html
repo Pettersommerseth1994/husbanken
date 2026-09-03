@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papirskjema – Be om utbetaling av tilskudd til aldersvennlig oppgradering – Husbanken</title>
+<meta name="description" content="Papirskjema for å be om utbetaling av tilskudd til aldersvennlig oppgradering. Utbetalingen skjer ikke av seg selv, du må be om den selv.">
+<link rel="stylesheet" href="ds/colors_and_type.css">
+<link rel="stylesheet" href="assets/css/hb-papir.css">
+</head>
+<body>
+
+<div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
+  <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
+  <button type="button" id="btn-print" class="primary">Skriv ut / Lagre PDF</button>
+  <button type="button" id="btn-reset">Tøm skjema</button>
+</div>
+
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling" autocomplete="on">
+
+<!-- ════════════════════════════ SIDE 1 ════════════════════════════ -->
+<section class="page">
+  <header class="pg-meta">
+    <div class="left">
+      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
+      <span class="doc-id">Skjema HB&nbsp;8.S.06 · Be om utbetaling</span>
+    </div>
+    <div class="right">
+      Versjon september 2026<br>
+      Side&nbsp;<span class="pg-num">1 av 4</span>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Tilskudd fra Husbanken · aldersvennlig oppgradering</div>
+      <h1>Be om utbetaling av tilskuddet</h1>
+      <p class="lede">Arbeidet er ferdig og regningen er betalt. Nå må du selv be om å få pengene. Utbetalingen skjer ikke av seg selv.</p>
+    </div>
+    <img class="illus" src="assets/img/utbetaling.svg" alt="Illustrasjon av betalt regning">
+  </div>
+
+  <div class="intro-panel">
+    <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
+    <h2>Slik bruker du dette skjemaet</h2>
+    <p>Bruk dette skjemaet hvis du ikke kan be om utbetaling digitalt på <strong>husbanken.no</strong>. Skjemaet erstatter det digitale skjemaet og inneholder de samme spørsmålene.</p>
+    <ul>
+      <li>Skriv tydelig med blå eller svart penn. Kryss i sirkelen ved svaret ditt, og i firkanten der du kan velge flere.</li>
+      <li>Send skjemaet <strong>først når arbeidet er ferdig og regningen er betalt</strong>.</li>
+      <li>Legg ved den betalte regningen fra fagpersonen. Mer om vedlegg på side 3.</li>
+      <li>Du har <strong>to år</strong> fra du fikk tilsagnet. Pengene kommer omtrent tre uker etter at vi har fått skjemaet.</li>
+    </ul>
+  </div>
+
+  <div class="route">
+    <div class="route-step">
+      <span class="n">1</span>
+      <span class="t">Du fikk tilsagn fra oss</span>
+    </div>
+    <div class="route-step">
+      <span class="n">2</span>
+      <span class="t">Fagpersonen gjorde arbeidet</span>
+    </div>
+    <div class="route-step">
+      <span class="n">3</span>
+      <span class="t">Du betalte regningen selv</span>
+    </div>
+    <div class="route-step route-step--now">
+      <span class="n">4</span>
+      <span class="t">Du ber om utbetaling</span>
+      <span class="here">Du er her</span>
+    </div>
+  </div>
+
+  <div class="personalia">
+    <div class="field">
+      <label class="field-label" for="f-fornavn">Fornavn og mellomnavn</label>
+      <input class="field-input" id="f-fornavn" name="fornavn" type="text" autocomplete="given-name">
+    </div>
+    <div class="field">
+      <label class="field-label" for="f-etternavn">Etternavn</label>
+      <input class="field-input" id="f-etternavn" name="etternavn" type="text" autocomplete="family-name">
+    </div>
+    <div class="field">
+      <div class="field-label">Fødselsnummer (11 siffer)</div>
+      <div class="input-boxes digit-group" data-name="fnr" data-len="11" data-seps="6" style="margin-top:1mm"></div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="f-tlf">Telefonnummer (vi ringer heller enn å avslå)</label>
+      <input class="field-input" id="f-tlf" name="tlf" type="tel" autocomplete="tel">
+    </div>
+    <div class="field full" style="display:grid;grid-template-columns:1fr 50mm;gap:4mm;">
+      <div>
+        <label class="field-label" for="f-adresse">Adressen til boligen som er oppgradert</label>
+        <input class="field-input" id="f-adresse" name="adresse" type="text" autocomplete="street-address">
+      </div>
+      <div>
+        <label class="field-label" for="f-poststed">Postnummer og sted</label>
+        <input class="field-input" id="f-poststed" name="poststed" type="text" autocomplete="postal-code">
+      </div>
+    </div>
+  </div>
+
+  <!-- SEKSJON 1 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="step">1</span>
+      <h2>Tilsagnet du har fått</h2>
+    </div>
+    <p class="section-intro">Disse opplysningene står øverst i tilsagnsbrevet du fikk fra oss. Har du ikke brevet for hånden, kan du ringe oss på 22 96 16 00, så finner vi saken din.</p>
+
+    <div class="q">
+      <div class="field-grid">
+        <div class="full">
+          <label class="q-label" for="f-saksnr">1.1 Saksnummer eller referansenummer</label>
+          <p class="q-help">Står øverst i tilsagnsbrevet, og ser slik ut: HB-2026-000000.</p>
+          <input type="text" class="input-line medium" id="f-saksnr" name="saksnr">
+        </div>
+        <div>
+          <label class="q-label" for="f-tilsagn-dato">1.2 Dato på tilsagnsbrevet</label>
+          <input type="text" class="input-line date" id="f-tilsagn-dato" name="tilsagn_dato" inputmode="numeric" placeholder="DD.MM.ÅÅÅÅ">
+        </div>
+        <div>
+          <label class="q-label" for="f-tilsagn-belop">1.3 Tilskuddsbeløpet i tilsagnet</label>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" id="f-tilsagn-belop" name="tilsagn_belop" type="text" inputmode="numeric"></span><span class="affix">Kroner</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pg-footer">
+    <div class="return-addr">
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+    </div>
+    <div>Side <span class="pg-num">1 av 4</span></div>
+  </footer>
+</section>
+
+
+<!-- ════════════════════════════ SIDE 2 ════════════════════════════ -->
+<section class="page">
+  <header class="pg-meta">
+    <div class="left">
+      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
+      <span class="doc-id">Skjema HB&nbsp;8.S.06 · Be om utbetaling</span>
+    </div>
+    <div class="right">
+      Versjon september 2026<br>
+      Side&nbsp;<span class="pg-num">2 av 4</span>
+    </div>
+  </header>
+
+  <!-- SEKSJON 2 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="step">2</span>
+      <h2>Arbeidet som er gjort</h2>
+    </div>
+    <p class="section-intro">Vi betaler ut når arbeidet er ferdig. Er bare deler av arbeidet ferdig, ring oss på 22 96 16 00 før du sender inn, så finner vi ut av det sammen.</p>
+
+    <div class="q">
+      <label class="q-label" for="f-ferdig-dato">2.1 Når ble arbeidet ferdig?</label>
+      <p class="q-help">Omtrentlig dato er greit hvis du ikke husker den nøyaktig.</p>
+      <input type="text" class="input-line date" id="f-ferdig-dato" name="ferdig_dato" inputmode="numeric" placeholder="DD.MM.ÅÅÅÅ">
+    </div>
+
+    <div class="q">
+      <p class="q-label">2.2 Hvilke oppgraderinger ble gjort? Sett kryss for alt som ble gjort.</p>
+      <div class="options two-col">
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_adkomst" value="ja"><span class="mark"></span><span class="opt-body">Trinnfri adkomst</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_dorer" value="ja"><span class="mark"></span><span class="opt-body">Dører og passasjer</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_bad" value="ja"><span class="mark"></span><span class="opt-body">Bad og toalett</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_lys" value="ja"><span class="mark"></span><span class="opt-body">Belysning</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_trapp" value="ja"><span class="mark"></span><span class="opt-body">Trapp og rekkverk</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_trygghet" value="ja"><span class="mark"></span><span class="opt-body">Trygghet i boligen</span></label>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label" for="f-avvik">2.3 Ble noe annerledes enn planlagt? (valgfritt)</label>
+      <p class="q-help">Ble jobben dyrere, billigere eller litt annerledes enn tilbudet, er det helt greit. Skriv det med dine egne ord. For eksempel: «Vi måtte bytte rør på badet i tillegg, så det ble 12 000 kroner dyrere.»</p>
+      <textarea class="input-area" id="f-avvik" name="avvik"></textarea>
+    </div>
+  </div>
+
+  <!-- SEKSJON 3 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="step">3</span>
+      <h2>Hva du betalte</h2>
+    </div>
+    <p class="section-intro">Tilskuddet regnes av det du faktisk betalte, aldri av mer enn 300 000 kroner, og aldri mer enn beløpet i tilsagnet.</p>
+
+    <div class="q">
+      <p class="q-label">3.1 Hva betalte du, og hva får du utbetalt?</p>
+      <div class="calc">
+        <div class="calc-row">
+          <span class="lbl"><strong>A. Du betalte til sammen</strong>
+            <span class="hint">Summen på den betalte regningen, med merverdiavgift.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_a" type="text" inputmode="numeric" aria-label="A, du betalte til sammen"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row">
+          <span class="lbl">B. Vi regner tilskudd av høyst 300 000 kroner
+            <span class="hint">Er A lavere enn 300 000, skriver du samme sum som i A.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_b" type="text" inputmode="numeric" aria-label="B, vi regner tilskudd av"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row">
+          <span class="lbl">C. 25 prosent av B</span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_c" type="text" inputmode="numeric" aria-label="C, 25 prosent av B"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row calc-row--sum">
+          <span class="lbl">D. Du ber om utbetaling av det laveste av C og tilsagnet
+            <span class="hint">Tilsagnsbeløpet skrev du i 1.3.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_d" type="text" inputmode="numeric" aria-label="D, du ber om utbetaling av"></span><span class="affix">Kroner</span></span>
+        </div>
+      </div>
+      <p class="q-help mt-2">Er du usikker på regnestykket, fyller du ut bare linje A og lar resten stå åpen. Vi regner det ut for deg.</p>
+    </div>
+
+    <div class="callout">
+      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
+      <strong>Ble det billigere enn du søkte om?</strong> Da blir tilskuddet lavere, og det er helt i orden. Ble det dyrere, får du likevel ikke mer enn beløpet i tilsagnet.
+    </div>
+  </div>
+
+  <footer class="pg-footer">
+    <div class="return-addr">
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+    </div>
+    <div>Side <span class="pg-num">2 av 4</span></div>
+  </footer>
+</section>
+
+
+<!-- ════════════════════════════ SIDE 3 ════════════════════════════ -->
+<section class="page">
+  <header class="pg-meta">
+    <div class="left">
+      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
+      <span class="doc-id">Skjema HB&nbsp;8.S.06 · Be om utbetaling</span>
+    </div>
+    <div class="right">
+      Versjon september 2026<br>
+      Side&nbsp;<span class="pg-num">3 av 4</span>
+    </div>
+  </header>
+
+  <!-- SEKSJON 4 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="step">4</span>
+      <h2>Kontonummeret pengene skal til</h2>
+    </div>
+    <p class="section-intro">Dette er den eneste opplysningen vi ikke har fra før. Vi spør om den nå, og ikke da du søkte.</p>
+
+    <div class="q">
+      <p class="q-label">4.1 Kontonummer (11 siffer)</p>
+      <p class="q-help">Du finner det i nettbanken, på et kontoutdrag eller på bankkortet.</p>
+      <div class="input-boxes digit-group" data-name="konto" data-len="11" data-seps="4,6"></div>
+    </div>
+
+    <div class="q">
+      <p class="q-label">4.2 Står kontoen i ditt eget navn?</p>
+      <div class="options row">
+        <label class="opt"><input type="radio" name="q4_konto" value="ja"><span class="mark"></span><span class="opt-body">Ja</span></label>
+        <label class="opt"><input type="radio" name="q4_konto" value="nei"><span class="mark"></span><span class="opt-body">Nei</span></label>
+      </div>
+    </div>
+
+    <div class="q sub-q" data-when="q4_konto:nei">
+      <p class="q-label">4.3 Hvem står kontoen i navnet til?</p>
+      <p class="q-help">Fyll ut bare hvis du svarte «Nei» på spørsmål 4.2. Kontoinnehaveren må også skrive under nederst på side 4.</p>
+      <div class="field-grid">
+        <div>
+          <label class="sub-label" for="f-konto-navn">Navn på kontoinnehaver</label>
+          <input type="text" class="input-line" id="f-konto-navn" name="konto_navn">
+        </div>
+        <div>
+          <label class="sub-label" for="f-konto-rolle">Forholdet til deg (ektefelle, verge, fullmektig)</label>
+          <input type="text" class="input-line" id="f-konto-rolle" name="konto_rolle">
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--warn">
+      <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
+      <strong>Vi ringer deg aldri for å spørre om kontonummer, passord eller BankID.</strong> Får du en slik telefon eller e-post, er det svindel. Legg på, og ring oss på 22 96 16 00 hvis du er i tvil.
+    </div>
+  </div>
+
+  <!-- SEKSJON 5 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="step">5</span>
+      <h2>Vedlegg</h2>
+    </div>
+    <p class="section-intro">Vi trenger å se den betalte regningen fra fagpersonen. Har du den bare på papir, legger du en kopi i konvolutten, eller tar bilde av den med mobilen. Du trenger ikke skanner.</p>
+
+    <div class="attachment-block">
+      <img class="att-icon" src="assets/img/attachment-1.svg" alt="">
+      <div class="att-body">
+        <div class="att-title">Den betalte regningen (må legges ved)</div>
+        <p class="att-lede">Sett kryss for hva regningen viser, slik at vi raskt kan kontrollere den:</p>
+        <div class="att-checks">
+          <label class="opt checkbox"><input type="checkbox" name="ved_firma" value="ja"><span class="mark"></span><span class="opt-body">Navnet på firmaet</span></label>
+          <label class="opt checkbox"><input type="checkbox" name="ved_orgnr" value="ja"><span class="mark"></span><span class="opt-body">Organisasjonsnummer</span></label>
+          <label class="opt checkbox"><input type="checkbox" name="ved_arbeid" value="ja"><span class="mark"></span><span class="opt-body">Hva som ble gjort</span></label>
+          <label class="opt checkbox"><input type="checkbox" name="ved_belop" value="ja"><span class="mark"></span><span class="opt-body">Beløp med merverdiavgift</span></label>
+          <label class="opt checkbox"><input type="checkbox" name="ved_betalt" value="ja"><span class="mark"></span><span class="opt-body">At regningen er betalt</span></label>
+        </div>
+        <p class="att-note">Står det ikke på regningen at den er betalt, legger du ved en kvittering eller en kontoutskrift som viser betalingen.</p>
+      </div>
+    </div>
+
+    <div class="callout mt-4">
+      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
+      <strong>Mangler du regningen?</strong> Fagpersonen kan sende deg en kopi. Send skjemaet nå og ettersend regningen, i posten eller til <strong>vedlegg@husbanken.no</strong>. Skriv saksnummeret i emnefeltet, så finner vi saken din.
+    </div>
+  </div>
+
+  <footer class="pg-footer">
+    <div class="return-addr">
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+    </div>
+    <div>Side <span class="pg-num">3 av 4</span></div>
+  </footer>
+</section>
+
+
+<!-- ════════════════════════════ SIDE 4 ════════════════════════════ -->
+<section class="page">
+  <header class="pg-meta">
+    <div class="left">
+      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
+      <span class="doc-id">Skjema HB&nbsp;8.S.06 · Be om utbetaling</span>
+    </div>
+    <div class="right">
+      Versjon september 2026<br>
+      Side&nbsp;<span class="pg-num">4 av 4</span>
+    </div>
+  </header>
+
+  <!-- SEKSJON 6 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="step">6</span>
+      <h2>Samtykke og underskrift</h2>
+    </div>
+    <p class="section-intro">Arbeidet er utført, og jeg har betalt regningen selv. Opplysningene stemmer så langt jeg vet. Jeg gir Husbanken tillatelse til å kontakte foretaket som har gjort arbeidet, for å kontrollere regningen.</p>
+
+    <div class="signature">
+      <div class="sig-block" style="grid-column: 1 / -1;">
+        <div class="sig-line blokk" contenteditable="true" data-name="blokk_navn"></div>
+        <div class="sig-label">Navn med blokkbokstaver</div>
+      </div>
+    </div>
+
+    <div class="signature mt-4">
+      <div class="sig-block">
+        <div class="sig-line" contenteditable="true" data-name="sted_dato"></div>
+        <div class="sig-label">Sted og dato</div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-line" contenteditable="true" data-name="underskrift"></div>
+        <div class="sig-label">Underskrift</div>
+      </div>
+    </div>
+
+    <div class="signature mt-4">
+      <div class="sig-block" style="grid-column: 1 / -1;">
+        <div class="sig-line" contenteditable="true" data-name="underskrift_konto"></div>
+        <div class="sig-label">Underskrift fra kontoinnehaver, bare hvis kontoen står i en annens navn (spørsmål 4.3)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INNSENDING -->
+  <div class="submit-info">
+    <h3>Slik sender du inn skjemaet</h3>
+    <ol>
+      <li>Gå gjennom skjemaet og se at du har svart på alt som gjelder for deg.</li>
+      <li>Legg ved den betalte regningen.</li>
+      <li>Send skjemaet og vedlegget til <strong>Husbanken, Postboks 1404, 8602 Mo i Rana</strong>. Du kan også skanne eller ta bilde og sende til <strong>post@husbanken.no</strong>.</li>
+      <li>Skriv <strong>saksnummeret</strong> på alle ark, slik at vi finner saken din med en gang.</li>
+    </ol>
+  </div>
+
+  <div class="submit-info">
+    <h3>Dette skjer etterpå</h3>
+    <ol>
+      <li>Vi kontrollerer regningen mot tilsagnet du fikk.</li>
+      <li>Mangler vi noe, ringer eller skriver vi til deg. Vi avslår ikke uten å ha spurt først.</li>
+      <li><strong>Pengene kommer på konto omtrent tre uker</strong> etter at vi har fått skjemaet.</li>
+      <li>Du får en bekreftelse i posten. Tilskuddet er ikke skattepliktig, og du skal ikke føre det opp i skattemeldingen.</li>
+    </ol>
+  </div>
+
+  <div class="phone-panel">
+    <span class="num">22&nbsp;96&nbsp;16&nbsp;00</span>
+    <span class="txt"><strong>Vil du heller snakke med noen?</strong> Ring oss, så går vi gjennom skjemaet sammen. Ha saksnummeret klart, så finner vi saken din med en gang. Hverdager 09.00 til 15.00.</span>
+  </div>
+
+  <footer class="pg-footer">
+    <div class="return-addr">
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00<br>
+      Behandling av personopplysninger: husbanken.no/personvern
+    </div>
+    <div>Side <span class="pg-num">4 av 4</span></div>
+  </footer>
+</section>
+
+</form>
+
+<script src="assets/js/papirskjema.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<svg width="201" height="148" viewBox="0 0 201 148" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+  <!-- Bolig med trinnfri adkomst og rekkverk. Samme flate stil og
+       palett som assets/img/bygge-nybygg.svg. -->
+  <path d="M46 16C86 0 148 6 174 34C199 61 197 108 166 128C133 149 66 148 36 126C6 104 6 34 46 16Z" fill="#E6F2DC"/>
+  <circle cx="170" cy="24" r="11" fill="#B7D89B"/>
+
+  <!-- vegg -->
+  <rect x="62" y="46" width="80" height="68" fill="#B7D89B"/>
+  <!-- tak -->
+  <path d="M102 15L160 50H44L102 15Z" fill="#2C4656"/>
+  <!-- vinduer -->
+  <rect x="70" y="58" width="16" height="14" fill="#ffffff"/>
+  <rect x="118" y="58" width="16" height="14" fill="#ffffff"/>
+  <!-- dør -->
+  <rect x="92" y="78" width="26" height="36" fill="#ffffff"/>
+  <circle cx="113" cy="97" r="1.9" fill="#2C4656"/>
+
+  <!-- rampe -->
+  <path d="M92 114L34 124V127H92V114Z" fill="#669A3C"/>
+  <!-- rekkverk -->
+  <path d="M37 116L91 105" stroke="#2C4656" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M38 116V125M64 111V126M90 105V114" stroke="#2C4656" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- bakke -->
+  <rect x="14" y="127" width="174" height="3.6" rx="1.8" fill="#2C4656"/>
+</svg>
