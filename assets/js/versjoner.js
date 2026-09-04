@@ -134,7 +134,10 @@ const HB_VERSJONER = [
        Hopper direkte, uten mykt rull, fordi mykt rull blir ignorert i noen
        visninger og fordi et sprang er raskere når man leter. */
     const boks = el.getBoundingClientRect();
-    const midt = boks.top + window.scrollY - (window.innerHeight - boks.height) / 2;
+    const synlig = window.innerHeight || document.documentElement.clientHeight || 800;
+    /* Math.max sørger for at en blokk som er høyere enn vinduet legger seg
+       med toppen synlig, i stedet for halvveis over kanten. */
+    const midt = boks.top + window.scrollY - Math.max(0, (synlig - boks.height) / 2);
     window.scrollTo(0, Math.max(0, midt));
   });
 
