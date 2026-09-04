@@ -119,7 +119,7 @@
       <div class="field-label">Fødselsnummer (11 siffer)</div>
       <div class="input-boxes digit-group" data-name="fnr" data-len="11" data-seps="6" style="margin-top:1mm"></div>
     </div>
-    <div class="field">
+    <div class="field" data-endret="Endret i iterasjon 2: slagordet i parentesen ble fjernet, her og i kulepunktet over.">
       <label class="field-label" for="f-tlf">Telefonnummer (vi ringer heller enn å avslå)</label>
       <input class="field-input" id="f-tlf" name="tlf" type="tel" autocomplete="tel">
     </div>
@@ -167,9 +167,9 @@
       <span class="step">1</span>
       <h2>Om deg</h2>
     </div>
-    <p class="section-intro">Ordningen gjelder husstander der minst én person er over 62 år. Vi spør ikke om helse, diagnoser eller inntekt. Ordningen handler om boligen, ikke om deg.</p>
+    <p class="section-intro" data-endret="Endret i iterasjon 2: «inntekt» ble tatt ut, fordi Husbanken henter inntektsopplysninger. Prioritering etter inntekt ble forklart i en egen merknad.">Ordningen gjelder husstander der minst én person er over 62 år. Vi spør ikke om helse, diagnoser eller inntekt. Ordningen handler om boligen, ikke om deg.</p>
 
-    <div class="q">
+    <div class="q" data-endret="Endret i iterasjon 2: feltene i 1.2 ble flyttet opp, rett under svaralternativ 2, siden de hører til det svaret.">
       <p class="q-label">1.1 Er du over 62 år?</p>
       <div class="options">
         <label class="opt"><input type="radio" name="q1_alder" value="selv"><span class="mark"></span><span class="opt-body">Ja, jeg er over 62 år</span></label>
@@ -234,7 +234,7 @@
     </div>
 
     <div class="q">
-      <p class="q-label">2.4 Bor du i borettslag eller sameie?</p>
+      <p class="q-label" data-endret="Endret i iterasjon 2: 2.4 og 2.5 ble slått sammen til ett spørsmål med tre svar.">2.4 Bor du i borettslag eller sameie?</p>
       <p class="q-help">Skal du gjøre noe utvendig, må styret ha sagt ja. Innvendig arbeid trenger som regel ingen godkjenning.</p>
       <div class="options row">
         <label class="opt"><input type="radio" name="q2_borettslag" value="ja"><span class="mark"></span><span class="opt-body">Ja</span></label>
@@ -283,7 +283,7 @@
     <p class="section-intro">Du må velge minst én av de seks oppgraderingene, og du kan gjerne velge flere. Velger du flere, legger vi kostnadene sammen. Det er ofte slik man kommer over minstekravet på 80 000 kroner.</p>
 
     <div class="q">
-      <p class="q-label">3.1 Hvilke oppgraderinger skal gjøres? Sett kryss for alt som skal gjøres.</p>
+      <p class="q-label" data-endret="Endret i iterasjon 2: presisert at tekstene under hvert punkt er eksempler, ikke en fullstendig liste, og at annet arbeid beskrives i 3.2.">3.1 Hvilke oppgraderinger skal gjøres? Sett kryss for alt som skal gjøres.</p>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="tiltak_adkomst" value="ja"><span class="mark"></span><span class="opt-body">Trinnfri adkomst
           <span class="opt-help">Fjerne terskler og trinn, lage rampe, eller senke inngangspartiet.</span>
@@ -361,7 +361,7 @@
 
     <div class="q">
       <p class="q-label">4.1 Hva kommer oppgraderingen til å koste, og hva får du?</p>
-      <div class="calc">
+      <div class="calc" data-endret="Endret i iterasjon 2: linje B, C og D ble fjernet. Søkeren oppgir bare prosjektkostnaden, og Husbanken regner ut tilskuddet.">
         <div class="calc-row">
           <span class="lbl"><strong>A. Oppgraderingen koster</strong>
             <span class="hint">Summen fra tilbudet. Må være minst 80 000 kroner.</span>
@@ -464,7 +464,7 @@
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Vi henter ikke helseopplysninger, inntekt eller kontoopplysninger.</strong> Kontonummeret spør vi om når du senere ber om utbetaling. Opplysningene slettes etter ti år.
+      <strong data-endret="Endret i iterasjon 2: påstanden om inntekt var feil og ble rettet. Setningen om kontonummer ble fjernet.">Vi henter ikke helseopplysninger, inntekt eller kontoopplysninger.</strong> Kontonummeret spør vi om når du senere ber om utbetaling. Opplysningene slettes etter ti år.
     </div>
 
     <div class="signature">

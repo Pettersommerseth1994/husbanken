@@ -56,8 +56,9 @@ prototypen.
 ### Iterasjonene ligger igjen
 
 Skjemaene endres etter tilbakemeldinger, og hver runde blir liggende. Cellene
-øverst til venstre på skjermen lar deg hoppe mellom dem. De vises ikke i
-utskriften.
+øverst til venstre på skjermen lar deg hoppe mellom dem, og bryteren «Vis
+endringene» markerer hva som er endret, rett i skjemaet. Punktene i lista tar
+deg til markeringen. Ingenting av dette kommer med i utskriften.
 
 | Iterasjon | Filer | Hva som endret seg |
 | --- | --- | --- |
@@ -76,6 +77,9 @@ runde:
    sin egen `data-lager`, slik at utfyllingen ikke blandes mellom versjoner.
 2. Legg inn en ny oppføring nederst i `HB_VERSJONER`.
 3. Sett `data-versjon` på `<body>` i kopien.
+4. Merk blokkene som er endret med `data-endret="Hva som er endret her"`, i den
+   nye kopien og i den forrige. Nummereringen settes automatisk i
+   dokumentrekkefølge.
 
 CSS-en pinnes fordi komponentlaget endres i takt med skjemaene. Iterasjon 1
 bruker for eksempel `.calc`, som ikke lenger finnes i gjeldende CSS.
