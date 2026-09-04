@@ -163,6 +163,9 @@ a.versjoner__celle:focus-visible {
   max-height: 34vh;
   overflow-y: auto;
 }
+/* display: flex over overstyrer hidden-attributtet, så lista må skjules
+   eksplisitt. Uten denne står endringene framme selv når bryteren er av. */
+.versjoner__liste[hidden] { display: none; }
 .versjoner__liste button {
   display: flex;
   gap: 7px;
@@ -235,8 +238,6 @@ body.viser-endringer [data-endret].er-valgt {
   outline-color: var(--hb-purple-700);
   background: var(--hb-purple-100);
 }
-
-body.viser-endringer .versjoner__endring { display: none; }
 
 @media print {
   .versjoner { display: none; }

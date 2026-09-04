@@ -58,7 +58,7 @@ const HB_VERSJONER = [
   /* Cellene viser bare nummeret, så raden tåler mange iterasjoner.
      Navn, dato og hva som endret seg står i linja under. */
   const celler = HB_VERSJONER.map(v => {
-    const tittel = `Iterasjon ${v.nr}, ${v.navn}, ${v.dato}`;
+    const tittel = `Iterasjon ${v.nr}, ${v.navn}, ${v.dato}. ${v.endring}`;
     return v.nr === naa
       ? `<span class="versjoner__celle" aria-current="page" title="${tittel}">${v.nr}</span>`
       : `<a class="versjoner__celle" href="${v.filer[skjema]}" title="${tittel}">${v.nr}</a>`;
@@ -97,8 +97,8 @@ const HB_VERSJONER = [
     </div>
     <p class="versjoner__endring">
       <b>${gjeldende.nr}. ${gjeldende.navn}, ${gjeldende.dato}</b>
-      ${eldre ? '<em class="versjoner__eldre">Dette er en eldre iterasjon.</em> ' : ''}${gjeldende.endring}
-      ${eldre ? `<a href="${siste.filer[skjema]}">Gå til den siste</a>.` : ''}
+      ${eldre ? `<em class="versjoner__eldre">Dette er en eldre iterasjon.</em>
+                 <a href="${siste.filer[skjema]}">Gå til den siste</a>.` : ''}
     </p>
     ${bryter}`;
 
