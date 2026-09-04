@@ -439,10 +439,47 @@ body {
 .callout--warn { background: rgb(255, 244, 224); }
 .callout--stop { background: var(--hb-red-100); }
 
-/* ───────────────────────── EKSEMPLER ─────────────────────────
-   Søkeren regner ikke ut tilskuddet selv. Vi tar imot prosjektkostnaden og
-   regner ut resten, så tabellen her forklarer bare regelen.
+/* ───────────────────────── REGNESTYKKET ─────────────────────────
+   Samme regnestykke som kalkulatoren på husbanken.no, satt opp slik at
+   det kan fylles ut med penn. De tre nederste linjene kan stå åpne.
    ─────────────────────────────────────────────────────────────── */
+.calc {
+  border: 0.75pt solid var(--hb-slate-300);
+  border-radius: 2mm;
+  overflow: hidden;
+  background: #fff;
+}
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr 56mm;
+  align-items: center;
+  gap: 4mm;
+  padding: 2.2mm 3.5mm;
+  border-bottom: 0.5pt solid var(--hb-slate-200);
+}
+.calc-row:last-child { border-bottom: 0; }
+.calc-row .lbl { font-size: 9.5pt; line-height: 13pt; color: var(--hb-slate-700); }
+.calc-row .lbl strong { font-weight: 600; }
+.calc-row .lbl .hint {
+  display: block;
+  font-size: 8pt;
+  line-height: 11pt;
+  color: var(--hb-slate-500);
+}
+.calc-row--sum { background: var(--hb-green-100); }
+.calc-row--sum .lbl { font-weight: 600; }
+
+/* Liten blokk med overskrift, brukt der noe skal stå for seg selv
+   uten å være et spørsmål. Samme avstander som et spørsmål. */
+.block { margin-bottom: 5mm; break-inside: avoid; }
+.block-title {
+  display: block;
+  font-weight: 600;
+  font-size: 10pt;
+  line-height: 13.5pt;
+  color: var(--hb-slate-700);
+  margin: 0 0 1.5mm;
+}
 
 /* Tre eksempler, samme tall som eksempelkortene på husbanken.no */
 .examples {

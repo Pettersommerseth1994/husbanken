@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
+<title>Papirsøknad – Tilskudd til aldersvennlig oppgradering (iterasjon 1) – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v1.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="2">
+<body data-skjema="soknad" data-versjon="1">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v1" autocomplete="on">
 
 <!-- ════════════════════════════ SIDE 1 ════════════════════════════ -->
 <section class="page">
@@ -49,7 +49,7 @@
       <li>Skriv tydelig med blå eller svart penn. Kryss i sirkelen ved svaret ditt, og i firkanten der du kan velge flere.</li>
       <li>Send inn skjemaet <strong>før du setter i gang arbeidet</strong>, og senest <strong>1. november 2026</strong>.</li>
       <li>Legg ved tilbudet fra fagpersonen. Mer om vedlegg på side 4.</li>
-      <li>Er du usikker på et spørsmål, kan du la det stå åpent og ringe oss på 22 96 16 00.</li>
+      <li>Er du usikker, la spørsmålet stå åpent og ring oss. Vi ringer heller enn å avslå.</li>
     </ul>
   </div>
 
@@ -120,7 +120,7 @@
       <div class="input-boxes digit-group" data-name="fnr" data-len="11" data-seps="6" style="margin-top:1mm"></div>
     </div>
     <div class="field">
-      <label class="field-label" for="f-tlf">Telefonnummer</label>
+      <label class="field-label" for="f-tlf">Telefonnummer (vi ringer heller enn å avslå)</label>
       <input class="field-input" id="f-tlf" name="tlf" type="tel" autocomplete="tel">
     </div>
     <div class="field full" style="display:grid;grid-template-columns:1fr 50mm;gap:4mm;">
@@ -167,42 +167,34 @@
       <span class="step">1</span>
       <h2>Om deg</h2>
     </div>
-    <p class="section-intro">Ordningen gjelder husstander der minst én person er over 62 år. Vi spør ikke om helse, diagnoser eller funksjonsnivå.</p>
+    <p class="section-intro">Ordningen gjelder husstander der minst én person er over 62 år. Vi spør ikke om helse, diagnoser eller inntekt. Ordningen handler om boligen, ikke om deg.</p>
 
     <div class="q">
       <p class="q-label">1.1 Er du over 62 år?</p>
       <div class="options">
         <label class="opt"><input type="radio" name="q1_alder" value="selv"><span class="mark"></span><span class="opt-body">Ja, jeg er over 62 år</span></label>
         <label class="opt"><input type="radio" name="q1_alder" value="samboer"><span class="mark"></span><span class="opt-body">Nei, men jeg bor sammen med en som er det
-          <span class="opt-help">Ektefelle, samboer eller en annen du deler bolig med.</span>
+          <span class="opt-help">Ektefelle, samboer eller en annen du deler bolig med. Fyll ut navn og fødselsår i 1.2.</span>
         </span></label>
-      </div>
-
-      <div class="sub-q" data-when="q1_alder:samboer">
-        <p class="q-label">1.2 Hvem i husstanden er over 62 år?</p>
-        <p class="q-help">Fyll ut bare hvis du krysset av for svaret over.</p>
-        <div class="field-grid">
-          <div>
-            <label class="sub-label" for="f-samboer-navn">Navn</label>
-            <input type="text" class="input-line" id="f-samboer-navn" name="samboer_navn">
-          </div>
-          <div>
-            <label class="sub-label" for="f-samboer-aar">Fødselsår</label>
-            <input type="text" class="input-line short" id="f-samboer-aar" name="samboer_aar" inputmode="numeric" style="width:38mm">
-          </div>
-        </div>
-      </div>
-
-      <div class="options" style="margin-top:2.5mm">
         <label class="opt"><input type="radio" name="q1_alder" value="nei"><span class="mark"></span><span class="opt-body">Nei, ingen i husstanden er over 62 år
-          <span class="opt-help">Da kan du dessverre ikke få dette tilskuddet. Ring oss på 22 96 16 00, så ser vi på andre ordninger.</span>
+          <span class="opt-help">Da kan du dessverre ikke få dette tilskuddet. Ring oss på 22 96 16 00, så ser vi på hvilke andre ordninger kommunen din har.</span>
         </span></label>
       </div>
     </div>
 
-    <div class="callout">
-      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Inntekten din henter vi fra Skatteetaten.</strong> Er det flere søknader enn det er penger til, prioriterer vi dem med lavest inntekt. Vi oppfordrer alle i målgruppen til å søke, uansett inntekt.
+    <div class="q sub-q" data-when="q1_alder:samboer">
+      <p class="q-label">1.2 Hvem i husstanden er over 62 år?</p>
+      <p class="q-help">Fyll ut bare hvis du svarte «Nei, men jeg bor sammen med en som er det» på spørsmål 1.1.</p>
+      <div class="field-grid">
+        <div>
+          <label class="sub-label" for="f-samboer-navn">Navn</label>
+          <input type="text" class="input-line" id="f-samboer-navn" name="samboer_navn">
+        </div>
+        <div>
+          <label class="sub-label" for="f-samboer-aar">Fødselsår</label>
+          <input type="text" class="input-line short" id="f-samboer-aar" name="samboer_aar" inputmode="numeric" style="width:38mm">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -223,16 +215,18 @@
     <div class="q">
       <p class="q-label">2.2 Eier eller leier du boligen?</p>
       <div class="options">
-        <label class="opt"><input type="radio" name="q2_eierform" value="eier"><span class="mark"></span><span class="opt-body">Jeg eier boligen, alene eller sammen med noen</span></label>
+        <label class="opt"><input type="radio" name="q2_eierform" value="eier"><span class="mark"></span><span class="opt-body">Jeg eier boligen
+          <span class="opt-help">Alene eller sammen med noen.</span>
+        </span></label>
         <label class="opt"><input type="radio" name="q2_eierform" value="leier"><span class="mark"></span><span class="opt-body">Jeg leier boligen
-          <span class="opt-help">Da trenger vi en bekreftelse fra eieren, se side 4.</span>
+          <span class="opt-help">Da trenger vi en bekreftelse fra den som eier boligen. Se side 4. Den kan være helt enkel.</span>
         </span></label>
       </div>
     </div>
 
     <div class="q">
       <p class="q-label">2.3 Bor du i denne boligen til vanlig?</p>
-      <p class="q-help">Tilskuddet gjelder ikke hytte eller utleiebolig. Er situasjonen spesiell, ring oss.</p>
+      <p class="q-help">Tilskuddet gjelder ikke hytte, utleiebolig eller bolig du ikke bor i. Er situasjonen din spesiell, ring oss før du sender inn.</p>
       <div class="options row">
         <label class="opt"><input type="radio" name="q2_bor" value="ja"><span class="mark"></span><span class="opt-body">Ja</span></label>
         <label class="opt"><input type="radio" name="q2_bor" value="nei"><span class="mark"></span><span class="opt-body">Nei</span></label>
@@ -241,14 +235,19 @@
 
     <div class="q">
       <p class="q-label">2.4 Bor du i borettslag eller sameie?</p>
-      <div class="options">
+      <p class="q-help">Skal du gjøre noe utvendig, må styret ha sagt ja. Innvendig arbeid trenger som regel ingen godkjenning.</p>
+      <div class="options row">
+        <label class="opt"><input type="radio" name="q2_borettslag" value="ja"><span class="mark"></span><span class="opt-body">Ja</span></label>
         <label class="opt"><input type="radio" name="q2_borettslag" value="nei"><span class="mark"></span><span class="opt-body">Nei</span></label>
-        <label class="opt"><input type="radio" name="q2_borettslag" value="ja-godkjent"><span class="mark"></span><span class="opt-body">Ja, og styret har godkjent arbeidet
-          <span class="opt-help">Legg ved vedtaket eller e-posten fra styret.</span>
-        </span></label>
-        <label class="opt"><input type="radio" name="q2_borettslag" value="ja-innvendig"><span class="mark"></span><span class="opt-body">Ja, men arbeidet er bare innvendig
-          <span class="opt-help">Innvendig arbeid trenger som regel ingen godkjenning fra styret.</span>
-        </span></label>
+      </div>
+    </div>
+
+    <div class="q sub-q" data-when="q2_borettslag:ja">
+      <p class="q-label">2.5 Har styret godkjent arbeidet?</p>
+      <p class="q-help">Fyll ut bare hvis du svarte «Ja» på spørsmål 2.4.</p>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q2_styret" value="ja"><span class="mark"></span><span class="opt-body">Ja, jeg legger ved vedtaket eller e-posten fra styret</span></label>
+        <label class="opt"><input type="radio" name="q2_styret" value="innvendig"><span class="mark"></span><span class="opt-body">Arbeidet er bare innvendig, og trenger ingen godkjenning</span></label>
       </div>
     </div>
   </div>
@@ -285,7 +284,6 @@
 
     <div class="q">
       <p class="q-label">3.1 Hvilke oppgraderinger skal gjøres? Sett kryss for alt som skal gjøres.</p>
-      <p class="q-help">Tekstene under hvert punkt er eksempler, ikke en fullstendig liste. Skal du gjøre noe annet som hører til samme punkt, krysser du av og beskriver det i 3.2.</p>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="tiltak_adkomst" value="ja"><span class="mark"></span><span class="opt-body">Trinnfri adkomst
           <span class="opt-help">Fjerne terskler og trinn, lage rampe, eller senke inngangspartiet.</span>
@@ -310,7 +308,7 @@
 
     <div class="q">
       <label class="q-label" for="f-beskrivelse">3.2 Beskriv kort hva som skal gjøres (valgfritt)</label>
-      <p class="q-help">Skriv med dine egne ord, for eksempel «Vi skal bytte badekaret med en dusj uten kant, og sette opp håndtak.» To setninger holder, og du kan ikke skrive noe galt her. Skal du gjøre noe annet enn eksemplene i 3.1, er det fint om du skriver det her.</p>
+      <p class="q-help">Skriv med dine egne ord. To setninger holder. Du kan ikke skrive noe galt her. For eksempel: «Vi skal bytte badekaret med en dusj uten kant, og sette opp håndtak.»</p>
       <textarea class="input-area" id="f-beskrivelse" name="beskrivelse"></textarea>
     </div>
 
@@ -362,14 +360,30 @@
     <p class="section-intro">Bruk summen fra tilbudet. Ta med arbeid, materialer og merverdiavgift, men ikke møbler, hvitevarer eller ting du kjøper løst.</p>
 
     <div class="q">
-      <label class="q-label" for="f-kostnad">4.1 Hva kommer oppgraderingen til å koste?</label>
-      <p class="q-help">Hele prosjektkostnaden, slik den står i tilbudet eller prisoverslaget.</p>
-      <span class="input-money"><span class="field-wrap"><input class="field" id="f-kostnad" name="prosjektkostnad" type="text" inputmode="numeric"></span><span class="affix">Kroner</span></span>
-    </div>
-
-    <div class="callout">
-      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Du trenger ikke regne ut tilskuddet selv.</strong> Du får 25 prosent av prosjektkostnaden, opp til en prosjektkostnad på 300 000 kroner. Det gir maks 75 000 kroner. Prosjektet må koste minst 80 000 kroner for at du skal kunne søke. Vi regner ut beløpet og skriver det i svaret du får. Tre eksempler står på side 1.
+      <p class="q-label">4.1 Hva kommer oppgraderingen til å koste, og hva får du?</p>
+      <div class="calc">
+        <div class="calc-row">
+          <span class="lbl"><strong>A. Oppgraderingen koster</strong>
+            <span class="hint">Summen fra tilbudet. Må være minst 80 000 kroner.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="kost_a" type="text" inputmode="numeric" aria-label="A, oppgraderingen koster"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row">
+          <span class="lbl">B. Vi regner tilskudd av høyst 300 000 kroner
+            <span class="hint">Er A lavere enn 300 000, skriver du samme sum som i A.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="kost_b" type="text" inputmode="numeric" aria-label="B, vi regner tilskudd av"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row calc-row--sum">
+          <span class="lbl">C. Dette søker du om: 25 prosent av B</span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="kost_c" type="text" inputmode="numeric" aria-label="C, dette søker du om"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row">
+          <span class="lbl">D. Dette betaler du selv: A minus C</span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="kost_d" type="text" inputmode="numeric" aria-label="D, dette betaler du selv"></span><span class="affix">Kroner</span></span>
+        </div>
+      </div>
+      <p class="q-help mt-2">Er du usikker på regnestykket, fyller du ut bare linje A og lar resten stå åpen. Vi regner det ut for deg.</p>
     </div>
 
     <div class="callout callout--warn">
@@ -446,11 +460,11 @@
       <span class="step">6</span>
       <h2>Samtykke og underskrift</h2>
     </div>
-    <p class="section-intro">Opplysningene stemmer så langt jeg vet. Oppdager jeg noe feil etterpå, retter jeg det opp ved å ringe eller skrive til Husbanken. Jeg gir Husbanken tillatelse til å hente opplysninger fra Folkeregisteret og Kartverket, inntektsopplysninger fra Skatteetaten, og til å kontakte fagpersonen som har gitt tilbudet.</p>
+    <p class="section-intro">Opplysningene stemmer så langt jeg vet. Oppdager jeg noe feil etterpå, retter jeg det opp ved å ringe eller skrive til Husbanken. Jeg gir Husbanken tillatelse til å hente opplysninger fra Folkeregisteret og Kartverket, og til å kontakte fagpersonen som har gitt tilbudet.</p>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Opplysningene brukes bare til å behandle søknaden din.</strong> De slettes etter ti år. Mer står på husbanken.no/personvern.
+      <strong>Vi henter ikke helseopplysninger, inntekt eller kontoopplysninger.</strong> Kontonummeret spør vi om når du senere ber om utbetaling. Opplysningene slettes etter ti år.
     </div>
 
     <div class="signature">
@@ -490,7 +504,7 @@
       <li>Vi svarer innen <strong>fire uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig.</li>
       <li>Sier vi ja, kalles det et <strong>tilsagn</strong>. Det er et løfte om at pengene står klare til deg. Ikke start arbeidet før du har fått det.</li>
       <li>Du har <strong>to år</strong> på deg til å få arbeidet gjort. Du betaler regningen til fagpersonen selv.</li>
-      <li>Til slutt må du <strong>be om utbetaling</strong>. Det skjer ikke av seg selv. Bruk skjema <strong>HB 8.S.06</strong> eller Min side.</li>
+      <li>Til slutt må du <strong>be om utbetaling</strong>. Det skjer ikke av seg selv, og det er steget flest glemmer. Bruk skjema <strong>HB 8.S.06, «Be om utbetaling av tilskuddet»</strong>, eller Min side.</li>
     </ol>
   </div>
 

@@ -53,6 +53,33 @@ flest glemmer.
 Skjemanumrene 8.S.05 og 8.S.06 er oppdiktet, på samme måte som resten av
 prototypen.
 
+### Iterasjonene ligger igjen
+
+Skjemaene endres etter tilbakemeldinger, og hver runde blir liggende. Cellene
+øverst til venstre på skjermen lar deg hoppe mellom dem. De vises ikke i
+utskriften.
+
+| Iterasjon | Filer | Hva som endret seg |
+| --- | --- | --- |
+| 1, 3. september 2026 | `...-v1.html` | Første utkast, bygget på malen for HB 7.S.21. Regnestykket var fire linjer søkeren fylte ut selv. |
+| 2, 4. september 2026 | uten suffiks | Regnestykket forenklet til ett felt, feltene i 1.2 flyttet opp under svaret de hører til, oppgraderingene tydeliggjort som eksempler, inntekt og prioritering forklart, slagordet fjernet. |
+
+Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
+delt ut fortsetter å peke på det som er nyest.
+
+Versjonslista står ett sted, i `HB_VERSJONER` øverst i
+[`assets/js/versjoner.js`](assets/js/versjoner.js). Slik legger du til en ny
+runde:
+
+1. Kopier skjemaet til `...-vN.html` og `assets/css/hb-papir.css` til
+   `assets/css/hb-papir-vN.css`. Kopien skal peke på den pinnede CSS-en, og ha
+   sin egen `data-lager`, slik at utfyllingen ikke blandes mellom versjoner.
+2. Legg inn en ny oppføring nederst i `HB_VERSJONER`.
+3. Sett `data-versjon` på `<body>` i kopien.
+
+CSS-en pinnes fordi komponentlaget endres i takt med skjemaene. Iterasjon 1
+bruker for eksempel `.calc`, som ikke lenger finnes i gjeldende CSS.
+
 ## Regelverket ligger ett sted
 
 Sats, minstekrav og kostnadstak står i `HB_REGLER` øverst i
@@ -105,10 +132,13 @@ Siden blir liggende på <https://pettersommerseth1994.github.io/husbanken/>.
 ds/                  Husbankens designsystem: tokens, skrifter, logo. Urørt.
 assets/css/hb-app.css    Komponentlag bygget kun på tokens fra ds/
 assets/css/hb-papir.css  Samme, for papirskjemaene på A4
+assets/css/hb-papir-v1.css  Pinnet kopi, slik iterasjon 1 så ut
+assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
 assets/js/soknad.js  De seks stegene, validering og framdrift
 assets/js/papirskjema.js  Sifferruter, beløp, lagring og utskrift i papirskjemaene
+assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonene
 Brukertester/        Rådata fra de åtte testene 25. og 27. august 2026
 ref/, uploads/       Referansemateriale fra Husbanken
 ```

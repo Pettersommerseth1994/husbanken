@@ -115,7 +115,7 @@ const SIDER = {
       <div class="hb-field">
         <label class="hb-field__label" for="tlf">Telefonnummeret ditt</label>
         <span class="hb-field__help">
-          Vi ringer heller enn å avslå hvis noe mangler i søknaden.
+          Vi ringer deg hvis noe mangler i søknaden.
         </span>
         <input class="hb-input hb-num" id="tlf" type="tel" inputmode="tel"
                autocomplete="tel" value="${D.tlf || ''}" placeholder="000 00 000">

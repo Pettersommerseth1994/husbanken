@@ -1,0 +1,105 @@
+/* ──────────────────────────────────────────────────────────────────
+   Husbanken, papirskjema, versjonsvelger
+
+   Cellene øverst til venstre, som lar en hoppe mellom iterasjonene av
+   skjemaet. Dette er verktøy for designarbeidet, ikke en del av papiret,
+   så alt skjules i utskrift.
+
+   Ligger som egen fil fordi hver iterasjon peker på sin egen pinnede
+   hb-papir-vN.css. Velgeren skal se lik ut i alle versjoner, også de
+   gamle, og må derfor ligge utenfor snapshotene.
+   ────────────────────────────────────────────────────────────────── */
+
+.versjoner {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+  width: 264px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid var(--hb-slate-300);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 9px 11px 10px;
+  font-family: var(--font-sans);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.versjoner__rad {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.versjoner__hint {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--hb-slate-500);
+  white-space: nowrap;
+}
+
+.versjoner__celler {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.versjoner__celle {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--hb-slate-200);
+  border-radius: 8px;
+  background: var(--hb-slate-50);
+  color: var(--hb-slate-700);
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+a.versjoner__celle:hover {
+  background: var(--hb-slate-100);
+  border-color: var(--hb-slate-400);
+}
+a.versjoner__celle:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* Den man står på */
+.versjoner__celle[aria-current="page"] {
+  background: var(--hb-green-100);
+  border-color: var(--hb-green-600);
+  box-shadow: inset 0 0 0 1px var(--hb-green-600);
+  color: var(--hb-green-800);
+}
+
+.versjoner__endring {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--hb-slate-500);
+}
+.versjoner__endring b {
+  display: block;
+  font-weight: 600;
+  color: var(--hb-slate-700);
+}
+.versjoner__eldre {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--hb-red-700);
+}
+.versjoner__endring a { color: var(--fg-link); }
+
+@media print {
+  .versjoner { display: none; }
+}

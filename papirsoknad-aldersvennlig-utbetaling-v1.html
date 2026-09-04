@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Papirskjema – Be om utbetaling av tilskudd til aldersvennlig oppgradering – Husbanken</title>
+<title>Papirskjema – Be om utbetaling av tilskudd til aldersvennlig oppgradering (iterasjon 1) – Husbanken</title>
 <meta name="description" content="Papirskjema for å be om utbetaling av tilskudd til aldersvennlig oppgradering. Utbetalingen skjer ikke av seg selv, du må be om den selv.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v1.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="utbetaling" data-versjon="2">
+<body data-skjema="utbetaling" data-versjon="1">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling-v1" autocomplete="on">
 
 <!-- ════════════════════════════ SIDE 1 ════════════════════════════ -->
 <section class="page">
@@ -87,7 +87,7 @@
       <div class="input-boxes digit-group" data-name="fnr" data-len="11" data-seps="6" style="margin-top:1mm"></div>
     </div>
     <div class="field">
-      <label class="field-label" for="f-tlf">Telefonnummer</label>
+      <label class="field-label" for="f-tlf">Telefonnummer (vi ringer heller enn å avslå)</label>
       <input class="field-input" id="f-tlf" name="tlf" type="tel" autocomplete="tel">
     </div>
     <div class="field full" style="display:grid;grid-template-columns:1fr 50mm;gap:4mm;">
@@ -190,18 +190,40 @@
       <span class="step">3</span>
       <h2>Hva du betalte</h2>
     </div>
-    <p class="section-intro">Vi trenger å vite hva du faktisk betalte. Resten regner vi ut.</p>
+    <p class="section-intro">Tilskuddet regnes av det du faktisk betalte, aldri av mer enn 300 000 kroner, og aldri mer enn beløpet i tilsagnet.</p>
 
     <div class="q">
-      <label class="q-label" for="f-betalt">3.1 Hva betalte du til sammen?</label>
-      <p class="q-help">Summen på den betalte regningen, med merverdiavgift.</p>
-      <span class="input-money"><span class="field-wrap"><input class="field" id="f-betalt" name="betalt" type="text" inputmode="numeric"></span><span class="affix">Kroner</span></span>
+      <p class="q-label">3.1 Hva betalte du, og hva får du utbetalt?</p>
+      <div class="calc">
+        <div class="calc-row">
+          <span class="lbl"><strong>A. Du betalte til sammen</strong>
+            <span class="hint">Summen på den betalte regningen, med merverdiavgift.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_a" type="text" inputmode="numeric" aria-label="A, du betalte til sammen"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row">
+          <span class="lbl">B. Vi regner tilskudd av høyst 300 000 kroner
+            <span class="hint">Er A lavere enn 300 000, skriver du samme sum som i A.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_b" type="text" inputmode="numeric" aria-label="B, vi regner tilskudd av"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row">
+          <span class="lbl">C. 25 prosent av B</span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_c" type="text" inputmode="numeric" aria-label="C, 25 prosent av B"></span><span class="affix">Kroner</span></span>
+        </div>
+        <div class="calc-row calc-row--sum">
+          <span class="lbl">D. Du ber om utbetaling av det laveste av C og tilsagnet
+            <span class="hint">Tilsagnsbeløpet skrev du i 1.3.</span>
+          </span>
+          <span class="input-money input-money--sm"><span class="field-wrap"><input class="field" name="bet_d" type="text" inputmode="numeric" aria-label="D, du ber om utbetaling av"></span><span class="affix">Kroner</span></span>
+        </div>
+      </div>
+      <p class="q-help mt-2">Er du usikker på regnestykket, fyller du ut bare linje A og lar resten stå åpen. Vi regner det ut for deg.</p>
     </div>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong>Du trenger ikke regne ut beløpet selv.</strong> Du får 25 prosent av det du betalte, opp til en kostnad på 300 000 kroner, og aldri mer enn beløpet i tilsagnet.</p>
-      <p>Ble det billigere enn du søkte om, blir tilskuddet lavere, og det er helt i orden. Ble det dyrere, får du likevel ikke mer enn tilsagnet. Vi regner ut hva du får, og skriver det i brevet fra oss.</p>
+      <strong>Ble det billigere enn du søkte om?</strong> Da blir tilskuddet lavere, og det er helt i orden. Ble det dyrere, får du likevel ikke mer enn beløpet i tilsagnet.
     </div>
   </div>
 
