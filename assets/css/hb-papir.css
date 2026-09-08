@@ -42,12 +42,42 @@ body {
 .page:last-child { page-break-after: auto; margin-bottom: 0; }
 
 @media print {
-  body { background: #fff; padding: 0; }
+  /* Nettleseren sparer blekk og dropper bakgrunnsfarger i utskrift med
+     mindre man sier noe annet. Da forsvant fyllet i varselboksene og
+     prikken i avkryssede svar. */
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* Med exact ville også sidebakgrunnen på html-elementet blitt trykket,
+     som et grått lag over hele arket. Begge nullstilles. */
+  html, body { background: #fff; padding: 0; }
   .page {
     box-shadow: none;
     margin: 0;
     height: 297mm;
     overflow: hidden;
+  }
+
+  /* Svarene tegnes med blekkfarge, ikke med fyll, slik at de kommer med
+     også på en gråtoneutskrift eller i en nettleser som overser exact. */
+  .opt input[type="radio"]:checked + .mark {
+    border-color: var(--hb-slate-700);
+    border-width: 1.2pt;
+  }
+  .opt input[type="radio"]:checked + .mark::after {
+    background: var(--hb-slate-700);
+  }
+  .opt input[type="checkbox"]:checked + .mark {
+    background: #fff;
+    border-color: var(--hb-slate-700);
+    border-width: 1.2pt;
+  }
+  .opt input[type="checkbox"]:checked + .mark::after {
+    border-left-color: var(--hb-slate-700);
+    border-bottom-color: var(--hb-slate-700);
+    border-left-width: 1.2pt;
+    border-bottom-width: 1.2pt;
   }
 }
 
