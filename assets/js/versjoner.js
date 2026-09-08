@@ -59,6 +59,16 @@ const HB_VERSJONER = [
     dato: '8. september 2026',
     endring: 'Skrevet om for lesbarhet på papir, siden de som fyller ut på papir ligger i øvre del av målgruppen. 14 pt brødtekst mot 9,5 før, 19 pt seksjonsoverskrifter, 2 cm marger, større skrivefelt og sort hjelpetekst. Linjelengden falt fra 92 til 69 tegn. Søknaden gikk fra 5 til 10 sider, utbetalingen fra 4 til 8.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v4.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v4.html'
+    }
+  },
+  {
+    nr: 5,
+    navn: 'Iterasjon 3, justert',
+    dato: '8. september 2026',
+    endring: 'Bygget på iterasjon 3, ikke 4, fordi 3 ble foretrukket. Linjene i skrivefeltene er fjernet, avkryssingsrutene er midtstilt mot teksten, og personaliaboksen er flyttet inn under seksjon 1 «Om deg». Søknaden gikk fra 5 til 6 sider fordi seksjon 1 nå bærer boksen.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

@@ -36,8 +36,8 @@ på samme mal som det utfyllbare skjemaet for å be om utbetaling av lån
 
 | Skjema | Fil | Sider |
 | --- | --- | --- |
-| HB 8.S.05, søknad om tilskudd | `papirsoknad-aldersvennlig.html` | 10 |
-| HB 8.S.06, be om utbetaling | `papirsoknad-aldersvennlig-utbetaling.html` | 8 |
+| HB 8.S.05, søknad om tilskudd | `papirsoknad-aldersvennlig.html` | 6 |
+| HB 8.S.06, be om utbetaling | `papirsoknad-aldersvennlig-utbetaling.html` | 4 |
 
 Skjemaene kan fylles ut i nettleseren og skrives ut derfra, eller skrives ut
 tomme og fylles ut med penn. Svarene lagres i nettleseren mens man skriver.
@@ -65,7 +65,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 1, 3. september 2026 | `...-v1.html` | Første utkast, bygget på malen for HB 7.S.21. Regnestykket var fire linjer søkeren fylte ut selv. |
 | 2, 4. september 2026 | `...-v2.html` | Regnestykket forenklet til ett felt, feltene i 1.2 flyttet opp under svaret de hører til, oppgraderingene tydeliggjort som eksempler, inntekt og prioritering forklart, slagordet fjernet. |
 | 3, 8. september 2026 | `...-v3.html` | Rettet etter tilgjengelighetsgjennomgang. Se under. |
-| 4, 8. september 2026 | uten suffiks | Storskrift. 14 pt brødtekst, 2 cm marger, større skrivefelt. Se under. |
+| 4, 8. september 2026 | `...-v4.html` | Storskrift. 14 pt brødtekst, 2 cm marger, større skrivefelt. Se under. |
+| 5, 8. september 2026 | uten suffiks | Iterasjon 3 justert. Linjer i skrivefelt fjernet, ruter midtstilt, personalia inn i seksjon 1. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -149,6 +150,28 @@ Ett bevisst avvik: hjelpetekst er 12,5 pt, intropanelet 13,5 pt og sidebunnen
 men da flater hierarkiet ut og spørsmålet blir like tungt som hjelpen til det.
 Brødteksten, spørsmålene og svaralternativene er 14 til 14,5 pt.
 
+### Iterasjon 5
+
+Storskriften i iterasjon 4 er ikke veien videre. Iterasjon 3 ble foretrukket, og
+iterasjon 5 er bygget på 3, ikke på 4. Iterasjon 4 blir liggende som en gren man
+kan hoppe tilbake til, siden regnestykket for 14 pt står der.
+
+Tre justeringer på toppen av iterasjon 3:
+
+1. Linjene inne i skrivefeltene er fjernet. Feltene er blanke, som resten av
+   rutene i skjemaet.
+2. Avkryssingsrutene er midtstilt mot første tekstlinje. De satt 0,82 mm for
+   lavt, målt fra midten av ruta til midten av linja. `margin-top` gikk fra
+   1,2 til 0,35 mm, som er halve linjehøyden minus halve ruta.
+3. Personaliaboksen er flyttet inn under seksjon 1, «Om deg», der
+   personopplysningene hører hjemme. Boksen lå løs på side 1 uten
+   seksjonsnummer.
+
+Flyttingen koster én side. Seksjon 1 bærer nå boksen og blir 176 mm, så den kan
+ikke lenger dele side med seksjon 2. Søknaden gikk fra 5 til 6 sider.
+Utbetalingsskjemaet har ingen «Om deg», så boksen står der den stod, og skjemaet
+er fortsatt på 4 sider.
+
 ## Regelverket ligger ett sted
 
 Sats, minstekrav og kostnadstak står i `HB_REGLER` øverst i
@@ -204,6 +227,7 @@ assets/css/hb-papir.css  Samme, for papirskjemaene på A4
 assets/css/hb-papir-v1.css  Pinnet kopi, slik iterasjon 1 så ut
 assets/css/hb-papir-v2.css  Pinnet kopi, slik iterasjon 2 så ut
 assets/css/hb-papir-v3.css  Pinnet kopi, slik iterasjon 3 så ut
+assets/css/hb-papir-v4.css  Pinnet kopi, slik iterasjon 4 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4

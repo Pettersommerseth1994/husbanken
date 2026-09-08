@@ -19,8 +19,8 @@ html, body { background: var(--hb-slate-50); }
 body {
   font-family: var(--font-sans);
   color: var(--fg-default);
-  font-size: 9.5pt;
-  line-height: 13pt;
+  font-size: 14pt;
+  line-height: 19pt;
   margin: 0;
   padding: 24px 0;
 }
@@ -31,7 +31,7 @@ body {
   min-height: 297mm;
   background: #fff;
   margin: 0 auto 18px;
-  padding: 14mm 16mm 12mm 16mm;
+  padding: 20mm;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   position: relative;
@@ -56,7 +56,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 8pt;
+  font-size: 12pt;
   line-height: 1.2;
   color: var(--hb-slate-500);
   border-bottom: 0.5pt solid var(--hb-slate-200);
@@ -65,7 +65,7 @@ body {
 }
 .pg-meta .left { display: flex; align-items: center; gap: 6mm; }
 .pg-meta .logo { height: 6.5mm; width: auto; display: block; }
-.pg-meta .doc-id { font-weight: 600; color: var(--hb-slate-700); letter-spacing: 0.02em; text-transform: uppercase; font-size: 8pt; }
+.pg-meta .doc-id { font-weight: 600; color: var(--hb-slate-700); letter-spacing: 0.02em; text-transform: uppercase; font-size: 12pt; }
 .pg-meta .right { text-align: right; }
 
 /* ───────────────────────── TITTELFELT (side 1) ───────────────────────── */
@@ -81,15 +81,15 @@ body {
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 19pt;
-  line-height: 23pt;
+  font-size: 28pt;
+  line-height: 34pt;
   letter-spacing: -0.01em;
   color: var(--hb-slate-700);
   margin: 0 0 2mm;
 }
 .hero .eyebrow {
-  font-size: 8pt;
-  line-height: 11pt;
+  font-size: 12pt;
+  line-height: 16pt;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--hb-green-700);
@@ -99,11 +99,11 @@ body {
 .hero p.lede {
   font-family: var(--font-heading);
   font-weight: 300;
-  font-size: 11pt;
-  line-height: 15pt;
+  font-size: 16pt;
+  line-height: 22pt;
   color: var(--hb-slate-700);
   margin: 0;
-  max-width: 130mm;
+  max-width: 155mm;
 }
 .hero .illus {
   width: 100%;
@@ -115,28 +115,28 @@ body {
 .intro-panel {
   background: var(--hb-green-100);
   border-radius: 3mm;
-  padding: 4mm 4mm 4mm 11mm;
+  padding: 5mm 5mm 5mm 15mm;
   position: relative;
   margin-bottom: 5mm;
-  font-size: 9pt;
-  line-height: 13pt;
+  font-size: 13.5pt;
+  line-height: 19pt;
 }
 .intro-panel .icon {
   position: absolute;
-  left: 4mm;
-  top: 4mm;
-  width: 5mm;
-  height: 5mm;
+  left: 5mm;
+  top: 5mm;
+  width: 7mm;
+  height: 7mm;
 }
 .intro-panel h2 {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 10.5pt;
-  line-height: 14pt;
+  font-size: 15.5pt;
+  line-height: 20.5pt;
   margin: 0 0 1mm;
   color: var(--hb-slate-700);
 }
-.intro-panel p { margin: 0 0 1.5mm; }
+.intro-panel p { margin: 0 0 4mm; }
 .intro-panel ul { margin: 0.5mm 0 0; padding-left: 4mm; }
 .intro-panel li { margin-bottom: 0.5mm; }
 .intro-panel p:last-child, .intro-panel ul:last-child { margin-bottom: 0; }
@@ -158,9 +158,9 @@ body {
   border-radius: 1.5mm;
   padding: 2.5mm 3mm;
 }
-.fact .lbl  { display: block; font-size: 8pt; line-height: 11pt; color: var(--hb-slate-500); }
-.fact .val  { display: block; font-size: 14pt; line-height: 17pt; font-weight: 600; color: var(--hb-slate-700); font-variant-numeric: tabular-nums; }
-.fact .note { display: block; font-size: 8pt; line-height: 11pt; color: var(--hb-slate-500); }
+.fact .lbl  { display: block; font-size: 12pt; line-height: 16pt; color: var(--hb-slate-500); }
+.fact .val  { display: block; font-size: 20.5pt; line-height: 25pt; font-weight: 600; color: var(--hb-slate-700); font-variant-numeric: tabular-nums; }
+.fact .note { display: block; font-size: 12pt; line-height: 16pt; color: var(--hb-slate-500); }
 .fact--free { background: var(--hb-green-100); border-color: var(--hb-green-200); border-left-color: var(--hb-green-800); }
 .fact--free .val { color: var(--hb-green-800); }
 
@@ -182,16 +182,16 @@ body {
 }
 .route-step .n {
   display: block;
-  font-size: 8pt;
-  line-height: 11pt;
+  font-size: 12pt;
+  line-height: 16pt;
   font-weight: 600;
   color: var(--hb-slate-500);
   margin-bottom: 0.5mm;
 }
 .route-step .t {
   display: block;
-  font-size: 8.5pt;
-  line-height: 11.5pt;
+  font-size: 12.5pt;
+  line-height: 17pt;
   font-weight: 600;
   color: var(--hb-slate-700);
 }
@@ -204,8 +204,8 @@ body {
 .route-step .here {
   display: block;
   margin-top: 1mm;
-  font-size: 7.5pt;
-  line-height: 10pt;
+  font-size: 11pt;
+  line-height: 14.5pt;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -226,7 +226,7 @@ body {
 .personalia .field.full { grid-column: 1 / -1; }
 .personalia .field-label {
   display: block;
-  font-size: 8.5pt;
+  font-size: 12.5pt;
   font-weight: 600;
   color: var(--hb-slate-700);
   margin-bottom: 1mm;
@@ -234,7 +234,7 @@ body {
 }
 .personalia .field-input {
   border-bottom: 0.6pt solid var(--hb-slate-500);
-  height: 6mm;
+  height: 8.5mm;
 }
 /* Fødselsnummeret ligger i et fieldset for å bli en gruppe. Det må
    oppføre seg akkurat som div-en det erstattet, ellers vokser arket. */
@@ -270,7 +270,7 @@ legend.field-label + * { clear: both; }
 .section-header .step {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 16pt;
+  font-size: 23.5pt;
   line-height: 1;
   color: var(--hb-green-700);
   letter-spacing: -0.01em;
@@ -278,18 +278,17 @@ legend.field-label + * { clear: both; }
 .section-header h2 {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 13pt;
-  line-height: 17pt;
+  font-size: 19pt;
+  line-height: 25pt;
   color: var(--hb-slate-700);
   margin: 0;
   flex: 1;
 }
 .section-intro {
-  font-size: 9.5pt;
-  line-height: 13.5pt;
+  font-size: 14pt;
+  line-height: 20pt;
   color: var(--hb-slate-700);
-  max-width: 160mm;
-  margin: 0 0 3mm;
+  margin: 0 0 4.5mm;
 }
 
 /* ───────────────────────── SPØRSMÅL OG SVAR ─────────────────────────
@@ -297,7 +296,7 @@ legend.field-label + * { clear: both; }
    skjermlesere leser spørsmålet sammen med hvert svar. */
 fieldset.q {
   border: 0;
-  margin: 0 0 3.5mm;
+  margin: 0 0 5mm;
   padding: 0;
   min-width: 0;
 }
@@ -307,47 +306,46 @@ legend.q-label {
   width: 100%;
 }
 legend.q-label + * { clear: both; }
-.q { margin-bottom: 3.5mm; break-inside: avoid; }
+.q { margin-bottom: 5mm; break-inside: avoid; }
 .q:last-child { margin-bottom: 0; }
 .q-label {
   display: block;
   font-weight: 600;
-  font-size: 10pt;
-  line-height: 13.5pt;
+  font-size: 14.5pt;
+  line-height: 20pt;
   color: var(--hb-slate-700);
   margin: 0 0 1.2mm;
 }
 .q-help {
-  font-size: 8.5pt;
-  line-height: 12pt;
-  color: var(--hb-slate-500);
-  margin: 0 0 1.5mm;
-  max-width: 160mm;
+  font-size: 12.5pt;
+  line-height: 17.5pt;
+  color: var(--hb-slate-700);
+  margin: 0 0 4mm;
 }
 
 /* Én linje tekst */
 .input-line {
   border: 0.6pt solid var(--hb-slate-500);
   border-radius: 1mm;
-  height: 8mm;
+  height: 11mm;
   background: #fff;
 }
-.input-line.short  { width: 60mm; }
-.input-line.medium { width: 100mm; }
-.input-line.long   { width: 165mm; }
-.input-line.date   { width: 38mm; }
+.input-line.short  { width: 72mm; }
+.input-line.medium { width: 112mm; }
+.input-line.long   { width: 170mm; }
+.input-line.date   { width: 50mm; }
 
 /* Ett siffer per rute (fødselsnummer, kontonummer, saksnummer) */
 .input-boxes { display: flex; gap: 1mm; }
 .input-boxes.tight { gap: 0; }
 .input-boxes .box {
-  width: 6mm;
-  height: 8mm;
+  width: 8mm;
+  height: 11mm;
   border: 0.6pt solid var(--hb-slate-500);
   border-radius: 1mm;
   background: #fff;
 }
-.input-boxes .sep { width: 2mm; }
+.input-boxes .sep { width: 3mm; }
 
 /* Beløp, med «Kroner» utenfor ruta slik husbanken.no gjør det */
 .input-money {
@@ -360,8 +358,8 @@ legend.q-label + * { clear: both; }
   border: 0.7pt solid var(--hb-slate-700);
   border-radius: 1.5mm;
   background: #fff;
-  height: 9mm;
-  width: 70mm;
+  height: 12mm;
+  width: 82mm;
   max-width: 100%;
   display: flex;
   align-items: center;
@@ -369,20 +367,20 @@ legend.q-label + * { clear: both; }
 }
 .input-money .field { flex: 1; border: none; height: 100%; }
 .input-money .affix {
-  font-size: 10pt;
+  font-size: 14.5pt;
   color: var(--hb-slate-700);
   white-space: nowrap;
 }
-.input-money--sm .field-wrap { width: 44mm; height: 8mm; }
+.input-money--sm .field-wrap { width: 58mm; height: 11mm; }
 
 /* Flere linjer tekst */
 .input-area {
   border: 0.6pt solid var(--hb-slate-500);
   border-radius: 1mm;
-  height: 24mm;
-  background: #fff;
+  height: 32mm;
+  background: repeating-linear-gradient(to bottom, transparent 0 10mm, var(--hb-slate-200) 10mm 10.05mm);
 }
-.input-area.tall { height: 50mm; }
+.input-area.tall { height: 62mm; }
 
 /* Sirkler og firkanter */
 .options {
@@ -401,28 +399,26 @@ legend.q-label + * { clear: both; }
   display: flex;
   align-items: flex-start;
   gap: 2.5mm;
-  font-size: 10pt;
-  line-height: 13.5pt;
+  font-size: 14.5pt;
+  line-height: 20pt;
   color: var(--hb-slate-700);
 }
 .opt .mark {
-  width: 4mm;
-  height: 4mm;
+  width: 5.5mm;
+  height: 5.5mm;
   border: 0.7pt solid var(--hb-slate-700);
   border-radius: 99mm;
   flex-shrink: 0;
   background: #fff;
-  /* Ruta midtstilles mot første tekstlinje: halve linjehøyden minus
-     halve ruta. Målt avvik før: 0,82 mm for lav. */
-  margin-top: 0.35mm;
+  margin-top: 1.5mm;
 }
 .opt.checkbox .mark { border-radius: 0.5mm; }
 .opt .opt-body { flex: 1; }
 .opt .opt-help {
   display: block;
-  color: var(--hb-slate-500);
-  font-size: 8.5pt;
-  line-height: 12pt;
+  color: var(--hb-slate-700);
+  font-size: 12.5pt;
+  line-height: 17.5pt;
   margin-top: 0.3mm;
 }
 
@@ -443,7 +439,7 @@ legend.q-label + * { clear: both; }
 .field-grid .full { grid-column: 1 / -1; }
 .field-grid .sub-label {
   display: block;
-  font-size: 8.5pt;
+  font-size: 12.5pt;
   color: var(--hb-slate-500);
   font-weight: 500;
   margin-bottom: 1mm;
@@ -453,23 +449,22 @@ legend.q-label + * { clear: both; }
 .callout {
   background: var(--hb-green-100);
   border-radius: 2mm;
-  padding: 3mm 3.5mm 3mm 10mm;
+  padding: 4mm 4mm 4mm 14mm;
   position: relative;
   margin: 1mm 0 3mm;
-  font-size: 9pt;
-  line-height: 12.5pt;
+  font-size: 13.5pt;
+  line-height: 18.5pt;
   color: var(--hb-slate-700);
-  max-width: 165mm;
 }
 .callout .icon {
   position: absolute;
-  left: 3mm;
-  top: 3mm;
-  width: 4.5mm;
-  height: 4.5mm;
+  left: 4mm;
+  top: 4mm;
+  width: 6.5mm;
+  height: 6.5mm;
 }
 .callout strong { font-weight: 600; }
-.callout p { margin: 0 0 1.5mm; }
+.callout p { margin: 0 0 4mm; }
 .callout p:last-child { margin-bottom: 0; }
 .callout ul { margin: 1mm 0 0; padding-left: 4mm; }
 .callout ul + p { margin-top: 2mm; }
@@ -488,14 +483,14 @@ legend.q-label + * { clear: both; }
 .examples {
   width: 100%;
   border-collapse: collapse;
-  font-size: 9pt;
-  line-height: 12.5pt;
+  font-size: 13.5pt;
+  line-height: 18.5pt;
   margin-top: 1mm;
 }
 .examples th {
   text-align: left;
   font-weight: 600;
-  font-size: 8.5pt;
+  font-size: 12.5pt;
   color: var(--hb-slate-500);
   border-bottom: 0.75pt solid var(--hb-slate-300);
   padding: 0 3mm 1.5mm 0;
@@ -522,35 +517,35 @@ legend.q-label + * { clear: both; }
 }
 .attachment-block + .attachment-block { margin-top: 3mm; }
 .attachment-block .att-icon {
-  width: 8mm;
-  height: 8mm;
+  width: 11mm;
+  height: 11mm;
   flex-shrink: 0;
   margin-top: 1mm;
 }
 .attachment-block .att-body { flex: 1; }
 .attachment-block .att-title {
   font-weight: 600;
-  font-size: 10.5pt;
+  font-size: 15.5pt;
   margin-bottom: 1.5mm;
   color: var(--hb-slate-700);
 }
 .attachment-block .att-lede {
   margin: 0 0 1mm;
-  font-size: 9.5pt;
-  line-height: 13.5pt;
+  font-size: 14pt;
+  line-height: 20pt;
   color: var(--hb-slate-700);
 }
 .attachment-block .att-note {
   margin: 2mm 0 0;
-  font-size: 8.5pt;
-  line-height: 12pt;
-  color: var(--hb-slate-500);
+  font-size: 12.5pt;
+  line-height: 17.5pt;
+  color: var(--hb-slate-700);
 }
 .attachment-block .att-list {
   margin: 1mm 0 0;
   padding-left: 4mm;
-  font-size: 9.5pt;
-  line-height: 13.5pt;
+  font-size: 14pt;
+  line-height: 20pt;
   color: var(--hb-slate-700);
 }
 .attachment-block .att-list li { margin-bottom: 1mm; }
@@ -561,7 +556,7 @@ legend.q-label + * { clear: both; }
   grid-template-columns: 1fr 1fr;
   gap: 2mm 6mm;
 }
-.attachment-block .att-checks .opt { font-size: 9.5pt; line-height: 13pt; }
+.attachment-block .att-checks .opt { font-size: 14pt; line-height: 19pt; }
 .attachment-block--optional { border-style: dotted; }
 
 /* ───────────────────────── UNDERSKRIFT ───────────────────────── */
@@ -572,13 +567,13 @@ legend.q-label + * { clear: both; }
   gap: 5mm 8mm;
 }
 .sig-block .sig-label {
-  font-size: 8.5pt;
+  font-size: 12.5pt;
   color: var(--hb-slate-500);
   margin-top: 1mm;
 }
 .sig-line {
   border-bottom: 0.6pt solid var(--hb-slate-700);
-  height: 12mm;
+  height: 17mm;
 }
 
 /* ───────────────────────── SIDEBUNN ───────────────────────── */
@@ -588,10 +583,10 @@ legend.q-label + * { clear: both; }
   border-top: 0.5pt solid var(--hb-slate-200);
   display: flex;
   justify-content: space-between;
-  font-size: 7.5pt;
+  font-size: 11pt;
   color: var(--hb-slate-500);
 }
-.pg-footer .return-addr { max-width: 110mm; line-height: 11pt; }
+.pg-footer .return-addr { max-width: 110mm; line-height: 16pt; }
 .pg-footer .pg-num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--hb-slate-700); }
 
 /* ───────────────────────── INNSENDING ───────────────────────── */
@@ -605,17 +600,17 @@ legend.q-label + * { clear: both; }
 .submit-info h3 {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 11pt;
+  font-size: 16pt;
   margin: 0 0 2mm;
   color: var(--hb-slate-700);
 }
 .submit-info ol {
   margin: 0;
   padding-left: 5mm;
-  font-size: 9.5pt;
-  line-height: 13.5pt;
+  font-size: 14pt;
+  line-height: 20pt;
 }
-.submit-info ol li { margin-bottom: 1.5mm; }
+.submit-info ol li { margin-bottom: 3mm; }
 .submit-info ol li:last-child { margin-bottom: 0; }
 
 /* Telefonfeltet. Seks av åtte i brukertestene ville helst ringt, så
@@ -632,19 +627,19 @@ legend.q-label + * { clear: both; }
 .phone-panel .num {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 17pt;
+  font-size: 25pt;
   line-height: 1;
   color: var(--hb-green-800);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-.phone-panel .txt { font-size: 9pt; line-height: 12.5pt; color: var(--hb-slate-700); }
+.phone-panel .txt { font-size: 13.5pt; line-height: 18.5pt; color: var(--hb-slate-700); }
 .phone-panel .txt strong { font-weight: 600; }
 
 /* utility */
 .mt-2 { margin-top: 2mm; }
 .mt-4 { margin-top: 4mm; }
-.small { font-size: 9pt; line-height: 12.5pt; color: var(--hb-slate-500); }
+.small { font-size: 13.5pt; line-height: 18.5pt; color: var(--hb-slate-500); }
 
 /* ──────────────────── UTFYLLBARE FELTER ────────────────────
    Skjemaet fylles ut i nettleseren og skrives ut derfra. Feltene ser
@@ -659,12 +654,12 @@ input, textarea, button {
 input:focus, textarea:focus { outline: 2px solid var(--hb-green-700); outline-offset: 1px; }
 
 .personalia .field-input {
-  height: 6mm;
+  height: 8.5mm;
   border: none;
   border-bottom: 0.6pt solid var(--hb-slate-500);
   width: 100%;
   padding: 0 1mm;
-  font-size: 10pt;
+  font-size: 14.5pt;
   border-radius: 0;
 }
 .personalia .field-input:focus { border-bottom-color: var(--hb-green-700); border-bottom-width: 1.5pt; outline: 2px solid var(--hb-green-700); outline-offset: 1px; }
@@ -674,29 +669,29 @@ input.input-line, textarea.input-area {
   border: 0.6pt solid var(--hb-slate-500);
   border-radius: 1mm;
   padding: 0 2.5mm;
-  font-size: 10pt;
+  font-size: 14.5pt;
   background: #fff;
 }
-input.input-line { height: 8mm; max-width: 100%; }
-input.input-line.short  { width: 60mm; }
-input.input-line.medium { width: 100mm; }
-input.input-line.long   { width: 165mm; }
-input.input-line.date   { width: 38mm; }
+input.input-line { height: 11mm; max-width: 100%; }
+input.input-line.short  { width: 72mm; }
+input.input-line.medium { width: 112mm; }
+input.input-line.long   { width: 170mm; }
+input.input-line.date   { width: 50mm; }
 input.input-line::placeholder, textarea.input-area::placeholder { color: var(--hb-slate-500); letter-spacing: 0.04em; }
 textarea.input-area {
-  height: 24mm;
+  height: 32mm;
   padding: 1.5mm 2.5mm;
   font-family: inherit;
   resize: none;
-  line-height: 7mm;
-  background: #fff;
+  line-height: 10mm;
+  background: repeating-linear-gradient(to bottom, transparent 0 10mm, var(--hb-slate-200) 10mm 10.05mm);
 }
-textarea.input-area.tall { height: 50mm; }
+textarea.input-area.tall { height: 62mm; }
 
 .input-money input.field {
   width: 100%;
   border: none;
-  font-size: 11pt;
+  font-size: 16pt;
   height: 100%;
   min-width: 0;
   outline: none;
@@ -706,14 +701,14 @@ textarea.input-area.tall { height: 50mm; }
 }
 
 .input-boxes input.box {
-  width: 6mm;
-  height: 8mm;
+  width: 8mm;
+  height: 11mm;
   border: 0.6pt solid var(--hb-slate-500);
   border-radius: 1mm;
   background: #fff;
   text-align: center;
   padding: 0;
-  font-size: 11pt;
+  font-size: 16pt;
   font-variant-numeric: tabular-nums;
 }
 
@@ -752,13 +747,13 @@ textarea.input-area.tall { height: 50mm; }
   outline: none;
   padding: 0 1mm 1mm;
   font-family: "Caveat", "Brush Script MT", cursive;
-  font-size: 14pt;
+  font-size: 20.5pt;
   color: var(--hb-slate-700);
 }
 .sig-line[contenteditable="true"]:focus { background: var(--hb-green-100); border-bottom-color: var(--hb-green-700); }
 .sig-line[contenteditable="true"].blokk {
   font-family: inherit;
-  font-size: 11pt;
+  font-size: 16pt;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
