@@ -239,6 +239,17 @@ body.viser-endringer [data-endret].er-valgt {
   background: var(--hb-purple-100);
 }
 
+/* På små skjermer forlates arkformatet, og da skal ikke boksen ligge
+   oppå innholdet. Den legger seg i flyten øverst i stedet. */
+@media screen and (max-width: 840px) {
+  .versjoner {
+    position: static;
+    width: auto;
+    margin: 8px 8px 0;
+  }
+  .versjoner__liste { max-height: none; }
+}
+
 @media print {
   .versjoner { display: none; }
   body.viser-endringer [data-endret] { outline: none; background: none; }

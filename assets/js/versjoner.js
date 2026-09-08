@@ -39,6 +39,26 @@ const HB_VERSJONER = [
     dato: '4. september 2026',
     endring: 'Regnestykket forenklet til ett felt, feltene i 1.2 flyttet opp under svaret de hører til, oppgraderingene tydeliggjort som eksempler, inntekt og prioritering forklart, slagordet fjernet.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v2.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v2.html'
+    }
+  },
+  {
+    nr: 3,
+    navn: 'Universell utforming',
+    dato: '8. september 2026',
+    endring: 'Rettet etter tilgjengelighetsgjennomgang: arket flyter på små skjermer, innhold blir ikke lenger klippet av økt tekstavstand, spørsmålsgrupper er koblet til svarene sine, signaturlinjene har navn, og kontrasten på fokusring, placeholder og rutetall er hevet over kravet.',
+    filer: {
+      soknad: 'papirsoknad-aldersvennlig-v3.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v3.html'
+    }
+  },
+  {
+    nr: 4,
+    navn: 'Storskrift',
+    dato: '8. september 2026',
+    endring: 'Skrevet om for lesbarhet på papir, siden de som fyller ut på papir ligger i øvre del av målgruppen. 14 pt brødtekst mot 9,5 før, 19 pt seksjonsoverskrifter, 2 cm marger, større skrivefelt og sort hjelpetekst. Linjelengden falt fra 92 til 69 tegn. Søknaden gikk fra 5 til 10 sider, utbetalingen fra 4 til 8.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

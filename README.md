@@ -36,8 +36,8 @@ på samme mal som det utfyllbare skjemaet for å be om utbetaling av lån
 
 | Skjema | Fil | Sider |
 | --- | --- | --- |
-| HB 8.S.05, søknad om tilskudd | `papirsoknad-aldersvennlig.html` | 5 |
-| HB 8.S.06, be om utbetaling | `papirsoknad-aldersvennlig-utbetaling.html` | 4 |
+| HB 8.S.05, søknad om tilskudd | `papirsoknad-aldersvennlig.html` | 10 |
+| HB 8.S.06, be om utbetaling | `papirsoknad-aldersvennlig-utbetaling.html` | 8 |
 
 Skjemaene kan fylles ut i nettleseren og skrives ut derfra, eller skrives ut
 tomme og fylles ut med penn. Svarene lagres i nettleseren mens man skriver.
@@ -63,7 +63,9 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | Iterasjon | Filer | Hva som endret seg |
 | --- | --- | --- |
 | 1, 3. september 2026 | `...-v1.html` | Første utkast, bygget på malen for HB 7.S.21. Regnestykket var fire linjer søkeren fylte ut selv. |
-| 2, 4. september 2026 | uten suffiks | Regnestykket forenklet til ett felt, feltene i 1.2 flyttet opp under svaret de hører til, oppgraderingene tydeliggjort som eksempler, inntekt og prioritering forklart, slagordet fjernet. |
+| 2, 4. september 2026 | `...-v2.html` | Regnestykket forenklet til ett felt, feltene i 1.2 flyttet opp under svaret de hører til, oppgraderingene tydeliggjort som eksempler, inntekt og prioritering forklart, slagordet fjernet. |
+| 3, 8. september 2026 | `...-v3.html` | Rettet etter tilgjengelighetsgjennomgang. Se under. |
+| 4, 8. september 2026 | uten suffiks | Storskrift. 14 pt brødtekst, 2 cm marger, større skrivefelt. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -83,6 +85,69 @@ runde:
 
 CSS-en pinnes fordi komponentlaget endres i takt med skjemaene. Iterasjon 1
 bruker for eksempel `.calc`, som ikke lenger finnes i gjeldende CSS.
+
+### Universell utforming
+
+Kravet for offentlig sektor er WCAG 2.1 nivå AA. Iterasjon 2 ble målt med
+axe-core og egne målinger av kontrast, tekstavstand, reflow, tastatur og
+semantikk. Den hadde seks brudd, som er rettet i iterasjon 3:
+
+| Krav | Var | Er |
+| --- | --- | --- |
+| 1.4.10 Reflow | Arket låst til 210 mm, nedskalert til 40 % på 320 px | Arkformatet slippes under 840 px, én kolonne, ingen vannrett rulling |
+| 1.4.12 Tekstavstand | 28 til 82 mm per side klippet bort av `overflow: hidden` | `min-height`, så arket strekker seg i stedet. 0 mm tapt |
+| 1.3.1 og 3.3.2 | 17 svargrupper uten `fieldset` | Alle grupper har `fieldset` med `legend` |
+| 4.1.2 | Signaturlinjene uten rolle og navn | `role="textbox"` og navn fra den synlige etiketten |
+| 1.4.11 | Fokusring 2,03:1, understrek 2,99:1 | 5,30:1 og 5,32:1, kravet er 3:1 |
+| 1.4.3 | Rutetall 2,73:1, placeholder 2,99:1 | 4,87:1 og 5,32:1, kravet er 4,5:1 |
+
+I tillegg leses sifferrutene nå som «Fødselsnummer, siffer 1 av 11» i stedet
+for det interne feltnavnet, beløpsfeltene har enheten koblet til feltet,
+vedleggsboksene er grupper med navn, og tabellhodene er merket.
+
+Papiret er uendret. Alle ni sider måler millimeter for millimeter det samme
+som i iterasjon 2, fordi hele reflow-regelen ligger i `@media screen` og
+`@media print` fortsatt låser arket til 210 × 297 mm.
+
+### Storskrift, iterasjon 4
+
+De som fyller ut på papir er de som ikke fyller ut digitalt, og det utvalget
+ligger i øvre del av målgruppen. Nærmere 72 enn 62. Iterasjon 3 var satt i
+9,5 pt, en vanlig forvaltningsstørrelse, og iterasjon 4 er skrevet om for
+lesbarhet på papir.
+
+| Krav | Iterasjon 3 | Iterasjon 4 |
+| --- | --- | --- |
+| Brødtekst 14–16 pt | 9,5 pt | **14 pt** |
+| Overskrifter 18–20 pt | 13 pt | **19 pt** |
+| Linjelengde 60–75 tegn | 92 tegn | **67 tegn** |
+| Marger 2–2,5 cm | 1,6 cm | **2,0 cm** |
+| Linjeavstand 1,2–1,5 | 1,21–1,47 | 1,21–1,45 |
+| Sans-serif | Inter | Inter |
+| Venstrejustert | ja | ja |
+| Kontrast min. 4,5:1 | 4,85:1 lavest | 4,87:1 lavest |
+| Ingen kursiv eller understreking | ingen | ingen |
+| Avstand etter avsnitt ≈ fontstørrelse | 0,45 til 0,89 × | 0,84 til 0,91 × |
+
+Linjelengden løste seg av seg selv. Den var 92 tegn fordi skriften var for
+liten for en tekstbredde på 178 mm. Med 14 pt og 2 cm marger blir bredden
+170 mm og linjen 67 tegn, midt i båndet.
+
+Skrivefeltene vokste med skriften, fordi de samme hendene som trenger større
+skrift trenger mer plass å skrive på. Linjer 8 til 11 mm, sifferruter fra
+6 × 8 til 8 × 11 mm, underskriftslinjer fra 12 til 17 mm. Hjelpeteksten er
+sort i stedet for grå.
+
+Det koster sider. Søknaden gikk fra 5 til 10, utbetalingen fra 4 til 8.
+Seksjon 3 ble 350 mm og fikk ikke plass på ett ark, så den er delt med en
+fortsettelsesoverskrift. Telefonfeltet er flyttet opp, rett etter
+underskriften, fordi det ellers havnet alene på en side som bare var
+15 prosent full.
+
+Ett bevisst avvik: hjelpetekst er 12,5 pt, intropanelet 13,5 pt og sidebunnen
+11 pt, altså under 14 pt. Alt løper de samme 14 pt hvis det skal være strengt,
+men da flater hierarkiet ut og spørsmålet blir like tungt som hjelpen til det.
+Brødteksten, spørsmålene og svaralternativene er 14 til 14,5 pt.
 
 ## Regelverket ligger ett sted
 
@@ -137,6 +202,8 @@ ds/                  Husbankens designsystem: tokens, skrifter, logo. Urørt.
 assets/css/hb-app.css    Komponentlag bygget kun på tokens fra ds/
 assets/css/hb-papir.css  Samme, for papirskjemaene på A4
 assets/css/hb-papir-v1.css  Pinnet kopi, slik iterasjon 1 så ut
+assets/css/hb-papir-v2.css  Pinnet kopi, slik iterasjon 2 så ut
+assets/css/hb-papir-v3.css  Pinnet kopi, slik iterasjon 3 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4

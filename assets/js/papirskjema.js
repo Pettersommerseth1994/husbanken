@@ -30,11 +30,15 @@
     const antall = parseInt(gruppe.dataset.len, 10);
     const skiller = (gruppe.dataset.seps || '').split(',')
       .filter(Boolean).map(n => parseInt(n, 10));
+    /* data-etikett gir en etikett et menneske kan høre. Uten den ville
+       skjermleseren lest opp det interne feltnavnet. */
+    const etikett = gruppe.dataset.etikett || navn;
     let html = '';
     for (let i = 0; i < antall; i++) {
       if (skiller.includes(i)) html += '<span class="sep"></span>';
       html += `<input class="box" type="text" inputmode="numeric" maxlength="1"
-                      name="${navn}_${i}" aria-label="${navn} siffer ${i + 1}">`;
+                      name="${navn}_${i}"
+                      aria-label="${etikett}, siffer ${i + 1} av ${antall}">`;
     }
     gruppe.innerHTML = html;
   });

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
+<title>Papirsøknad – Tilskudd til aldersvennlig oppgradering (iterasjon 2) – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v2.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="4">
+<body data-skjema="soknad" data-versjon="2">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v2" autocomplete="on">
 
 <!-- ════════════════════════════ SIDE 1 ════════════════════════════ -->
 <section class="page">
@@ -28,11 +28,11 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">1 av 10</span>
+      Side&nbsp;<span class="pg-num">1 av 5</span>
     </div>
   </header>
 
-  <div class="hero" data-endret="Tittelen er 28 pt og ingressen 15 pt. Marginene er 2 cm på alle kanter, mot 1,6 og 1,4 før.">
+  <div class="hero">
     <div>
       <div class="eyebrow">Tilskudd fra Husbanken · aldersvennlig oppgradering</div>
       <h1>Søk om tilskudd til aldersvennlig oppgradering</h1>
@@ -48,31 +48,10 @@
     <ul>
       <li>Skriv tydelig med blå eller svart penn. Kryss i sirkelen ved svaret ditt, og i firkanten der du kan velge flere.</li>
       <li>Send inn skjemaet <strong>før du setter i gang arbeidet</strong>, og senest <strong>1. november 2026</strong>.</li>
-      <li>Legg ved tilbudet fra fagpersonen. Mer om vedlegg på side 8.</li>
+      <li>Legg ved tilbudet fra fagpersonen. Mer om vedlegg på side 4.</li>
       <li>Er du usikker på et spørsmål, kan du la det stå åpent og ringe oss på 22 96 16 00.</li>
     </ul>
   </div>
-
-  <footer class="pg-footer">
-    <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">1 av 10</span></div>
-  </footer>
-</section>
-
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">2 av 10</span>
-    </div>
-  </header>
 
   <div class="facts">
     <div class="fact">
@@ -99,12 +78,12 @@
 
   <div class="block">
     <span class="block-title">Tre eksempler på hvordan det slår ut</span>
-    <table class="examples">
+    <table class="examples" data-endret="Endret i iterasjon 3: kolonneoverskriftene ble merket som overskrifter.">
       <thead>
         <tr>
-          <th scope="col">Oppgraderingen koster</th>
-          <th scope="col">Du får i tilskudd</th>
-          <th scope="col">Du betaler selv</th>
+          <th>Oppgraderingen koster</th>
+          <th>Du får i tilskudd</th>
+          <th>Du betaler selv</th>
         </tr>
       </thead>
       <tbody>
@@ -127,7 +106,7 @@
     </table>
   </div>
 
-  <div class="personalia" data-endret="Skrivefeltene er høyere, 8,5 mm mot 6 mm, og sifferrutene 8 × 11 mm mot 6 × 8 mm. Samme hender som trenger større skrift trenger mer plass å skrive på.">
+  <div class="personalia" data-endret="Endret i iterasjon 3: understreken var 2,99:1 og ble hevet til 5,32:1. Fødselsnummeret ble en egen gruppe, og rutene fikk lesbare etiketter.">
     <div class="field">
       <label class="field-label" for="f-fornavn">Fornavn og mellomnavn</label>
       <input class="field-input" id="f-fornavn" name="fornavn" type="text" autocomplete="given-name">
@@ -136,16 +115,15 @@
       <label class="field-label" for="f-etternavn">Etternavn</label>
       <input class="field-input" id="f-etternavn" name="etternavn" type="text" autocomplete="family-name">
     </div>
-    <fieldset class="field">
-      <legend class="field-label">Fødselsnummer (11 siffer)</legend>
-      <div class="input-boxes digit-group" data-name="fnr" data-len="11" data-seps="6"
-           data-etikett="Fødselsnummer" style="margin-top:1mm"></div>
-    </fieldset>
+    <div class="field">
+      <div class="field-label">Fødselsnummer (11 siffer)</div>
+      <div class="input-boxes digit-group" data-name="fnr" data-len="11" data-seps="6" style="margin-top:1mm"></div>
+    </div>
     <div class="field">
       <label class="field-label" for="f-tlf">Telefonnummer</label>
       <input class="field-input" id="f-tlf" name="tlf" type="tel" autocomplete="tel">
     </div>
-    <div class="field full field-pair">
+    <div class="field full" style="display:grid;grid-template-columns:1fr 50mm;gap:4mm;">
       <div>
         <label class="field-label" for="f-adresse">Adressen din</label>
         <input class="field-input" id="f-adresse" name="adresse" type="text" autocomplete="street-address">
@@ -165,11 +143,12 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">2 av 10</span></div>
+    <div>Side <span class="pg-num">1 av 5</span></div>
   </footer>
 </section>
 
 
+<!-- ════════════════════════════ SIDE 2 ════════════════════════════ -->
 <section class="page">
   <header class="pg-meta">
     <div class="left">
@@ -178,19 +157,20 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">3 av 10</span>
+      Side&nbsp;<span class="pg-num">2 av 5</span>
     </div>
   </header>
 
+  <!-- SEKSJON 1 -->
   <div class="section">
     <div class="section-header">
       <span class="step">1</span>
       <h2>Om deg</h2>
     </div>
-    <p class="section-intro" data-endret="Brødteksten er 14 pt, mot 9,5 før. Linjelengden falt fra 92 til 69 tegn, innenfor båndet 60 til 75.">Ordningen gjelder husstander der minst én person er over 62 år. Vi spør ikke om helse, diagnoser eller funksjonsnivå.</p>
+    <p class="section-intro">Ordningen gjelder husstander der minst én person er over 62 år. Vi spør ikke om helse, diagnoser eller funksjonsnivå.</p>
 
-    <fieldset class="q">
-      <legend class="q-label">1.1 Er du over 62 år?</legend>
+    <div class="q" data-endret="Endret i iterasjon 3: gruppen ble et fieldset med legend. Her leser en skjermleser bare «Ja», uten spørsmålet det svarer på.">
+      <p class="q-label">1.1 Er du over 62 år?</p>
       <div class="options">
         <label class="opt"><input type="radio" name="q1_alder" value="selv"><span class="mark"></span><span class="opt-body">Ja, jeg er over 62 år</span></label>
         <label class="opt"><input type="radio" name="q1_alder" value="samboer"><span class="mark"></span><span class="opt-body">Nei, men jeg bor sammen med en som er det
@@ -200,7 +180,7 @@
 
       <div class="sub-q" data-when="q1_alder:samboer">
         <p class="q-label">1.2 Hvem i husstanden er over 62 år?</p>
-        <p class="q-help" data-endret="Hjelpetekst er 12,5 pt og sort, ikke grå. Grått på liten skrift bærer ikke på papir for denne målgruppen.">Fyll ut bare hvis du krysset av for svaret over.</p>
+        <p class="q-help">Fyll ut bare hvis du krysset av for svaret over.</p>
         <div class="field-grid">
           <div>
             <label class="sub-label" for="f-samboer-navn">Navn</label>
@@ -218,7 +198,7 @@
           <span class="opt-help">Da kan du dessverre ikke få dette tilskuddet. Ring oss på 22 96 16 00, så ser vi på andre ordninger.</span>
         </span></label>
       </div>
-    </fieldset>
+    </div>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
@@ -226,27 +206,7 @@
     </div>
   </div>
 
-  <footer class="pg-footer">
-    <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">3 av 10</span></div>
-  </footer>
-</section>
-
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">4 av 10</span>
-    </div>
-  </header>
-
+  <!-- SEKSJON 2 -->
   <div class="section">
     <div class="section-header">
       <span class="step">2</span>
@@ -260,27 +220,27 @@
       <input type="text" class="input-line long" id="f-bolig-adresse" name="bolig_adresse">
     </div>
 
-    <fieldset class="q">
-      <legend class="q-label">2.2 Eier eller leier du boligen?</legend>
+    <div class="q">
+      <p class="q-label">2.2 Eier eller leier du boligen?</p>
       <div class="options">
         <label class="opt"><input type="radio" name="q2_eierform" value="eier"><span class="mark"></span><span class="opt-body">Jeg eier boligen, alene eller sammen med noen</span></label>
         <label class="opt"><input type="radio" name="q2_eierform" value="leier"><span class="mark"></span><span class="opt-body">Jeg leier boligen
-          <span class="opt-help">Da trenger vi en bekreftelse fra eieren, se side 8.</span>
+          <span class="opt-help">Da trenger vi en bekreftelse fra eieren, se side 4.</span>
         </span></label>
       </div>
-    </fieldset>
+    </div>
 
-    <fieldset class="q">
-      <legend class="q-label">2.3 Bor du i denne boligen til vanlig?</legend>
+    <div class="q">
+      <p class="q-label">2.3 Bor du i denne boligen til vanlig?</p>
       <p class="q-help">Tilskuddet gjelder ikke hytte eller utleiebolig. Er situasjonen spesiell, ring oss.</p>
       <div class="options row">
         <label class="opt"><input type="radio" name="q2_bor" value="ja"><span class="mark"></span><span class="opt-body">Ja</span></label>
         <label class="opt"><input type="radio" name="q2_bor" value="nei"><span class="mark"></span><span class="opt-body">Nei</span></label>
       </div>
-    </fieldset>
+    </div>
 
-    <fieldset class="q">
-      <legend class="q-label">2.4 Bor du i borettslag eller sameie?</legend>
+    <div class="q">
+      <p class="q-label">2.4 Bor du i borettslag eller sameie?</p>
       <div class="options">
         <label class="opt"><input type="radio" name="q2_borettslag" value="nei"><span class="mark"></span><span class="opt-body">Nei</span></label>
         <label class="opt"><input type="radio" name="q2_borettslag" value="ja-godkjent"><span class="mark"></span><span class="opt-body">Ja, og styret har godkjent arbeidet
@@ -290,18 +250,19 @@
           <span class="opt-help">Innvendig arbeid trenger som regel ingen godkjenning fra styret.</span>
         </span></label>
       </div>
-    </fieldset>
+    </div>
   </div>
 
   <footer class="pg-footer">
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">4 av 10</span></div>
+    <div>Side <span class="pg-num">2 av 5</span></div>
   </footer>
 </section>
 
 
+<!-- ════════════════════════════ SIDE 3 ════════════════════════════ -->
 <section class="page">
   <header class="pg-meta">
     <div class="left">
@@ -310,10 +271,11 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">5 av 10</span>
+      Side&nbsp;<span class="pg-num">3 av 5</span>
     </div>
   </header>
 
+  <!-- SEKSJON 3 -->
   <div class="section">
     <div class="section-header">
       <span class="step">3</span>
@@ -321,8 +283,8 @@
     </div>
     <p class="section-intro">Du må velge minst én av de seks oppgraderingene, og du kan gjerne velge flere. Velger du flere, legger vi kostnadene sammen. Det er ofte slik man kommer over minstekravet på 80 000 kroner.</p>
 
-    <fieldset class="q">
-      <legend class="q-label">3.1 Hvilke oppgraderinger skal gjøres? Sett kryss for alt som skal gjøres.</legend>
+    <div class="q">
+      <p class="q-label">3.1 Hvilke oppgraderinger skal gjøres? Sett kryss for alt som skal gjøres.</p>
       <p class="q-help">Tekstene under hvert punkt er eksempler, ikke en fullstendig liste. Skal du gjøre noe annet som hører til samme punkt, krysser du av og beskriver det i 3.2.</p>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="tiltak_adkomst" value="ja"><span class="mark"></span><span class="opt-body">Trinnfri adkomst
@@ -344,35 +306,6 @@
           <span class="opt-help">Komfyrvakt, vannlekkasjestopper, sammenkoblede røykvarslere, fallsikring.</span>
         </span></label>
       </div>
-    </fieldset>
-
-  </div>
-
-  <footer class="pg-footer">
-    <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">5 av 10</span></div>
-  </footer>
-</section>
-
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">6 av 10</span>
-    </div>
-  </header>
-
-  <div class="section">
-    <div class="section-header">
-      <span class="step">3</span>
-      <h2 data-endret="Seksjon 3 ble 350 mm ved 14 pt og fikk ikke plass på ett ark. Den er delt, med fortsettelsesoverskrift.">Hva skal gjøres i boligen, fortsatt</h2>
     </div>
 
     <div class="q">
@@ -402,11 +335,12 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">6 av 10</span></div>
+    <div>Side <span class="pg-num">3 av 5</span></div>
   </footer>
 </section>
 
 
+<!-- ════════════════════════════ SIDE 4 ════════════════════════════ -->
 <section class="page">
   <header class="pg-meta">
     <div class="left">
@@ -415,10 +349,11 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">7 av 10</span>
+      Side&nbsp;<span class="pg-num">4 av 5</span>
     </div>
   </header>
 
+  <!-- SEKSJON 4 -->
   <div class="section">
     <div class="section-header">
       <span class="step">4</span>
@@ -429,12 +364,12 @@
     <div class="q">
       <label class="q-label" for="f-kostnad">4.1 Hva kommer oppgraderingen til å koste?</label>
       <p class="q-help">Hele prosjektkostnaden, slik den står i tilbudet eller prisoverslaget.</p>
-      <span class="input-money"><span class="field-wrap"><input class="field" id="f-kostnad" aria-describedby="f-kostnad-enhet" name="prosjektkostnad" type="text" inputmode="numeric"></span><span class="affix" id="f-kostnad-enhet">Kroner</span></span>
+      <span class="input-money"><span class="field-wrap"><input class="field" id="f-kostnad" name="prosjektkostnad" type="text" inputmode="numeric"></span><span class="affix">Kroner</span></span>
     </div>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Du trenger ikke regne ut tilskuddet selv.</strong> Du får 25 prosent av prosjektkostnaden, opp til en prosjektkostnad på 300 000 kroner. Det gir maks 75 000 kroner. Prosjektet må koste minst 80 000 kroner for at du skal kunne søke. Vi regner ut beløpet og skriver det i svaret du får. Tre eksempler står på side 2.
+      <strong>Du trenger ikke regne ut tilskuddet selv.</strong> Du får 25 prosent av prosjektkostnaden, opp til en prosjektkostnad på 300 000 kroner. Det gir maks 75 000 kroner. Prosjektet må koste minst 80 000 kroner for at du skal kunne søke. Vi regner ut beløpet og skriver det i svaret du får. Tre eksempler står på side 1.
     </div>
 
     <div class="callout callout--warn">
@@ -443,27 +378,7 @@
     </div>
   </div>
 
-  <footer class="pg-footer">
-    <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">7 av 10</span></div>
-  </footer>
-</section>
-
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">8 av 10</span>
-    </div>
-  </header>
-
+  <!-- SEKSJON 5 -->
   <div class="section">
     <div class="section-header">
       <span class="step">5</span>
@@ -474,9 +389,9 @@
     <div class="attachment-block">
       <img class="att-icon" src="assets/img/attachment-1.svg" alt="">
       <div class="att-body">
-        <div class="att-title" id="att-1">Tilbud eller prisoverslag fra fagpersonen (må legges ved)</div>
+        <div class="att-title">Tilbud eller prisoverslag fra fagpersonen (må legges ved)</div>
         <p class="att-lede">Sett kryss for hva dokumentet viser, slik at vi raskt kan kontrollere det:</p>
-        <div class="att-checks" role="group" aria-labelledby="att-1">
+        <div class="att-checks">
           <label class="opt checkbox"><input type="checkbox" name="ved_firma" value="ja"><span class="mark"></span><span class="opt-body">Navnet på firmaet</span></label>
           <label class="opt checkbox"><input type="checkbox" name="ved_arbeid" value="ja"><span class="mark"></span><span class="opt-body">Hva som skal gjøres</span></label>
           <label class="opt checkbox"><input type="checkbox" name="ved_pris" value="ja"><span class="mark"></span><span class="opt-body">Pris med merverdiavgift</span></label>
@@ -488,12 +403,12 @@
     <div class="attachment-block attachment-block--optional">
       <img class="att-icon" src="assets/img/attachment-1.svg" alt="">
       <div class="att-body">
-        <div class="att-title" id="att-2">Andre vedlegg, bare hvis det gjelder deg</div>
+        <div class="att-title">Andre vedlegg, bare hvis det gjelder deg</div>
         <ol class="att-list">
           <li><strong>Leier du boligen:</strong> en bekreftelse fra den som eier den. En e-post der utleier skriver hva som skal gjøres og at det er greit, holder fint. Den trenger ikke være formell.</li>
           <li><strong>Bor du i borettslag eller sameie og skal gjøre noe utvendig:</strong> vedtaket eller e-posten fra styret.</li>
         </ol>
-        <div class="att-checks" role="group" aria-labelledby="att-2">
+        <div class="att-checks">
           <label class="opt checkbox"><input type="checkbox" name="ved_utleier" value="ja"><span class="mark"></span><span class="opt-body">Bekreftelse fra utleier ligger ved</span></label>
           <label class="opt checkbox"><input type="checkbox" name="ved_styret" value="ja"><span class="mark"></span><span class="opt-body">Vedtak fra styret ligger ved</span></label>
           <label class="opt checkbox"><input type="checkbox" name="ved_ingen" value="ja"><span class="mark"></span><span class="opt-body">Ingen av delene gjelder meg</span></label>
@@ -507,11 +422,12 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">8 av 10</span></div>
+    <div>Side <span class="pg-num">4 av 5</span></div>
   </footer>
 </section>
 
 
+<!-- ════════════════════════════ SIDE 5 ════════════════════════════ -->
 <section class="page">
   <header class="pg-meta">
     <div class="left">
@@ -520,10 +436,11 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">9 av 10</span>
+      Side&nbsp;<span class="pg-num">5 av 5</span>
     </div>
   </header>
 
+  <!-- SEKSJON 6 -->
   <div class="section">
     <div class="section-header">
       <span class="step">6</span>
@@ -536,54 +453,26 @@
       <strong>Opplysningene brukes bare til å behandle søknaden din.</strong> De slettes etter ti år. Mer står på husbanken.no/personvern.
     </div>
 
-    <div class="signature">
+    <div class="signature" data-endret="Endret i iterasjon 3: signaturlinjene fikk rolle og navn. Her leses de som navnløse redigerbare bokser.">
       <div class="sig-block" style="grid-column: 1 / -1;">
-        <div class="sig-line blokk" contenteditable="true" role="textbox" aria-multiline="false"
-             aria-labelledby="sig-blokk-navn" data-name="blokk_navn"></div>
-        <div class="sig-label" id="sig-blokk-navn">Navn med blokkbokstaver</div>
+        <div class="sig-line blokk" contenteditable="true" data-name="blokk_navn"></div>
+        <div class="sig-label">Navn med blokkbokstaver</div>
       </div>
     </div>
 
     <div class="signature mt-4">
       <div class="sig-block">
-        <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
-             aria-labelledby="sig-sted-dato" data-name="sted_dato"></div>
-        <div class="sig-label" id="sig-sted-dato">Sted og dato</div>
+        <div class="sig-line" contenteditable="true" data-name="sted_dato"></div>
+        <div class="sig-label">Sted og dato</div>
       </div>
       <div class="sig-block">
-        <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
-             aria-labelledby="sig-underskrift" data-name="underskrift"></div>
-        <div class="sig-label" id="sig-underskrift">Underskrift</div>
+        <div class="sig-line" contenteditable="true" data-name="underskrift"></div>
+        <div class="sig-label">Underskrift</div>
       </div>
     </div>
   </div>
 
-  <div class="phone-panel" data-endret="Flyttet opp, rett etter underskriften. Ellers havnet det alene på en ellevte side som bare var 15 prosent full.">
-    <span class="num">22&nbsp;96&nbsp;16&nbsp;00</span>
-    <span class="txt"><strong>Vil du heller snakke med noen?</strong> Ring oss, så går vi gjennom skjemaet sammen. Vi svarer på om noe er dekket, og hjelper deg med å fylle ut. Hverdager 09.00 til 15.00.</span>
-  </div>
-
-  <footer class="pg-footer">
-    <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">9 av 10</span></div>
-  </footer>
-</section>
-
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">10 av 10</span>
-    </div>
-  </header>
-
+  <!-- INNSENDING -->
   <div class="submit-info">
     <h3>Slik sender du inn skjemaet</h3>
     <ol>
@@ -605,12 +494,17 @@
     </ol>
   </div>
 
+  <div class="phone-panel">
+    <span class="num">22&nbsp;96&nbsp;16&nbsp;00</span>
+    <span class="txt"><strong>Vil du heller snakke med noen?</strong> Ring oss, så går vi gjennom skjemaet sammen. Vi svarer på om noe er dekket, og hjelper deg med å fylle ut. Hverdager 09.00 til 15.00.</span>
+  </div>
+
   <footer class="pg-footer">
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00<br>
       Behandling av personopplysninger: husbanken.no/personvern
     </div>
-    <div>Side <span class="pg-num">10 av 10</span></div>
+    <div>Side <span class="pg-num">5 av 5</span></div>
   </footer>
 </section>
 
