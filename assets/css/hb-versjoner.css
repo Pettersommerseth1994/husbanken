@@ -30,8 +30,9 @@
 
 .versjoner__rad {
   display: flex;
-  align-items: center;
-  gap: 9px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
 }
 
 .versjoner__hint {
@@ -45,12 +46,13 @@
 
 .versjoner__celler {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
-  flex: 1;
+  width: 100%;
 }
 
 .versjoner__celle {
-  width: 34px;
+  flex: 0 0 34px;
   height: 34px;
   border: 1px solid var(--hb-slate-200);
   border-radius: 8px;
