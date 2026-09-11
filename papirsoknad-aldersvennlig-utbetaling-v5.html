@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Papirskjema – Be om utbetaling av tilskudd til aldersvennlig oppgradering – Husbanken</title>
+<title>Papirskjema – Be om utbetaling av tilskudd til aldersvennlig oppgradering (iterasjon 5) – Husbanken</title>
 <meta name="description" content="Papirskjema for å be om utbetaling av tilskudd til aldersvennlig oppgradering. Utbetalingen skjer ikke av seg selv, du må be om den selv.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v5.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="utbetaling" data-versjon="6">
+<body data-skjema="utbetaling" data-versjon="5">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling-v5" autocomplete="on">
 
 <!-- ════════════════════════════ SIDE 1 ════════════════════════════ -->
 <section class="page">
@@ -180,7 +180,7 @@
     <div class="q">
       <label class="q-label" for="f-avvik">2.3 Ble noe annerledes enn planlagt? (valgfritt)</label>
       <p class="q-help">Ble jobben dyrere, billigere eller litt annerledes enn tilbudet, er det helt greit. Skriv det med dine egne ord. For eksempel: «Vi måtte bytte rør på badet i tillegg, så det ble 12 000 kroner dyrere.»</p>
-      <textarea class="input-area" id="f-avvik" name="avvik"></textarea>
+      <textarea class="input-area" id="f-avvik" name="avvik" data-endret="Linjene inne i skrivefeltet er fjernet. Feltet er blankt, som resten av rutene i skjemaet."></textarea>
     </div>
   </div>
 
@@ -244,7 +244,7 @@
 
     <fieldset class="q">
       <legend class="q-label">4.2 Står kontoen i ditt eget navn?</legend>
-      <div class="options row">
+      <div class="options row" data-endret="Avkryssingsrutene er midtstilt mot teksten. De satt 0,8 mm for lavt.">
         <label class="opt"><input type="radio" name="q4_konto" value="ja"><span class="mark"></span><span class="opt-body">Ja</span></label>
         <label class="opt"><input type="radio" name="q4_konto" value="nei"><span class="mark"></span><span class="opt-body">Nei</span></label>
       </div>

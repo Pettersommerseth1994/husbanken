@@ -8,7 +8,7 @@
    etter. Tallene stemmer med utkastet på husbanken.no per 4.8.2026.
    ─────────────────────────────────────────────────────────────────── */
 const HB_REGLER = {
-  minstekostnad: 80000,   // du må oppgradere for minst dette
+  minstekostnad: 40000,   // du må oppgradere for minst dette
   sats: 0.25,             // du får denne andelen
   kostnadstak: 300000,    // vi regner ikke på beløp over dette
   get maksTilskudd() { return Math.round(this.kostnadstak * this.sats); }, // 75 000

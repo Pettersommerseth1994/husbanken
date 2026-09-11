@@ -223,7 +223,7 @@ function hbKalkulatorInit(id, ved = null) {
 
 const HB_EKSEMPLER = [
   {
-    belop: 75000,
+    belop: 30000,
     variant: 'zero',
     merke: 'Under minstekravet',
     ikon: 'varsel',

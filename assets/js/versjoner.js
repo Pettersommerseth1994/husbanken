@@ -69,6 +69,16 @@ const HB_VERSJONER = [
     dato: '8. september 2026',
     endring: 'Bygget på iterasjon 3, ikke 4, fordi 3 ble foretrukket. Linjene i skrivefeltene er fjernet, avkryssingsrutene er midtstilt mot teksten, og personaliaboksen er flyttet inn under seksjon 1 «Om deg». Søknaden gikk fra 5 til 6 sider fordi seksjon 1 nå bærer boksen.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v5.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v5.html'
+    }
+  },
+  {
+    nr: 6,
+    navn: 'Etter design critics',
+    dato: '11. september 2026',
+    endring: 'Skrevet om etter lappene i Miro-boardet «Design critics av papirsøknadene». De seks kategoriene er byttet ut med de departementsgodkjente, med underkategorier og fritekstfelt per kategori. Rekkefølgen følger Figma-flyten: tilbudet først, så boligen, så hva du skal gjøre, så kostnaden. Nytt: bolignummer og aksjenummer, dokumentasjonskrav etter eierform, fullmakt, helseadvarsel over hvert fritekstfelt, og en egen seksjon for andre opplysninger. Inntekt opplyses, det er ikke et felt. Søknaden gikk fra 6 til 8 sider.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

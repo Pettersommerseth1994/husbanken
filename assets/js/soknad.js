@@ -254,7 +254,7 @@ const SIDER = {
     ingress: 'Huk av alt du skal gjøre. Du må velge minst én ting, og du kan gjerne velge flere.',
     html: () => `
       ${guide(`Velger du flere, legger vi kostnadene sammen. Det er ofte slik folk
-               kommer over minstekravet på 80 000 kroner.`)}
+               kommer over minstekravet på 40 000 kroner.`)}
 
       <fieldset style="border:0;padding:0;margin:0">
         <legend class="hb-visually-hidden">Godkjente oppgraderinger</legend>

@@ -36,7 +36,7 @@ på samme mal som det utfyllbare skjemaet for å be om utbetaling av lån
 
 | Skjema | Fil | Sider |
 | --- | --- | --- |
-| HB 8.S.05, søknad om tilskudd | `papirsoknad-aldersvennlig.html` | 6 |
+| HB 8.S.05, søknad om tilskudd | `papirsoknad-aldersvennlig.html` | 7 |
 | HB 8.S.06, be om utbetaling | `papirsoknad-aldersvennlig-utbetaling.html` | 4 |
 
 Skjemaene kan fylles ut i nettleseren og skrives ut derfra, eller skrives ut
@@ -66,7 +66,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 2, 4. september 2026 | `...-v2.html` | Regnestykket forenklet til ett felt, feltene i 1.2 flyttet opp under svaret de hører til, oppgraderingene tydeliggjort som eksempler, inntekt og prioritering forklart, slagordet fjernet. |
 | 3, 8. september 2026 | `...-v3.html` | Rettet etter tilgjengelighetsgjennomgang. Se under. |
 | 4, 8. september 2026 | `...-v4.html` | Storskrift. 14 pt brødtekst, 2 cm marger, større skrivefelt. Se under. |
-| 5, 8. september 2026 | uten suffiks | Iterasjon 3 justert. Linjer i skrivefelt fjernet, ruter midtstilt, personalia inn i seksjon 1. |
+| 5, 8. september 2026 | `...-v5.html` | Iterasjon 3 justert. Linjer i skrivefelt fjernet, ruter midtstilt, personalia inn i seksjon 1. |
+| 6, 11. september 2026 | uten suffiks | Etter design critics i Miro. Nye kategorier, ny rekkefølge, nye krav. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -172,6 +173,43 @@ ikke lenger dele side med seksjon 2. Søknaden gikk fra 5 til 6 sider.
 Utbetalingsskjemaet har ingen «Om deg», så boksen står der den stod, og skjemaet
 er fortsatt på 4 sider.
 
+### Iterasjon 6, etter design critics
+
+Kilden er Miro-boardet «Design critics av papirsøknadene», med Figma-flyten
+øverst og 28 gule lapper fra teamet. Lappene er hentet ut med Miros SDK og
+ligger i sin helhet bak denne iterasjonen.
+
+**Kategoriene er byttet ut.** Boardet har et dokument, «Forslag til tekster i
+papirsøknaden», med lappen «Bruk disse i papirsøknaden. Ikke endre på tekstene,
+fordi de er godkjent av departementet.» De seks gamle kategoriene er erstattet
+med disse, med 22 underpunkter, et undernivå med fire valg under «Justere
+terrenget», og et fritekstfelt per kategori fordi postmottaket trenger det for
+å registrere søknaden.
+
+**Rekkefølgen følger Figma-flyten:** tilbudet, boligen, hva du skal gjøre,
+kostnaden, andre opplysninger, underskrift. Tilbudet flyttet fra nest sist til
+seksjon 2.
+
+**Nytt fra lappene:** bolignummer og aksjenummer, som postmottaket trenger for
+å registrere søknaden på riktig bolig. Fire eierformer med dokumentasjonskrav
+for hver, der bare normaltilfellet slipper. Fullmaktsskjema for verger og
+fullmektige. «Ikke skriv opplysninger om din eller andres helse» over hvert av
+de sju fritekstfeltene. Egen seksjon for andre opplysninger. Lista over hva
+tilskuddet ikke dekker, inkludert egeninnsats. Flere søknadsfrister i året.
+Underskriftslinje for den i husstanden som er over 62 år, når det ikke er
+søkeren selv. Inntekt er bare opplyst, ikke et felt, fordi den hentes fra
+Skatteetaten.
+
+Søknaden gikk fra 6 til 7 sider. Utbetalingsskjemaet er urørt i innhold.
+
+**Minstekravet er samtidig flyttet fra 80 000 til 40 000 kroner**, overalt i
+prototypen. Førsteeksemplet i tabellen og på eksempelkortene er derfor 30 000
+kroner, siden 75 000 ikke lenger faller under grensa.
+
+**Forbehold:** kategoritekstene er transkribert fra et skjermbilde av boardet,
+ikke fra kilden. De er departementsgodkjent tekst, og bør sjekkes ord for ord
+mot Figma før skjemaet tas i bruk.
+
 ## Regelverket ligger ett sted
 
 Sats, minstekrav og kostnadstak står i `HB_REGLER` øverst i
@@ -180,7 +218,7 @@ informasjonssiden og valideringen i søknaden leser alle derfra.
 
 ```js
 const HB_REGLER = {
-  minstekostnad: 80000,   // du må oppgradere for minst dette
+  minstekostnad: 40000,   // du må oppgradere for minst dette
   sats: 0.25,             // du får denne andelen
   kostnadstak: 300000,    // vi regner ikke på beløp over dette
   // maks tilskudd = 75 000 kr
@@ -188,7 +226,7 @@ const HB_REGLER = {
 ```
 
 Sats og kostnadstak stemmer med utkastet på husbanken.no per 4. august 2026.
-Minstekravet på 80 000 kr er hentet fra kriteriene i søknadsutkastet.
+Minstekravet er 40 000 kr.
 
 ## Snarveier når prototypen skal demonstreres
 
@@ -228,6 +266,7 @@ assets/css/hb-papir-v1.css  Pinnet kopi, slik iterasjon 1 så ut
 assets/css/hb-papir-v2.css  Pinnet kopi, slik iterasjon 2 så ut
 assets/css/hb-papir-v3.css  Pinnet kopi, slik iterasjon 3 så ut
 assets/css/hb-papir-v4.css  Pinnet kopi, slik iterasjon 4 så ut
+assets/css/hb-papir-v5.css  Pinnet kopi, slik iterasjon 5 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
