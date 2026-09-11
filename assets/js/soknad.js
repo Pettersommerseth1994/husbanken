@@ -382,14 +382,14 @@ const SIDER = {
           <span class="hb-accordion__icon">${HB_IKON.chevronHvit}</span>
         </button>
         <div class="hb-accordion__panel" id="op1" hidden>
-          <p><strong>1. Send på e-post.</strong> Videresend e-posten fra håndverkeren til
-             <a href="mailto:vedlegg@husbanken.no">vedlegg@husbanken.no</a> og skriv
-             referansenummeret ditt i emnefeltet. Du får referansenummeret på kvitteringen.
-             Da trenger du ikke laste ned noe først.</p>
+          <p><strong>1. Last opp på Min side.</strong> Du kan legge til vedlegget senere,
+             uten å sende søknaden på nytt. Du finner saken din med referansenummeret
+             fra kvitteringen.</p>
           <p><strong>2. Ring oss.</strong> På <a href="tel:${HB_REGLER.telefonRaw}">${HB_REGLER.telefon}</a>
              kan vi ta imot opplysningene muntlig og hjelpe deg videre.</p>
-          <p><strong>3. Send i posten.</strong> Husbanken, Postboks 1404, 8602 Mo i Rana.
-             Legg ved referansenummeret.</p>
+          <p><strong>3. Send i posten.</strong> Husbanken, Postboks 1404, 8002 Bodø.
+             Legg ved referansenummeret. Vedlegg skal ikke sendes på e-post, fordi de
+             inneholder personopplysninger.</p>
           <p class="hb-small hb-muted">
              Du kan sende søknaden nå og ettersende vedlegget innen søknadsfristen.
              Søknaden blir ikke avslått fordi vedlegget kommer noen dager senere.
@@ -577,7 +577,7 @@ const SIDER = {
             <strong>Dette skjer etter at du har sendt</strong>
             <ol class="hb-prose hb-small" style="margin:var(--space-2) 0 0">
               <li>Du får en kvittering med referansenummer med en gang.</li>
-              <li>Vi svarer innen fire uker etter søknadsfristen ${HB_REGLER.frist}.</li>
+              <li>Vi svarer 1 til 6 uker etter søknadsfristen ${HB_REGLER.frist}.</li>
               <li>Sier vi ja, kan håndverkeren begynne. Ikke før.</li>
               <li>Du betaler regningen, og ber oss så om utbetaling på Min side.</li>
             </ol>

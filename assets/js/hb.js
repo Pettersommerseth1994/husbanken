@@ -180,7 +180,7 @@ function hbFooter() {
           <li><a href="tel:${HB_REGLER.telefonRaw}">Telefon ${HB_REGLER.telefon}</a><br>
               <span class="hb-small">Hverdager 09.00–15.00</span></li>
           <li><a href="mailto:post@husbanken.no">post@husbanken.no</a></li>
-          <li>Postboks 1404, 8602 Mo i Rana</li>
+          <li>Postboks 1404, 8002 Bodø</li>
         </ul>
       </div>
       <div>

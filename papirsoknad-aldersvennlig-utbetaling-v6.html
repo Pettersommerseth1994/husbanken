@@ -6,10 +6,10 @@
 <title>Papirskjema – Be om utbetaling av tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å be om utbetaling av tilskudd til aldersvennlig oppgradering. Utbetalingen skjer ikke av seg selv, du må be om den selv.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v6.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="utbetaling" data-versjon="7">
+<body data-skjema="utbetaling" data-versjon="6">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling-v6" autocomplete="on">
 
 <!-- ════════════════════════════ SIDE 1 ════════════════════════════ -->
 <section class="page">
@@ -109,7 +109,7 @@
       <span class="step">1</span>
       <h2>Tilsagnet du har fått</h2>
     </div>
-    <p class="section-intro" data-endret="Oppfordringen om å ringe er tatt ut.">Disse opplysningene står øverst i tilsagnsbrevet du fikk fra oss.</p>
+    <p class="section-intro">Disse opplysningene står øverst i tilsagnsbrevet du fikk fra oss. Har du ikke brevet for hånden, kan du ringe oss på 22 96 16 00, så finner vi saken din.</p>
 
     <div class="q">
       <div class="field-grid">
@@ -132,7 +132,7 @@
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">1 av 4</span></div>
   </footer>
@@ -158,7 +158,7 @@
       <span class="step">2</span>
       <h2>Arbeidet som er gjort</h2>
     </div>
-    <p class="section-intro">Vi betaler ut når arbeidet er ferdig. Er bare deler av arbeidet ferdig, venter du med å sende inn skjemaet til resten er gjort.</p>
+    <p class="section-intro">Vi betaler ut når arbeidet er ferdig. Er bare deler av arbeidet ferdig, ring oss på 22 96 16 00 før du sender inn, så finner vi ut av det sammen.</p>
 
     <div class="q">
       <label class="q-label" for="f-ferdig-dato">2.1 Når ble arbeidet ferdig?</label>
@@ -166,14 +166,14 @@
       <input type="text" class="input-line date" id="f-ferdig-dato" name="ferdig_dato" inputmode="numeric" placeholder="DD.MM.ÅÅÅÅ">
     </div>
 
-    <fieldset class="q"><legend class="q-label" data-endret="Kategoriene er byttet ut med de seks departementsgodkjente, de samme som i søknaden. Nav-kategorien manglet helt.">2.2 Hvilke oppgraderinger ble gjort? Sett kryss for alt som ble gjort.</legend>
+    <fieldset class="q"><legend class="q-label">2.2 Hvilke oppgraderinger ble gjort? Sett kryss for alt som ble gjort.</legend>
       <div class="options two-col">
-        <label class="opt checkbox"><input type="checkbox" name="oppgradering_adkomst" value="ja"><span class="mark"></span><span class="opt-body">Lage trinnfri adkomst</span></label>
-        <label class="opt checkbox"><input type="checkbox" name="oppgradering_samle" value="ja"><span class="mark"></span><span class="opt-body">Samle nødvendige rom i inngangsetasjen</span></label>
-        <label class="opt checkbox"><input type="checkbox" name="oppgradering_bolig" value="ja"><span class="mark"></span><span class="opt-body">Tilpasse boligen</span></label>
-        <label class="opt checkbox"><input type="checkbox" name="oppgradering_bad" value="ja"><span class="mark"></span><span class="opt-body">Tilpasse badet</span></label>
-        <label class="opt checkbox"><input type="checkbox" name="oppgradering_trygg" value="ja"><span class="mark"></span><span class="opt-body">Gjøre boligen tryggere</span></label>
-        <label class="opt checkbox"><input type="checkbox" name="oppgradering_nav" value="ja"><span class="mark"></span><span class="opt-body">Tilpasse boligen til vedtak fra Nav</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_adkomst" value="ja"><span class="mark"></span><span class="opt-body">Trinnfri adkomst</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_dorer" value="ja"><span class="mark"></span><span class="opt-body">Dører og passasjer</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_bad" value="ja"><span class="mark"></span><span class="opt-body">Bad og toalett</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_lys" value="ja"><span class="mark"></span><span class="opt-body">Belysning</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_trapp" value="ja"><span class="mark"></span><span class="opt-body">Trapp og rekkverk</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="tiltak_trygghet" value="ja"><span class="mark"></span><span class="opt-body">Trygghet i boligen</span></label>
       </div>
     </fieldset>
 
@@ -200,14 +200,14 @@
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong data-endret="Presisert at saksbehandleren regner ut beløpet, og at det står i brevet.">Du skal ikke regne ut beløpet selv.</strong> Du får 25 prosent av det du betalte, opp til en kostnad på 300 000 kroner, og aldri mer enn beløpet i tilsagnet.</p>
-      <p>Ble det billigere enn du søkte om, blir tilskuddet lavere, og det er helt i orden. Ble det dyrere, får du likevel ikke mer enn tilsagnet. Saksbehandleren regner ut hva du får, og det står i brevet fra oss.</p>
+      <p><strong>Du trenger ikke regne ut beløpet selv.</strong> Du får 25 prosent av det du betalte, opp til en kostnad på 300 000 kroner, og aldri mer enn beløpet i tilsagnet.</p>
+      <p>Ble det billigere enn du søkte om, blir tilskuddet lavere, og det er helt i orden. Ble det dyrere, får du likevel ikke mer enn tilsagnet. Vi regner ut hva du får, og skriver det i brevet fra oss.</p>
     </div>
   </div>
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">2 av 4</span></div>
   </footer>
@@ -277,7 +277,7 @@
       <span class="step">5</span>
       <h2>Vedlegg</h2>
     </div>
-    <p class="section-intro" data-endret="Å ta bilde med mobilen gir ikke mening i et papirskjema.">Vi trenger å se den betalte regningen fra fagpersonen. Legg ved en kopi i konvolutten. Originalen beholder du selv.</p>
+    <p class="section-intro">Vi trenger å se den betalte regningen fra fagpersonen. Har du den bare på papir, legger du en kopi i konvolutten, eller tar bilde av den med mobilen. Du trenger ikke skanner.</p>
 
     <div class="attachment-block">
       <img class="att-icon" src="assets/img/attachment-1.svg" alt="">
@@ -297,13 +297,13 @@
 
     <div class="callout mt-4">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong data-endret="E-postadressen vedlegg@husbanken.no finnes ikke, og ettersending på e-post er ikke lov. Nå står det at man venter til regningen er på plass, så alt kommer samlet.">Mangler du regningen?</strong> Fagpersonen kan sende deg en kopi. Vent med å sende skjemaet til du har den, så kan vi behandle saken med én gang.
+      <strong>Mangler du regningen?</strong> Fagpersonen kan sende deg en kopi. Send skjemaet nå og ettersend regningen, i posten eller til <strong>vedlegg@husbanken.no</strong>. Skriv saksnummeret i emnefeltet, så finner vi saken din.
     </div>
   </div>
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">3 av 4</span></div>
   </footer>
@@ -335,7 +335,7 @@
       <div class="sig-block" style="grid-column: 1 / -1;">
         <div class="sig-line blokk" contenteditable="true" role="textbox" aria-multiline="false"
              aria-labelledby="sig-blokk-navn" data-name="blokk_navn"></div>
-        <div class="sig-label" id="sig-blokk-navn" data-endret="«Blokkbokstaver» er ikke et ord alle kjenner.">Navn, skrevet med store bokstaver</div>
+        <div class="sig-label" id="sig-blokk-navn">Navn med blokkbokstaver</div>
       </div>
     </div>
 
@@ -363,11 +363,11 @@
 
   <!-- INNSENDING -->
   <div class="submit-info">
-    <h3 data-endret="E-post er tatt ut som innsendingsmåte, fordi skjemaet inneholder personopplysninger. Postadressen er rettet til Postboks 1404, 8002 Bodø.">Slik sender du inn skjemaet</h3>
+    <h3>Slik sender du inn skjemaet</h3>
     <ol>
       <li>Gå gjennom skjemaet og se at du har svart på alt som gjelder for deg.</li>
       <li>Legg ved den betalte regningen.</li>
-      <li>Send skjemaet og vedlegget i posten til <strong>Husbanken, Postboks 1404, 8002 Bodø</strong>. Skjemaet inneholder personopplysninger, og skal derfor ikke sendes på e-post.</li>
+      <li>Send skjemaet og vedlegget til <strong>Husbanken, Postboks 1404, 8602 Mo i Rana</strong>. Du kan også skanne eller ta bilde og sende til <strong>post@husbanken.no</strong>.</li>
       <li>Skriv <strong>saksnummeret</strong> på alle ark, slik at vi finner saken din med en gang.</li>
     </ol>
   </div>
@@ -382,9 +382,14 @@
     </ol>
   </div>
 
+  <div class="phone-panel">
+    <span class="num">22&nbsp;96&nbsp;16&nbsp;00</span>
+    <span class="txt"><strong>Vil du heller snakke med noen?</strong> Ring oss, så går vi gjennom skjemaet sammen. Ha saksnummeret klart, så finner vi saken din med en gang. Hverdager 09.00 til 15.00.</span>
+  </div>
+
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00<br>
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00<br>
       Behandling av personopplysninger: husbanken.no/personvern
     </div>
     <div>Side <span class="pg-num">4 av 4</span></div>

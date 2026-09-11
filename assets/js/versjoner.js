@@ -79,6 +79,16 @@ const HB_VERSJONER = [
     dato: '11. september 2026',
     endring: 'Skrevet om etter lappene i Miro-boardet «Design critics av papirsøknadene». De seks kategoriene er byttet ut med de departementsgodkjente, med underkategorier og fritekstfelt per kategori. Rekkefølgen følger Figma-flyten: tilbudet først, så boligen, så hva du skal gjøre, så kostnaden. Nytt: bolignummer og aksjenummer, dokumentasjonskrav etter eierform, fullmakt, helseadvarsel over hvert fritekstfelt, og en egen seksjon for andre opplysninger. Inntekt opplyses, det er ikke et felt. Søknaden gikk fra 6 til 8 sider.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v6.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v6.html'
+    }
+  },
+  {
+    nr: 7,
+    navn: 'Etter kommentarene',
+    dato: '11. september 2026',
+    endring: 'Rettet etter de 93 kommentarene i Miro-boardet. Postadressen var feil og er nå Postboks 1404, 8002 Bodø. E-post er tatt ut som innsendingsmåte, fordi søknaden inneholder personopplysninger, og vedlegg@husbanken.no finnes ikke. Adressen spørres bare én gang, i seksjon 3. Du betaler hele oppgraderingen selv og får 25 prosent utbetalt etterpå. Saksbehandlingstiden er 1 til 6 uker. Telefonoppfordringene er tatt ut, «blokkbokstaver» er skrevet om, og fritekstfeltene sier at de bare gjelder når ingen av eksemplene passer. Utbetalingsskjemaet har fått de samme seks kategoriene som søknaden.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

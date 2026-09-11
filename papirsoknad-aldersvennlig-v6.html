@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v6.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="7">
+<body data-skjema="soknad" data-versjon="6">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v6" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -44,11 +44,11 @@
     <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
     <h2>Slik bruker du dette skjemaet</h2>
     <p>Bruk dette skjemaet hvis du ikke kan søke digitalt på <strong>husbanken.no</strong>. Skjemaet erstatter den digitale søknaden og inneholder de samme spørsmålene, i samme rekkefølge.</p>
-    <ul data-endret="Frister: skjemaet skal virke hele året, så det peker på husbanken.no i stedet for én dato. Nytt punkt om at skjemaet kan fylles ut på skjermen før utskrift. Punktet om å la spørsmål stå åpent og ringe oss er tatt ut.">
+    <ul>
       <li>Skriv tydelig med blå eller svart penn. Kryss i sirkelen ved svaret ditt, og i firkanten der du kan velge flere.</li>
-      <li>Send inn skjemaet <strong>før du setter i gang arbeidet</strong>. Det er flere søknadsfrister i året, og datoene står på husbanken.no.</li>
+      <li>Send inn skjemaet <strong>før du setter i gang arbeidet</strong>. Det er flere søknadsfrister i året, og du finner den neste på husbanken.no.</li>
       <li>Du må legge ved tilbudet eller prisoverslaget. Mer om det i seksjon 2.</li>
-      <li>Du kan fylle ut skjemaet på skjermen før du skriver det ut, eller skrive det ut tomt og fylle ut for hånd.</li>
+      <li>Er du usikker på et spørsmål, kan du la det stå åpent og ringe oss på 22 96 16 00.</li>
     </ul>
   </div>
 
@@ -95,7 +95,7 @@
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">1 av 7</span></div>
   </footer>
@@ -120,7 +120,7 @@
       <h2>Om deg</h2>
     </div>
 
-    <div class="personalia" data-endret="Adressen er tatt ut herfra. Den ble spurt om to ganger, og hører hjemme i seksjon 3 sammen med resten av opplysningene om boligen.">
+    <div class="personalia" data-endret="Mobilnummer og e-post spørres om selv om vi henter kontaktinfo automatisk, fordi opplysningene i Kontaktregisteret kan være utdaterte.">
       <div class="field">
         <label class="field-label" for="f-fornavn">Fornavn og mellomnavn</label>
         <input class="field-input" id="f-fornavn" name="fornavn" type="text" autocomplete="given-name">
@@ -138,13 +138,23 @@
         <label class="field-label" for="f-tlf">Mobilnummer</label>
         <input class="field-input" id="f-tlf" name="tlf" type="tel" autocomplete="tel">
       </div>
+      <div class="field full field-pair">
+        <div>
+          <label class="field-label" for="f-adresse">Adressen din</label>
+          <input class="field-input" id="f-adresse" name="adresse" type="text" autocomplete="street-address">
+        </div>
+        <div>
+          <label class="field-label" for="f-poststed">Postnummer og sted</label>
+          <input class="field-input" id="f-poststed" name="poststed" type="text" autocomplete="postal-code">
+        </div>
+      </div>
       <div class="field full">
         <label class="field-label" for="f-epost">E-postadresse</label>
         <input class="field-input" id="f-epost" name="epost" type="email" autocomplete="email">
       </div>
     </div>
 
-    <p class="section-intro">Vi henter navn og adresse fra Folkeregisteret når vi registrerer søknaden. Adressen til boligen skriver du i seksjon 3. Mobilnummer og e-post ber vi om fordi opplysningene i Kontaktregisteret kan være utdaterte, og vi vil gjerne kunne nå deg.</p>
+    <p class="section-intro">Vi henter navn og adresse fra Folkeregisteret når vi registrerer søknaden, men skriv dem inn her likevel. Mobilnummer og e-post ber vi om fordi opplysningene i Kontaktregisteret kan være utdaterte, og vi vil kunne nå deg.</p>
 
     <fieldset class="q">
       <legend class="q-label">1.1 Er du over 62 år?</legend>
@@ -172,14 +182,14 @@
 
       <div class="options" style="margin-top:2.5mm">
         <label class="opt"><input type="radio" name="q1_alder" value="nei"><span class="mark"></span><span class="opt-body">Nei, ingen i husstanden er over 62 år
-          <span class="opt-help" data-endret="Viser til husbanken.no i stedet for å be folk ringe.">Da kan du dessverre ikke få dette tilskuddet. På husbanken.no finner du andre ordninger.</span>
+          <span class="opt-help">Da kan du dessverre ikke få dette tilskuddet. Ring oss på 22 96 16 00, så ser vi på andre ordninger.</span>
         </span></label>
       </div>
     </fieldset>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Inntekten din henter vi fra Skatteetaten.</strong> Vi bruker inntekt, pensjon og trygd før skatt, for de siste tolv månedene. Er det flere søknader enn det er penger til, prioriterer vi dem med lavest inntekt. Vi oppfordrer alle i målgruppen til å søke, uansett inntekt. Du skal ikke fylle ut noe om inntekt her.
+      <strong data-endret="Inntekt er nå bare en opplysning, ikke et felt. Presisert at vi bruker inntekt, pensjon og trygd før skatt, siste tolv måneder.">Inntekten din henter vi fra Skatteetaten.</strong> Vi bruker inntekt, pensjon og trygd før skatt, for de siste tolv månedene. Er det flere søknader enn det er penger til, prioriterer vi dem med lavest inntekt. Vi oppfordrer alle i målgruppen til å søke, uansett inntekt. Du skal ikke fylle ut noe om inntekt her.
     </div>
 
     <fieldset class="q">
@@ -195,7 +205,7 @@
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">2 av 7</span></div>
   </footer>
@@ -217,15 +227,15 @@
   <div class="section">
     <div class="section-header">
       <span class="step">2</span>
-      <h2>Tilbudet eller prisoverslaget</h2>
+      <h2 data-endret="Flyttet fram fra nest sist til seksjon 2, slik Figma-flyten går. Kravene er nye: dokumentet må vise kostnad per oppgradering og være fra et firma registrert i Brønnøysundregistrene.">Tilbudet eller prisoverslaget</h2>
     </div>
-    <p class="section-intro" data-endret="Å ta bilde med mobilen gir ikke mening i et papirskjema. Nå står det bare at kopien legges i konvolutten.">Du må ha et tilbud eller prisoverslag for å søke, og det må ligge ved denne søknaden. Legg ved en kopi i konvolutten. Originalen beholder du selv.</p>
+    <p class="section-intro">Du må ha et tilbud eller prisoverslag for å søke, og det må ligge ved denne søknaden. Har du det bare på papir, legger du en kopi i konvolutten, eller tar bilde av det med mobilen. Du trenger ikke skanner.</p>
 
     <div class="attachment-block">
       <img class="att-icon" src="assets/img/attachment-1.svg" alt="">
       <div class="att-body">
         <div class="att-title" id="att-1">Tilbud eller prisoverslag (må legges ved)</div>
-        <p class="att-lede" data-endret="Sier nå hvordan man ser at firmaet er registrert: organisasjonsnummeret på tilbudet, eller søk på brreg.no.">Dokumentet skal vise kostnaden for hver oppgradering du søker om, og være fra et firma som er registrert i Brønnøysundregistrene. Står organisasjonsnummeret på tilbudet, er firmaet registrert. Du kan også søke opp firmaet på brreg.no. Sett kryss for hva dokumentet viser:</p>
+        <p class="att-lede">Dokumentet skal vise kostnaden for hver oppgradering du søker om, og være fra et firma som er registrert i Brønnøysundregistrene. Sett kryss for hva dokumentet viser:</p>
         <div class="att-checks" role="group" aria-labelledby="att-1">
           <label class="opt checkbox"><input type="checkbox" name="ved_firma" value="ja"><span class="mark"></span><span class="opt-body">Navnet på firmaet</span></label>
           <label class="opt checkbox"><input type="checkbox" name="ved_orgnr" value="ja"><span class="mark"></span><span class="opt-body">Organisasjonsnummer</span></label>
@@ -237,7 +247,7 @@
 
     <div class="callout callout--warn">
       <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
-      <strong data-endret="Mildere tone. Før sto det hva du ikke kan gjøre, nå står det først hva du får igjen for å bruke fagfolk.">Arbeidet skal gjøres av fagfolk.</strong> Da vet du at jobben blir gjort riktig, og tilskuddet dekker det firmaet tar betalt. Et lite lokalt firma er helt fint, det trenger ikke være en stor entreprenør. Arbeid du eller noen i familien gjør selv, er ikke en del av det du kan få tilskudd for.
+      <strong>Arbeidet må gjøres av et registrert foretak.</strong> Du kan ikke gjøre jobben selv, og du kan ikke få tilskudd for arbeid en venn eller et familiemedlem gjør gratis. Et lite lokalt firma er helt greit, det trenger ikke være en stor entreprenør.
     </div>
   </div>
 
@@ -246,15 +256,16 @@
       <span class="step">3</span>
       <h2>Om boligen</h2>
     </div>
-    <p class="section-intro" data-endret="«Fast bosatt» er ordlyden i forskriften, og det er den som er kravet.">Tilskuddet gjelder boligen du er fast bosatt i. Både du som eier og du som leier kan søke.</p>
+    <p class="section-intro">Tilskuddet gjelder boligen du bor i til vanlig. Både du som eier og du som leier kan søke.</p>
 
     <div class="q">
-      <label class="q-label" for="f-bolig-adresse" data-endret="Eneste stedet adressen spørres om nå. Feltbeskrivelsen om seksjon 1 falt bort.">3.1 Adressen til boligen som skal oppgraderes</label>
+      <label class="q-label" for="f-bolig-adresse">3.1 Adressen til boligen som skal oppgraderes</label>
+      <p class="q-help">Fyll ut bare hvis boligen har en annen adresse enn den du skrev i seksjon 1.</p>
       <input type="text" class="input-line long" id="f-bolig-adresse" name="bolig_adresse">
     </div>
 
     <div class="q">
-      <p class="q-label">3.2 Bolignummer eller aksjenummer</p>
+      <p class="q-label" data-endret="Nytt. Postmottaket trenger bolignummer for seksjonert bolig og aksjenummer for aksjebolig, ellers kan de ikke registrere søknaden på riktig bolig.">3.2 Bolignummer eller aksjenummer</p>
       <p class="q-help">Postmottaket trenger dette for å registrere søknaden på riktig bolig. Bolignummer hvis boligen er seksjonert, aksjenummer hvis den er en aksjebolig. Gjelder ingen av delene, lar du feltene stå åpne.</p>
       <div class="field-grid">
         <div>
@@ -269,7 +280,7 @@
     </div>
 
     <fieldset class="q">
-      <legend class="q-label">3.3 Hva er forholdet ditt til boligen?</legend>
+      <legend class="q-label" data-endret="Utvidet fra eier eller leier til fire situasjoner, med dokumentasjonskravet for hver. Bare normaltilfellet slipper dokumentasjon.">3.3 Hva er forholdet ditt til boligen?</legend>
       <div class="options">
         <label class="opt"><input type="radio" name="q3_eierform" value="eier-folkereg"><span class="mark"></span><span class="opt-body">Jeg eier boligen og er folkeregistrert på adressen
           <span class="opt-help">Da trenger vi ingen dokumentasjon fra deg.</span>
@@ -294,7 +305,7 @@
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">3 av 7</span></div>
   </footer>
@@ -316,7 +327,7 @@
   <div class="section">
     <div class="section-header">
       <span class="step">4</span>
-      <h2>Hva du skal gjøre</h2>
+      <h2 data-endret="Helt nye kategorier. De seks gamle er byttet ut med de departementsgodkjente tekstene fra Miro-boardet, med underkategorier, et undernivå under Justere terrenget, og fritekstfelt per kategori.">Hva du skal gjøre</h2>
     </div>
     <p class="section-intro">For å få tilskudd må du oppgradere minst én av de seks kategoriene under. Kryss av for kategorien, og for det du skal gjøre innenfor den. Du kan velge flere. Velger du flere, legger vi kostnadene sammen.</p>
 
@@ -339,7 +350,7 @@
         <label class="opt checkbox"><input type="checkbox" name="adkomst_inngangsdor" value="ja"><span class="mark"></span><span class="opt-body">Forbedre inngangsdøren</span></label>
         <label class="opt checkbox"><input type="checkbox" name="adkomst_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gir trinnfri adkomst (beskriv under)</span></label>
       </div>
-      <p class="q-help mt-2" data-endret="Sier nå at fritekstfeltet bare skal fylles ut hvis ingen av eksemplene passer. Gjelder alle de fem kategoriene med «Andre forbedringer».">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_adkomst" aria-label="Beskriv Lage trinnfri adkomst"></textarea>
     </fieldset>
 
@@ -350,7 +361,7 @@
         <label class="opt checkbox"><input type="checkbox" name="samle_utvide" value="ja"><span class="mark"></span><span class="opt-body">Utvide boligen</span></label>
         <label class="opt checkbox"><input type="checkbox" name="samle_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som samler nødvendige rom på inngangsetasjen (beskriv under)</span></label>
       </div>
-      <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_samle" aria-label="Beskriv Samle nødvendige rom i inngangsetasjen"></textarea>
     </fieldset>
 
@@ -363,14 +374,14 @@
         <label class="opt checkbox"><input type="checkbox" name="bolig_ute" value="ja"><span class="mark"></span><span class="opt-body">Lage trinnfri tilgang til uteområdet fra boligen</span></label>
         <label class="opt checkbox"><input type="checkbox" name="bolig_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gjør det lettere å bevege seg rundt i boligen (beskriv under)</span></label>
       </div>
-      <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_bolig" aria-label="Beskriv Tilpasse boligen"></textarea>
     </fieldset>
   </div>
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">4 av 7</span></div>
   </footer>
@@ -403,7 +414,7 @@
         <label class="opt checkbox"><input type="checkbox" name="bad_ombygging" value="ja"><span class="mark"></span><span class="opt-body">Bygge om eller utvide badet for plass til nødvendige funksjoner</span></label>
         <label class="opt checkbox"><input type="checkbox" name="bad_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gjør det enklere å bruke badet (beskriv under)</span></label>
       </div>
-      <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_bad" aria-label="Beskriv Tilpasse badet"></textarea>
     </fieldset>
 
@@ -418,7 +429,7 @@
         <label class="opt checkbox"><input type="checkbox" name="trygg_orientering" value="ja"><span class="mark"></span><span class="opt-body">Installere fysiske eller digitale løsninger som styrker orienteringsevnen</span></label>
         <label class="opt checkbox"><input type="checkbox" name="trygg_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gjør boligen eller uteområdet tryggere (beskriv under)</span></label>
       </div>
-      <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_trygg" aria-label="Beskriv Gjøre boligen tryggere"></textarea>
     </fieldset>
 
@@ -431,7 +442,7 @@
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">5 av 7</span></div>
   </footer>
@@ -465,7 +476,7 @@
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong data-endret="Presisert at det er saksbehandleren som regner ut beløpet, og at det står i svaret. Før kunne det leses som at skjemaet regnet det ut mens du fylte ut.">Du skal ikke regne ut tilskuddet selv.</strong> Du får 25 prosent av prosjektkostnaden, opp til en prosjektkostnad på 300 000 kroner. Det gir maks 75 000 kroner. Prosjektet må koste minst 40 000 kroner for at du skal kunne søke. Saksbehandleren regner ut beløpet, og det står i svaret du får i posten. Tre eksempler står på side 1.
+      <strong>Du trenger ikke regne ut tilskuddet selv.</strong> Du får 25 prosent av prosjektkostnaden, opp til en prosjektkostnad på 300 000 kroner. Det gir maks 75 000 kroner. Prosjektet må koste minst 40 000 kroner for at du skal kunne søke. Vi regner ut beløpet og skriver det i svaret du får. Tre eksempler står på side 1.
     </div>
 
     <div class="callout callout--warn">
@@ -474,33 +485,38 @@
       <ul>
         <li>vanlig oppussing eller vedlikehold, med mindre oppgraderingen krever det, for eksempel å pusse opp hele badet</li>
         <li>løst utstyr, som trygghetsalarm</li>
-        <li>egeninnsats, arbeid du gjør selv</li>
+        <li data-endret="Lista over hva tilskuddet ikke dekker er ny, hentet fra flyten pluss lappen om egeninnsats.">egeninnsats, arbeid du gjør selv</li>
       </ul>
     </div>
 
     <div class="callout callout--warn">
       <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
-      <strong data-endret="Rettet. Du betaler hele oppgraderingen selv, og får 25 prosent utbetalt etter at alt er betalt. Handler om oppgraderingen, ikke om regningen.">Du betaler for hele oppgraderingen selv.</strong> Når arbeidet er ferdig og alt er betalt, ber du om utbetaling, og da får du 25 prosent tilbake som tilskudd. Husbanken betaler ikke direkte til firmaet, og vi betaler ikke ut på forskudd. Har du ikke penger å legge ut, kan kommunen fortelle deg om startlån.
+      <strong>Du må legge ut for hele regningen først.</strong> Husbanken betaler ikke direkte til firmaet, og vi betaler ikke ut på forskudd. Du får tilskuddet etter at arbeidet er ferdig og regningen er betalt. Har du ikke penger å legge ut, kan du snakke med kommunen om startlån, eller ringe oss før du søker.
     </div>
   </div>
 
   <div class="section">
     <div class="section-header">
       <span class="step">6</span>
-      <h2>Andre opplysninger</h2>
+      <h2 data-endret="Ny seksjon. Lappen foreslo et generelt fritekstfelt til slutt, og flyten har skjermbildet «Er det noe mer vi bør vite om?».">Andre opplysninger</h2>
     </div>
     <p class="section-intro">Er det noe mer vi bør vite om? Dette feltet er valgfritt.</p>
 
     <div class="q">
       <label class="q-label" for="f-annet">6.1 Skriv her hvis det er noe vi bør vite</label>
-      <p class="q-help" data-endret="«Du kan ikke skrive noe galt her» er tatt ut. Man kan skrive noe galt: helseopplysninger.">Skriv med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help">Skriv med dine egne ord. Du kan ikke skrive noe galt her. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area tall" id="f-annet" name="annet"></textarea>
     </div>
   </div>
 
+  <div class="phone-panel">
+    <span class="num">22&nbsp;96&nbsp;16&nbsp;00</span>
+    <span class="txt"><strong>Vil du heller snakke med noen?</strong> Ring oss, så går vi gjennom skjemaet sammen. Vi svarer på om noe er dekket, og hjelper deg med å fylle ut. Hverdager 09.00 til 15.00.</span>
+  </div>
+
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
     <div>Side <span class="pg-num">6 av 7</span></div>
   </footer>
@@ -524,7 +540,7 @@
       <span class="step">7</span>
       <h2>Samtykke og underskrift</h2>
     </div>
-    <p class="section-intro">Opplysningene stemmer så langt jeg vet. Oppdager jeg noe feil etterpå, gir jeg Husbanken beskjed. Jeg gir Husbanken tillatelse til å hente opplysninger fra Folkeregisteret og Kartverket, inntektsopplysninger fra Skatteetaten, og til å kontakte firmaet som har gitt tilbudet.</p>
+    <p class="section-intro">Opplysningene stemmer så langt jeg vet. Oppdager jeg noe feil etterpå, retter jeg det opp ved å ringe eller skrive til Husbanken. Jeg gir Husbanken tillatelse til å hente opplysninger fra Folkeregisteret og Kartverket, inntektsopplysninger fra Skatteetaten, og til å kontakte firmaet som har gitt tilbudet.</p>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
@@ -535,7 +551,7 @@
       <div class="sig-block" style="grid-column: 1 / -1;">
         <div class="sig-line blokk" contenteditable="true" role="textbox" aria-multiline="false"
              aria-labelledby="sig-blokk-navn" data-name="blokk_navn"></div>
-        <div class="sig-label" id="sig-blokk-navn" data-endret="«Blokkbokstaver» er ikke et ord alle kjenner.">Navn, skrevet med store bokstaver</div>
+        <div class="sig-label" id="sig-blokk-navn">Navn med blokkbokstaver</div>
       </div>
     </div>
 
@@ -556,26 +572,26 @@
       <div class="sig-block" style="grid-column: 1 / -1;">
         <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
              aria-labelledby="sig-samtykke" data-name="underskrift_samboer"></div>
-        <div class="sig-label" id="sig-samtykke">Underskrift fra den i husstanden som er over 62 år, bare hvis det ikke er deg selv (spørsmål 1.2)</div>
+        <div class="sig-label" id="sig-samtykke" data-endret="Ny. Er det en annen i husstanden som er over 62 år, løses samtykket med underskrift her, slik lappen beskriver.">Underskrift fra den i husstanden som er over 62 år, bare hvis det ikke er deg selv (spørsmål 1.2)</div>
       </div>
     </div>
   </div>
 
   <div class="submit-info">
-    <h3 data-endret="E-post er tatt ut som innsendingsmåte, fordi søknaden inneholder personopplysninger. Adressen vedlegg@husbanken.no finnes ikke. Nytt punkt om å sende alt i samme konvolutt. Postadressen er rettet til Postboks 1404, 8002 Bodø.">Slik sender du inn skjemaet</h3>
+    <h3>Slik sender du inn skjemaet</h3>
     <ol>
       <li>Gå gjennom skjemaet og se at du har svart på alt som gjelder for deg.</li>
       <li>Legg ved tilbudet eller prisoverslaget, og eventuell dokumentasjon fra seksjon 3.</li>
-      <li>Send skjemaet og vedleggene i posten til <strong>Husbanken, Postboks 1404, 8002 Bodø</strong>. Søknaden inneholder personopplysninger, og skal derfor ikke sendes på e-post.</li>
-      <li><strong>Send alt i samme konvolutt.</strong> Da kan vi behandle søknaden med én gang, uten å vente på at noe kommer etter.</li>
-      <li>Søknaden må være hos oss før en av søknadsfristene, og før arbeidet settes i gang. Datoene står på husbanken.no. Du får en bekreftelse med referansenummer når vi har mottatt den.</li>
+      <li>Send skjemaet og vedleggene til <strong>Husbanken, Postboks 1404, 8602 Mo i Rana</strong>. Du kan også skanne eller ta bilde og sende til <strong>post@husbanken.no</strong>.</li>
+      <li>Søknaden må være hos oss før søknadsfristen, og før arbeidet settes i gang. Du får en bekreftelse med referansenummer når vi har mottatt den.</li>
+      <li><strong>Mangler du et vedlegg?</strong> Send skjemaet nå og ettersend vedlegget innen fristen, i posten eller til <strong>vedlegg@husbanken.no</strong>. Søknaden blir ikke avslått fordi vedlegget kommer noen dager senere.</li>
     </ol>
   </div>
 
   <div class="submit-info">
     <h3>Dette skjer etterpå</h3>
     <ol>
-      <li data-endret="Saksbehandlingstiden er 1 til 6 uker, ikke fire. Svaret kommer i posten eller i digital postkasse.">Vi svarer <strong>1 til 6 uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig. Svaret kommer i posten, eller i den digitale postkassen din hvis du har en.</li>
+      <li>Vi svarer innen <strong>fire uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig.</li>
       <li>Sier vi ja, kalles det et <strong>tilsagn</strong>. Det er et løfte om at pengene står klare til deg. Ikke start arbeidet før du har fått det.</li>
       <li>Du har <strong>to år</strong> på deg til å få arbeidet gjort. Du betaler regningen til firmaet selv.</li>
       <li>Til slutt må du <strong>be om utbetaling</strong>. Det skjer ikke av seg selv. Bruk skjema <strong>HB 8.S.06</strong> eller Min side.</li>
@@ -584,7 +600,7 @@
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00<br>
+      <strong>Husbanken</strong> · Postboks 1404, 8602 Mo i Rana · post@husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00<br>
       Behandling av personopplysninger: husbanken.no/personvern
     </div>
     <div>Side <span class="pg-num">7 av 7</span></div>

@@ -67,7 +67,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 3, 8. september 2026 | `...-v3.html` | Rettet etter tilgjengelighetsgjennomgang. Se under. |
 | 4, 8. september 2026 | `...-v4.html` | Storskrift. 14 pt brødtekst, 2 cm marger, større skrivefelt. Se under. |
 | 5, 8. september 2026 | `...-v5.html` | Iterasjon 3 justert. Linjer i skrivefelt fjernet, ruter midtstilt, personalia inn i seksjon 1. |
-| 6, 11. september 2026 | uten suffiks | Etter design critics i Miro. Nye kategorier, ny rekkefølge, nye krav. Se under. |
+| 6, 11. september 2026 | `...-v6.html` | Etter lappene i Miro. Nye kategorier, ny rekkefølge, nye krav. Se under. |
+| 7, 11. september 2026 | uten suffiks | Etter de 93 kommentarene i Miro. Feil postadresse, e-post som kanal, saksbehandlingstid, betalingsrekkefølge. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -210,6 +211,52 @@ kroner, siden 75 000 ikke lenger faller under grensa.
 ikke fra kilden. De er departementsgodkjent tekst, og bør sjekkes ord for ord
 mot Figma før skjemaet tas i bruk.
 
+### Iterasjon 7, etter kommentarene
+
+Samme board, men denne gangen kommentarene, ikke lappene. 93 tråder, hentet fra
+Activity-panelet i boardet. Selve kommentarene ligger ikke i dette repoet,
+fordi det er offentlig og trådene er intern gjennomgang.
+Kommentarene kommer uten informasjon om
+hvilket element de henger på, så de er koblet til skjemaet ut fra innholdet.
+De korteste, som «Finnes ikke» og «firmaet», er tolket, ikke oppslått.
+
+**Postadressen var feil.** Skjemaene sto med Postboks 1404, 8602 Mo i Rana.
+Kildeskjemaet HB 7.S.21 har Postboks 1404, 8002 Bodø, og lappen om postmottaket
+sier Dokumentsenteret i Bodø. Rettet i begge skjemaene og i den digitale
+prototypen. De frosne iterasjonene 1 til 6 er ikke rørt, siden de er et
+historisk avtrykk.
+
+**E-post er ikke en innsendingskanal.** «Ikke lov å sende på e-post på grunn
+av personvern», og `vedlegg@husbanken.no` finnes ikke. Begge skjemaene sier nå
+at søknaden går i posten, og begrunner hvorfor. Kvitteringssiden og steg 5 i
+den digitale løsningen viser til Min side i stedet.
+
+**Betalingsrekkefølgen var feil framstilt.** Ikke «du må legge ut for
+regningen», men: du betaler hele oppgraderingen selv, og etter at alt er
+betalt får du 25 prosent utbetalt som tilskudd.
+
+**Saksbehandlingstiden er 1 til 6 uker etter søknadsfristen**, ikke fire. Endret
+i skjemaene, på infosiden, på kvitteringen og i det siste steget.
+
+**Adressen ble spurt om to ganger.** Den er tatt ut av personalia i seksjon 1
+og står nå bare i seksjon 3, sammen med resten av opplysningene om boligen.
+
+**Resten:** «fast bosatt i», som er forskriftens ordlyd. «Blokkbokstaver»
+skrevet om. Telefonoppfordringene ute av brødteksten, og telefonpanelet
+fjernet fra begge skjemaene. Ingen oppfordring til å la spørsmål stå åpne.
+Bilde med mobilen tatt ut, siden det ikke gir mening i et papirskjema. Mildere
+tone i avsnittet om fagfolk. Hvordan man sjekker at firmaet er registrert.
+Fritekstfeltene sier at de bare gjelder når ingen av eksemplene passer.
+Utbetalingsskjemaet har fått de samme seks kategoriene som søknaden, Nav-
+kategorien inkludert.
+
+**Dette er ikke gjort, fordi det må avklares med fagsiden:** om fødselsnummer
+er nødvendig eller om navn og fødselsår holder, om telefonnummeret kan deles
+aktivt, den strengere teksten fagsiden vil ha om konsekvensene ved å gi feil
+opplysninger, om
+løsøre ved bad og kjøkken skal med, og ordlyden opp mot det husbanken.no
+lander på. Kommentarene som peker på disse ligger i boardet.
+
 ## Regelverket ligger ett sted
 
 Sats, minstekrav og kostnadstak står i `HB_REGLER` øverst i
@@ -267,6 +314,7 @@ assets/css/hb-papir-v2.css  Pinnet kopi, slik iterasjon 2 så ut
 assets/css/hb-papir-v3.css  Pinnet kopi, slik iterasjon 3 så ut
 assets/css/hb-papir-v4.css  Pinnet kopi, slik iterasjon 4 så ut
 assets/css/hb-papir-v5.css  Pinnet kopi, slik iterasjon 5 så ut
+assets/css/hb-papir-v6.css  Pinnet kopi, slik iterasjon 6 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
