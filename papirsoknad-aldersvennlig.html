@@ -76,19 +76,19 @@
   </div>
 
   <div class="block">
-    <span class="block-title">Tre eksempler på hvordan det slår ut</span>
+    <span class="block-title" data-endret="Kolonnene bytter plass, og «Du betaler» er nå hele summen, ikke restbeløpet. Det er slik ordningen faktisk virker: du betaler alt, og får 25 prosent tilbake etterpå.">Tre eksempler på hvordan det slår ut</span>
     <table class="examples">
       <thead>
         <tr>
           <th scope="col">Oppgraderingen koster</th>
+          <th scope="col">Du betaler</th>
           <th scope="col">Du får i tilskudd</th>
-          <th scope="col">Du betaler selv</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>30 000 kr</td><td class="zero">0 kr, under minstekravet</td><td>30 000 kr</td></tr>
-        <tr><td>100 000 kr</td><td class="get">25 000 kr</td><td>75 000 kr</td></tr>
-        <tr><td>400 000 kr</td><td class="get">75 000 kr, taket er nådd</td><td>325 000 kr</td></tr>
+        <tr><td>30 000 kr</td><td>30 000 kr</td><td class="zero">0 kr, under minstekravet</td></tr>
+        <tr><td>100 000 kr</td><td>100 000 kr</td><td class="get">25 000 kr</td></tr>
+        <tr><td>400 000 kr</td><td>400 000 kr</td><td class="get">75 000 kr, taket er nådd</td></tr>
       </tbody>
     </table>
   </div>
@@ -458,8 +458,8 @@
     <p class="section-intro">Bruk summen fra tilbudet eller prisoverslaget. Ta med merverdiavgift.</p>
 
     <div class="q">
-      <label class="q-label" for="f-kostnad">5.1 Hvor mye koster oppgraderingen?</label>
-      <p class="q-help">Hele prosjektkostnaden, slik den står i tilbudet.</p>
+      <label class="q-label" for="f-kostnad" data-endret="Presisert at det er summen av oppgraderingene som skal føres opp, ikke totalen i tilbudet. Totalen kan inneholde beløp som ikke skal tas med, og de står i lista under.">5.1 Hvor mye koster oppgraderingen?</label>
+      <p class="q-help">Legg sammen det oppgraderingene koster. Er det andre poster i tilbudet, tar du dem ikke med. Se lista under.</p>
       <span class="input-money"><span class="field-wrap"><input class="field" id="f-kostnad" aria-describedby="f-kostnad-enhet" name="prosjektkostnad" type="text" inputmode="numeric"></span><span class="affix" id="f-kostnad-enhet">Kroner inkl. mva.</span></span>
     </div>
 
@@ -564,7 +564,7 @@
   <div class="submit-info">
     <h3 data-endret="E-post er tatt ut som innsendingsmåte, fordi søknaden inneholder personopplysninger. Adressen vedlegg@husbanken.no finnes ikke. Nytt punkt om å sende alt i samme konvolutt. Postadressen er rettet til Postboks 1404, 8002 Bodø.">Slik sender du inn skjemaet</h3>
     <ol>
-      <li>Gå gjennom skjemaet og se at du har svart på alt som gjelder for deg.</li>
+      <li>Gå gjennom skjemaet en gang til. Felt som ikke passer for deg, lar du stå tomme.</li>
       <li>Legg ved tilbudet eller prisoverslaget, og eventuell dokumentasjon fra seksjon 3.</li>
       <li>Send skjemaet og vedleggene i posten til <strong>Husbanken, Postboks 1404, 8002 Bodø</strong>. Søknaden inneholder personopplysninger, og skal derfor ikke sendes på e-post.</li>
       <li><strong>Send alt i samme konvolutt.</strong> Da kan vi behandle søknaden med én gang, uten å vente på at noe kommer etter.</li>
