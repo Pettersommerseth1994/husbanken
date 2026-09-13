@@ -89,6 +89,16 @@ const HB_VERSJONER = [
     dato: '11. september 2026',
     endring: 'Rettet etter de 93 kommentarene i Miro-boardet. Postadressen var feil og er nå Postboks 1404, 8002 Bodø. E-post er tatt ut som innsendingsmåte, fordi søknaden inneholder personopplysninger, og vedlegg@husbanken.no finnes ikke. Adressen spørres bare én gang, i seksjon 3. Du betaler hele oppgraderingen selv og får 25 prosent utbetalt etterpå. Saksbehandlingstiden er 1 til 6 uker. Telefonoppfordringene er tatt ut, «blokkbokstaver» er skrevet om, og fritekstfeltene sier at de bare gjelder når ingen av eksemplene passer. Utbetalingsskjemaet har fått de samme seks kategoriene som søknaden.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v7.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v7.html'
+    }
+  },
+  {
+    nr: 8,
+    navn: 'Etter Slack-gjennomgangen',
+    dato: '13. september 2026',
+    endring: 'Etter gjennomgangen i Slack-tråden «Papirsøknaden». Teksten fra «Til deg som leier»-steget, som departementet har bedt om at skal med, er nå i seksjon 3, tilpasset papir, og sier hvor samtykkeskjemaet finnes. Samtykket fra husstandsmedlemmet over 62 år er flyttet ut av seksjon 1 og 7, og står som et eget ark bakerst som personen fyller ut, skriver under på og legger ved. Eierformene er skrevet om til fire klarere alternativer: «bor der» i stedet for «folkeregistrert på adressen», kjøp som eget alternativ med kjøpekontrakt, og arv skilt ut fra kjøp, med en liste over gyldig dokumentasjon. Samtykketeksten er fagsidens egen formulering om uriktige opplysninger, og setningen om å kontakte firmaet som ga tilbudet er tatt ut. Setningen om postmottaket er borte, fritekstfeltet i 4.1 gjelder også «Annet område», og logo og tittel er satt opp fra 6,5 til 8 mm og fra 19 til 22 pt. Søknaden gikk fra 7 til 9 sider.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v7.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="8">
+<body data-skjema="soknad" data-versjon="7">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v7" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -27,7 +27,7 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">1 av 9</span>
+      Side&nbsp;<span class="pg-num">1 av 7</span>
     </div>
   </header>
 
@@ -44,7 +44,7 @@
     <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
     <h2>Slik bruker du dette skjemaet</h2>
     <p>Bruk dette skjemaet hvis du ikke kan søke digitalt på <strong>husbanken.no</strong>. Skjemaet erstatter den digitale søknaden og inneholder de samme spørsmålene, i samme rekkefølge.</p>
-    <ul>
+    <ul data-endret="Frister: skjemaet skal virke hele året, så det peker på husbanken.no i stedet for én dato. Nytt punkt om at skjemaet kan fylles ut på skjermen før utskrift. Punktet om å la spørsmål stå åpent og ringe oss er tatt ut.">
       <li>Skriv tydelig med blå eller svart penn. Kryss i sirkelen ved svaret ditt, og i firkanten der du kan velge flere.</li>
       <li>Send inn skjemaet <strong>før du setter i gang arbeidet</strong>. Det er flere søknadsfrister i året, og datoene står på husbanken.no.</li>
       <li>Du må legge ved tilbudet eller prisoverslaget. Mer om det i seksjon 2.</li>
@@ -76,7 +76,7 @@
   </div>
 
   <div class="block">
-    <span class="block-title">Tre eksempler på hvordan det slår ut</span>
+    <span class="block-title" data-endret="Kolonnene bytter plass, og «Du betaler» er nå hele summen, ikke restbeløpet. Det er slik ordningen faktisk virker: du betaler alt, og får 25 prosent tilbake etterpå.">Tre eksempler på hvordan det slår ut</span>
     <table class="examples">
       <thead>
         <tr>
@@ -97,9 +97,10 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">1 av 9</span></div>
+    <div>Side <span class="pg-num">1 av 7</span></div>
   </footer>
 </section>
+
 
 <section class="page">
   <header class="pg-meta">
@@ -109,7 +110,7 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">2 av 9</span>
+      Side&nbsp;<span class="pg-num">2 av 7</span>
     </div>
   </header>
 
@@ -119,7 +120,7 @@
       <h2>Om deg</h2>
     </div>
 
-    <div class="personalia">
+    <div class="personalia" data-endret="Adressen er tatt ut herfra. Den ble spurt om to ganger, og hører hjemme i seksjon 3 sammen med resten av opplysningene om boligen.">
       <div class="field">
         <label class="field-label" for="f-fornavn">Fornavn og mellomnavn</label>
         <input class="field-input" id="f-fornavn" name="fornavn" type="text" autocomplete="given-name">
@@ -155,13 +156,23 @@
       </div>
 
       <div class="sub-q" data-when="q1_alder:samboer">
-        <p class="q-label" data-endret="Spørsmålet om hvem i husstanden som er over 62 år er flyttet til et eget samtykkeark bakerst, slik Therese foreslo i critiquen. Her står bare henvisningen dit.">1.2 Da må denne personen fylle ut samtykkearket</p>
-        <p class="q-help">Arket ligger som siste side i dette skjemaet. Der skriver personen navnet sitt, fødselsåret og underskriften sin. Uten det arket kan vi ikke behandle søknaden.</p>
+        <p class="q-label">1.2 Hvem i husstanden er over 62 år?</p>
+        <p class="q-help">Fyll ut bare hvis du krysset av for svaret over. Denne personen må også skrive under i seksjon 7.</p>
+        <div class="field-grid">
+          <div>
+            <label class="sub-label" for="f-samboer-navn">Navn</label>
+            <input type="text" class="input-line" id="f-samboer-navn" name="samboer_navn">
+          </div>
+          <div>
+            <label class="sub-label" for="f-samboer-aar">Fødselsår</label>
+            <input type="text" class="input-line short" id="f-samboer-aar" name="samboer_aar" inputmode="numeric" style="width:38mm">
+          </div>
+        </div>
       </div>
 
       <div class="options" style="margin-top:2.5mm">
         <label class="opt"><input type="radio" name="q1_alder" value="nei"><span class="mark"></span><span class="opt-body">Nei, ingen i husstanden er over 62 år
-          <span class="opt-help">Da kan du dessverre ikke få dette tilskuddet. På husbanken.no finner du andre ordninger.</span>
+          <span class="opt-help" data-endret="Viser til husbanken.no i stedet for å be folk ringe.">Da kan du dessverre ikke få dette tilskuddet. På husbanken.no finner du andre ordninger.</span>
         </span></label>
       </div>
     </fieldset>
@@ -186,9 +197,10 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">2 av 9</span></div>
+    <div>Side <span class="pg-num">2 av 7</span></div>
   </footer>
 </section>
+
 
 <section class="page">
   <header class="pg-meta">
@@ -198,7 +210,7 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">3 av 9</span>
+      Side&nbsp;<span class="pg-num">3 av 7</span>
     </div>
   </header>
 
@@ -207,13 +219,13 @@
       <span class="step">2</span>
       <h2>Tilbudet eller prisoverslaget</h2>
     </div>
-    <p class="section-intro">Du må ha et tilbud eller prisoverslag for å søke, og det må ligge ved denne søknaden. Legg ved en kopi i konvolutten. Originalen beholder du selv.</p>
+    <p class="section-intro" data-endret="Å ta bilde med mobilen gir ikke mening i et papirskjema. Nå står det bare at kopien legges i konvolutten.">Du må ha et tilbud eller prisoverslag for å søke, og det må ligge ved denne søknaden. Legg ved en kopi i konvolutten. Originalen beholder du selv.</p>
 
     <div class="attachment-block">
       <img class="att-icon" src="assets/img/attachment-1.svg" alt="">
       <div class="att-body">
         <div class="att-title" id="att-1">Tilbud eller prisoverslag (må legges ved)</div>
-        <p class="att-lede">Dokumentet skal vise kostnaden for hver oppgradering du søker om, og være fra et firma som er registrert i Brønnøysundregistrene. Står organisasjonsnummeret på tilbudet, er firmaet registrert. Du kan også søke opp firmaet på brreg.no. Sett kryss for hva dokumentet viser:</p>
+        <p class="att-lede" data-endret="Sier nå hvordan man ser at firmaet er registrert: organisasjonsnummeret på tilbudet, eller søk på brreg.no.">Dokumentet skal vise kostnaden for hver oppgradering du søker om, og være fra et firma som er registrert i Brønnøysundregistrene. Står organisasjonsnummeret på tilbudet, er firmaet registrert. Du kan også søke opp firmaet på brreg.no. Sett kryss for hva dokumentet viser:</p>
         <div class="att-checks" role="group" aria-labelledby="att-1">
           <label class="opt checkbox"><input type="checkbox" name="ved_firma" value="ja"><span class="mark"></span><span class="opt-body">Navnet på firmaet</span></label>
           <label class="opt checkbox"><input type="checkbox" name="ved_orgnr" value="ja"><span class="mark"></span><span class="opt-body">Organisasjonsnummer</span></label>
@@ -225,7 +237,7 @@
 
     <div class="callout callout--warn">
       <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
-      <strong>Arbeidet skal gjøres av fagfolk.</strong> Da vet du at jobben blir gjort riktig, og tilskuddet dekker det firmaet tar betalt. Et lite lokalt firma er helt fint, det trenger ikke være en stor entreprenør. Arbeid du eller noen i familien gjør selv, er ikke en del av det du kan få tilskudd for.
+      <strong data-endret="Mildere tone. Før sto det hva du ikke kan gjøre, nå står det først hva du får igjen for å bruke fagfolk.">Arbeidet skal gjøres av fagfolk.</strong> Da vet du at jobben blir gjort riktig, og tilskuddet dekker det firmaet tar betalt. Et lite lokalt firma er helt fint, det trenger ikke være en stor entreprenør. Arbeid du eller noen i familien gjør selv, er ikke en del av det du kan få tilskudd for.
     </div>
   </div>
 
@@ -234,16 +246,16 @@
       <span class="step">3</span>
       <h2>Om boligen</h2>
     </div>
-    <p class="section-intro">Tilskuddet gjelder boligen du er fast bosatt i. Både du som eier og du som leier kan søke.</p>
+    <p class="section-intro" data-endret="«Fast bosatt» er ordlyden i forskriften, og det er den som er kravet.">Tilskuddet gjelder boligen du er fast bosatt i. Både du som eier og du som leier kan søke.</p>
 
     <div class="q">
-      <label class="q-label" for="f-bolig-adresse">3.1 Adressen til boligen som skal oppgraderes</label>
+      <label class="q-label" for="f-bolig-adresse" data-endret="Eneste stedet adressen spørres om nå. Feltbeskrivelsen om seksjon 1 falt bort.">3.1 Adressen til boligen som skal oppgraderes</label>
       <input type="text" class="input-line long" id="f-bolig-adresse" name="bolig_adresse">
     </div>
 
     <div class="q">
       <p class="q-label">3.2 Bolignummer eller aksjenummer</p>
-      <p class="q-help" data-endret="Setningen om at postmottaket trenger dette er tatt ut, etter gjennomgangen i Slack.">Bolignummer hvis boligen er seksjonert, aksjenummer hvis den er en aksjebolig. Vi trenger det for å registrere søknaden på riktig bolig. Gjelder ingen av delene, lar du feltene stå åpne.</p>
+      <p class="q-help">Postmottaket trenger dette for å registrere søknaden på riktig bolig. Bolignummer hvis boligen er seksjonert, aksjenummer hvis den er en aksjebolig. Gjelder ingen av delene, lar du feltene stå åpne.</p>
       <div class="field-grid">
         <div>
           <label class="sub-label" for="f-bolignr">Bolignummer</label>
@@ -257,31 +269,37 @@
     </div>
 
     <fieldset class="q">
-      <legend class="q-label" data-endret="Fire klarere alternativer etter Slack-gjennomgangen. «Folkeregistrert på adressen» er byttet med «bor der», kjøp har blitt sitt eget alternativ med kjøpekontrakt som dokumentasjon, og arv er skilt ut fra kjøp.">3.3 Hva er forholdet ditt til boligen?</legend>
+      <legend class="q-label">3.3 Hva er forholdet ditt til boligen?</legend>
       <div class="options">
-        <label class="opt"><input type="radio" name="q3_eierform" value="eier-bor"><span class="mark"></span><span class="opt-body">Jeg eier boligen og bor der
+        <label class="opt"><input type="radio" name="q3_eierform" value="eier-folkereg"><span class="mark"></span><span class="opt-body">Jeg eier boligen og er folkeregistrert på adressen
           <span class="opt-help">Da trenger vi ingen dokumentasjon fra deg.</span>
         </span></label>
-        <label class="opt"><input type="radio" name="q3_eierform" value="kjoper"><span class="mark"></span><span class="opt-body">Jeg skal eller har nettopp kjøpt boligen
-          <span class="opt-help">Er du ikke registrert som eier ennå, legger du ved kjøpekontrakten.</span>
+        <label class="opt"><input type="radio" name="q3_eierform" value="eier-annet"><span class="mark"></span><span class="opt-body">Jeg eier boligen, men er ikke folkeregistrert på adressen, eller er ikke registrert som eier i matrikkelen ennå
+          <span class="opt-help">For eksempel hvis du nettopp har kjøpt. Legg ved kjøpekontrakt eller annen dokumentasjon på eierskapet.</span>
         </span></label>
-        <label class="opt"><input type="radio" name="q3_eierform" value="arver"><span class="mark"></span><span class="opt-body">Jeg skal arve boligen
-          <span class="opt-help">Legg ved skifteattest eller uskifteattest.</span>
+        <label class="opt"><input type="radio" name="q3_eierform" value="kjope-arve"><span class="mark"></span><span class="opt-body">Jeg skal kjøpe eller arve boligen
+          <span class="opt-help">Legg ved dokumentasjon på kjøpet eller arveoppgjøret.</span>
         </span></label>
         <label class="opt"><input type="radio" name="q3_eierform" value="leier"><span class="mark"></span><span class="opt-body">Jeg leier boligen
-          <span class="opt-help">Legg ved et signert samtykke fra den som eier boligen. Mer om det i boksen under.</span>
+          <span class="opt-help">Legg ved et signert samtykke fra den som eier boligen. Husbanken har et eget skjema for dette, som eieren må lese og skrive under på.</span>
         </span></label>
       </div>
     </fieldset>
+
+    <div class="callout">
+      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
+      <strong>Leier du boligen?</strong> Da gjelder det at tilskuddet følger boligen, ikke deg. Oppgraderingen blir værende når leieforholdet tar slutt, og eieren må derfor ha samtykket skriftlig på forhånd.
+    </div>
   </div>
 
   <footer class="pg-footer">
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">3 av 9</span></div>
+    <div>Side <span class="pg-num">3 av 7</span></div>
   </footer>
 </section>
+
 
 <section class="page">
   <header class="pg-meta">
@@ -291,36 +309,9 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">4 av 9</span>
+      Side&nbsp;<span class="pg-num">4 av 7</span>
     </div>
   </header>
-
-  <div class="section">
-    <div class="section-header">
-      <span class="step">3</span>
-      <h2>Om boligen, fortsatt</h2>
-    </div>
-    <div class="callout">
-      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong data-endret="Ny. Lista over gyldig dokumentasjon er hentet fra dokumentasjonssteget i den digitale søknaden.">Dokumentasjonen kan være:</strong></p>
-      <ul>
-        <li>tinglyst skjøte, grunnboksutskrift eller kjøpekontrakt</li>
-        <li>skifteattest eller uskifteattest</li>
-        <li>er boligen en aksjebolig: aksjeeierbok, aksjebrev, bekreftelse fra styret eller utskrift fra VPS</li>
-      </ul>
-    </div>
-
-    <div class="callout">
-      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong data-endret="Erstatter den ene setningen om leie. Dette er teksten fra «Til deg som leier»-steget i den digitale søknaden, som departementet har bedt om at skal være med, tilpasset papir. Siste punkt sier nå hvor samtykkeskjemaet finnes.">Viktig når du skal oppgradere boligen du leier</strong></p>
-      <ul>
-        <li>Vi anbefaler at du har en langsiktig leiekontrakt.</li>
-        <li>Husk at du investerer i noen andre sin bolig.</li>
-        <li>Alle endringer du gjør må være godkjent av eieren av boligen.</li>
-        <li>Snakk med eieren av boligen før du søker. Fyll ut Husbankens skjema for samtykke fra eieren sammen, og legg det ved søknaden. Du finner skjemaet på husbanken.no, eller du kan be oss sende det i posten.</li>
-      </ul>
-    </div>
-  </div>
 
   <div class="section">
     <div class="section-header">
@@ -348,36 +339,9 @@
         <label class="opt checkbox"><input type="checkbox" name="adkomst_inngangsdor" value="ja"><span class="mark"></span><span class="opt-body">Forbedre inngangsdøren</span></label>
         <label class="opt checkbox"><input type="checkbox" name="adkomst_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gir trinnfri adkomst (beskriv under)</span></label>
       </div>
-      <p class="q-help mt-2" data-endret="4.1 har også «Annet område» under «Justere terrenget», og fritekstfeltet gjelder begge.">Fyll ut bare hvis du krysset av for «Andre forbedringer» eller «Annet område». Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help mt-2" data-endret="Sier nå at fritekstfeltet bare skal fylles ut hvis ingen av eksemplene passer. Gjelder alle de fem kategoriene med «Andre forbedringer».">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_adkomst" aria-label="Beskriv Lage trinnfri adkomst"></textarea>
     </fieldset>
-  </div>
-
-  <footer class="pg-footer">
-    <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">4 av 9</span></div>
-  </footer>
-</section>
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">5 av 9</span>
-    </div>
-  </header>
-
-  <div class="section">
-    <div class="section-header">
-      <span class="step">4</span>
-      <h2>Hva du skal gjøre, fortsatt</h2>
-    </div>
 
     <fieldset class="q">
       <legend class="q-label">4.2 Samle nødvendige rom i inngangsetasjen</legend>
@@ -408,9 +372,10 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">5 av 9</span></div>
+    <div>Side <span class="pg-num">4 av 7</span></div>
   </footer>
 </section>
+
 
 <section class="page">
   <header class="pg-meta">
@@ -420,7 +385,7 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">6 av 9</span>
+      Side&nbsp;<span class="pg-num">5 av 7</span>
     </div>
   </header>
 
@@ -468,9 +433,10 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">6 av 9</span></div>
+    <div>Side <span class="pg-num">5 av 7</span></div>
   </footer>
 </section>
+
 
 <section class="page">
   <header class="pg-meta">
@@ -480,7 +446,7 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">7 av 9</span>
+      Side&nbsp;<span class="pg-num">6 av 7</span>
     </div>
   </header>
 
@@ -492,14 +458,14 @@
     <p class="section-intro">Bruk summen fra tilbudet eller prisoverslaget. Ta med merverdiavgift.</p>
 
     <div class="q">
-      <label class="q-label" for="f-kostnad">5.1 Hvor mye koster oppgraderingen?</label>
+      <label class="q-label" for="f-kostnad" data-endret="Presisert at det er summen av oppgraderingene som skal føres opp, ikke totalen i tilbudet. Totalen kan inneholde beløp som ikke skal tas med, og de står i lista under.">5.1 Hvor mye koster oppgraderingen?</label>
       <p class="q-help">Legg sammen det oppgraderingene koster. Er det andre poster i tilbudet, tar du dem ikke med. Se lista under.</p>
       <span class="input-money"><span class="field-wrap"><input class="field" id="f-kostnad" aria-describedby="f-kostnad-enhet" name="prosjektkostnad" type="text" inputmode="numeric"></span><span class="affix" id="f-kostnad-enhet">Kroner inkl. mva.</span></span>
     </div>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Du skal ikke regne ut tilskuddet selv.</strong> Du får 25 prosent av prosjektkostnaden, opp til en prosjektkostnad på 300 000 kroner. Det gir maks 75 000 kroner. Prosjektet må koste minst 40 000 kroner for at du skal kunne søke. Saksbehandleren regner ut beløpet, og det står i svaret du får i posten. Tre eksempler står på side 1.
+      <strong data-endret="Presisert at det er saksbehandleren som regner ut beløpet, og at det står i svaret. Før kunne det leses som at skjemaet regnet det ut mens du fylte ut.">Du skal ikke regne ut tilskuddet selv.</strong> Du får 25 prosent av prosjektkostnaden, opp til en prosjektkostnad på 300 000 kroner. Det gir maks 75 000 kroner. Prosjektet må koste minst 40 000 kroner for at du skal kunne søke. Saksbehandleren regner ut beløpet, og det står i svaret du får i posten. Tre eksempler står på side 1.
     </div>
 
     <div class="callout callout--warn">
@@ -514,7 +480,7 @@
 
     <div class="callout callout--warn">
       <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
-      <strong>Du betaler for hele oppgraderingen selv.</strong> Når arbeidet er ferdig og alt er betalt, ber du om utbetaling, og da får du 25 prosent tilbake som tilskudd. Husbanken betaler ikke direkte til firmaet, og vi betaler ikke ut på forskudd. Har du ikke penger å legge ut, kan kommunen fortelle deg om startlån.
+      <strong data-endret="Rettet. Du betaler hele oppgraderingen selv, og får 25 prosent utbetalt etter at alt er betalt. Handler om oppgraderingen, ikke om regningen.">Du betaler for hele oppgraderingen selv.</strong> Når arbeidet er ferdig og alt er betalt, ber du om utbetaling, og da får du 25 prosent tilbake som tilskudd. Husbanken betaler ikke direkte til firmaet, og vi betaler ikke ut på forskudd. Har du ikke penger å legge ut, kan kommunen fortelle deg om startlån.
     </div>
   </div>
 
@@ -527,7 +493,7 @@
 
     <div class="q">
       <label class="q-label" for="f-annet">6.1 Skriv her hvis det er noe vi bør vite</label>
-      <p class="q-help">Skriv med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help" data-endret="«Du kan ikke skrive noe galt her» er tatt ut. Man kan skrive noe galt: helseopplysninger.">Skriv med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area tall" id="f-annet" name="annet"></textarea>
     </div>
   </div>
@@ -536,9 +502,10 @@
     <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
     </div>
-    <div>Side <span class="pg-num">7 av 9</span></div>
+    <div>Side <span class="pg-num">6 av 7</span></div>
   </footer>
 </section>
+
 
 <section class="page">
   <header class="pg-meta">
@@ -548,7 +515,7 @@
     </div>
     <div class="right">
       Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">8 av 9</span>
+      Side&nbsp;<span class="pg-num">7 av 7</span>
     </div>
   </header>
 
@@ -557,7 +524,7 @@
       <span class="step">7</span>
       <h2>Samtykke og underskrift</h2>
     </div>
-    <p class="section-intro" data-endret="Ferdig tekst fra fagsiden om uriktige opplysninger. Setningen om å kontakte firmaet som har gitt tilbudet er tatt ut, fordi Husbanken ikke gjør det.">Ved å sende inn denne søknaden bekrefter du at opplysningene du har gitt er riktige og fullstendige etter beste evne, og at du er kjent med at uriktige eller ufullstendige opplysninger kan få rettslige konsekvenser. Du gir samtidig Husbanken tillatelse til å hente opplysninger fra Folkeregisteret og Kartverket, og inntektsopplysninger fra Skatteetaten.</p>
+    <p class="section-intro">Opplysningene stemmer så langt jeg vet. Oppdager jeg noe feil etterpå, gir jeg Husbanken beskjed. Jeg gir Husbanken tillatelse til å hente opplysninger fra Folkeregisteret og Kartverket, inntektsopplysninger fra Skatteetaten, og til å kontakte firmaet som har gitt tilbudet.</p>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
@@ -568,7 +535,7 @@
       <div class="sig-block" style="grid-column: 1 / -1;">
         <div class="sig-line blokk" contenteditable="true" role="textbox" aria-multiline="false"
              aria-labelledby="sig-blokk-navn" data-name="blokk_navn"></div>
-        <div class="sig-label" id="sig-blokk-navn">Navn, skrevet med store bokstaver</div>
+        <div class="sig-label" id="sig-blokk-navn" data-endret="«Blokkbokstaver» er ikke et ord alle kjenner.">Navn, skrevet med store bokstaver</div>
       </div>
     </div>
 
@@ -585,14 +552,20 @@
       </div>
     </div>
 
+    <div class="signature mt-4">
+      <div class="sig-block" style="grid-column: 1 / -1;">
+        <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
+             aria-labelledby="sig-samtykke" data-name="underskrift_samboer"></div>
+        <div class="sig-label" id="sig-samtykke">Underskrift fra den i husstanden som er over 62 år, bare hvis det ikke er deg selv (spørsmål 1.2)</div>
+      </div>
+    </div>
   </div>
 
   <div class="submit-info">
-    <h3>Slik sender du inn skjemaet</h3>
+    <h3 data-endret="E-post er tatt ut som innsendingsmåte, fordi søknaden inneholder personopplysninger. Adressen vedlegg@husbanken.no finnes ikke. Nytt punkt om å sende alt i samme konvolutt. Postadressen er rettet til Postboks 1404, 8002 Bodø.">Slik sender du inn skjemaet</h3>
     <ol>
       <li>Gå gjennom skjemaet en gang til. Felt som ikke passer for deg, lar du stå tomme.</li>
       <li>Legg ved tilbudet eller prisoverslaget, og eventuell dokumentasjon fra seksjon 3.</li>
-      <li data-endret="Nytt punkt. Samtykkearket bakerst må følge med når søkeren selv er under 62 år.">Er det en annen i husstanden som er over 62 år, må <strong>samtykkearket</strong> bakerst være fylt ut og underskrevet.</li>
       <li>Send skjemaet og vedleggene i posten til <strong>Husbanken, Postboks 1404, 8002 Bodø</strong>. Søknaden inneholder personopplysninger, og skal derfor ikke sendes på e-post.</li>
       <li><strong>Send alt i samme konvolutt.</strong> Da kan vi behandle søknaden med én gang, uten å vente på at noe kommer etter.</li>
       <li>Søknaden må være hos oss før en av søknadsfristene, og før arbeidet settes i gang. Datoene står på husbanken.no. Du får en bekreftelse med referansenummer når vi har mottatt den.</li>
@@ -602,7 +575,7 @@
   <div class="submit-info">
     <h3>Dette skjer etterpå</h3>
     <ol>
-      <li>Vi svarer <strong>1 til 6 uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig. Svaret kommer i posten, eller i den digitale postkassen din hvis du har en.</li>
+      <li data-endret="Saksbehandlingstiden er 1 til 6 uker, ikke fire. Svaret kommer i posten eller i digital postkasse.">Vi svarer <strong>1 til 6 uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig. Svaret kommer i posten, eller i den digitale postkassen din hvis du har en.</li>
       <li>Sier vi ja, kalles det et <strong>tilsagn</strong>. Det er et løfte om at pengene står klare til deg. Ikke start arbeidet før du har fått det.</li>
       <li>Du har <strong>to år</strong> på deg til å få arbeidet gjort. Du betaler regningen til firmaet selv.</li>
       <li>Til slutt må du <strong>be om utbetaling</strong>. Det skjer ikke av seg selv. Bruk skjema <strong>HB 8.S.06</strong> eller Min side.</li>
@@ -611,95 +584,10 @@
 
   <footer class="pg-footer">
     <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">8 av 9</span></div>
-  </footer>
-</section>
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">9 av 9</span>
-    </div>
-  </header>
-
-  <div class="vedlegg-topp" data-endret="Nytt ark. Samtykket fra husstandsmedlemmet over 62 år er flyttet ut av seksjon 1 og 7, og står nå som et eget ark bakerst som personen fyller ut, skriver under på og legger ved.">
-    <p class="eyebrow">Vedlegg til søknaden · legges i samme konvolutt</p>
-    <h1>Samtykke fra deg som er over 62 år</h1>
-    <p>Den som søker bor sammen med deg og er selv under 62 år. Da er det din alder som gir rett til tilskuddet, og vi trenger underskriften din for å kunne behandle søknaden.</p>
-  </div>
-
-  <div class="intro-panel">
-    <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-    <h2>Når skal dette arket fylles ut?</h2>
-    <p>Bare når søkeren har krysset av for <strong>«Nei, men jeg bor sammen med en som er det»</strong> på spørsmål 1.1. Er søkeren selv over 62 år, lar du hele arket stå tomt.</p>
-    <ul>
-      <li>Skriv tydelig med blå eller svart penn.</li>
-      <li>Legg arket i samme konvolutt som resten av søknaden.</li>
-      <li>Uten dette arket kan vi ikke behandle søknaden.</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <h2>Om deg som samtykker</h2>
-    </div>
-    <div class="field-grid">
-      <div>
-        <label class="sub-label" for="f-samboer-navn">Navn</label>
-        <input type="text" class="input-line" id="f-samboer-navn" name="samboer_navn">
-      </div>
-      <div>
-        <label class="sub-label" for="f-samboer-aar">Fødselsår</label>
-        <input type="text" class="input-line short" id="f-samboer-aar" name="samboer_aar" inputmode="numeric" style="width:38mm">
-      </div>
-    </div>
-    <div class="q">
-      <label class="sub-label" for="f-samboer-adresse">Adressen til boligen søknaden gjelder</label>
-      <input type="text" class="input-line long" id="f-samboer-adresse" name="samboer_adresse">
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <h2>Samtykket</h2>
-    </div>
-    <p class="section-intro">Jeg er over 62 år og bor fast i boligen søknaden gjelder. Jeg samtykker til at det søkes om tilskudd til aldersvennlig oppgradering av denne boligen, og til at alderen min legges til grunn for søknaden. Opplysningene jeg har gitt er riktige.</p>
-
-    <div class="signature">
-      <div class="sig-block">
-        <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
-             aria-labelledby="ark-sted-dato" data-name="ark_sted_dato"></div>
-        <div class="sig-label" id="ark-sted-dato">Sted og dato</div>
-      </div>
-      <div class="sig-block">
-        <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
-             aria-labelledby="ark-underskrift" data-name="ark_underskrift"></div>
-        <div class="sig-label" id="ark-underskrift">Underskrift</div>
-      </div>
-    </div>
-
-    <div class="signature mt-4">
-      <div class="sig-block" style="grid-column: 1 / -1;">
-        <div class="sig-line blokk" contenteditable="true" role="textbox" aria-multiline="false"
-             aria-labelledby="ark-blokk-navn" data-name="ark_blokk_navn"></div>
-        <div class="sig-label" id="ark-blokk-navn">Navn, skrevet med store bokstaver</div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="pg-footer">
-    <div class="return-addr">
       <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00<br>
       Behandling av personopplysninger: husbanken.no/personvern
     </div>
-    <div>Side <span class="pg-num">9 av 9</span></div>
+    <div>Side <span class="pg-num">7 av 7</span></div>
   </footer>
 </section>
 

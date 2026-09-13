@@ -94,7 +94,7 @@ body {
   margin-bottom: 5mm;
 }
 .pg-meta .left { display: flex; align-items: center; gap: 6mm; }
-.pg-meta .logo { height: 8mm; width: auto; display: block; }
+.pg-meta .logo { height: 6.5mm; width: auto; display: block; }
 .pg-meta .doc-id { font-weight: 600; color: var(--hb-slate-700); letter-spacing: 0.02em; text-transform: uppercase; font-size: 8pt; }
 .pg-meta .right { text-align: right; }
 
@@ -111,8 +111,8 @@ body {
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 22pt;
-  line-height: 26pt;
+  font-size: 19pt;
+  line-height: 23pt;
   letter-spacing: -0.01em;
   color: var(--hb-slate-700);
   margin: 0 0 2mm;
@@ -139,44 +139,6 @@ body {
   width: 100%;
   height: auto;
   display: block;
-}
-
-/* ───────────────────── VEDLEGGSARK ─────────────────────
-   Samtykkearket bakerst er et eget ark som legges ved søknaden.
-   Det skal kjennes igjen som et vedlegg med en gang, og ikke
-   forveksles med en seksjon i selve skjemaet. */
-.vedlegg-topp {
-  border: 1.25pt solid var(--hb-green-600);
-  border-radius: 3mm;
-  padding: 5mm 6mm;
-  margin-bottom: 5mm;
-}
-.vedlegg-topp .eyebrow {
-  font-size: 8pt;
-  line-height: 11pt;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--hb-green-700);
-  font-weight: 600;
-  margin: 0 0 1.5mm;
-}
-.vedlegg-topp h1 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 22pt;
-  line-height: 26pt;
-  letter-spacing: -0.01em;
-  color: var(--hb-slate-700);
-  margin: 0 0 2mm;
-}
-.vedlegg-topp p {
-  font-family: var(--font-heading);
-  font-weight: 300;
-  font-size: 11pt;
-  line-height: 15pt;
-  color: var(--hb-slate-700);
-  margin: 0;
-  max-width: 130mm;
 }
 
 /* ───────────────────────── INTROPANEL ───────────────────────── */

@@ -68,7 +68,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 4, 8. september 2026 | `...-v4.html` | Storskrift. 14 pt brødtekst, 2 cm marger, større skrivefelt. Se under. |
 | 5, 8. september 2026 | `...-v5.html` | Iterasjon 3 justert. Linjer i skrivefelt fjernet, ruter midtstilt, personalia inn i seksjon 1. |
 | 6, 11. september 2026 | `...-v6.html` | Etter lappene i Miro. Nye kategorier, ny rekkefølge, nye krav. Se under. |
-| 7, 11. september 2026 | uten suffiks | Etter de 93 kommentarene i Miro. Feil postadresse, e-post som kanal, saksbehandlingstid, betalingsrekkefølge. Se under. |
+| 7, 11. september 2026 | `...-v7.html` | Etter de 93 kommentarene i Miro. Feil postadresse, e-post som kanal, saksbehandlingstid, betalingsrekkefølge. Se under. |
+| 8, 13. september 2026 | uten suffiks | Etter Slack-gjennomgangen. Leietakerteksten inn, eget samtykkeark bakerst, fire klarere eierformer. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -315,6 +316,7 @@ assets/css/hb-papir-v3.css  Pinnet kopi, slik iterasjon 3 så ut
 assets/css/hb-papir-v4.css  Pinnet kopi, slik iterasjon 4 så ut
 assets/css/hb-papir-v5.css  Pinnet kopi, slik iterasjon 5 så ut
 assets/css/hb-papir-v6.css  Pinnet kopi, slik iterasjon 6 så ut
+assets/css/hb-papir-v7.css  Pinnet kopi, slik iterasjon 7 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -330,3 +332,43 @@ ref/, uploads/       Referansemateriale fra Husbanken
 Klikkbar prototype for designarbeid. Testdata og illustrasjoner. De seks
 godkjente oppgraderingene er plausible eksempler, siden forskriften ikke er
 publisert. Ingen data sendes noe sted, og ingen del av dette er bindende.
+
+### Iterasjon 8, etter Slack-gjennomgangen
+
+Kilden er tråden «Papirsøknaden» i #team-lta-designere, der v7 og sjekklista ble
+lagt fram. Tolv svar, med både avklaringer på det som sto som «venter på
+fagsiden» og ni nye rettelser.
+
+**Teksten til leietakere var en reell mangel.** Departementet har bedt om at
+teksten fra «Til deg som leier»-steget skal være med i søknaden, også på papir.
+V7 hadde én setning der det skulle stå fire punkter. De står nå i seksjon 3,
+tilpasset papir: vedlegg i stedet for opplasting, og med svar på hvor
+samtykkeskjemaet finnes.
+
+**Samtykket fra husstandsmedlemmet over 62 år har fått sitt eget ark.** Før lå
+det som et felt i seksjon 1 og en signaturlinje i seksjon 7. Nå er det siste
+side i skjemaet, et vedlegg personen selv fyller ut, skriver under på og legger
+i konvolutten. Spørsmål 1.2 viser dit.
+
+**Eierformene er skrevet om.** «Folkeregistrert på adressen» er byttet med «bor
+der». Kjøp er blitt sitt eget alternativ, med kjøpekontrakt som dokumentasjon
+når man ikke er registrert som eier ennå. Arv er skilt ut fra kjøp. Under står
+lista over gyldig dokumentasjon, hentet fra dokumentasjonssteget i den digitale
+søknaden.
+
+**Samtykketeksten er fagsidens egen.** Formuleringen om uriktige opplysninger
+kom ferdig fra fagsiden og er brukt ordrett i begge skjemaene. Setningen om at
+Husbanken kan kontakte firmaet som ga tilbudet er tatt ut av søknaden.
+
+**Resten:** setningen om at postmottaket trenger bolignummeret kan ikke stå, og
+er erstattet. Fritekstfeltet i 4.1 gjelder også «Annet område», ikke bare «Andre
+forbedringer». Logoen er satt opp fra 6,5 til 8 mm og tittelen fra 19 til 22 pt.
+
+Søknaden gikk fra 7 til 9 sider: seksjon 3 vokste med leietakerteksten og
+dokumentasjonslista, og samtykkearket er en side for seg.
+
+**Åpent:** om Husbanken kontakter foretaket ved kontroll av regningen i
+utbetalingsskjemaet står fortsatt, fordi det er en annen situasjon enn søknaden.
+Størrelsen på logo og tittel er et forslag, ikke en beslutning. Samtykket fra
+eier ved leie må avklares med fagsiden, og teksten skal samsvare med det
+husbanken.no lander på.
