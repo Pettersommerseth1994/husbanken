@@ -141,46 +141,6 @@ body {
   display: block;
 }
 
-/* ───────────────────── KRAVBOKSEN (side 1) ─────────────────────
-   Samme liste som veilederen viser i den digitale søknaden. Den svarer
-   på «kan jeg søke i det hele tatt», og skal leses før resten av arket.
-   Grønn ramme og hvit bunn, så den ikke forveksles med intropanelet. */
-.krav-panel {
-  border: 1pt solid var(--hb-green-600);
-  border-radius: 3mm;
-  padding: 4mm 5mm;
-  margin-bottom: 4mm;
-  font-size: 9pt;
-  line-height: 13pt;
-  color: var(--hb-slate-700);
-  break-inside: avoid;
-}
-.krav-panel h2 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 10.5pt;
-  line-height: 14pt;
-  margin: 0 0 1.5mm;
-  color: var(--hb-slate-700);
-}
-.krav-panel ul {
-  margin: 0;
-  padding-left: 4.5mm;
-  columns: 2;
-  column-gap: 8mm;
-}
-.krav-panel li {
-  margin-bottom: 1mm;
-  break-inside: avoid;
-}
-.krav-panel li:last-child { margin-bottom: 0; }
-.krav-panel strong { font-weight: 600; }
-
-/* På små skjermer forlates arkformatet, og da er én kolonne riktigere */
-@media screen and (max-width: 840px) {
-  .krav-panel ul { columns: 1; }
-}
-
 /* ───────────────────────── INTROPANEL ───────────────────────── */
 .intro-panel {
   background: var(--hb-green-100);

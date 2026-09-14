@@ -109,6 +109,16 @@ const HB_VERSJONER = [
     dato: '14. september 2026',
     endring: 'Språkopprydding og ombygd samtykkeark. Setningen om at skjemaet erstatter den digitale søknaden er ute, det samme er forklaringen av sirkler og firkanter. Boksen om fagfolk er skrevet om: kravet om registrert firma står først, og setningen om egeninnsats og gratis hjelp fra familie er hentet tilbake. «Fortsatt» er borte fra overskriftene, seksjon 4 heter nå «Hva skal gjøres i boligen», og samtykketeksten i seksjon 7 er kortet ned til fagsidens formulering alene. Side 9 er bygget om i samme form som resten: vanlig seksjonshode i stedet for egen ramme og stor tittel, samme personaliaboks som seksjon 1, og adressefeltet er tatt bort fordi adressen alt står i seksjon 3. Arket omtales nå som «side 9» overalt. Varselboksen under vedleggsboksen har fått luft over seg.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v9.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v9.html'
+    }
+  },
+  {
+    nr: 10,
+    navn: 'Kravene på forsiden',
+    dato: '14. september 2026',
+    endring: 'Forsiden har fått kravlista fra veilederen i den digitale søknaden: alder, eierform, minst én godkjent oppgradering, tilbud som vedlegg, minstebeløp og å søke før arbeidet settes i gang. Punktene som sto både der og i «Slik bruker du dette skjemaet» er tatt ut av det siste. Kategori 4.6 har fått forklaringen fra forskriften om hva et Nav-vedtak kan gjelde. Fullmaktsskjemaet og samtykkeskjemaet står begge på husbanken.no. «Brønnøysundregisteret» er rettet til «Brønnøysundregistrene», tilbudet om å få samtykkeskjemaet i posten er tatt ut, og side 9 sier «dette arket» i stedet for «hele arket».',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

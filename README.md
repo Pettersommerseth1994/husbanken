@@ -70,7 +70,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 6, 11. september 2026 | `...-v6.html` | Etter lappene i Miro. Nye kategorier, ny rekkefølge, nye krav. Se under. |
 | 7, 11. september 2026 | `...-v7.html` | Etter de 93 kommentarene i Miro. Feil postadresse, e-post som kanal, saksbehandlingstid, betalingsrekkefølge. Se under. |
 | 8, 13. september 2026 | `...-v8.html` | Etter Slack-gjennomgangen. Leietakerteksten inn, eget samtykkeark bakerst, fire klarere eierformer. Se under. |
-| 9, 14. september 2026 | uten suffiks | Språkopprydding, og side 9 bygget om i samme form som resten. Se under. |
+| 9, 14. september 2026 | `...-v9.html` | Språkopprydding, og side 9 bygget om i samme form som resten. Se under. |
+| 10, 14. september 2026 | uten suffiks | Kravlista fra veilederen inn på forsiden. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -319,6 +320,7 @@ assets/css/hb-papir-v5.css  Pinnet kopi, slik iterasjon 5 så ut
 assets/css/hb-papir-v6.css  Pinnet kopi, slik iterasjon 6 så ut
 assets/css/hb-papir-v7.css  Pinnet kopi, slik iterasjon 7 så ut
 assets/css/hb-papir-v8.css  Pinnet kopi, slik iterasjon 8 så ut
+assets/css/hb-papir-v9.css  Pinnet kopi, slik iterasjon 9 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -406,6 +408,30 @@ innsendingslista, så det er tydelig hva som menes.
 **Varselboksen** under vedleggsboksen klistret seg til den. Den har fått 6 mm
 luft over seg, fordi den er en egen beskjed og ikke en fotnote til boksen.
 
-**Åpent:** boksen om fagfolk sier nå «Brønnøysundregisteret», mens vedleggskravet
-rett over sier «Brønnøysundregistrene». Begge deler kan ikke stemme, og det
-offisielle navnet er det siste.
+Navnefeilen som sto igjen her, «Brønnøysundregisteret» mot «Brønnøysundregistrene»,
+er rettet i iterasjon 10.
+
+### Iterasjon 10, kravene på forsiden
+
+**Forsiden har fått kravlista.** Den digitale søknaden har en veileder som sier
+hva som skal til for å få tilskudd, og den samme lista står nå øverst på arket:
+alder, eierform, minst én godkjent oppgradering, tilbud som vedlegg,
+minstebeløpet, og at du må søke før arbeidet settes i gang. Den svarer på «kan
+jeg søke i det hele tatt» før skjemaet begynner å spørre om noe.
+
+To av punktene sto fra før i «Slik bruker du dette skjemaet», og er tatt ut der,
+så de ikke står to ganger på samme side. Det panelet handler nå bare om selve
+utfyllingen: penn, utskrift, og at det er flere frister i året.
+
+**Merk:** skissen boksen er bygget etter sier «oppgrader for minst 80 000
+kroner». Minstekravet ble flyttet til 40 000 i iterasjon 6, så arket sier
+40 000. Skissen bør oppdateres.
+
+**Kategori 4.6** har fått forklaringen fra forskriften om hva et Nav-vedtak kan
+gjelde, ordrett: hjelpemiddel for tilrettelegging av bolig eller tilskudd til
+ombygging.
+
+**Resten:** «Brønnøysundregisteret» er rettet til «Brønnøysundregistrene» begge
+steder. Fullmaktsskjemaet i 1.3 sier nå at det ligger på husbanken.no, som
+samtykkeskjemaet gjør fra før. Tilbudet om å få samtykkeskjemaet tilsendt i
+posten er tatt ut. Side 9 sier «dette arket» i stedet for «hele arket».
