@@ -73,7 +73,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 9, 14. september 2026 | `...-v9.html` | Språkopprydding, og side 9 bygget om i samme form som resten. Se under. |
 | 10, 14. september 2026 | `...-v10.html` | Kravlista fra veilederen inn på forsiden. Se under. |
 | 11, 14. september 2026 | `...-v11.html` | Skrevet for postmottaket: bolignummer, aksjenummer og dokumentasjon. Se under. |
-| 12, 14. september 2026 | uten suffiks | 3.2 bygget om med «Slik finner du»-boksene fra den digitale søknaden. Se under. |
+| 12, 14. september 2026 | `...-v12.html` | 3.2 bygget om med «Slik finner du»-boksene fra den digitale søknaden. Se under. |
+| 13, 14. september 2026 | uten suffiks | Finpuss på 3.2: eksempel, tekststørrelse og når spørsmålet gjelder. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -325,6 +326,7 @@ assets/css/hb-papir-v8.css  Pinnet kopi, slik iterasjon 8 så ut
 assets/css/hb-papir-v9.css  Pinnet kopi, slik iterasjon 9 så ut
 assets/css/hb-papir-v10.css Pinnet kopi, slik iterasjon 10 så ut
 assets/css/hb-papir-v11.css Pinnet kopi, slik iterasjon 11 så ut
+assets/css/hb-papir-v12.css Pinnet kopi, slik iterasjon 12 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -487,10 +489,27 @@ aksjebrevet, at det ofte er en serie, og at styret kan svare.
 Begrunnelsen om matrikkelen og beskjeden om å la feltene stå åpne er tatt ut.
 
 **Forbehold:** spørsmålsformuleringen for bolignummer er utledet av mønsteret fra
-aksjenummer-skissen, som er den eneste som viser overskriften. Setningen «kontakt
-kommunen og be de hjelpe deg» er brukt ordrett fra skissen; i bokmål skal det
-være «be dem hjelpe deg».
+aksjenummer-skissen, som er den eneste som viser overskriften. «Be de hjelpe deg»
+fra skissen er rettet til «be dem» i iterasjon 13.
 
 Sidene 3 til 6 er fordelt på nytt. Seksjon 3 deler seg nå etter 3.2 i stedet for
 etter 3.3, så 3.3 og de to varselboksene står samlet på side 4, og seksjon 4
 begynner på side 5.
+
+### Iterasjon 13, finpuss på 3.2
+
+Fire små ting på spørsmålet som ble bygget om i forrige runde.
+
+«Be de hjelpe deg» er rettet til **«be dem hjelpe deg»**. Bolignummeret har fått
+sin egen eksempellinje, **«For eksempel H0301. Maks 5 tegn.»**, satt opp likt som
+aksjenummerets, og utledet av at nummeret består av én bokstav og fire tall.
+
+Spørsmålene inni 3.2 sto i 10 pt, det samme som seksjonsspørsmålet over, og leste
+seg som sidestilte. De er satt ett trinn ned til 9 pt, mellom `.q-label` på 10 og
+`.q-help` på 8,5, så hierarkiet stemmer: seksjonsspørsmål, spørsmål, hjelpetekst.
+
+Under 3.2 står det nå en grå linje som sier når spørsmålet gjelder deg: **«Kun
+hvis det er flere boliger på adressen din eller hvis boligen er i et
+boligaksjeselskap.»** Den erstatter beskjeden om å la feltene stå åpne, som ble
+tatt ut i iterasjon 12, men sier det fra søkerens side i stedet for fra
+saksbehandlingens.

@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v12.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="13">
+<body data-skjema="soknad" data-versjon="12">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v12" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -253,13 +253,11 @@
     </div>
 
     <div class="q">
-      <p class="q-label">3.2 Bolignummer og aksjenummer</p>
-      <p class="q-help" data-endret="Ny linje som sier når spørsmålet gjelder deg, i stedet for den gamle begrunnelsen om matrikkelen.">Kun hvis det er flere boliger på adressen din eller hvis boligen er i et boligaksjeselskap.</p>
+      <p class="q-label" data-endret="Begrunnelsen om matrikkelen og beskjeden om å la feltene stå åpne er tatt ut. Hvert nummer har fått sitt eget spørsmål og sin egen «slik finner du»-boks, med tekstene fra den digitale søknaden.">3.2 Bolignummer og aksjenummer</p>
 
       <div class="nummer-grid">
         <div class="nummer-kort">
           <label class="nummer-sp" for="f-bolignr">Hva er bolignummeret til boligen?</label>
-          <p class="q-help" data-endret="Eksempel og tegngrense, likt som for aksjenummeret.">For eksempel H0301. Maks 5 tegn.</p>
           <input type="text" class="input-line" id="f-bolignr" name="bolignr">
           <div class="finn">
             <strong>Slik finner du bolignummeret</strong>
@@ -269,7 +267,7 @@
               <li>Spør styret hvis du bor i et borettslag eller sameie.</li>
               <li>Spør utleier hvis du er leietaker.</li>
             </ul>
-            <p>Hvis du ikke finner bolignummeret, kontakt kommunen og be dem hjelpe deg.</p>
+            <p>Hvis du ikke finner bolignummeret, kontakt kommunen og be de hjelpe deg.</p>
           </div>
         </div>
 

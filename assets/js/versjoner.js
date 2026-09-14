@@ -139,6 +139,16 @@ const HB_VERSJONER = [
     dato: '14. september 2026',
     endring: 'Spørsmål 3.2 er bygget om. Begrunnelsen om matrikkelen og beskjeden om å la feltene stå åpne er tatt ut. Bolignummer og aksjenummer har nå hvert sitt spørsmål, side om side, med sin egen «Slik finner du»-boks under feltet, med tekstene fra den digitale søknaden: at bolignummeret består av én bokstav og fire tall, hvor klistremerket sitter, hvem man spør, og at aksjenummeret står i aksjebrevet. Sidene 3 til 6 er fordelt på nytt, så seksjon 3 deler seg etter 3.2 i stedet for etter 3.3.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v12.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v12.html'
+    }
+  },
+  {
+    nr: 13,
+    navn: 'Finpuss på 3.2',
+    dato: '14. september 2026',
+    endring: 'Finpuss på 3.2. «Be de hjelpe deg» er rettet til «be dem». Bolignummeret har fått eksempel og tegngrense, likt som aksjenummeret. Spørsmålene inni 3.2 er satt ett trinn ned, fra 10 til 9 pt, så de ikke konkurrerer med seksjonsspørsmålet over. Under 3.2 står det nå når spørsmålet gjelder deg: flere boliger på adressen, eller bolig i et boligaksjeselskap.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }
