@@ -141,52 +141,6 @@ body {
   display: block;
 }
 
-/* ───────────────────── NUMMER OG HVOR DE STÅR ─────────────────────
-   Bolignummer og aksjenummer gjelder sjelden samme søker, og de finnes
-   på helt ulike steder. Derfor hvert sitt spørsmål, side om side, med
-   forklaringen rett under feltet i stedet for i en felles hjelpetekst. */
-.nummer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4mm 7mm;
-  margin-top: 2mm;
-}
-.nummer-kort .nummer-sp {
-  display: block;
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 10pt;
-  line-height: 13.5pt;
-  color: var(--hb-slate-700);
-  margin-bottom: 1mm;
-}
-.nummer-kort .q-help { margin: 0 0 1mm; }
-.nummer-kort .input-line { margin-bottom: 3mm; }
-.finn {
-  background: var(--hb-slate-50);
-  border-left: 1pt solid var(--hb-slate-300);
-  border-radius: 0 2mm 2mm 0;
-  padding: 2.5mm 3mm;
-  font-size: 8.5pt;
-  line-height: 12pt;
-  color: var(--hb-slate-700);
-}
-.finn strong {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 1mm;
-}
-.finn p { margin: 0 0 1.5mm; }
-.finn p:last-child { margin-bottom: 0; }
-.finn ul { margin: 0 0 1.5mm; padding-left: 4mm; }
-.finn li { margin-bottom: 0.5mm; }
-.finn li:last-child { margin-bottom: 0; }
-
-/* Arkformatet forlates på små skjermer, og da står de under hverandre */
-@media screen and (max-width: 840px) {
-  .nummer-grid { grid-template-columns: 1fr; }
-}
-
 /* ───────────────────── KRAVBOKSEN (side 1) ─────────────────────
    Samme liste som veilederen viser i den digitale søknaden. Den svarer
    på «kan jeg søke i det hele tatt», og skal leses før resten av arket.

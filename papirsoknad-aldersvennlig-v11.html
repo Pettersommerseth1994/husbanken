@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v11.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="12">
+<body data-skjema="soknad" data-versjon="11">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v11" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -253,35 +253,39 @@
     </div>
 
     <div class="q">
-      <p class="q-label" data-endret="Begrunnelsen om matrikkelen og beskjeden om å la feltene stå åpne er tatt ut. Hvert nummer har fått sitt eget spørsmål og sin egen «slik finner du»-boks, med tekstene fra den digitale søknaden.">3.2 Bolignummer og aksjenummer</p>
-
-      <div class="nummer-grid">
-        <div class="nummer-kort">
-          <label class="nummer-sp" for="f-bolignr">Hva er bolignummeret til boligen?</label>
+      <p class="q-label" data-endret="Bolignummer og aksjenummer er forklart hver for seg. Bolignummer heter også bruksenhetsnummer, står ofte ved inngangsdøren, og finnes på kartverket.no. Aksjenummer har fått et eksempel på hvordan det ser ut. Begrunnelsen sier nå at nummeret ikke finnes i matrikkelen.">3.2 Bolignummer eller aksjenummer</p>
+      <p class="q-help">Vi trenger dette for å registrere søknaden på riktig bolig, og vi finner det ikke i matrikkelen. Gjelder ingen av delene, lar du feltene stå åpne.</p>
+      <div class="field-grid">
+        <div>
+          <label class="sub-label" for="f-bolignr">Bolignummer</label>
+          <p class="q-help">Fyll ut hvis boligen er én av flere i samme bygg: borettslag, rekkehus, eller et hus med to eller flere boliger. Nummeret kalles også bruksenhetsnummer, står ofte på dørkarmen eller ved inngangsdøren, og du finner det på kartverket.no.</p>
           <input type="text" class="input-line" id="f-bolignr" name="bolignr">
-          <div class="finn">
-            <strong>Slik finner du bolignummeret</strong>
-            <p>Bolignummeret består av én bokstav og fire tall. For eksempel H0301, L0102 eller U0101.</p>
-            <ul>
-              <li>Se etter et klistremerke festet på eller ved siden av døra til boligen din.</li>
-              <li>Spør styret hvis du bor i et borettslag eller sameie.</li>
-              <li>Spør utleier hvis du er leietaker.</li>
-            </ul>
-            <p>Hvis du ikke finner bolignummeret, kontakt kommunen og be de hjelpe deg.</p>
-          </div>
         </div>
-
-        <div class="nummer-kort">
-          <label class="nummer-sp" for="f-aksjenr">Hva er aksjenummeret til boligen?</label>
-          <p class="q-help">For eksempel 450–475. Maks 10 tegn.</p>
+        <div>
+          <label class="sub-label" for="f-aksjenr">Aksjenummer</label>
+          <p class="q-help">Fyll ut hvis boligen er i et boligaksjeselskap. Nummeret er som regel en sekvens, for eksempel 450–475, og står i papirene fra selskapet.</p>
           <input type="text" class="input-line" id="f-aksjenr" name="aksjenr">
-          <div class="finn">
-            <strong>Slik finner du aksjenummeret</strong>
-            <p>Hvis du har aksjebrevet, skal nummeret stå der. Det er ofte en serie, for eksempel 450–475. Du kan også spørre styret.</p>
-          </div>
         </div>
       </div>
     </div>
+
+    <fieldset class="q">
+      <legend class="q-label">3.3 Hva er forholdet ditt til boligen?</legend>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q3_eierform" value="eier-bor"><span class="mark"></span><span class="opt-body">Jeg eier boligen og bor der
+          <span class="opt-help">Da trenger vi ingen dokumentasjon fra deg.</span>
+        </span></label>
+        <label class="opt"><input type="radio" name="q3_eierform" value="kjoper"><span class="mark"></span><span class="opt-body">Jeg skal eller har nettopp kjøpt boligen
+          <span class="opt-help">Er du ikke registrert som eier ennå, legger du ved kjøpekontrakten.</span>
+        </span></label>
+        <label class="opt"><input type="radio" name="q3_eierform" value="arver"><span class="mark"></span><span class="opt-body">Jeg skal arve boligen
+          <span class="opt-help" data-endret="Uskifteattest er knyttet til gjenlevende ektefelle eller samboer, ikke bare listet opp ved siden av skifteattest.">Legg ved skifteattest. Er du gjenlevende ektefelle eller samboer som har arvet boligen, legger du ved uskifteattest i stedet.</span>
+        </span></label>
+        <label class="opt"><input type="radio" name="q3_eierform" value="leier"><span class="mark"></span><span class="opt-body">Jeg leier boligen
+          <span class="opt-help">Legg ved et signert samtykke fra den som eier boligen. Mer om det i boksen under.</span>
+        </span></label>
+      </div>
+    </fieldset>
   </div>
 
   <footer class="pg-footer">
@@ -309,27 +313,9 @@
       <span class="step">3</span>
       <h2>Om boligen</h2>
     </div>
-    <fieldset class="q">
-      <legend class="q-label">3.3 Hva er forholdet ditt til boligen?</legend>
-      <div class="options">
-        <label class="opt"><input type="radio" name="q3_eierform" value="eier-bor"><span class="mark"></span><span class="opt-body">Jeg eier boligen og bor der
-          <span class="opt-help">Da trenger vi ingen dokumentasjon fra deg.</span>
-        </span></label>
-        <label class="opt"><input type="radio" name="q3_eierform" value="kjoper"><span class="mark"></span><span class="opt-body">Jeg skal eller har nettopp kjøpt boligen
-          <span class="opt-help">Er du ikke registrert som eier ennå, legger du ved kjøpekontrakten.</span>
-        </span></label>
-        <label class="opt"><input type="radio" name="q3_eierform" value="arver"><span class="mark"></span><span class="opt-body">Jeg skal arve boligen
-          <span class="opt-help">Legg ved skifteattest. Er du gjenlevende ektefelle eller samboer som har arvet boligen, legger du ved uskifteattest i stedet.</span>
-        </span></label>
-        <label class="opt"><input type="radio" name="q3_eierform" value="leier"><span class="mark"></span><span class="opt-body">Jeg leier boligen
-          <span class="opt-help">Legg ved et signert samtykke fra den som eier boligen. Mer om det i boksen under.</span>
-        </span></label>
-      </div>
-    </fieldset>
-
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong>Dokumentasjon du må legge ved</strong></p>
+      <p><strong data-endret="Skrevet om fra en liste over dokumenttyper til en liste over situasjoner, så søkeren ser hvilket dokument som gjelder dem. Aksjeboligdokumentene har fått sin egen situasjon, siden det ikke finnes et aksjebolig-alternativ i 3.3 å knytte dem til.">Dokumentasjon du må legge ved</strong></p>
       <ul>
         <li>Er du i en flytteprosess: <strong>kjøpekontrakt</strong>. Er kjøpet tinglyst, holder tinglyst skjøte eller grunnboksutskrift.</li>
         <li>Er du i et arveoppgjør: <strong>skifteattest</strong></li>
@@ -350,26 +336,6 @@
       </ul>
     </div>
   </div>
-
-  <footer class="pg-footer">
-    <div class="return-addr">
-      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
-    </div>
-    <div>Side <span class="pg-num">4 av 9</span></div>
-  </footer>
-</section>
-
-<section class="page">
-  <header class="pg-meta">
-    <div class="left">
-      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
-      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
-    </div>
-    <div class="right">
-      Versjon september 2026<br>
-      Side&nbsp;<span class="pg-num">5 av 9</span>
-    </div>
-  </header>
 
   <div class="section">
     <div class="section-header">
@@ -400,6 +366,33 @@
       <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer» eller «Annet område». Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_adkomst" aria-label="Beskriv Lage trinnfri adkomst"></textarea>
     </fieldset>
+  </div>
+
+  <footer class="pg-footer">
+    <div class="return-addr">
+      <strong>Husbanken</strong> · Postboks 1404, 8002 Bodø · husbanken.no · 22&nbsp;96&nbsp;16&nbsp;00
+    </div>
+    <div>Side <span class="pg-num">4 av 9</span></div>
+  </footer>
+</section>
+
+<section class="page">
+  <header class="pg-meta">
+    <div class="left">
+      <img class="logo" src="ds/logo/husbanken-primary.png" alt="Husbanken">
+      <span class="doc-id">Skjema HB&nbsp;8.S.05 · Søknad om tilskudd</span>
+    </div>
+    <div class="right">
+      Versjon september 2026<br>
+      Side&nbsp;<span class="pg-num">5 av 9</span>
+    </div>
+  </header>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="step">4</span>
+      <h2>Hva skal gjøres i boligen</h2>
+    </div>
 
     <fieldset class="q">
       <legend class="q-label">4.2 Samle nødvendige rom i inngangsetasjen</legend>

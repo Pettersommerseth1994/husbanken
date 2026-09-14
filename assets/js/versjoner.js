@@ -129,6 +129,16 @@ const HB_VERSJONER = [
     dato: '14. september 2026',
     endring: 'Skrevet for postmottaket, som skal registrere papirsøknadene i det digitale systemet. Bolignummer og aksjenummer er forklart hver for seg: bolignummer heter også bruksenhetsnummer, står ofte ved inngangsdøren og finnes på kartverket.no, og aksjenummer har fått et eksempel på formatet. Begrunnelsen sier nå at nummeret ikke finnes i matrikkelen. Dokumentasjonsboksen er snudd fra en liste over dokumenttyper til en liste over situasjoner: flytteprosess, arveoppgjør, gjenlevende ektefelle, boligaksjeselskap. Uskifteattest er knyttet til hvem det gjelder, i stedet for å stå ved siden av skifteattest.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v11.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v11.html'
+    }
+  },
+  {
+    nr: 12,
+    navn: 'Slik finner du nummeret',
+    dato: '14. september 2026',
+    endring: 'Spørsmål 3.2 er bygget om. Begrunnelsen om matrikkelen og beskjeden om å la feltene stå åpne er tatt ut. Bolignummer og aksjenummer har nå hvert sitt spørsmål, side om side, med sin egen «Slik finner du»-boks under feltet, med tekstene fra den digitale søknaden: at bolignummeret består av én bokstav og fire tall, hvor klistremerket sitter, hvem man spør, og at aksjenummeret står i aksjebrevet. Sidene 3 til 6 er fordelt på nytt, så seksjon 3 deler seg etter 3.2 i stedet for etter 3.3.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

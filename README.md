@@ -72,7 +72,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 8, 13. september 2026 | `...-v8.html` | Etter Slack-gjennomgangen. Leietakerteksten inn, eget samtykkeark bakerst, fire klarere eierformer. Se under. |
 | 9, 14. september 2026 | `...-v9.html` | Språkopprydding, og side 9 bygget om i samme form som resten. Se under. |
 | 10, 14. september 2026 | `...-v10.html` | Kravlista fra veilederen inn på forsiden. Se under. |
-| 11, 14. september 2026 | uten suffiks | Skrevet for postmottaket: bolignummer, aksjenummer og dokumentasjon. Se under. |
+| 11, 14. september 2026 | `...-v11.html` | Skrevet for postmottaket: bolignummer, aksjenummer og dokumentasjon. Se under. |
+| 12, 14. september 2026 | uten suffiks | 3.2 bygget om med «Slik finner du»-boksene fra den digitale søknaden. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -323,6 +324,7 @@ assets/css/hb-papir-v7.css  Pinnet kopi, slik iterasjon 7 så ut
 assets/css/hb-papir-v8.css  Pinnet kopi, slik iterasjon 8 så ut
 assets/css/hb-papir-v9.css  Pinnet kopi, slik iterasjon 9 så ut
 assets/css/hb-papir-v10.css Pinnet kopi, slik iterasjon 10 så ut
+assets/css/hb-papir-v11.css Pinnet kopi, slik iterasjon 11 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -467,3 +469,28 @@ siden av skifteattest, uten at det gikk fram hvem det gjaldt.
 
 **Ikke gjort:** fødselsnummeret står fortsatt som tredje felt i personaliaboksen,
 etter fornavn og etternavn, ikke først.
+
+### Iterasjon 12, slik finner du nummeret
+
+Iterasjon 11 forklarte bolignummer og aksjenummer i hver sin hjelpetekst under
+feltetiketten. Det holdt ikke: forklaringene er ulike nok, og viktige nok, til å
+fortjene hvert sitt spørsmål.
+
+**3.2 er to spørsmål nå,** side om side, med teksten fra den digitale søknaden
+ordrett: «Hva er bolignummeret til boligen?» og «Hva er aksjenummeret til
+boligen?». Under hvert felt står en «Slik finner du»-boks med det samme som den
+digitale løsningen sier: at bolignummeret består av én bokstav og fire tall, at
+klistremerket sitter på eller ved siden av døra, hvem man spør i borettslag
+eller som leietaker, og at kommunen kan hjelpe. For aksjenummeret: at det står i
+aksjebrevet, at det ofte er en serie, og at styret kan svare.
+
+Begrunnelsen om matrikkelen og beskjeden om å la feltene stå åpne er tatt ut.
+
+**Forbehold:** spørsmålsformuleringen for bolignummer er utledet av mønsteret fra
+aksjenummer-skissen, som er den eneste som viser overskriften. Setningen «kontakt
+kommunen og be de hjelpe deg» er brukt ordrett fra skissen; i bokmål skal det
+være «be dem hjelpe deg».
+
+Sidene 3 til 6 er fordelt på nytt. Seksjon 3 deler seg nå etter 3.2 i stedet for
+etter 3.3, så 3.3 og de to varselboksene står samlet på side 4, og seksjon 4
+begynner på side 5.
