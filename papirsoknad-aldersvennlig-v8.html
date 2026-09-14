@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v8.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="9">
+<body data-skjema="soknad" data-versjon="8">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v8" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -43,9 +43,9 @@
   <div class="intro-panel">
     <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
     <h2>Slik bruker du dette skjemaet</h2>
-    <p data-endret="Setningen om at skjemaet erstatter den digitale søknaden er tatt ut.">Bruk dette skjemaet hvis du ikke kan søke digitalt på <strong>husbanken.no</strong>.</p>
+    <p>Bruk dette skjemaet hvis du ikke kan søke digitalt på <strong>husbanken.no</strong>. Skjemaet erstatter den digitale søknaden og inneholder de samme spørsmålene, i samme rekkefølge.</p>
     <ul>
-      <li data-endret="Forklaringen av sirkler og firkanter er tatt ut.">Skriv tydelig med blå eller svart penn.</li>
+      <li>Skriv tydelig med blå eller svart penn. Kryss i sirkelen ved svaret ditt, og i firkanten der du kan velge flere.</li>
       <li>Send inn skjemaet <strong>før du setter i gang arbeidet</strong>. Det er flere søknadsfrister i året, og datoene står på husbanken.no.</li>
       <li>Du må legge ved tilbudet eller prisoverslaget. Mer om det i seksjon 2.</li>
       <li>Du kan fylle ut skjemaet på skjermen før du skriver det ut, eller skrive det ut tomt og fylle ut for hånd.</li>
@@ -155,8 +155,8 @@
       </div>
 
       <div class="sub-q" data-when="q1_alder:samboer">
-        <p class="q-label" data-endret="Henviser nå til side 9 med sidetall, ikke bare «arket bakerst».">1.2 Da må denne personen fylle ut side 9</p>
-        <p class="q-help">Side 9 er det siste arket i dette skjemaet. Der skriver personen navnet sitt, fødselsåret og underskriften sin. Uten side 9 kan vi ikke behandle søknaden.</p>
+        <p class="q-label" data-endret="Spørsmålet om hvem i husstanden som er over 62 år er flyttet til et eget samtykkeark bakerst, slik Therese foreslo i critiquen. Her står bare henvisningen dit.">1.2 Da må denne personen fylle ut samtykkearket</p>
+        <p class="q-help">Arket ligger som siste side i dette skjemaet. Der skriver personen navnet sitt, fødselsåret og underskriften sin. Uten det arket kan vi ikke behandle søknaden.</p>
       </div>
 
       <div class="options" style="margin-top:2.5mm">
@@ -225,7 +225,7 @@
 
     <div class="callout callout--warn">
       <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
-      <strong data-endret="Ny tekst. Kravet om registrert firma står først, og setningen om egeninnsats og gratis hjelp fra familie er hentet tilbake.">Husk at arbeidet må gjøres av et firma som er registrert i Brønnøysundregisteret.</strong> Du kan ikke gjøre jobben selv, og du kan ikke få tilskudd for arbeid en venn eller et familiemedlem gjør gratis.
+      <strong>Arbeidet skal gjøres av fagfolk.</strong> Da vet du at jobben blir gjort riktig, og tilskuddet dekker det firmaet tar betalt. Et lite lokalt firma er helt fint, det trenger ikke være en stor entreprenør. Arbeid du eller noen i familien gjør selv, er ikke en del av det du kan få tilskudd for.
     </div>
   </div>
 
@@ -243,7 +243,7 @@
 
     <div class="q">
       <p class="q-label">3.2 Bolignummer eller aksjenummer</p>
-      <p class="q-help">Bolignummer hvis boligen er seksjonert, aksjenummer hvis den er en aksjebolig. Vi trenger det for å registrere søknaden på riktig bolig. Gjelder ingen av delene, lar du feltene stå åpne.</p>
+      <p class="q-help" data-endret="Setningen om at postmottaket trenger dette er tatt ut, etter gjennomgangen i Slack.">Bolignummer hvis boligen er seksjonert, aksjenummer hvis den er en aksjebolig. Vi trenger det for å registrere søknaden på riktig bolig. Gjelder ingen av delene, lar du feltene stå åpne.</p>
       <div class="field-grid">
         <div>
           <label class="sub-label" for="f-bolignr">Bolignummer</label>
@@ -257,7 +257,7 @@
     </div>
 
     <fieldset class="q">
-      <legend class="q-label">3.3 Hva er forholdet ditt til boligen?</legend>
+      <legend class="q-label" data-endret="Fire klarere alternativer etter Slack-gjennomgangen. «Folkeregistrert på adressen» er byttet med «bor der», kjøp har blitt sitt eget alternativ med kjøpekontrakt som dokumentasjon, og arv er skilt ut fra kjøp.">3.3 Hva er forholdet ditt til boligen?</legend>
       <div class="options">
         <label class="opt"><input type="radio" name="q3_eierform" value="eier-bor"><span class="mark"></span><span class="opt-body">Jeg eier boligen og bor der
           <span class="opt-help">Da trenger vi ingen dokumentasjon fra deg.</span>
@@ -298,11 +298,11 @@
   <div class="section">
     <div class="section-header">
       <span class="step">3</span>
-      <h2>Om boligen</h2>
+      <h2>Om boligen, fortsatt</h2>
     </div>
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong>Dokumentasjonen kan være:</strong></p>
+      <p><strong data-endret="Ny. Lista over gyldig dokumentasjon er hentet fra dokumentasjonssteget i den digitale søknaden.">Dokumentasjonen kan være:</strong></p>
       <ul>
         <li>tinglyst skjøte, grunnboksutskrift eller kjøpekontrakt</li>
         <li>skifteattest eller uskifteattest</li>
@@ -312,7 +312,7 @@
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong>Viktig når du skal oppgradere boligen du leier</strong></p>
+      <p><strong data-endret="Erstatter den ene setningen om leie. Dette er teksten fra «Til deg som leier»-steget i den digitale søknaden, som departementet har bedt om at skal være med, tilpasset papir. Siste punkt sier nå hvor samtykkeskjemaet finnes.">Viktig når du skal oppgradere boligen du leier</strong></p>
       <ul>
         <li>Vi anbefaler at du har en langsiktig leiekontrakt.</li>
         <li>Husk at du investerer i noen andre sin bolig.</li>
@@ -325,7 +325,7 @@
   <div class="section">
     <div class="section-header">
       <span class="step">4</span>
-      <h2 data-endret="Overskriften er endret fra «Hva du skal gjøre», og «fortsatt» er tatt bort på sidene som følger etter.">Hva skal gjøres i boligen</h2>
+      <h2>Hva du skal gjøre</h2>
     </div>
     <p class="section-intro">For å få tilskudd må du oppgradere minst én av de seks kategoriene under. Kryss av for kategorien, og for det du skal gjøre innenfor den. Du kan velge flere. Velger du flere, legger vi kostnadene sammen.</p>
 
@@ -348,7 +348,7 @@
         <label class="opt checkbox"><input type="checkbox" name="adkomst_inngangsdor" value="ja"><span class="mark"></span><span class="opt-body">Forbedre inngangsdøren</span></label>
         <label class="opt checkbox"><input type="checkbox" name="adkomst_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gir trinnfri adkomst (beskriv under)</span></label>
       </div>
-      <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer» eller «Annet område». Ikke skriv opplysninger om din eller andres helse.</p>
+      <p class="q-help mt-2" data-endret="4.1 har også «Annet område» under «Justere terrenget», og fritekstfeltet gjelder begge.">Fyll ut bare hvis du krysset av for «Andre forbedringer» eller «Annet område». Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_adkomst" aria-label="Beskriv Lage trinnfri adkomst"></textarea>
     </fieldset>
   </div>
@@ -376,7 +376,7 @@
   <div class="section">
     <div class="section-header">
       <span class="step">4</span>
-      <h2>Hva skal gjøres i boligen</h2>
+      <h2>Hva du skal gjøre, fortsatt</h2>
     </div>
 
     <fieldset class="q">
@@ -427,7 +427,7 @@
   <div class="section">
     <div class="section-header">
       <span class="step">4</span>
-      <h2>Hva skal gjøres i boligen</h2>
+      <h2>Hva du skal gjøre, fortsatt</h2>
     </div>
 
     <fieldset class="q">
@@ -508,7 +508,7 @@
       <ul>
         <li>vanlig oppussing eller vedlikehold, med mindre oppgraderingen krever det, for eksempel å pusse opp hele badet</li>
         <li>løst utstyr, som trygghetsalarm</li>
-        <li data-endret="Presisert at det er verdien av eget arbeid som ikke dekkes.">egeninnsats, verdien av arbeid du gjør selv</li>
+        <li>egeninnsats, arbeid du gjør selv</li>
       </ul>
     </div>
 
@@ -557,7 +557,7 @@
       <span class="step">7</span>
       <h2>Samtykke og underskrift</h2>
     </div>
-    <p class="section-intro" data-endret="Kortet ned til fagsidens tekst alene. Setningen om innhenting fra Folkeregisteret, Kartverket og Skatteetaten er tatt ut her, den står fra før i seksjon 1.">Ved å sende inn denne søknaden bekrefter du at opplysningene du har gitt er riktige og fullstendige etter beste evne, og at du er kjent med at uriktige eller ufullstendige opplysninger kan få rettslige konsekvenser.</p>
+    <p class="section-intro" data-endret="Ferdig tekst fra fagsiden om uriktige opplysninger. Setningen om å kontakte firmaet som har gitt tilbudet er tatt ut, fordi Husbanken ikke gjør det.">Ved å sende inn denne søknaden bekrefter du at opplysningene du har gitt er riktige og fullstendige etter beste evne, og at du er kjent med at uriktige eller ufullstendige opplysninger kan få rettslige konsekvenser. Du gir samtidig Husbanken tillatelse til å hente opplysninger fra Folkeregisteret og Kartverket, og inntektsopplysninger fra Skatteetaten.</p>
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
@@ -592,7 +592,7 @@
     <ol>
       <li>Gå gjennom skjemaet en gang til. Felt som ikke passer for deg, lar du stå tomme.</li>
       <li>Legg ved tilbudet eller prisoverslaget, og eventuell dokumentasjon fra seksjon 3.</li>
-      <li>Er det en annen i husstanden som er over 62 år, må <strong>side 9</strong> være fylt ut og underskrevet av den personen.</li>
+      <li data-endret="Nytt punkt. Samtykkearket bakerst må følge med når søkeren selv er under 62 år.">Er det en annen i husstanden som er over 62 år, må <strong>samtykkearket</strong> bakerst være fylt ut og underskrevet.</li>
       <li>Send skjemaet og vedleggene i posten til <strong>Husbanken, Postboks 1404, 8002 Bodø</strong>. Søknaden inneholder personopplysninger, og skal derfor ikke sendes på e-post.</li>
       <li><strong>Send alt i samme konvolutt.</strong> Da kan vi behandle søknaden med én gang, uten å vente på at noe kommer etter.</li>
       <li>Søknaden må være hos oss før en av søknadsfristene, og før arbeidet settes i gang. Datoene står på husbanken.no. Du får en bekreftelse med referansenummer når vi har mottatt den.</li>
@@ -629,43 +629,50 @@
     </div>
   </header>
 
-  <div class="section" data-endret="Arket er satt i samme form som resten av skjemaet. Egen ramme og stor tittel er byttet med vanlig seksjonshode, feltene bruker samme personaliaboks som seksjon 1, og adressefeltet er tatt bort fordi adressen alt står i seksjon 3. Arket omtales nå som «side 9» overalt.">
+  <div class="vedlegg-topp" data-endret="Nytt ark. Samtykket fra husstandsmedlemmet over 62 år er flyttet ut av seksjon 1 og 7, og står nå som et eget ark bakerst som personen fyller ut, skriver under på og legger ved.">
+    <p class="eyebrow">Vedlegg til søknaden · legges i samme konvolutt</p>
+    <h1>Samtykke fra deg som er over 62 år</h1>
+    <p>Den som søker bor sammen med deg og er selv under 62 år. Da er det din alder som gir rett til tilskuddet, og vi trenger underskriften din for å kunne behandle søknaden.</p>
+  </div>
+
+  <div class="intro-panel">
+    <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
+    <h2>Når skal dette arket fylles ut?</h2>
+    <p>Bare når søkeren har krysset av for <strong>«Nei, men jeg bor sammen med en som er det»</strong> på spørsmål 1.1. Er søkeren selv over 62 år, lar du hele arket stå tomt.</p>
+    <ul>
+      <li>Skriv tydelig med blå eller svart penn.</li>
+      <li>Legg arket i samme konvolutt som resten av søknaden.</li>
+      <li>Uten dette arket kan vi ikke behandle søknaden.</li>
+    </ul>
+  </div>
+
+  <div class="section">
     <div class="section-header">
-      <h2>Samtykke fra deg som er over 62 år</h2>
+      <h2>Om deg som samtykker</h2>
     </div>
-    <p class="section-intro">Dette er <strong>side 9</strong>, arket som skal fylles ut av den i husstanden som er over 62 år. Den som søker er selv under 62 år, så det er din alder som gir rett til tilskuddet, og vi trenger underskriften din for å kunne behandle søknaden.</p>
-
-    <div class="personalia">
-      <div class="field">
-        <label class="field-label" for="f-samboer-navn">Fornavn og mellomnavn</label>
-        <input class="field-input" id="f-samboer-navn" name="samboer_navn" type="text" autocomplete="given-name">
+    <div class="field-grid">
+      <div>
+        <label class="sub-label" for="f-samboer-navn">Navn</label>
+        <input type="text" class="input-line" id="f-samboer-navn" name="samboer_navn">
       </div>
-      <div class="field">
-        <label class="field-label" for="f-samboer-etternavn">Etternavn</label>
-        <input class="field-input" id="f-samboer-etternavn" name="samboer_etternavn" type="text" autocomplete="family-name">
-      </div>
-      <div class="field full">
-        <label class="field-label" for="f-samboer-aar">Fødselsår</label>
-        <input class="field-input" id="f-samboer-aar" name="samboer_aar" type="text" inputmode="numeric">
+      <div>
+        <label class="sub-label" for="f-samboer-aar">Fødselsår</label>
+        <input type="text" class="input-line short" id="f-samboer-aar" name="samboer_aar" inputmode="numeric" style="width:38mm">
       </div>
     </div>
-
-    <div class="callout">
-      <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Når skal side 9 fylles ut?</strong> Bare når søkeren har krysset av for «Nei, men jeg bor sammen med en som er det» på spørsmål 1.1. Er søkeren selv over 62 år, lar du hele arket stå tomt. Uten side 9 kan vi ikke behandle søknaden.
+    <div class="q">
+      <label class="sub-label" for="f-samboer-adresse">Adressen til boligen søknaden gjelder</label>
+      <input type="text" class="input-line long" id="f-samboer-adresse" name="samboer_adresse">
     </div>
+  </div>
 
+  <div class="section">
+    <div class="section-header">
+      <h2>Samtykket</h2>
+    </div>
     <p class="section-intro">Jeg er over 62 år og bor fast i boligen søknaden gjelder. Jeg samtykker til at det søkes om tilskudd til aldersvennlig oppgradering av denne boligen, og til at alderen min legges til grunn for søknaden. Opplysningene jeg har gitt er riktige.</p>
 
     <div class="signature">
-      <div class="sig-block" style="grid-column: 1 / -1;">
-        <div class="sig-line blokk" contenteditable="true" role="textbox" aria-multiline="false"
-             aria-labelledby="ark-blokk-navn" data-name="ark_blokk_navn"></div>
-        <div class="sig-label" id="ark-blokk-navn">Navn, skrevet med store bokstaver</div>
-      </div>
-    </div>
-
-    <div class="signature mt-4">
       <div class="sig-block">
         <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
              aria-labelledby="ark-sted-dato" data-name="ark_sted_dato"></div>
@@ -675,6 +682,14 @@
         <div class="sig-line" contenteditable="true" role="textbox" aria-multiline="false"
              aria-labelledby="ark-underskrift" data-name="ark_underskrift"></div>
         <div class="sig-label" id="ark-underskrift">Underskrift</div>
+      </div>
+    </div>
+
+    <div class="signature mt-4">
+      <div class="sig-block" style="grid-column: 1 / -1;">
+        <div class="sig-line blokk" contenteditable="true" role="textbox" aria-multiline="false"
+             aria-labelledby="ark-blokk-navn" data-name="ark_blokk_navn"></div>
+        <div class="sig-label" id="ark-blokk-navn">Navn, skrevet med store bokstaver</div>
       </div>
     </div>
   </div>

@@ -141,6 +141,44 @@ body {
   display: block;
 }
 
+/* ───────────────────── VEDLEGGSARK ─────────────────────
+   Samtykkearket bakerst er et eget ark som legges ved søknaden.
+   Det skal kjennes igjen som et vedlegg med en gang, og ikke
+   forveksles med en seksjon i selve skjemaet. */
+.vedlegg-topp {
+  border: 1.25pt solid var(--hb-green-600);
+  border-radius: 3mm;
+  padding: 5mm 6mm;
+  margin-bottom: 5mm;
+}
+.vedlegg-topp .eyebrow {
+  font-size: 8pt;
+  line-height: 11pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hb-green-700);
+  font-weight: 600;
+  margin: 0 0 1.5mm;
+}
+.vedlegg-topp h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22pt;
+  line-height: 26pt;
+  letter-spacing: -0.01em;
+  color: var(--hb-slate-700);
+  margin: 0 0 2mm;
+}
+.vedlegg-topp p {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: 11pt;
+  line-height: 15pt;
+  color: var(--hb-slate-700);
+  margin: 0;
+  max-width: 130mm;
+}
+
 /* ───────────────────────── INTROPANEL ───────────────────────── */
 .intro-panel {
   background: var(--hb-green-100);
@@ -551,7 +589,6 @@ legend.q-label + * { clear: both; }
   align-items: flex-start;
 }
 .attachment-block + .attachment-block { margin-top: 3mm; }
-.attachment-block + .callout { margin-top: 6mm; }
 .attachment-block .att-icon {
   width: 8mm;
   height: 8mm;

@@ -99,6 +99,16 @@ const HB_VERSJONER = [
     dato: '13. september 2026',
     endring: 'Etter gjennomgangen i Slack-tråden «Papirsøknaden». Teksten fra «Til deg som leier»-steget, som departementet har bedt om at skal med, er nå i seksjon 3, tilpasset papir, og sier hvor samtykkeskjemaet finnes. Samtykket fra husstandsmedlemmet over 62 år er flyttet ut av seksjon 1 og 7, og står som et eget ark bakerst som personen fyller ut, skriver under på og legger ved. Eierformene er skrevet om til fire klarere alternativer: «bor der» i stedet for «folkeregistrert på adressen», kjøp som eget alternativ med kjøpekontrakt, og arv skilt ut fra kjøp, med en liste over gyldig dokumentasjon. Samtykketeksten er fagsidens egen formulering om uriktige opplysninger, og setningen om å kontakte firmaet som ga tilbudet er tatt ut. Setningen om postmottaket er borte, fritekstfeltet i 4.1 gjelder også «Annet område», og logo og tittel er satt opp fra 6,5 til 8 mm og fra 19 til 22 pt. Søknaden gikk fra 7 til 9 sider.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v8.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v8.html'
+    }
+  },
+  {
+    nr: 9,
+    navn: 'Språk og samtykkeark',
+    dato: '14. september 2026',
+    endring: 'Språkopprydding og ombygd samtykkeark. Setningen om at skjemaet erstatter den digitale søknaden er ute, det samme er forklaringen av sirkler og firkanter. Boksen om fagfolk er skrevet om: kravet om registrert firma står først, og setningen om egeninnsats og gratis hjelp fra familie er hentet tilbake. «Fortsatt» er borte fra overskriftene, seksjon 4 heter nå «Hva skal gjøres i boligen», og samtykketeksten i seksjon 7 er kortet ned til fagsidens formulering alene. Side 9 er bygget om i samme form som resten: vanlig seksjonshode i stedet for egen ramme og stor tittel, samme personaliaboks som seksjon 1, og adressefeltet er tatt bort fordi adressen alt står i seksjon 3. Arket omtales nå som «side 9» overalt. Varselboksen under vedleggsboksen har fått luft over seg.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

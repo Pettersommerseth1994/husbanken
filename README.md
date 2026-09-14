@@ -69,7 +69,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 5, 8. september 2026 | `...-v5.html` | Iterasjon 3 justert. Linjer i skrivefelt fjernet, ruter midtstilt, personalia inn i seksjon 1. |
 | 6, 11. september 2026 | `...-v6.html` | Etter lappene i Miro. Nye kategorier, ny rekkefølge, nye krav. Se under. |
 | 7, 11. september 2026 | `...-v7.html` | Etter de 93 kommentarene i Miro. Feil postadresse, e-post som kanal, saksbehandlingstid, betalingsrekkefølge. Se under. |
-| 8, 13. september 2026 | uten suffiks | Etter Slack-gjennomgangen. Leietakerteksten inn, eget samtykkeark bakerst, fire klarere eierformer. Se under. |
+| 8, 13. september 2026 | `...-v8.html` | Etter Slack-gjennomgangen. Leietakerteksten inn, eget samtykkeark bakerst, fire klarere eierformer. Se under. |
+| 9, 14. september 2026 | uten suffiks | Språkopprydding, og side 9 bygget om i samme form som resten. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -317,6 +318,7 @@ assets/css/hb-papir-v4.css  Pinnet kopi, slik iterasjon 4 så ut
 assets/css/hb-papir-v5.css  Pinnet kopi, slik iterasjon 5 så ut
 assets/css/hb-papir-v6.css  Pinnet kopi, slik iterasjon 6 så ut
 assets/css/hb-papir-v7.css  Pinnet kopi, slik iterasjon 7 så ut
+assets/css/hb-papir-v8.css  Pinnet kopi, slik iterasjon 8 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -372,3 +374,38 @@ utbetalingsskjemaet står fortsatt, fordi det er en annen situasjon enn søknade
 Størrelsen på logo og tittel er et forslag, ikke en beslutning. Samtykket fra
 eier ved leie må avklares med fagsiden, og teksten skal samsvare med det
 husbanken.no lander på.
+
+### Iterasjon 9, språk og samtykkeark
+
+Ni konkrete rettelser, plukket ut fra det som sto som «delvis» og «uforankret»
+i sjekklista. Tre av dem lukker kommentarer som til nå manglet forankring.
+
+**Ut av skjemaet:** at det «erstatter den digitale søknaden og inneholder de
+samme spørsmålene», og forklaringen av at sirkel betyr ett svar og firkant flere.
+Begge steder var det den andre setningen som var overflødig, som to av
+kommentarene sa. Samtykketeksten i seksjon 7 er kortet ned til fagsidens
+formulering alene; setningen om innhenting fra Folkeregisteret, Kartverket og
+Skatteetaten står fra før i seksjon 1.
+
+**Boksen om fagfolk er snudd.** Kravet står nå først, og setningen om egeninnsats
+og gratis hjelp fra familie er hentet tilbake etter at den ble mildnet bort i
+iterasjon 7. Lista over hva som ikke dekkes sier nå «verdien av arbeid du gjør
+selv», ikke bare «arbeid du gjør selv».
+
+**Overskriftene:** «fortsatt» er borte overalt. At samme overskrift står på flere
+sider er greit, og bedre enn en halv setning i toppen av arket. Seksjon 4 heter
+«Hva skal gjøres i boligen».
+
+**Side 9 er bygget om.** Arket hadde egen ramme, egen tittelstørrelse og egne
+felt, og skilte seg fra resten uten grunn. Nå er det vanlig seksjonshode, samme
+personaliaboks som seksjon 1, og samme signaturrekkefølge som seksjon 7.
+Adressefeltet er tatt bort, siden adressen alt står i seksjon 3. Arket omtales
+som «side 9» med sidetall der det vises til, både i spørsmål 1.2 og i
+innsendingslista, så det er tydelig hva som menes.
+
+**Varselboksen** under vedleggsboksen klistret seg til den. Den har fått 6 mm
+luft over seg, fordi den er en egen beskjed og ikke en fotnote til boksen.
+
+**Åpent:** boksen om fagfolk sier nå «Brønnøysundregisteret», mens vedleggskravet
+rett over sier «Brønnøysundregistrene». Begge deler kan ikke stemme, og det
+offisielle navnet er det siste.
