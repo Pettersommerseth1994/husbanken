@@ -119,6 +119,16 @@ const HB_VERSJONER = [
     dato: '14. september 2026',
     endring: 'Forsiden har fått kravlista fra veilederen i den digitale søknaden: alder, eierform, minst én godkjent oppgradering, tilbud som vedlegg, minstebeløp og å søke før arbeidet settes i gang. Punktene som sto både der og i «Slik bruker du dette skjemaet» er tatt ut av det siste. Kategori 4.6 har fått forklaringen fra forskriften om hva et Nav-vedtak kan gjelde. Fullmaktsskjemaet og samtykkeskjemaet står begge på husbanken.no. «Brønnøysundregisteret» er rettet til «Brønnøysundregistrene», tilbudet om å få samtykkeskjemaet i posten er tatt ut, og side 9 sier «dette arket» i stedet for «hele arket».',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v10.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v10.html'
+    }
+  },
+  {
+    nr: 11,
+    navn: 'Det postmottaket trenger',
+    dato: '14. september 2026',
+    endring: 'Skrevet for postmottaket, som skal registrere papirsøknadene i det digitale systemet. Bolignummer og aksjenummer er forklart hver for seg: bolignummer heter også bruksenhetsnummer, står ofte ved inngangsdøren og finnes på kartverket.no, og aksjenummer har fått et eksempel på formatet. Begrunnelsen sier nå at nummeret ikke finnes i matrikkelen. Dokumentasjonsboksen er snudd fra en liste over dokumenttyper til en liste over situasjoner: flytteprosess, arveoppgjør, gjenlevende ektefelle, boligaksjeselskap. Uskifteattest er knyttet til hvem det gjelder, i stedet for å stå ved siden av skifteattest.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

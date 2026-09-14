@@ -71,7 +71,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 7, 11. september 2026 | `...-v7.html` | Etter de 93 kommentarene i Miro. Feil postadresse, e-post som kanal, saksbehandlingstid, betalingsrekkefølge. Se under. |
 | 8, 13. september 2026 | `...-v8.html` | Etter Slack-gjennomgangen. Leietakerteksten inn, eget samtykkeark bakerst, fire klarere eierformer. Se under. |
 | 9, 14. september 2026 | `...-v9.html` | Språkopprydding, og side 9 bygget om i samme form som resten. Se under. |
-| 10, 14. september 2026 | uten suffiks | Kravlista fra veilederen inn på forsiden. Se under. |
+| 10, 14. september 2026 | `...-v10.html` | Kravlista fra veilederen inn på forsiden. Se under. |
+| 11, 14. september 2026 | uten suffiks | Skrevet for postmottaket: bolignummer, aksjenummer og dokumentasjon. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -321,6 +322,7 @@ assets/css/hb-papir-v6.css  Pinnet kopi, slik iterasjon 6 så ut
 assets/css/hb-papir-v7.css  Pinnet kopi, slik iterasjon 7 så ut
 assets/css/hb-papir-v8.css  Pinnet kopi, slik iterasjon 8 så ut
 assets/css/hb-papir-v9.css  Pinnet kopi, slik iterasjon 9 så ut
+assets/css/hb-papir-v10.css Pinnet kopi, slik iterasjon 10 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -435,3 +437,33 @@ ombygging.
 steder. Fullmaktsskjemaet i 1.3 sier nå at det ligger på husbanken.no, som
 samtykkeskjemaet gjør fra før. Tilbudet om å få samtykkeskjemaet tilsendt i
 posten er tatt ut. Side 9 sier «dette arket» i stedet for «hele arket».
+
+### Iterasjon 11, det postmottaket trenger
+
+Papirsøknadene skal registreres i det digitale systemet av Dokumentsenteret i
+Bodø. Det de trenger for å få søknaden på riktig bolig, er ikke det samme som
+det søkeren tenker på, og skjemaet sa det for vagt.
+
+**Bolignummer og aksjenummer er forklart hver for seg.** Før sto de i én setning
+med ordet «seksjonert», som ikke er et ord folk bruker om sitt eget hjem. Nå står
+det hva slags bolig det gjelder: borettslag, rekkehus, eller et hus med to eller
+flere boliger. Nummeret kalles også **bruksenhetsnummer**, står ofte på dørkarmen
+eller ved inngangsdøren, og finnes på kartverket.no. Aksjenummeret har fått et
+eksempel på formatet, 450–475, og «aksjebolig» er byttet med
+«boligaksjeselskap». Begrunnelsen sier nå at vi ikke finner nummeret i
+matrikkelen, som er grunnen til at vi må spørre.
+
+**Dokumentasjonsboksen er snudd.** Den listet opp dokumenttyper, og søkeren måtte
+selv finne ut hvilken som gjaldt dem. Nå lister den situasjoner:
+
+- i en flytteprosess: kjøpekontrakt, eller tinglyst skjøte eller grunnboksutskrift hvis kjøpet er tinglyst
+- i et arveoppgjør: skifteattest
+- gjenlevende ektefelle eller samboer som har arvet: uskifteattest
+- boligen i et boligaksjeselskap: aksjeeierbok, aksjebrev, bekreftelse fra styret eller utskrift fra VPS
+
+Aksjeboligdokumentene hadde ingen situasjon å høre til før, siden det ikke
+finnes et aksjebolig-alternativ i 3.3. Uskifteattest sto som et alternativ ved
+siden av skifteattest, uten at det gikk fram hvem det gjaldt.
+
+**Ikke gjort:** fødselsnummeret står fortsatt som tredje felt i personaliaboksen,
+etter fornavn og etternavn, ikke først.

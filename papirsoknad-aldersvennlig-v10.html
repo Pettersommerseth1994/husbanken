@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v10.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="11">
+<body data-skjema="soknad" data-versjon="10">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v10" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -40,7 +40,7 @@
     <img class="illus" src="assets/img/aldersvennlig-oppgradering.svg" alt="Illustrasjon av bolig med trinnfri adkomst">
   </div>
 
-  <div class="krav-panel">
+  <div class="krav-panel" data-endret="Ny. Samme kravliste som veilederen i den digitale søknaden viser. Punktene om å legge ved tilbud og å søke før arbeidet settes i gang er tatt ut av «Slik bruker du dette skjemaet», så de ikke står to ganger.">
     <h2>For å få tilskudd må du</h2>
     <ul>
       <li>være <strong>over 62 år</strong> eller bo med en over 62 år</li>
@@ -187,7 +187,7 @@
       <div class="options">
         <label class="opt"><input type="radio" name="q1_fullmakt" value="nei"><span class="mark"></span><span class="opt-body">Nei, jeg søker for meg selv</span></label>
         <label class="opt"><input type="radio" name="q1_fullmakt" value="ja"><span class="mark"></span><span class="opt-body">Ja, jeg er verge eller har fullmakt
-          <span class="opt-help">Da må du legge ved Husbankens fullmaktsskjema, ferdig utfylt og signert. Du finner det på husbanken.no.</span>
+          <span class="opt-help" data-endret="Sier nå hvor fullmaktsskjemaet ligger.">Da må du legge ved Husbankens fullmaktsskjema, ferdig utfylt og signert. Du finner det på husbanken.no.</span>
         </span></label>
       </div>
     </fieldset>
@@ -236,7 +236,7 @@
 
     <div class="callout callout--warn">
       <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
-      <strong>Husk at arbeidet må gjøres av et firma som er registrert i Brønnøysundregistrene.</strong> Du kan ikke gjøre jobben selv, og du kan ikke få tilskudd for arbeid en venn eller et familiemedlem gjør gratis.
+      <strong data-endret="«Brønnøysundregisteret» er rettet til «Brønnøysundregistrene», som er det offisielle navnet og det som står i vedleggskravet over.">Husk at arbeidet må gjøres av et firma som er registrert i Brønnøysundregistrene.</strong> Du kan ikke gjøre jobben selv, og du kan ikke få tilskudd for arbeid en venn eller et familiemedlem gjør gratis.
     </div>
   </div>
 
@@ -253,17 +253,15 @@
     </div>
 
     <div class="q">
-      <p class="q-label" data-endret="Bolignummer og aksjenummer er forklart hver for seg. Bolignummer heter også bruksenhetsnummer, står ofte ved inngangsdøren, og finnes på kartverket.no. Aksjenummer har fått et eksempel på hvordan det ser ut. Begrunnelsen sier nå at nummeret ikke finnes i matrikkelen.">3.2 Bolignummer eller aksjenummer</p>
-      <p class="q-help">Vi trenger dette for å registrere søknaden på riktig bolig, og vi finner det ikke i matrikkelen. Gjelder ingen av delene, lar du feltene stå åpne.</p>
+      <p class="q-label">3.2 Bolignummer eller aksjenummer</p>
+      <p class="q-help">Bolignummer hvis boligen er seksjonert, aksjenummer hvis den er en aksjebolig. Vi trenger det for å registrere søknaden på riktig bolig. Gjelder ingen av delene, lar du feltene stå åpne.</p>
       <div class="field-grid">
         <div>
           <label class="sub-label" for="f-bolignr">Bolignummer</label>
-          <p class="q-help">Fyll ut hvis boligen er én av flere i samme bygg: borettslag, rekkehus, eller et hus med to eller flere boliger. Nummeret kalles også bruksenhetsnummer, står ofte på dørkarmen eller ved inngangsdøren, og du finner det på kartverket.no.</p>
           <input type="text" class="input-line" id="f-bolignr" name="bolignr">
         </div>
         <div>
           <label class="sub-label" for="f-aksjenr">Aksjenummer</label>
-          <p class="q-help">Fyll ut hvis boligen er i et boligaksjeselskap. Nummeret er som regel en sekvens, for eksempel 450–475, og står i papirene fra selskapet.</p>
           <input type="text" class="input-line" id="f-aksjenr" name="aksjenr">
         </div>
       </div>
@@ -279,7 +277,7 @@
           <span class="opt-help">Er du ikke registrert som eier ennå, legger du ved kjøpekontrakten.</span>
         </span></label>
         <label class="opt"><input type="radio" name="q3_eierform" value="arver"><span class="mark"></span><span class="opt-body">Jeg skal arve boligen
-          <span class="opt-help" data-endret="Uskifteattest er knyttet til gjenlevende ektefelle eller samboer, ikke bare listet opp ved siden av skifteattest.">Legg ved skifteattest. Er du gjenlevende ektefelle eller samboer som har arvet boligen, legger du ved uskifteattest i stedet.</span>
+          <span class="opt-help">Legg ved skifteattest eller uskifteattest.</span>
         </span></label>
         <label class="opt"><input type="radio" name="q3_eierform" value="leier"><span class="mark"></span><span class="opt-body">Jeg leier boligen
           <span class="opt-help">Legg ved et signert samtykke fra den som eier boligen. Mer om det i boksen under.</span>
@@ -315,14 +313,12 @@
     </div>
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <p><strong data-endret="Skrevet om fra en liste over dokumenttyper til en liste over situasjoner, så søkeren ser hvilket dokument som gjelder dem. Aksjeboligdokumentene har fått sin egen situasjon, siden det ikke finnes et aksjebolig-alternativ i 3.3 å knytte dem til.">Dokumentasjon du må legge ved</strong></p>
+      <p><strong>Dokumentasjonen kan være:</strong></p>
       <ul>
-        <li>Er du i en flytteprosess: <strong>kjøpekontrakt</strong>. Er kjøpet tinglyst, holder tinglyst skjøte eller grunnboksutskrift.</li>
-        <li>Er du i et arveoppgjør: <strong>skifteattest</strong></li>
-        <li>Er du gjenlevende ektefelle eller samboer som har arvet boligen: <strong>uskifteattest</strong></li>
-        <li>Er boligen i et boligaksjeselskap: <strong>aksjeeierbok</strong>, <strong>aksjebrev</strong>, <strong>bekreftelse fra styret</strong> eller <strong>utskrift fra VPS</strong></li>
+        <li>tinglyst skjøte, grunnboksutskrift eller kjøpekontrakt</li>
+        <li>skifteattest eller uskifteattest</li>
+        <li>er boligen en aksjebolig: aksjeeierbok, aksjebrev, bekreftelse fra styret eller utskrift fra VPS</li>
       </ul>
-      <p>Eier du boligen, er registrert som eier i matrikkelen og bor på adressen, trenger vi ingen dokumentasjon fra deg.</p>
     </div>
 
     <div class="callout">
@@ -332,7 +328,7 @@
         <li>Vi anbefaler at du har en langsiktig leiekontrakt.</li>
         <li>Husk at du investerer i noen andre sin bolig.</li>
         <li>Alle endringer du gjør må være godkjent av eieren av boligen.</li>
-        <li>Snakk med eieren av boligen før du søker. Fyll ut Husbankens skjema for samtykke fra eieren sammen, og legg det ved søknaden. Du finner skjemaet på husbanken.no.</li>
+        <li data-endret="Tilbudet om å få skjemaet tilsendt i posten er tatt ut.">Snakk med eieren av boligen før du søker. Fyll ut Husbankens skjema for samtykke fra eieren sammen, og legg det ved søknaden. Du finner skjemaet på husbanken.no.</li>
       </ul>
     </div>
   </div>
@@ -473,7 +469,7 @@
     </fieldset>
 
     <fieldset class="q">
-      <legend class="q-label">4.6 Tilpasse boligen til vedtak fra Nav</legend>
+      <legend class="q-label" data-endret="Kategorien har fått forklaringen fra forskriften: hva Nav-vedtaket kan gjelde, og hva du kan søke om på grunnlag av det.">4.6 Tilpasse boligen til vedtak fra Nav</legend>
       <p class="q-help">Du kan søke om tilskudd fra Husbanken for å justere terrenget og/eller gjøre endringer i boligen for å kunne ta i bruk et vedtak fra Nav om enten hjelpemiddel for tilrettelegging av bolig eller tilskudd til ombygging.</p>
       <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_nav" aria-label="Beskriv Tilpasse boligen til vedtak fra Nav"></textarea>
@@ -668,7 +664,7 @@
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong>Når skal side 9 fylles ut?</strong> Bare når søkeren har krysset av for «Nei, men jeg bor sammen med en som er det» på spørsmål 1.1. Er søkeren selv over 62 år, lar du dette arket stå tomt. Uten side 9 kan vi ikke behandle søknaden.
+      <strong data-endret="«Hele arket» er byttet med «dette arket».">Når skal side 9 fylles ut?</strong> Bare når søkeren har krysset av for «Nei, men jeg bor sammen med en som er det» på spørsmål 1.1. Er søkeren selv over 62 år, lar du dette arket stå tomt. Uten side 9 kan vi ikke behandle søknaden.
     </div>
 
     <p class="section-intro">Jeg er over 62 år og bor fast i boligen søknaden gjelder. Jeg samtykker til at det søkes om tilskudd til aldersvennlig oppgradering av denne boligen, og til at alderen min legges til grunn for søknaden. Opplysningene jeg har gitt er riktige.</p>
