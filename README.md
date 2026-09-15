@@ -76,7 +76,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 12, 14. september 2026 | `...-v12.html` | 3.2 bygget om med «Slik finner du»-boksene fra den digitale søknaden. Se under. |
 | 13, 14. september 2026 | `...-v13.html` | Finpuss på 3.2: eksempel, tekststørrelse og når spørsmålet gjelder. |
 | 14, 15. september 2026 | `...-v14.html` | Ny illustrasjon, større logo, paginerte celler og ryddet tekst. Se under. |
-| 15, 15. september 2026 | uten suffiks | Riktig navn på Nav-kategorien og på fullmaktsskjemaet. |
+| 15, 15. september 2026 | `...-v15.html` | Riktig navn på Nav-kategorien og på fullmaktsskjemaet. |
+| 16, 15. september 2026 | uten suffiks | 3.2 delt i to spørsmål, ett per nummer. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -331,6 +332,7 @@ assets/css/hb-papir-v11.css Pinnet kopi, slik iterasjon 11 så ut
 assets/css/hb-papir-v12.css Pinnet kopi, slik iterasjon 12 så ut
 assets/css/hb-papir-v13.css Pinnet kopi, slik iterasjon 13 så ut
 assets/css/hb-papir-v14.css Pinnet kopi, slik iterasjon 14 så ut
+assets/css/hb-papir-v15.css Pinnet kopi, slik iterasjon 15 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -567,3 +569,23 @@ både nummer og full tittel.
 Dette lukker en del av forbeholdet på de departementsgodkjente kategoritekstene:
 Nav-kategorien er nå verifisert mot forskriften. De fem andre står fortsatt med
 tekstene som ble transkribert fra skjermbildet av Miro-boardet.
+
+### Iterasjon 16, to spørsmål i 3.2
+
+Den felles overskriften «3.2 Bolignummer og aksjenummer» er borte, med den grå
+linja under. De to numrene står nå som hvert sitt spørsmål, side om side:
+
+- **3.2 Hva er bolignummeret til boligen?** — Kun hvis det er flere boliger på adressen din.
+- **Hva er aksjenummeret til boligen?** — Kun hvis boligen er i et boligaksjeselskap.
+
+Hver av dem sier nå selv når den gjelder, i stedet for at én linje dekket begge.
+Eksempellinjene over feltene er tatt ut; eksemplene står fra før i «Slik finner
+du»-boksene rett under.
+
+Overskriftene er tilbake i `.q-label`-størrelse. De ble satt ned til 9 pt i
+iterasjon 13 fordi de sto under en overskrift av samme størrelse. Den
+overskriften finnes ikke lenger, så de er spørsmål i seg selv igjen.
+
+**Merk:** bare bolignummer-spørsmålet har nummer. Aksjenummer-spørsmålet står
+unummerert ved siden av, slik det ble bedt om. Det er den eneste unummererte
+spørsmålsoverskriften i skjemaet.

@@ -151,10 +151,17 @@ body {
   gap: 4mm 7mm;
   margin-top: 2mm;
 }
-/* De to spørsmålene er sidestilte og står som vanlige .q-label. Den
-   felles overskriften over dem er borte, så de er ikke lenger et
-   undernivå av noe. */
-.nummer-kort .q-label { margin-bottom: 0.8mm; }
+/* Ett trinn under .q-label, som er 10 pt. Spørsmålet inni 3.2 skal
+   leses som underordnet seksjonsspørsmålet, ikke som et sidestilt. */
+.nummer-kort .nummer-sp {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 9pt;
+  line-height: 12.5pt;
+  color: var(--hb-slate-700);
+  margin-bottom: 0.8mm;
+}
 .nummer-kort .q-help { margin: 0 0 1mm; }
 .nummer-kort .input-line { margin-bottom: 3mm; }
 .finn {

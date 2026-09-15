@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v15.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="16">
+<body data-skjema="soknad" data-versjon="15">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v15" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -186,7 +186,7 @@
       <div class="options">
         <label class="opt"><input type="radio" name="q1_fullmakt" value="nei"><span class="mark"></span><span class="opt-body">Nei, jeg søker for meg selv</span></label>
         <label class="opt"><input type="radio" name="q1_fullmakt" value="ja"><span class="mark"></span><span class="opt-body">Ja, jeg er verge eller har fullmakt
-          <span class="opt-help">Da må du legge ved <strong>skjema HB 8.S.37</strong>, «Fullmakt – Søknad om tilskudd og utbetaling av tilskudd til aldersvennlig oppgradering av bolig», ferdig utfylt og signert. Du finner det på husbanken.no.</span>
+          <span class="opt-help" data-endret="Fullmaktsskjemaet er navngitt med skjemanummer og full tittel, så det er til å finne fram til.">Da må du legge ved <strong>skjema HB 8.S.37</strong>, «Fullmakt – Søknad om tilskudd og utbetaling av tilskudd til aldersvennlig oppgradering av bolig», ferdig utfylt og signert. Du finner det på husbanken.no.</span>
         </span></label>
       </div>
     </fieldset>
@@ -252,10 +252,13 @@
     </div>
 
     <div class="q">
+      <p class="q-label">3.2 Bolignummer og aksjenummer</p>
+      <p class="q-help">Kun hvis det er flere boliger på adressen din eller hvis boligen er i et boligaksjeselskap.</p>
+
       <div class="nummer-grid">
         <div class="nummer-kort">
-          <label class="q-label" for="f-bolignr" data-endret="Den felles overskriften «3.2 Bolignummer og aksjenummer» er borte. De to spørsmålene står nå som spørsmål i seg selv, hvert med sin egen «kun hvis»-linje, og eksempellinjene er tatt ut siden eksemplene alt står i boksene under.">3.2 Hva er bolignummeret til boligen?</label>
-          <p class="q-help">Kun hvis det er flere boliger på adressen din.</p>
+          <label class="nummer-sp" for="f-bolignr">Hva er bolignummeret til boligen?</label>
+          <p class="q-help">For eksempel H0301. Maks 5 tegn.</p>
           <input type="text" class="input-line" id="f-bolignr" name="bolignr">
           <div class="finn">
             <strong>Slik finner du bolignummeret</strong>
@@ -270,8 +273,8 @@
         </div>
 
         <div class="nummer-kort">
-          <label class="q-label" for="f-aksjenr">Hva er aksjenummeret til boligen?</label>
-          <p class="q-help">Kun hvis boligen er i et boligaksjeselskap.</p>
+          <label class="nummer-sp" for="f-aksjenr">Hva er aksjenummeret til boligen?</label>
+          <p class="q-help">For eksempel 450–475. Maks 10 tegn.</p>
           <input type="text" class="input-line" id="f-aksjenr" name="aksjenr">
           <div class="finn">
             <strong>Slik finner du aksjenummeret</strong>
@@ -478,7 +481,7 @@
     </fieldset>
 
     <fieldset class="q">
-      <legend class="q-label">4.6 Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav</legend>
+      <legend class="q-label" data-endret="Overskriften er byttet til forskriftens ordlyd, som dekker både terreng og bygning.">4.6 Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav</legend>
       <p class="q-help">Du kan søke om tilskudd fra Husbanken for å justere terrenget og/eller gjøre endringer i boligen for å kunne ta i bruk et vedtak fra Nav om enten hjelpemiddel for tilrettelegging av bolig eller tilskudd til ombygging.</p>
       <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_nav" aria-label="Beskriv Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav"></textarea>
