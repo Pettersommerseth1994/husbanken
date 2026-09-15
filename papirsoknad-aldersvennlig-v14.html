@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v14.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="15">
+<body data-skjema="soknad" data-versjon="14">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v14" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -37,7 +37,7 @@
       <h1>Søk om tilskudd til aldersvennlig oppgradering</h1>
       <p class="lede">Er du over 62 år, kan du få dekket 25 prosent av det du oppgraderer boligen for. Tilskudd er penger du får, og som du ikke skal betale tilbake.</p>
     </div>
-    <img class="illus" src="assets/img/illustrasjon-aldersvennlig.svg" alt="Illustrasjon av en eldre person utenfor en bolig med trinnfri adkomst">
+    <img class="illus" src="assets/img/illustrasjon-aldersvennlig.svg" alt="Illustrasjon av en eldre person utenfor en bolig med trinnfri adkomst" data-endret="Riktig illustrasjon fra designsystemet.">
   </div>
 
   <div class="krav-panel">
@@ -45,7 +45,7 @@
     <ul>
       <li>være <strong>over 62 år</strong> eller bo med en over 62 år</li>
       <li><strong>eie eller leie</strong> boligen, og <strong>bo</strong> i den</li>
-      <li>søke om å gjøre en <strong>varig aldersvennlig oppgradering</strong></li>
+      <li data-endret="Kravet handler om å søke om en varig aldersvennlig oppgradering, ikke om å telle kategorier.">søke om å gjøre en <strong>varig aldersvennlig oppgradering</strong></li>
       <li>legge ved et <strong>tilbud eller prisoverslag</strong></li>
       <li>oppgradere for minst <strong>40 000 kroner</strong></li>
       <li><strong>søke før</strong> du setter i gang arbeidet</li>
@@ -186,7 +186,7 @@
       <div class="options">
         <label class="opt"><input type="radio" name="q1_fullmakt" value="nei"><span class="mark"></span><span class="opt-body">Nei, jeg søker for meg selv</span></label>
         <label class="opt"><input type="radio" name="q1_fullmakt" value="ja"><span class="mark"></span><span class="opt-body">Ja, jeg er verge eller har fullmakt
-          <span class="opt-help" data-endret="Fullmaktsskjemaet er navngitt med skjemanummer og full tittel, så det er til å finne fram til.">Da må du legge ved <strong>skjema HB 8.S.37</strong>, «Fullmakt – Søknad om tilskudd og utbetaling av tilskudd til aldersvennlig oppgradering av bolig», ferdig utfylt og signert. Du finner det på husbanken.no.</span>
+          <span class="opt-help">Da må du legge ved Husbankens fullmaktsskjema, ferdig utfylt og signert. Du finner det på husbanken.no.</span>
         </span></label>
       </div>
     </fieldset>
@@ -481,10 +481,10 @@
     </fieldset>
 
     <fieldset class="q">
-      <legend class="q-label" data-endret="Overskriften er byttet til forskriftens ordlyd, som dekker både terreng og bygning.">4.6 Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav</legend>
+      <legend class="q-label">4.6 Tilpasse boligen til vedtak fra Nav</legend>
       <p class="q-help">Du kan søke om tilskudd fra Husbanken for å justere terrenget og/eller gjøre endringer i boligen for å kunne ta i bruk et vedtak fra Nav om enten hjelpemiddel for tilrettelegging av bolig eller tilskudd til ombygging.</p>
       <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
-      <textarea class="input-area" name="beskriv_nav" aria-label="Beskriv Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav"></textarea>
+      <textarea class="input-area" name="beskriv_nav" aria-label="Beskriv Tilpasse boligen til vedtak fra Nav"></textarea>
     </fieldset>
   </div>
 
@@ -627,7 +627,7 @@
       <li>Vi svarer <strong>1 til 6 uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig. Svaret kommer i posten, eller i den digitale postkassen din hvis du har en.</li>
       <li>Sier vi ja, kalles det et <strong>tilsagn</strong>. Det er et løfte om at pengene står klare til deg. Ikke start arbeidet før du har fått det.</li>
       <li>Du har <strong>to år</strong> på deg til å få arbeidet gjort. Du betaler regningen til firmaet selv.</li>
-      <li>Til slutt må du <strong>be om utbetaling</strong>. Bruk skjema <strong>HB 8.S.06</strong> eller logg inn i Lån og tilskudd fra Husbanken på husbanken.no.</li>
+      <li data-endret="Viser nå til Lån og tilskudd fra Husbanken på husbanken.no i stedet for «Min side», og setningen om at det ikke skjer av seg selv er tatt ut.">Til slutt må du <strong>be om utbetaling</strong>. Bruk skjema <strong>HB 8.S.06</strong> eller logg inn i Lån og tilskudd fra Husbanken på husbanken.no.</li>
     </ol>
   </div>
 
@@ -678,7 +678,7 @@
     </div>
 
     <fieldset class="q">
-      <legend class="q-label">Bor du i boligen søknaden gjelder?</legend>
+      <legend class="q-label" data-endret="Nytt. Den som er over 62 år må selv bekrefte at hen bor i boligen søknaden gjelder, eller skal flytte dit. Det er den opplysningen som gir rett til tilskuddet.">Bor du i boligen søknaden gjelder?</legend>
       <div class="options">
         <label class="opt"><input type="radio" name="ark_bosted" value="bor"><span class="mark"></span><span class="opt-body">Ja, jeg bor i boligen søknaden gjelder</span></label>
         <label class="opt"><input type="radio" name="ark_bosted" value="flytter"><span class="mark"></span><span class="opt-body">Nei, men jeg skal flytte dit</span></label>

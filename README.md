@@ -75,7 +75,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 11, 14. september 2026 | `...-v11.html` | Skrevet for postmottaket: bolignummer, aksjenummer og dokumentasjon. Se under. |
 | 12, 14. september 2026 | `...-v12.html` | 3.2 bygget om med «Slik finner du»-boksene fra den digitale søknaden. Se under. |
 | 13, 14. september 2026 | `...-v13.html` | Finpuss på 3.2: eksempel, tekststørrelse og når spørsmålet gjelder. |
-| 14, 15. september 2026 | uten suffiks | Ny illustrasjon, større logo, paginerte celler og ryddet tekst. Se under. |
+| 14, 15. september 2026 | `...-v14.html` | Ny illustrasjon, større logo, paginerte celler og ryddet tekst. Se under. |
+| 15, 15. september 2026 | uten suffiks | Riktig navn på Nav-kategorien og på fullmaktsskjemaet. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -329,6 +330,7 @@ assets/css/hb-papir-v10.css Pinnet kopi, slik iterasjon 10 så ut
 assets/css/hb-papir-v11.css Pinnet kopi, slik iterasjon 11 så ut
 assets/css/hb-papir-v12.css Pinnet kopi, slik iterasjon 12 så ut
 assets/css/hb-papir-v13.css Pinnet kopi, slik iterasjon 13 så ut
+assets/css/hb-papir-v14.css Pinnet kopi, slik iterasjon 14 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -546,3 +548,22 @@ selv er borte.
 **Side 9 spør nå om bosted.** Den som er over 62 år må selv bekrefte at hen bor i
 boligen søknaden gjelder, eller skal flytte dit. Det er den opplysningen som gir
 rett til tilskuddet, og den sto bare som en påstand i samtykketeksten før.
+
+### Iterasjon 15, riktige skjemanavn
+
+To navn som sto omtrentlig, og nå står som de skal.
+
+**Kategori 4.6** heter «Gjøre terreng- og/eller bygningsmessige endringer ved
+vedtak fra Nav», som er forskriftens ordlyd. «Tilpasse boligen til vedtak fra
+Nav» dekket bare halve kategorien: den handler også om terrenget. Samme
+overskrift er satt inn i utbetalingsskjemaet, der de seks kategoriene skal være
+identiske med søknadens.
+
+**Fullmaktsskjemaet** i 1.3 sto som «Husbankens fullmaktsskjema», som ikke er til
+å finne fram til. Det heter **HB 8.S.37**, «Fullmakt – Søknad om tilskudd og
+utbetaling av tilskudd til aldersvennlig oppgradering av bolig», og står nå med
+både nummer og full tittel.
+
+Dette lukker en del av forbeholdet på de departementsgodkjente kategoritekstene:
+Nav-kategorien er nå verifisert mot forskriften. De fem andre står fortsatt med
+tekstene som ble transkribert fra skjermbildet av Miro-boardet.

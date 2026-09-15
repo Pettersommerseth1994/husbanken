@@ -159,6 +159,16 @@ const HB_VERSJONER = [
     dato: '15. september 2026',
     endring: 'Ny illustrasjon på forsiden, logoen 30 prosent større, og iterasjonscellene paginert med et vindu rundt den man står på. Kravet på forsiden handler nå om å søke om en varig aldersvennlig oppgradering, ikke om å telle kategorier. Avsnittet om Folkeregisteret og Kontaktregisteret er tatt ut av seksjon 1, og to punkter er tatt ut av innsendingslista. Utbetalingspunktet viser til Lån og tilskudd fra Husbanken i stedet for Min side. Undernivået i 4.1 har fått luft under seg, så det synes hvor det slutter. Side 9 spør nå om den over 62 år bor i boligen eller skal flytte dit.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v14.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v14.html'
+    }
+  },
+  {
+    nr: 15,
+    navn: 'Riktige skjemanavn',
+    dato: '15. september 2026',
+    endring: 'Kategori 4.6 heter nå «Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav», forskriftens ordlyd, og utbetalingsskjemaet har fått samme overskrift. Fullmaktsskjemaet i 1.3 er navngitt: skjema HB 8.S.37, «Fullmakt – Søknad om tilskudd og utbetaling av tilskudd til aldersvennlig oppgradering av bolig».',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }
