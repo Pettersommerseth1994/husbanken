@@ -149,6 +149,16 @@ const HB_VERSJONER = [
     dato: '14. september 2026',
     endring: 'Finpuss på 3.2. «Be de hjelpe deg» er rettet til «be dem». Bolignummeret har fått eksempel og tegngrense, likt som aksjenummeret. Spørsmålene inni 3.2 er satt ett trinn ned, fra 10 til 9 pt, så de ikke konkurrerer med seksjonsspørsmålet over. Under 3.2 står det nå når spørsmålet gjelder deg: flere boliger på adressen, eller bolig i et boligaksjeselskap.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v13.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v13.html'
+    }
+  },
+  {
+    nr: 14,
+    navn: 'Ny illustrasjon og ryddet tekst',
+    dato: '15. september 2026',
+    endring: 'Ny illustrasjon på forsiden, logoen 30 prosent større, og iterasjonscellene paginert med et vindu rundt den man står på. Kravet på forsiden handler nå om å søke om en varig aldersvennlig oppgradering, ikke om å telle kategorier. Avsnittet om Folkeregisteret og Kontaktregisteret er tatt ut av seksjon 1, og to punkter er tatt ut av innsendingslista. Utbetalingspunktet viser til Lån og tilskudd fra Husbanken i stedet for Min side. Undernivået i 4.1 har fått luft under seg, så det synes hvor det slutter. Side 9 spør nå om den over 62 år bor i boligen eller skal flytte dit.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }
@@ -166,12 +176,38 @@ const HB_VERSJONER = [
   if (!gjeldende) return;
 
   /* Cellene viser bare nummeret, så raden tåler mange iterasjoner.
-     Navn, dato og hva som endret seg står i linja under. */
-  const celler = HB_VERSJONER.map(v => {
+     Navn, dato og hva som endret seg står i linja under.
+
+     Fra og med fjorten iterasjoner blir raden for lang til å leses, så
+     vi viser et vindu rundt den man står på, med første og siste alltid
+     synlig og en ellipse der det er hoppet over. Samme mønster som en
+     vanlig paginering. */
+  const VINDU = 2;          // hvor mange på hver side av gjeldende
+  const nr = HB_VERSJONER.map(v => v.nr);
+  const forste = nr[0];
+  const sisteNr = nr[nr.length - 1];
+
+  const skalVises = n =>
+    n === forste || n === sisteNr || Math.abs(n - naa) <= VINDU;
+
+  const celle = v => {
     const tittel = `Iterasjon ${v.nr}, ${v.navn}, ${v.dato}. ${v.endring}`;
     return v.nr === naa
       ? `<span class="versjoner__celle" aria-current="page" title="${tittel}">${v.nr}</span>`
       : `<a class="versjoner__celle" href="${v.filer[skjema]}" title="${tittel}">${v.nr}</a>`;
+  };
+
+  let hoppet = false;
+  const celler = HB_VERSJONER.map(v => {
+    if (skalVises(v.nr)) {
+      hoppet = false;
+      return celle(v);
+    }
+    if (hoppet) return '';
+    hoppet = true;
+    /* Ellipsen sier hvor mange som er utelatt, og er ikke en knapp.
+       Skjermlesere trenger den ikke, tallene rundt forteller det samme. */
+    return '<span class="versjoner__hopp" aria-hidden="true">…</span>';
   }).join('');
 
   const eldre = naa !== siste.nr;

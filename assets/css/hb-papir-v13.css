@@ -90,11 +90,11 @@ body {
   line-height: 1.2;
   color: var(--hb-slate-500);
   border-bottom: 0.5pt solid var(--hb-slate-200);
-  padding-bottom: 3mm;
-  margin-bottom: 3mm;
+  padding-bottom: 4mm;
+  margin-bottom: 5mm;
 }
 .pg-meta .left { display: flex; align-items: center; gap: 6mm; }
-.pg-meta .logo { height: 10.4mm; width: auto; display: block; }
+.pg-meta .logo { height: 8mm; width: auto; display: block; }
 .pg-meta .doc-id { font-weight: 600; color: var(--hb-slate-700); letter-spacing: 0.02em; text-transform: uppercase; font-size: 8pt; }
 .pg-meta .right { text-align: right; }
 
@@ -551,16 +551,6 @@ legend.q-label + * { clear: both; }
   padding-left: 3.5mm;
   border-left: 1.5pt solid var(--hb-green-400);
 }
-/* Lufta under undernivået, så det synes hvor det slutter og hovedlista
-   fortsetter. Uten den leses «Inngangspartiet» og «Forbedre
-   inngangspartiet» som to punkter på samme nivå. */
-.sub-q + .options { margin-top: 3.5mm; }
-
-/* Siste spørsmål i en seksjon trenger ikke bunnmarg. Den la 3,5 mm
-   tomrom rett over bunnteksten, og det var nok til å skyve side 5 over
-   arkhøyden da logoen ble større. */
-.section > .q:last-child,
-.section > fieldset.q:last-child { margin-bottom: 0; }
 
 /* To felter side om side */
 .field-grid {

@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v13.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="14">
+<body data-skjema="soknad" data-versjon="13">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v13" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -37,7 +37,7 @@
       <h1>Søk om tilskudd til aldersvennlig oppgradering</h1>
       <p class="lede">Er du over 62 år, kan du få dekket 25 prosent av det du oppgraderer boligen for. Tilskudd er penger du får, og som du ikke skal betale tilbake.</p>
     </div>
-    <img class="illus" src="assets/img/illustrasjon-aldersvennlig.svg" alt="Illustrasjon av en eldre person utenfor en bolig med trinnfri adkomst" data-endret="Riktig illustrasjon fra designsystemet.">
+    <img class="illus" src="assets/img/aldersvennlig-oppgradering.svg" alt="Illustrasjon av bolig med trinnfri adkomst">
   </div>
 
   <div class="krav-panel">
@@ -45,7 +45,7 @@
     <ul>
       <li>være <strong>over 62 år</strong> eller bo med en over 62 år</li>
       <li><strong>eie eller leie</strong> boligen, og <strong>bo</strong> i den</li>
-      <li data-endret="Kravet handler om å søke om en varig aldersvennlig oppgradering, ikke om å telle kategorier.">søke om å gjøre en <strong>varig aldersvennlig oppgradering</strong></li>
+      <li>gjøre minst 1 av 6 <strong>godkjente oppgraderinger</strong></li>
       <li>legge ved et <strong>tilbud eller prisoverslag</strong></li>
       <li>oppgradere for minst <strong>40 000 kroner</strong></li>
       <li><strong>søke før</strong> du setter i gang arbeidet</li>
@@ -154,6 +154,7 @@
       </div>
     </div>
 
+    <p class="section-intro">Vi henter navn og adresse fra Folkeregisteret når vi registrerer søknaden. Adressen til boligen skriver du i seksjon 3. Mobilnummer og e-post ber vi om fordi opplysningene i Kontaktregisteret kan være utdaterte, og vi vil gjerne kunne nå deg.</p>
 
     <fieldset class="q">
       <legend class="q-label">1.1 Er du over 62 år?</legend>
@@ -253,12 +254,12 @@
 
     <div class="q">
       <p class="q-label">3.2 Bolignummer og aksjenummer</p>
-      <p class="q-help">Kun hvis det er flere boliger på adressen din eller hvis boligen er i et boligaksjeselskap.</p>
+      <p class="q-help" data-endret="Ny linje som sier når spørsmålet gjelder deg, i stedet for den gamle begrunnelsen om matrikkelen.">Kun hvis det er flere boliger på adressen din eller hvis boligen er i et boligaksjeselskap.</p>
 
       <div class="nummer-grid">
         <div class="nummer-kort">
           <label class="nummer-sp" for="f-bolignr">Hva er bolignummeret til boligen?</label>
-          <p class="q-help">For eksempel H0301. Maks 5 tegn.</p>
+          <p class="q-help" data-endret="Eksempel og tegngrense, likt som for aksjenummeret.">For eksempel H0301. Maks 5 tegn.</p>
           <input type="text" class="input-line" id="f-bolignr" name="bolignr">
           <div class="finn">
             <strong>Slik finner du bolignummeret</strong>
@@ -614,10 +615,12 @@
   <div class="submit-info">
     <h3>Slik sender du inn skjemaet</h3>
     <ol>
+      <li>Gå gjennom skjemaet en gang til. Felt som ikke passer for deg, lar du stå tomme.</li>
       <li>Legg ved tilbudet eller prisoverslaget, og eventuell dokumentasjon fra seksjon 3.</li>
       <li>Er det en annen i husstanden som er over 62 år, må <strong>side 9</strong> være fylt ut og underskrevet av den personen.</li>
       <li>Send skjemaet og vedleggene i posten til <strong>Husbanken, Postboks 1404, 8002 Bodø</strong>. Søknaden inneholder personopplysninger, og skal derfor ikke sendes på e-post.</li>
       <li><strong>Send alt i samme konvolutt.</strong> Da kan vi behandle søknaden med én gang, uten å vente på at noe kommer etter.</li>
+      <li>Søknaden må være hos oss før en av søknadsfristene, og før arbeidet settes i gang. Datoene står på husbanken.no. Du får en bekreftelse med referansenummer når vi har mottatt den.</li>
     </ol>
   </div>
 
@@ -627,7 +630,7 @@
       <li>Vi svarer <strong>1 til 6 uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig. Svaret kommer i posten, eller i den digitale postkassen din hvis du har en.</li>
       <li>Sier vi ja, kalles det et <strong>tilsagn</strong>. Det er et løfte om at pengene står klare til deg. Ikke start arbeidet før du har fått det.</li>
       <li>Du har <strong>to år</strong> på deg til å få arbeidet gjort. Du betaler regningen til firmaet selv.</li>
-      <li data-endret="Viser nå til Lån og tilskudd fra Husbanken på husbanken.no i stedet for «Min side», og setningen om at det ikke skjer av seg selv er tatt ut.">Til slutt må du <strong>be om utbetaling</strong>. Bruk skjema <strong>HB 8.S.06</strong> eller logg inn i Lån og tilskudd fra Husbanken på husbanken.no.</li>
+      <li>Til slutt må du <strong>be om utbetaling</strong>. Det skjer ikke av seg selv. Bruk skjema <strong>HB 8.S.06</strong> eller Min side.</li>
     </ol>
   </div>
 
@@ -677,15 +680,7 @@
       <strong>Når skal side 9 fylles ut?</strong> Bare når søkeren har krysset av for «Nei, men jeg bor sammen med en som er det» på spørsmål 1.1. Er søkeren selv over 62 år, lar du dette arket stå tomt. Uten side 9 kan vi ikke behandle søknaden.
     </div>
 
-    <fieldset class="q">
-      <legend class="q-label" data-endret="Nytt. Den som er over 62 år må selv bekrefte at hen bor i boligen søknaden gjelder, eller skal flytte dit. Det er den opplysningen som gir rett til tilskuddet.">Bor du i boligen søknaden gjelder?</legend>
-      <div class="options">
-        <label class="opt"><input type="radio" name="ark_bosted" value="bor"><span class="mark"></span><span class="opt-body">Ja, jeg bor i boligen søknaden gjelder</span></label>
-        <label class="opt"><input type="radio" name="ark_bosted" value="flytter"><span class="mark"></span><span class="opt-body">Nei, men jeg skal flytte dit</span></label>
-      </div>
-    </fieldset>
-
-    <p class="section-intro">Jeg er over 62 år, og bor i boligen søknaden gjelder eller skal flytte dit. Jeg samtykker til at det søkes om tilskudd til aldersvennlig oppgradering av denne boligen, og til at alderen min legges til grunn for søknaden. Opplysningene jeg har gitt er riktige.</p>
+    <p class="section-intro">Jeg er over 62 år og bor fast i boligen søknaden gjelder. Jeg samtykker til at det søkes om tilskudd til aldersvennlig oppgradering av denne boligen, og til at alderen min legges til grunn for søknaden. Opplysningene jeg har gitt er riktige.</p>
 
     <div class="signature">
       <div class="sig-block" style="grid-column: 1 / -1;">

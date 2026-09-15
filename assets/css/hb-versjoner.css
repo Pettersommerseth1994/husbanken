@@ -76,6 +76,19 @@ a.versjoner__celle:focus-visible {
   outline-offset: 1px;
 }
 
+/* Ellipsen mellom hoppene. Samme høyde som cellene, men uten ramme,
+   så raden holder linja uten å se ut som en knapp man kan trykke på. */
+.versjoner__hopp {
+  flex: 0 0 14px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--hb-slate-400);
+  user-select: none;
+}
+
 /* Den man står på */
 .versjoner__celle[aria-current="page"] {
   background: var(--hb-green-100);

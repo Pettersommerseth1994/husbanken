@@ -74,7 +74,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 10, 14. september 2026 | `...-v10.html` | Kravlista fra veilederen inn på forsiden. Se under. |
 | 11, 14. september 2026 | `...-v11.html` | Skrevet for postmottaket: bolignummer, aksjenummer og dokumentasjon. Se under. |
 | 12, 14. september 2026 | `...-v12.html` | 3.2 bygget om med «Slik finner du»-boksene fra den digitale søknaden. Se under. |
-| 13, 14. september 2026 | uten suffiks | Finpuss på 3.2: eksempel, tekststørrelse og når spørsmålet gjelder. |
+| 13, 14. september 2026 | `...-v13.html` | Finpuss på 3.2: eksempel, tekststørrelse og når spørsmålet gjelder. |
+| 14, 15. september 2026 | uten suffiks | Ny illustrasjon, større logo, paginerte celler og ryddet tekst. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -327,6 +328,7 @@ assets/css/hb-papir-v9.css  Pinnet kopi, slik iterasjon 9 så ut
 assets/css/hb-papir-v10.css Pinnet kopi, slik iterasjon 10 så ut
 assets/css/hb-papir-v11.css Pinnet kopi, slik iterasjon 11 så ut
 assets/css/hb-papir-v12.css Pinnet kopi, slik iterasjon 12 så ut
+assets/css/hb-papir-v13.css Pinnet kopi, slik iterasjon 13 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -513,3 +515,34 @@ hvis det er flere boliger på adressen din eller hvis boligen er i et
 boligaksjeselskap.»** Den erstatter beskjeden om å la feltene stå åpne, som ble
 tatt ut i iterasjon 12, men sier det fra søkerens side i stedet for fra
 saksbehandlingens.
+
+### Iterasjon 14, ny illustrasjon og ryddet tekst
+
+**Iterasjonscellene er paginert.** Fjorten celler på rad ble for mange til å
+leses. Velgeren viser nå den første, den siste, og to på hver side av den man
+står på, med en ellipse der det er hoppet over. Samme mønster som en vanlig
+paginering, og raden holder høyden uansett hvor mange iterasjoner som kommer.
+
+**Ny illustrasjon** på forsiden, `illustrasjon-aldersvennlig.svg` fra
+designsystemet, i stedet for den som lå der fra første utkast. **Logoen er 30
+prosent større**, fra 8 til 10,4 mm.
+
+Den større logoen gjorde topplinja høyere, og side 5 gikk 2,6 mm over arket.
+Plassen er hentet tilbake der den nå var overflødig: luftrommet under topplinja
+er strammet fra 5 til 3 mm, og padding fra 4 til 3 mm. Topplinja var tunet for
+en 6,5 mm logo.
+
+**Teksten:** kravet på forsiden sier nå «søke om å gjøre en varig aldersvennlig
+oppgradering» i stedet for å telle kategorier. Avsnittet om Folkeregisteret og
+Kontaktregisteret er tatt ut av seksjon 1. To punkter er tatt ut av
+innsendingslista. Utbetalingspunktet viser til Lån og tilskudd fra Husbanken på
+husbanken.no i stedet for «Min side», og setningen om at det ikke skjer av seg
+selv er borte.
+
+**Undernivået i 4.1** klistret seg til lista under, så «Inngangspartiet» og
+«Forbedre inngangspartiet» leste seg som to punkter på samme nivå. Det har fått
+3,5 mm luft under seg.
+
+**Side 9 spør nå om bosted.** Den som er over 62 år må selv bekrefte at hen bor i
+boligen søknaden gjelder, eller skal flytte dit. Det er den opplysningen som gir
+rett til tilskuddet, og den sto bare som en påstand i samtykketeksten før.
