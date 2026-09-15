@@ -179,6 +179,16 @@ const HB_VERSJONER = [
     dato: '15. september 2026',
     endring: 'Spørsmål 3.2 er delt i to spørsmål i stedet for ett med to felter. Den felles overskriften «Bolignummer og aksjenummer» er borte, og hvert nummer står nå som sitt eget spørsmål med sin egen «kun hvis»-linje: flere boliger på adressen for bolignummer, boligaksjeselskap for aksjenummer. Eksempellinjene over feltene er tatt ut, siden eksemplene alt står i «Slik finner du»-boksene under.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v16.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v16.html'
+    }
+  },
+  {
+    nr: 17,
+    navn: 'Alle spørsmål har nummer',
+    dato: '15. september 2026',
+    endring: 'Aksjenummerspørsmålet har fått nummer, 3.3, og eierformspørsmålet er flyttet til 3.4. Nå er alle de femten spørsmålene i skjemaet nummererte. Samtykkeskjemaet fra eieren er navngitt som skjema HB 8.S.37, slik fullmaktsskjemaet i 1.3 er.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

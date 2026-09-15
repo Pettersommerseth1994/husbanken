@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v16.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="17">
+<body data-skjema="soknad" data-versjon="16">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v16" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -254,7 +254,7 @@
     <div class="q">
       <div class="nummer-grid">
         <div class="nummer-kort">
-          <label class="q-label" for="f-bolignr">3.2 Hva er bolignummeret til boligen?</label>
+          <label class="q-label" for="f-bolignr" data-endret="Den felles overskriften «3.2 Bolignummer og aksjenummer» er borte. De to spørsmålene står nå som spørsmål i seg selv, hvert med sin egen «kun hvis»-linje, og eksempellinjene er tatt ut siden eksemplene alt står i boksene under.">3.2 Hva er bolignummeret til boligen?</label>
           <p class="q-help">Kun hvis det er flere boliger på adressen din.</p>
           <input type="text" class="input-line" id="f-bolignr" name="bolignr">
           <div class="finn">
@@ -270,7 +270,7 @@
         </div>
 
         <div class="nummer-kort">
-          <label class="q-label" for="f-aksjenr" data-endret="Spørsmålet har fått nummer, så alle spørsmålene i skjemaet er nummererte. Eierformspørsmålet er flyttet fra 3.3 til 3.4.">3.3 Hva er aksjenummeret til boligen?</label>
+          <label class="q-label" for="f-aksjenr">Hva er aksjenummeret til boligen?</label>
           <p class="q-help">Kun hvis boligen er i et boligaksjeselskap.</p>
           <input type="text" class="input-line" id="f-aksjenr" name="aksjenr">
           <div class="finn">
@@ -308,7 +308,7 @@
       <h2>Om boligen</h2>
     </div>
     <fieldset class="q">
-      <legend class="q-label">3.4 Hva er forholdet ditt til boligen?</legend>
+      <legend class="q-label">3.3 Hva er forholdet ditt til boligen?</legend>
       <div class="options">
         <label class="opt"><input type="radio" name="q3_eierform" value="eier-bor"><span class="mark"></span><span class="opt-body">Jeg eier boligen og bor der
           <span class="opt-help">Da trenger vi ingen dokumentasjon fra deg.</span>
@@ -344,7 +344,7 @@
         <li>Vi anbefaler at du har en langsiktig leiekontrakt.</li>
         <li>Husk at du investerer i noen andre sin bolig.</li>
         <li>Alle endringer du gjør må være godkjent av eieren av boligen.</li>
-        <li data-endret="Skjemaet er navngitt med nummer, slik fullmaktsskjemaet i 1.3 er.">Snakk med eieren av boligen før du søker. Fyll ut <strong>skjema HB 8.S.37</strong> sammen, og legg det ved søknaden. Du finner det på husbanken.no.</li>
+        <li>Snakk med eieren av boligen før du søker. Fyll ut Husbankens skjema for samtykke fra eieren sammen, og legg det ved søknaden. Du finner skjemaet på husbanken.no.</li>
       </ul>
     </div>
   </div>

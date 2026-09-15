@@ -77,7 +77,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 13, 14. september 2026 | `...-v13.html` | Finpuss på 3.2: eksempel, tekststørrelse og når spørsmålet gjelder. |
 | 14, 15. september 2026 | `...-v14.html` | Ny illustrasjon, større logo, paginerte celler og ryddet tekst. Se under. |
 | 15, 15. september 2026 | `...-v15.html` | Riktig navn på Nav-kategorien og på fullmaktsskjemaet. |
-| 16, 15. september 2026 | uten suffiks | 3.2 delt i to spørsmål, ett per nummer. |
+| 16, 15. september 2026 | `...-v16.html` | 3.2 delt i to spørsmål, ett per nummer. |
+| 17, 15. september 2026 | uten suffiks | Alle spørsmål nummerert, og samtykkeskjemaet navngitt. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -333,6 +334,7 @@ assets/css/hb-papir-v12.css Pinnet kopi, slik iterasjon 12 så ut
 assets/css/hb-papir-v13.css Pinnet kopi, slik iterasjon 13 så ut
 assets/css/hb-papir-v14.css Pinnet kopi, slik iterasjon 14 så ut
 assets/css/hb-papir-v15.css Pinnet kopi, slik iterasjon 15 så ut
+assets/css/hb-papir-v16.css Pinnet kopi, slik iterasjon 16 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -586,6 +588,20 @@ Overskriftene er tilbake i `.q-label`-størrelse. De ble satt ned til 9 pt i
 iterasjon 13 fordi de sto under en overskrift av samme størrelse. Den
 overskriften finnes ikke lenger, så de er spørsmål i seg selv igjen.
 
-**Merk:** bare bolignummer-spørsmålet har nummer. Aksjenummer-spørsmålet står
-unummerert ved siden av, slik det ble bedt om. Det er den eneste unummererte
-spørsmålsoverskriften i skjemaet.
+Aksjenummer-spørsmålet sto unummerert i denne iterasjonen. Det fikk nummer i
+iterasjon 17.
+
+### Iterasjon 17, alle spørsmål har nummer
+
+Aksjenummer-spørsmålet sto unummerert ved siden av 3.2, og var det eneste
+spørsmålet i skjemaet uten nummer. Det er nå **3.3**, og eierformspørsmålet er
+flyttet fra 3.3 til **3.4**. Alle de femten spørsmålene har nummer, uten hull.
+
+**Samtykkeskjemaet fra eieren** sto som «Husbankens skjema for samtykke fra
+eieren». Det er nå navngitt som **skjema HB 8.S.37**, samme nummer som
+fullmaktsskjemaet i 1.3.
+
+**Verdt å avklare:** det betyr at samme skjemanummer nå dekker to ulike
+situasjoner i skjemaet, fullmakt i 1.3 og eiers samtykke i 3.4. Om det er ett
+skjema som dekker begge, eller om utleiers samtykke har sitt eget nummer, bør
+sjekkes med fagsiden.
