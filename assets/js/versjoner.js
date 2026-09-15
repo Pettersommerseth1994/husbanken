@@ -187,7 +187,7 @@ const HB_VERSJONER = [
     nr: 17,
     navn: 'Alle spørsmål har nummer',
     dato: '15. september 2026',
-    endring: 'Aksjenummerspørsmålet har fått nummer, 3.3, og eierformspørsmålet er flyttet til 3.4. Nå er alle de femten spørsmålene i skjemaet nummererte. Samtykkeskjemaet fra eieren er navngitt som skjema HB 8.S.37, slik fullmaktsskjemaet i 1.3 er.',
+    endring: 'Aksjenummerspørsmålet har fått nummer, 3.3, og eierformspørsmålet er flyttet til 3.4. Nå er alle de femten spørsmålene i skjemaet nummererte. Samtykkeskjemaet fra eieren er navngitt som skjema HB 8.S.38, slik fullmaktsskjemaet i 1.3 er HB 8.S.37. Det er to ulike skjemaer.',
     filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
