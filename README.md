@@ -708,6 +708,7 @@ fasttelefon.
 linja to linjer lang, og det kostet 3,9 mm på hver side, nok til at side 5 gikk
 over arket. Adressen står mange steder i brødteksten fra før.
 
-**Åpent:** utbetalingsskjemaet har fått nummeret HB 8.S.40, utledet av
-henvisningen i søknaden. Tittelen på arket er fortsatt «Be om utbetaling av
-tilskuddet», ikke det offisielle navnet slik søknaden nå har.
+Utbetalingsskjemaet har fått samme behandling: nummeret **HB 8.S.40**, utledet av
+henvisningen i søknaden, og tittelen **«Søknad om utbetaling av tilskudd for
+aldersvennlig oppgradering av egen bolig»** i stedet for «Be om utbetaling av
+tilskuddet».
