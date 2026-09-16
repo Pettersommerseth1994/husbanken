@@ -189,6 +189,16 @@ const HB_VERSJONER = [
     dato: '15. september 2026',
     endring: 'Aksjenummerspørsmålet har fått nummer, 3.3, og eierformspørsmålet er flyttet til 3.4. Nå er alle de femten spørsmålene i skjemaet nummererte. Samtykkeskjemaet fra eieren er navngitt som skjema HB 8.S.38, slik fullmaktsskjemaet i 1.3 er HB 8.S.37. Det er to ulike skjemaer.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v17.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v17.html'
+    }
+  },
+  {
+    nr: 18,
+    navn: 'Fødselsnummer på side 9',
+    dato: '16. september 2026',
+    endring: 'Personvernteksten i seksjon 7 sier nå at opplysningene slettes ti år etter utbetaling, ikke ti år etter søknaden, som er slutterutinen. Side 9 ber om fullt fødselsnummer i stedet for fødselsår. Personen over 62 år registreres i HiLS på samme måte som søkeren, og trenger de samme opplysningene.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

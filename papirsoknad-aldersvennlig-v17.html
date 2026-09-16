@@ -6,10 +6,10 @@
 <title>Papirsøknad – Tilskudd til aldersvennlig oppgradering – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v17.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="18">
+<body data-skjema="soknad" data-versjon="17">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
@@ -17,7 +17,7 @@
   <button type="button" id="btn-reset">Tøm skjema</button>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v17" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -166,7 +166,7 @@
 
       <div class="sub-q" data-when="q1_alder:samboer">
         <p class="q-label">1.2 Da må denne personen fylle ut side 9</p>
-        <p class="q-help">Side 9 er det siste arket i dette skjemaet. Der skriver personen navnet sitt, fødselsnummeret og underskriften sin. Uten side 9 kan vi ikke behandle søknaden.</p>
+        <p class="q-help">Side 9 er det siste arket i dette skjemaet. Der skriver personen navnet sitt, fødselsåret og underskriften sin. Uten side 9 kan vi ikke behandle søknaden.</p>
       </div>
 
       <div class="options" style="margin-top:2.5mm">
@@ -270,7 +270,7 @@
         </div>
 
         <div class="nummer-kort">
-          <label class="q-label" for="f-aksjenr">3.3 Hva er aksjenummeret til boligen?</label>
+          <label class="q-label" for="f-aksjenr" data-endret="Spørsmålet har fått nummer, så alle spørsmålene i skjemaet er nummererte. Eierformspørsmålet er flyttet fra 3.3 til 3.4.">3.3 Hva er aksjenummeret til boligen?</label>
           <p class="q-help">Kun hvis boligen er i et boligaksjeselskap.</p>
           <input type="text" class="input-line" id="f-aksjenr" name="aksjenr">
           <div class="finn">
@@ -344,7 +344,7 @@
         <li>Vi anbefaler at du har en langsiktig leiekontrakt.</li>
         <li>Husk at du investerer i noen andre sin bolig.</li>
         <li>Alle endringer du gjør må være godkjent av eieren av boligen.</li>
-        <li>Snakk med eieren av boligen før du søker. Fyll ut <strong>skjema HB 8.S.38</strong> sammen, og legg det ved søknaden. Du finner det på husbanken.no.</li>
+        <li data-endret="Skjemaet er navngitt med nummer, slik fullmaktsskjemaet i 1.3 er. Eiers samtykke er HB 8.S.38, et annet skjema enn fullmakten.">Snakk med eieren av boligen før du søker. Fyll ut <strong>skjema HB 8.S.38</strong> sammen, og legg det ved søknaden. Du finner det på husbanken.no.</li>
       </ul>
     </div>
   </div>
@@ -582,7 +582,7 @@
 
     <div class="callout">
       <img class="icon" src="assets/img/hb-information-circle.svg" alt="">
-      <strong data-endret="Presisert etter slutterutinene: ti år regnes fra utbetaling, ikke fra søknaden.">Opplysningene brukes bare til å behandle søknaden din.</strong> De slettes ti år etter utbetaling. Mer står på husbanken.no/personvern.
+      <strong>Opplysningene brukes bare til å behandle søknaden din.</strong> De slettes etter ti år. Mer står på husbanken.no/personvern.
     </div>
 
     <div class="signature">
@@ -663,11 +663,10 @@
         <label class="field-label" for="f-samboer-etternavn">Etternavn</label>
         <input class="field-input" id="f-samboer-etternavn" name="samboer_etternavn" type="text" autocomplete="family-name">
       </div>
-      <fieldset class="field full">
-        <legend class="field-label" data-endret="Fødselsår er byttet med fullt fødselsnummer. Personen registreres i HiLS på samme måte som søkeren, og trenger derfor de samme opplysningene.">Fødselsnummer (11 siffer)</legend>
-        <div class="input-boxes digit-group" data-name="samboer_fnr" data-len="11" data-seps="6"
-             data-etikett="Fødselsnummer for den som er over 62 år" style="margin-top:1mm"></div>
-      </fieldset>
+      <div class="field full">
+        <label class="field-label" for="f-samboer-aar">Fødselsår</label>
+        <input class="field-input" id="f-samboer-aar" name="samboer_aar" type="text" inputmode="numeric">
+      </div>
     </div>
 
     <div class="callout">

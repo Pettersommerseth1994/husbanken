@@ -26,6 +26,7 @@ skrifter og skript med relative stier.
 | `soknad.html` | Søknaden i seks steg. |
 | `kvittering.html` | Mottaksbekreftelse, saksbehandlingstid og veien til utbetaling. |
 | `designbeslutninger.html` | Hvert designgrep koblet til funnet fra brukertestene. |
+| `uu-widget.html` | Tilgjengelighetsanalysen: hva den måler, og bokmerket du drar opp i bokmerkelinja. |
 
 ## Papirskjemaene
 
@@ -78,7 +79,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 14, 15. september 2026 | `...-v14.html` | Ny illustrasjon, større logo, paginerte celler og ryddet tekst. Se under. |
 | 15, 15. september 2026 | `...-v15.html` | Riktig navn på Nav-kategorien og på fullmaktsskjemaet. |
 | 16, 15. september 2026 | `...-v16.html` | 3.2 delt i to spørsmål, ett per nummer. |
-| 17, 15. september 2026 | uten suffiks | Alle spørsmål nummerert, og samtykkeskjemaet navngitt. |
+| 17, 15. september 2026 | `...-v17.html` | Alle spørsmål nummerert, og samtykkeskjemaet navngitt. |
+| 18, 16. september 2026 | uten suffiks | Sletting ti år etter utbetaling, og fødselsnummer på side 9. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -267,6 +269,67 @@ opplysninger, om
 løsøre ved bad og kjøkken skal med, og ordlyden opp mot det husbanken.no
 lander på. Kommentarene som peker på disse ligger i boardet.
 
+## Tilgjengelighetsanalysen
+
+`uu-widget.js` er et verktøy som legger seg nederst til høyre i nettleseren,
+klikker seg gjennom flyten du står i, og måler hvert skjermbilde mot
+minstekravene i forskrift om universell utforming av ikt: **47 av
+suksesskriteriene i WCAG 2.1 på nivå A og AA**, der 1.2.3, 1.2.4 og 1.2.5 er
+unntatt. Kravlista og framgangsmåten følger
+[veilederen fra UU-tilsynet](https://www.uutilsynet.no/tilgjengelighetserklaering/korleis-lage-og-oppdatere-tilgjengelegheitserklaering/1131).
+
+[`uu-widget.html`](uu-widget.html) er nedlastingssiden: den forklarer verktøyet,
+lister opp hvert krav med hvor langt maskinen rekker, og har bokmerket du drar
+opp i bokmerkelinja. Én fil, ingen avhengigheter, ingenting sendes noe sted.
+
+Tre måter å laste den inn:
+
+| Måte | Passer til |
+| --- | --- |
+| Bokmerke i bokmerkelinja | Ad hoc, på hvilken som helst side, uten å røre koden |
+| `<script src="assets/js/uu-widget.js"></script>` | Testmiljøet, så den ligger klar for alle |
+| Last ned fila og legg den i prosjektet | Miljøer uten nett |
+
+### Hvorfor den går gjennom hele flyten
+
+Fem krav kan ikke måles på ett skjermbilde alene, og det er de som oftest ryker
+i en søknad:
+
+| Krav | Hva gjennomløpet ser |
+| --- | --- |
+| 2.4.2 Sidetitler | Om hvert steg har sin egen tittel, eller alle seks heter det samme |
+| 2.4.3 Fokusrekkefølge | Om fokus flyttes til det nye innholdet ved stegbytte |
+| 3.2.3 og 3.2.4 | Om menyen ligger likt, og samme funksjon heter det samme hele veien |
+| 3.3.1 og 3.3.3 | Verktøyet sender skjemaet tomt med vilje, og ser om feilmeldingen kommer, er knyttet til feltet, og sier hva man skal gjøre |
+| 3.3.4 Forhindring av feil | Om søknaden kan ses over og rettes før den sendes |
+
+Verktøyet åpner flyten i en ramme det styrer selv, fyller ut feltene med
+testdata, legger ved et lite testbilde der det kreves vedlegg, og trykker seg
+videre. Derfor hører det hjemme i testmiljø: det sender inn skjemaer. Kortet
+sier fra hvis adressen ikke ser ut som et testmiljø, og innsendingen kan skrus
+av før man starter.
+
+### Det den fant i denne prototypen
+
+Gjennomløpet 15. september 2026 dekket 11 skjermbilder, fra forsiden gjennom
+BankID til kvitteringen. 37 krav godkjent, 6 med avvik:
+
+| Krav | Funn |
+| --- | --- |
+| 1.4.3 Kontrast | `.hb-small` setter mørk tekstfarge, også inne i den mørke bunnen. Teksten blir mørk på mørk, 1,02:1 mot kravet 4,5:1 |
+| 2.4.2 Sidetitler | Alle seks stegene i søknaden deler samme `<title>`. Skjermleseren leser den opp ved hvert bytte, uten å si at man har kommet videre |
+| 3.3.1 Identifikasjon av feil | `<div class="hb-error">` er verken knyttet til feltet med `aria-describedby` eller merket med `aria-invalid` |
+| 4.1.3 Statusbeskjeder | De samme feilmeldingene mangler `role="alert"`, så de leses ikke opp når de dukker opp |
+| 1.3.1 Informasjon og relasjoner | Overskriftsnivået hopper fra `h1` til `h3` på fire av stegene |
+| 4.1.2 Navn, rolle, verdi | Språkvelgeren i toppen åpner en meny uten `aria-expanded` |
+
+Rapporten skiller alltid mellom **godkjent**, **avvik** og **må vurderes
+manuelt**, og sier ifra når et krav ikke ble berørt i det hele tatt. Av de 47
+kravene avgjør verktøyet 18 helt selv, peker på de tydelige tilfellene i 26, og
+lar 3 stå urørt. Resten krever skjermleser, tastatur
+og skjønn, og erklæringen på [uustatus.no](https://uustatus.no) skal fremdeles
+skrives av mennesker.
+
 ## Regelverket ligger ett sted
 
 Sats, minstekrav og kostnadstak står i `HB_REGLER` øverst i
@@ -335,12 +398,14 @@ assets/css/hb-papir-v13.css Pinnet kopi, slik iterasjon 13 så ut
 assets/css/hb-papir-v14.css Pinnet kopi, slik iterasjon 14 så ut
 assets/css/hb-papir-v15.css Pinnet kopi, slik iterasjon 15 så ut
 assets/css/hb-papir-v16.css Pinnet kopi, slik iterasjon 16 så ut
+assets/css/hb-papir-v17.css Pinnet kopi, slik iterasjon 17 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
 assets/js/soknad.js  De seks stegene, validering og framdrift
 assets/js/papirskjema.js  Sifferruter, beløp, lagring og utskrift i papirskjemaene
 assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonene
+assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennomløpet og kortet
 Brukertester/        Rådata fra de åtte testene 25. og 27. august 2026
 ref/, uploads/       Referansemateriale fra Husbanken
 ```
@@ -602,3 +667,19 @@ flyttet fra 3.3 til **3.4**. Alle de femten spørsmålene har nummer, uten hull.
 oppgradering av bolig». Eiers samtykke i 3.4, som leietakere trenger, er
 **HB 8.S.38**. Det er to ulike skjemaer, og sto begge som «Husbankens skjema»
 før.
+
+### Iterasjon 18, sletting og fødselsnummer
+
+**Sletting.** Personvernteksten i seksjon 7 sa «De slettes etter ti år», som kan
+leses som ti år fra søknaden. Slutterutinen regner fra utbetaling, og teksten
+sier nå **«De slettes ti år etter utbetaling.»**
+
+**Fødselsnummer på side 9.** Arket ba om navn og fødselsår. Personen over 62 år
+får koden BERE i HiLS og må registreres der på samme måte som søkeren, og det
+krever fullt fødselsnummer. Feltet er byttet til de samme elleve sifferrutene som
+søkeren har i seksjon 1, med skillet etter sjette siffer. Henvisningen i
+spørsmål 1.2 er rettet tilsvarende.
+
+Det betyr at side 9 nå bærer et fødselsnummer. Arket ligger i samme konvolutt som
+resten av søknaden, og er dekket av regelen om at skjemaet ikke skal sendes på
+e-post.
