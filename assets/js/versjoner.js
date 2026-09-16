@@ -199,6 +199,16 @@ const HB_VERSJONER = [
     dato: '16. september 2026',
     endring: 'Personvernteksten i seksjon 7 sier nå at opplysningene slettes ti år etter utbetaling, ikke ti år etter søknaden, som er slutterutinen. Side 9 ber om fullt fødselsnummer i stedet for fødselsår. Personen over 62 år registreres i HiLS på samme måte som søkeren, og trenger de samme opplysningene.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v18.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v18.html'
+    }
+  },
+  {
+    nr: 19,
+    navn: 'Skjema-ID-ene på plass',
+    dato: '16. september 2026',
+    endring: 'Skjema-ID-en er flyttet fra topplinja ned i bunnteksten, etter telefonnummeret, og har fått riktig nummer: HB 8.S.39 for søknaden og HB 8.S.40 for utbetalingen. Tittelen er skjemaets offisielle navn, «Søknad om tilskudd til aldersvennlig oppgradering av egen bolig», og eyebrow-linja over den er tatt bort. «Mobilnummer» heter nå «Telefon». Punktet om utbetaling viser til HB 8.S.40 med full tittel. «husbanken.no» er tatt ut av bunnteksten, så linja holder seg på én linje med skjemanummeret på plass.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

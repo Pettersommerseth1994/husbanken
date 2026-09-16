@@ -80,7 +80,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 15, 15. september 2026 | `...-v15.html` | Riktig navn på Nav-kategorien og på fullmaktsskjemaet. |
 | 16, 15. september 2026 | `...-v16.html` | 3.2 delt i to spørsmål, ett per nummer. |
 | 17, 15. september 2026 | `...-v17.html` | Alle spørsmål nummerert, og samtykkeskjemaet navngitt. |
-| 18, 16. september 2026 | uten suffiks | Sletting ti år etter utbetaling, og fødselsnummer på side 9. |
+| 18, 16. september 2026 | `...-v18.html` | Sletting ti år etter utbetaling, og fødselsnummer på side 9. |
+| 19, 16. september 2026 | uten suffiks | Skjema-ID-ene på plass, og tittelen er skjemaets offisielle navn. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -399,6 +400,7 @@ assets/css/hb-papir-v14.css Pinnet kopi, slik iterasjon 14 så ut
 assets/css/hb-papir-v15.css Pinnet kopi, slik iterasjon 15 så ut
 assets/css/hb-papir-v16.css Pinnet kopi, slik iterasjon 16 så ut
 assets/css/hb-papir-v17.css Pinnet kopi, slik iterasjon 17 så ut
+assets/css/hb-papir-v18.css Pinnet kopi, slik iterasjon 18 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -683,3 +685,29 @@ spørsmål 1.2 er rettet tilsvarende.
 Det betyr at side 9 nå bærer et fødselsnummer. Arket ligger i samme konvolutt som
 resten av søknaden, og er dekket av regelen om at skjemaet ikke skal sendes på
 e-post.
+
+### Iterasjon 19, skjema-ID-ene på plass
+
+**Skjema-ID-en har flyttet ned.** Den sto ved siden av logoen i topplinja på hver
+side. Nå står den sist i bunnteksten, etter telefonnummeret, som på Husbankens
+øvrige skjemaer. Numrene er samtidig rettet: søknaden er **HB 8.S.39** og
+utbetalingen **HB 8.S.40**. De sto som 8.S.05 og 8.S.06, som var plassholdere fra
+første utkast.
+
+**Tittelen er skjemaets offisielle navn:** «Søknad om tilskudd til aldersvennlig
+oppgradering av egen bolig». Eyebrow-linja over den, «Tilskudd fra Husbanken ·
+aldersvennlig oppgradering», er tatt bort, siden tittelen nå sier det samme.
+
+**«Mobilnummer» heter «Telefon»**, i begge skjemaene, så feltet også dekker
+fasttelefon.
+
+**Utbetalingspunktet** i innsendingslista viser til HB 8.S.40 med full tittel,
+«Søknad om utbetaling av tilskudd for aldersvennlig oppgradering av egen bolig».
+
+**«husbanken.no» er tatt ut av bunnteksten.** Med skjemanummeret på plass ble
+linja to linjer lang, og det kostet 3,9 mm på hver side, nok til at side 5 gikk
+over arket. Adressen står mange steder i brødteksten fra før.
+
+**Åpent:** utbetalingsskjemaet har fått nummeret HB 8.S.40, utledet av
+henvisningen i søknaden. Tittelen på arket er fortsatt «Be om utbetaling av
+tilskuddet», ikke det offisielle navnet slik søknaden nå har.
