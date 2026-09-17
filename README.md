@@ -408,6 +408,8 @@ assets/js/soknad.js  De seks stegene, validering og framdrift
 assets/js/papirskjema.js  Sifferruter, beløp, lagring og utskrift i papirskjemaene
 assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonene
 assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennomløpet og kortet
+assets/pdf/          Utfyllbare PDF-er, generert fra skjemaene
+verktoy/             Generatoren for de utfyllbare PDF-ene, med feltkart
 Brukertester/        Rådata fra de åtte testene 25. og 27. august 2026
 ref/, uploads/       Referansemateriale fra Husbanken
 ```
@@ -712,3 +714,17 @@ Utbetalingsskjemaet har fått samme behandling: nummeret **HB 8.S.40**, utledet 
 henvisningen i søknaden, og tittelen **«Søknad om utbetaling av tilskudd for
 aldersvennlig oppgradering av egen bolig»** i stedet for «Be om utbetaling av
 tilskuddet».
+
+## Utfyllbar PDF
+
+Skjemaene finnes også som PDF med ekte skjemafelter, i `assets/pdf/`. Knappen
+«Lagre som interaktiv PDF» i verktøykolonnen laster dem ned.
+
+De lages av `verktoy/lag-utfyllbar-pdf.py`: Chrome skriver ut HTML-en til A4, og
+over den legges usynlige felter nøyaktig der rutene er tegnet. Posisjonene
+måles i nettleseren og ligger som feltkart i `verktoy/felter-*.json`, så de må
+lages på nytt når layouten endrer seg. Se `verktoy/LESMEG.md`.
+
+Søknaden har 78 felter, utbetalingen 49. Sifferrutene er ett felt hver med plass
+til ett tegn, radioknappene er samlet i grupper så bare ett svar kan velges, og
+tabulator går fra venstre til høyre og så nedover.

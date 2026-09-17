@@ -12,7 +12,8 @@
 
 .versjoner {
   position: fixed;
-  top: 16px;
+  /* Under verktøykolonnen, som står øverst i samme venstremarg */
+  top: 190px;
   left: 16px;
   z-index: 100;
   width: 264px;
@@ -259,6 +260,7 @@ body.viser-endringer [data-endret].er-valgt {
 @media screen and (max-width: 840px) {
   .versjoner {
     position: static;
+    top: auto;
     width: auto;
     margin: 8px 8px 0;
   }

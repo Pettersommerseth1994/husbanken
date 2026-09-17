@@ -179,6 +179,18 @@ body {
 
 /* Arkformatet forlates på små skjermer, og da står de under hverandre */
 @media screen and (max-width: 840px) {
+  .toolbar {
+    position: static;
+    width: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 8px 8px 0;
+  }
+  .toolbar button,
+  .toolbar .knapp { width: auto; }
+}
+
+@media screen and (max-width: 840px) {
   .nummer-grid { grid-template-columns: 1fr; }
 }
 
@@ -893,10 +905,13 @@ textarea.input-area.tall { height: 50mm; }
 .toolbar {
   position: fixed;
   top: 16px;
-  right: 16px;
-  z-index: 100;
+  left: 16px;
+  z-index: 101;
+  width: 208px;
+  box-sizing: border-box;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 6px;
   background: #fff;
   border: 1px solid var(--hb-slate-300);
   border-radius: 12px;
@@ -905,7 +920,13 @@ textarea.input-area.tall { height: 50mm; }
   font-family: var(--font-sans);
   font-size: 13px;
 }
-.toolbar button {
+.toolbar button,
+.toolbar .knapp {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
   border: none;
   background: var(--hb-slate-100);
   color: var(--hb-slate-700);
@@ -915,14 +936,20 @@ textarea.input-area.tall { height: 50mm; }
   font-weight: 500;
   transition: background 0.12s;
 }
-.toolbar button:hover { background: var(--hb-slate-200); }
+.toolbar button:hover,
+.toolbar .knapp:hover { background: var(--hb-slate-200); }
 .toolbar button.primary { background: var(--hb-green-700); color: #fff; }
 .toolbar button.primary:hover { background: var(--hb-green-800); }
+.toolbar button:focus-visible,
+.toolbar .knapp:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
 .toolbar .saved-indicator {
   font-size: 11px;
   color: var(--hb-slate-500);
-  align-self: center;
-  padding: 0 6px;
+  text-align: center;
+  padding: 2px 6px 0;
   min-width: 60px;
 }
 @media print { .toolbar { display: none; } }
