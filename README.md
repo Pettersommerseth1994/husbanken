@@ -721,21 +721,10 @@ Skjemaene finnes også som PDF med ekte skjemafelter, i `assets/pdf/`. Knappen
 «Lagre som interaktiv PDF» i verktøykolonnen laster dem ned.
 
 De lages av `verktoy/lag-utfyllbar-pdf.py`: Chrome skriver ut HTML-en til A4, og
-over den legges usynlige felter nøyaktig der rutene er tegnet. Posisjonene måles
-i samme nettleser som skriver ut, så feltkartet kan ikke komme i utakt med
-layouten. **PDF-ene må genereres på nytt etter hver iterasjon**, de oppdateres
-ikke av seg selv. Se `verktoy/LESMEG.md`.
+over den legges usynlige felter nøyaktig der rutene er tegnet. Posisjonene
+måles i nettleseren og ligger som feltkart i `verktoy/felter-*.json`, så de må
+lages på nytt når layouten endrer seg. Se `verktoy/LESMEG.md`.
 
 Søknaden har 78 felter, utbetalingen 49. Sifferrutene er ett felt hver med plass
-til ett tegn, og radioknappene er samlet i grupper så bare ett svar kan velges.
-
-For at noen som ikke ser skjermen skal kunne fylle ut skjemaet: PDF-en er tagget,
-så brødteksten har struktur og lesrekkefølge. Hvert felt har en beskrivelse som
-sier hva det er i sin sammenheng, så en radioknapp leses som «1.1 Er du over 62
-år? — Ja, jeg er over 62 år» og ikke som feltnavnet. Tabulator går fra venstre
-til høyre og så nedover. Språket er satt til `nb-NO`, og leseren annonserer
-dokumenttittelen i stedet for filnavnet.
-
-Det som gjenstår er å legge feltene inn i strukturtreet, og å verifisere med NVDA
-eller VoiceOver. Skjermlesere leser feltene i skjemamodus i dag, men de kommer
-ikke i lesrekkefølgen sammen med brødteksten.
+til ett tegn, radioknappene er samlet i grupper så bare ett svar kan velges, og
+tabulator går fra venstre til høyre og så nedover.

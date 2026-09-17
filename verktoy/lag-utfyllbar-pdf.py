@@ -5,9 +5,7 @@ Chrome skriver ut HTML-en til A4, og over den legges usynlige skjemafelter
 nøyaktig der rutene er tegnet. Posisjonene måles i nettleseren og lagres som
 JSON, fordi det er layouten selv som bestemmer hvor feltene havner.
 """
-import html as html_module
-import json, re, subprocess, sys
-from pathlib import Path
+import json, subprocess, sys
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import black
@@ -21,51 +19,11 @@ A4 = (210 * MM, 297 * MM)
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 
-def _chrome(*args):
-    return subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox",
-                           "--virtual-time-budget=20000", *args],
-                          check=True, capture_output=True)
-
-
-def skriv_ut(kilde, ut):
-    """--export-tagged-pdf gir strukturtrerot, språk og overskriftsnivåer,
-       som er det skjermlesere navigerer etter."""
-    _chrome("--no-pdf-header-footer", "--export-tagged-pdf",
-            f"--print-to-pdf={ut}", kilde)
-
-
-def mal_felter(html_sti):
-    """Måler feltene i samme nettleser som skriver ut PDF-en, så kartet
-       ikke kan komme i utakt med layouten."""
-    html = Path(html_sti)
-    skript = (Path(__file__).parent / "mal-felter.js").read_text(encoding="utf-8")
-    kopi = html.with_suffix(".maling.html")
-    kopi.write_text(html.read_text(encoding="utf-8")
-                    + f"\n<script>\n{skript}\n</script>\n", encoding="utf-8")
-    try:
-        dom = _chrome("--dump-dom", kopi.resolve().as_uri()).stdout.decode("utf-8")
-    finally:
-        kopi.unlink(missing_ok=True)
-    m = re.search(r'<pre id="felter-json">(.*?)</pre>', dom, re.S)
-    if not m:
-        raise SystemExit("fant ikke feltmålingen i DOM-en")
-    return json.loads(html_module.unescape(m.group(1)))
-
-
-def beskrivelse(f):
-    """Teksten skjermleseren sier. Svaralternativer trenger spørsmålet med
-       seg, ellers er «Ja» uten mening. Sifferrutene har den fra før."""
-    lab, sp, sek = f.get("lab", ""), f.get("sp", ""), f.get("sek", "")
-    if f["t"] == "omrade":
-        # aria-etiketten gjentar spørsmålet, så den kortes ned
-        tekst = f"{sp} — beskriv med dine egne ord" if sp else lab
-    elif lab and sp and sp != lab:
-        tekst = f"{sp} — {lab}"
-    else:
-        tekst = lab or sp
-    if sek and sek not in tekst:
-        tekst = f"{tekst} ({sek})"
-    return tekst or f["n"]
+def skriv_ut(url, ut):
+    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox",
+                    "--virtual-time-budget=20000", "--no-pdf-header-footer",
+                    f"--print-to-pdf={ut}", url],
+                   check=True, capture_output=True)
 
 
 def overlegg(felter_pa_siden):
@@ -79,12 +37,11 @@ def overlegg(felter_pa_siden):
         w, h = felt["w"] * MM, felt["h"] * MM
         t = felt["t"]
         if t == "kryss":
-            f.checkbox(name=felt["n"], x=x, y=y, size=h, tooltip=beskrivelse(felt),
+            f.checkbox(name=felt["n"], x=x, y=y, size=h,
                        borderWidth=0, borderColor=None, fillColor=None,
                        buttonStyle="check", textColor=black, forceBorder=False)
         elif t == "radio":
             f.radio(name=felt["n"], value=felt["v"], x=x, y=y, size=h,
-                    tooltip=beskrivelse(felt),
                     borderWidth=0, borderColor=None, fillColor=None,
                     buttonStyle="circle", textColor=black, forceBorder=False,
                     selected=False, shape="circle")
@@ -92,18 +49,17 @@ def overlegg(felter_pa_siden):
             f.textfield(name=felt["n"], x=x, y=y, width=w, height=h,
                         borderWidth=0, borderColor=None, fillColor=None,
                         textColor=black, fontName="Helvetica", fontSize=9,
-                        maxlen=0, fieldFlags="multiline", forceBorder=False,
-                        tooltip=beskrivelse(felt))
+                        maxlen=0, fieldFlags="multiline", forceBorder=False)
         elif t == "siffer":
             f.textfield(name=felt["n"], x=x, y=y, width=w, height=h,
                         borderWidth=0, borderColor=None, fillColor=None,
                         textColor=black, fontName="Helvetica", fontSize=12,
-                        maxlen=1, forceBorder=False, tooltip=beskrivelse(felt))
+                        maxlen=1, forceBorder=False)
         else:
             f.textfield(name=felt["n"], x=x, y=y, width=w, height=h,
                         borderWidth=0, borderColor=None, fillColor=None,
                         textColor=black, fontName="Helvetica", fontSize=10,
-                        maxlen=0, forceBorder=False, tooltip=beskrivelse(felt))
+                        maxlen=0, forceBorder=False)
     c.showPage()
     c.save()
     buf.seek(0)
@@ -224,11 +180,6 @@ def knytt_radioknapper(writer, side, pa_siden):
         o = a.get_object()
         states = [k for k in o.get("/AP", {}).get("/N", {}) if k != "/Off"]
         assert states == ["/" + felt["v"]], (states, felt)
-        # reportlab dropper tooltip på radiowidgeter, så svaret settes her.
-        # Uten den sier skjermleseren spørsmålet, men ikke hvilket svar
-        # knappen er, og da går det ikke an å svare uten å se.
-        if felt.get("lab"):
-            o[NameObject("/TU")] = TextStringObject(felt["lab"])
         grupper.setdefault(felt["n"], []).append(a)
 
     laget = []
@@ -238,9 +189,6 @@ def knytt_radioknapper(writer, side, pa_siden):
         f[NameObject("/T")] = TextStringObject(navn)
         f[NameObject("/Ff")] = NumberObject(1 << 15)      # radio
         f[NameObject("/V")] = NameObject("/Off")
-        sp = next((x["sp"] for x in ventet if x["n"] == navn and x.get("sp")), "")
-        if sp:
-            f[NameObject("/TU")] = TextStringObject(sp)
         f[NameObject("/Kids")] = ArrayObject(kids)
         ref = writer._add_object(f)
         for k in kids:
@@ -286,50 +234,30 @@ def bygg_acroform(writer):
     return len(felt)
 
 
-def dokumentnivaa(writer, tittel):
-    rot = writer._root_object
-    rot[NameObject("/Lang")] = TextStringObject("nb-NO")
-    mi = rot.get("/MarkInfo")
-    if mi is None:
-        mi = DictionaryObject()
-        rot[NameObject("/MarkInfo")] = mi
-    mi.get_object()[NameObject("/Marked")] = BooleanObject(True)
-    vp = DictionaryObject()
-    # Uten denne annonserer leseren filnavnet i stedet for tittelen
-    vp[NameObject("/DisplayDocTitle")] = BooleanObject(True)
-    rot[NameObject("/ViewerPreferences")] = vp
-    writer.add_metadata({"/Title": tittel, "/Language": "nb-NO"})
-
-
-def lag(html_sti, ut):
-    felter = mal_felter(html_sti)
+def lag(url, ut, felter):
     grunn = ut.replace(".pdf", "-grunn.pdf")
-    kilde = Path(html_sti).resolve().as_uri()
-    skriv_ut(kilde, grunn)
+    skriv_ut(url, grunn)
     leser = PdfReader(grunn)
-    # clone_from tar med strukturtreet fra den taggede utskriften
-    skriver = PdfWriter(clone_from=grunn)
-    for i, side in enumerate(skriver.pages):
+    skriver = PdfWriter()
+    for i, side in enumerate(leser.pages):
         pa_siden = [f for f in felter if f["s"] == i]
         if pa_siden:
             side.merge_page(overlegg(pa_siden).pages[0])
-            knytt_radioknapper(skriver, side, pa_siden)
+        ny_side = skriver.add_page(side)
+        if pa_siden:
+            knytt_radioknapper(skriver, ny_side, pa_siden)
     bygg_acroform(skriver)
     q = midtstill(skriver, ("fnr_", "samboer_fnr_", "konto_"))
     nr, nk = egne_merker(skriver)
     tabbrekkefolge(skriver)
     print(f"  egne merker: {nr} radio, {nk} avkryssing · tabbrekkefølge: rad")
-    tittel = re.search(r"<title>(.*?)</title>",
-                       Path(html_sti).read_text(encoding="utf-8"), re.S)
-    dokumentnivaa(skriver, html_module.unescape(tittel.group(1)).strip()
-                  if tittel else Path(html_sti).stem)
     with open(ut, "wb") as fh:
         skriver.write(fh)
-    Path(grunn).unlink(missing_ok=True)
-    return len(leser.pages), len(felter), q
+    return len(leser.pages), sum(1 for _ in felter), q
 
 
 if __name__ == "__main__":
-    html_sti, ut = sys.argv[1], sys.argv[2]
-    sider, antall, q = lag(html_sti, ut)
+    url, ut, json_sti = sys.argv[1], sys.argv[2], sys.argv[3]
+    felter = json.load(open(json_sti, encoding="utf-8"))
+    sider, antall, q = lag(url, ut, felter)
     print(f"{ut}: {sider} sider, {antall} felter, {q} midtstilte")
