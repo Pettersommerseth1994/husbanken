@@ -32,7 +32,8 @@ sider.forEach((side,i)=>{
   const boks=el=>{const r=el.getBoundingClientRect();return{
     x:+((r.left-sr.left)/pxmm).toFixed(2), y:+((r.top-sr.top)/pxmm).toFixed(2),
     w:+(r.width/pxmm).toFixed(2), h:+(r.height/pxmm).toFixed(2)};};
-  side.querySelectorAll('input.field-input, input.input-line').forEach(el=>{
+  // input.field er beløpsfeltene, som ligger inni .input-money
+  side.querySelectorAll('input.field-input, input.input-line, input.field').forEach(el=>{
     if(el.closest('.digit-group'))return;
     ut.push({s:i,t:'text',n:el.name||el.id,...boks(el)});});
   side.querySelectorAll('.digit-group').forEach(g=>{const nm=g.dataset.name;
