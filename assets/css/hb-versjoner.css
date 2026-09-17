@@ -12,8 +12,7 @@
 
 .versjoner {
   position: fixed;
-  /* Under verktøykolonnen, som står øverst i samme venstremarg */
-  top: 190px;
+  top: 16px;
   left: 16px;
   z-index: 100;
   width: 264px;

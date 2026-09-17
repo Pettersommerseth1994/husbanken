@@ -905,7 +905,7 @@ textarea.input-area.tall { height: 50mm; }
 .toolbar {
   position: fixed;
   top: 16px;
-  left: 16px;
+  right: 16px;
   z-index: 101;
   width: 208px;
   box-sizing: border-box;
