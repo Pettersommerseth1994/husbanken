@@ -81,7 +81,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 16, 15. september 2026 | `...-v16.html` | 3.2 delt i to spørsmål, ett per nummer. |
 | 17, 15. september 2026 | `...-v17.html` | Alle spørsmål nummerert, og samtykkeskjemaet navngitt. |
 | 18, 16. september 2026 | `...-v18.html` | Sletting ti år etter utbetaling, og fødselsnummer på side 9. |
-| 19, 16. september 2026 | uten suffiks | Skjema-ID-ene på plass, og tittelen er skjemaets offisielle navn. |
+| 19, 16. september 2026 | `...-v19.html` | Skjema-ID-ene på plass, og tittelen er skjemaets offisielle navn. |
+| 20, 18. september 2026 | uten suffiks | Forskriftens overskrifter på de seks kategoriene. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -220,9 +221,9 @@ Søknaden gikk fra 6 til 7 sider. Utbetalingsskjemaet er urørt i innhold.
 prototypen. Førsteeksemplet i tabellen og på eksempelkortene er derfor 30 000
 kroner, siden 75 000 ikke lenger faller under grensa.
 
-**Forbehold:** kategoritekstene er transkribert fra et skjermbilde av boardet,
-ikke fra kilden. De er departementsgodkjent tekst, og bør sjekkes ord for ord
-mot Figma før skjemaet tas i bruk.
+**Forbehold:** kategoritekstene var transkribert fra et skjermbilde av boardet,
+ikke fra kilden. Overskriftene er rettet mot forskriften i iterasjon 20.
+Underpunktene står fortsatt som transkribert.
 
 ### Iterasjon 7, etter kommentarene
 
@@ -401,6 +402,7 @@ assets/css/hb-papir-v15.css Pinnet kopi, slik iterasjon 15 så ut
 assets/css/hb-papir-v16.css Pinnet kopi, slik iterasjon 16 så ut
 assets/css/hb-papir-v17.css Pinnet kopi, slik iterasjon 17 så ut
 assets/css/hb-papir-v18.css Pinnet kopi, slik iterasjon 18 så ut
+assets/css/hb-papir-v19.css Pinnet kopi, slik iterasjon 19 så ut
 assets/css/hb-versjoner.css Cellene for å hoppe mellom iterasjonene
 assets/js/hb.js      Regelverk, ikoner, felles topp og bunn, lagring
 assets/js/kalkulator.js  Kalkulatoren, brukt både på infosiden og i steg 4
@@ -714,6 +716,37 @@ Utbetalingsskjemaet har fått samme behandling: nummeret **HB 8.S.40**, utledet 
 henvisningen i søknaden, og tittelen **«Søknad om utbetaling av tilskudd for
 aldersvennlig oppgradering av egen bolig»** i stedet for «Be om utbetaling av
 tilskuddet».
+
+### Iterasjon 20, forskriftens overskrifter
+
+**Juristen krever at overskriftene på de seks kategoriene er ordrett som i
+forskriften.** Fire av dem var omskrevet, og den femte manglet en halv setning:
+
+| Sto | Står nå |
+| --- | --- |
+| Lage trinnfri adkomst | Lage trinnfri adkomst **til boligen** |
+| Samle nødvendige rom **i inngangsetasjen** | Samle nødvendige rom **på inngangsplanet** |
+| Tilpasse boligen | **Gjøre det lettere å bevege seg rundt i boligen** |
+| Tilpasse badet | **Gjøre det enklere å bruke badet** |
+| Gjøre boligen tryggere | Gjøre boligen tryggere **og/eller støtte beboeres fungering** |
+
+Utbetalingsskjemaet har de samme seks, siden kategoriene skal være identiske.
+
+**Kravlista på forsiden** følger den digitale søknaden slik den står nå, som
+igjen er lagt nærmere teksten på husbanken.no: bo i boligen og at den må være en
+eid eller leid helårsbolig, og at oppgraderingen skal gjøre boligen mer egnet til
+å bo i over tid.
+
+**Søknadsfristene er ute av skjemaet.** Datoene er ikke bestemt, og da er det
+bedre å ikke si noe enn å love noe som ikke finnes.
+
+**Resten:** «utskrift fra VPS» er byttet med «forretningsfører» i lista over
+dokumentasjon for aksjeboliger. Krysser du av for 4.6, står det nå i en
+varselboks at kopi av vedtaket fra Nav må legges ved. Det sto ikke noe sted før.
+
+**Åpent:** «Vi svarer 1 til 6 uker etter søknadsfristen» står fortsatt i «Dette
+skjer etterpå». Den setningen viser til en frist som ikke er bestemt, og bør
+sees på sammen med resten av fristspråket.
 
 ## Utfyllbar PDF
 

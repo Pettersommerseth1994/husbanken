@@ -209,6 +209,16 @@ const HB_VERSJONER = [
     dato: '16. september 2026',
     endring: 'Skjema-ID-en er flyttet fra topplinja ned i bunnteksten, etter telefonnummeret, og har fått riktig nummer: HB 8.S.39 for søknaden og HB 8.S.40 for utbetalingen. Tittelen er skjemaets offisielle navn, «Søknad om tilskudd til aldersvennlig oppgradering av egen bolig», og eyebrow-linja over den er tatt bort. «Mobilnummer» heter nå «Telefon». Punktet om utbetaling viser til HB 8.S.40 med full tittel. Utbetalingsskjemaet har fått sitt offisielle navn på samme måte. «husbanken.no» er tatt ut av bunnteksten, så linja holder seg på én linje med skjemanummeret på plass.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v19.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v19.html'
+    }
+  },
+  {
+    nr: 20,
+    navn: 'Forskriftens overskrifter',
+    dato: '18. september 2026',
+    endring: 'De seks kategoriene har fått forskriftens overskrifter, ordrett, etter krav fra juristen. Fire av dem var omskrevet, og «Gjøre boligen tryggere» manglet «og/eller støtte beboeres fungering». Utbetalingsskjemaet har de samme seks. Kravlista på forsiden følger den digitale søknaden slik den står nå, som igjen er lagt nærmere husbanken.no. Setningen om søknadsfrister er tatt ut, siden datoene ikke er bestemt. «Utskrift fra VPS» er byttet med «forretningsfører». Krysser du av for 4.6, står det nå at vedtaket fra Nav må legges ved.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

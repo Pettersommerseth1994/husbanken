@@ -6,10 +6,10 @@
 <title>Søknad om tilskudd til aldersvennlig oppgradering av egen bolig – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v19.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="20">
+<body data-skjema="soknad" data-versjon="19">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <button type="button" id="btn-print" class="primary">Skriv ut / Lagre PDF</button>
@@ -18,7 +18,7 @@
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v19" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -33,7 +33,7 @@
 
   <div class="hero">
     <div>
-      <h1>Søknad om tilskudd til aldersvennlig oppgradering av egen bolig</h1>
+      <h1 data-endret="Tittelen er skjemaets offisielle navn. Eyebrow-linja over er tatt bort, og skjema-ID-en er flyttet ned i bunnteksten.">Søknad om tilskudd til aldersvennlig oppgradering av egen bolig</h1>
       <p class="lede">Er du over 62 år, kan du få dekket 25 prosent av det du oppgraderer boligen for. Tilskudd er penger du får, og som du ikke skal betale tilbake.</p>
     </div>
     <img class="illus" src="assets/img/illustrasjon-aldersvennlig.svg" alt="Illustrasjon av en eldre person utenfor en bolig med trinnfri adkomst">
@@ -42,9 +42,9 @@
   <div class="krav-panel">
     <h2>For å få tilskudd må du</h2>
     <ul>
-      <li data-endret="Kravlista følger nå den digitale søknaden, som er lagt nærmere teksten på husbanken.no.">være <strong>over 62 år</strong> selv, eller bo med en over 62 år</li>
-      <li><strong>bo i boligen</strong>, og det må være en eid eller leid helårsbolig</li>
-      <li>oppgradere så boligen blir <strong>mer egnet til å bo i over tid</strong></li>
+      <li>være <strong>over 62 år</strong> eller bo med en over 62 år</li>
+      <li><strong>eie eller leie</strong> boligen, og <strong>bo</strong> i den</li>
+      <li>søke om å gjøre en <strong>varig aldersvennlig oppgradering</strong></li>
       <li>legge ved et <strong>tilbud eller prisoverslag</strong></li>
       <li>oppgradere for minst <strong>40 000 kroner</strong></li>
       <li><strong>søke før</strong> du setter i gang arbeidet</li>
@@ -58,6 +58,7 @@
     <ul>
       <li>Skriv tydelig med blå eller svart penn.</li>
       <li>Du kan fylle ut skjemaet på skjermen før du skriver det ut, eller skrive det ut tomt og fylle ut for hånd.</li>
+      <li>Det er flere søknadsfrister i året, og datoene står på husbanken.no.</li>
     </ul>
   </div>
 
@@ -142,7 +143,7 @@
              data-etikett="Fødselsnummer" style="margin-top:1mm"></div>
       </fieldset>
       <div class="field">
-        <label class="field-label" for="f-tlf">Telefon</label>
+        <label class="field-label" for="f-tlf" data-endret="«Mobilnummer» er byttet med «Telefon», så feltet også dekker fasttelefon.">Telefon</label>
         <input class="field-input" id="f-tlf" name="tlf" type="tel" autocomplete="tel">
       </div>
       <div class="field full">
@@ -327,7 +328,7 @@
         <li>Er du i en flytteprosess: <strong>kjøpekontrakt</strong>. Er kjøpet tinglyst, holder tinglyst skjøte eller grunnboksutskrift.</li>
         <li>Er du i et arveoppgjør: <strong>skifteattest</strong></li>
         <li>Er du gjenlevende ektefelle eller samboer som har arvet boligen: <strong>uskifteattest</strong></li>
-        <li>Er boligen i et boligaksjeselskap: <strong>aksjeeierbok</strong>, <strong>aksjebrev</strong>, <strong>bekreftelse fra styret</strong> eller <strong>forretningsfører</strong></li>
+        <li>Er boligen i et boligaksjeselskap: <strong>aksjeeierbok</strong>, <strong>aksjebrev</strong>, <strong>bekreftelse fra styret</strong> eller <strong>utskrift fra VPS</strong></li>
       </ul>
       <p>Eier du boligen, er registrert som eier i matrikkelen og bor på adressen, trenger vi ingen dokumentasjon fra deg.</p>
     </div>
@@ -371,7 +372,7 @@
     <p class="section-intro">For å få tilskudd må du oppgradere minst én av de seks kategoriene under. Kryss av for kategorien, og for det du skal gjøre innenfor den. Du kan velge flere. Velger du flere, legger vi kostnadene sammen.</p>
 
     <fieldset class="q">
-      <legend class="q-label" data-endret="De seks overskriftene er nå ordrett som i forskriften. Juristen krever det. Fire av dem var omskrevet, og 4.5 manglet «og/eller støtte beboeres fungering».">4.1 Lage trinnfri adkomst til boligen</legend>
+      <legend class="q-label">4.1 Lage trinnfri adkomst</legend>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="adkomst_terreng" value="ja"><span class="mark"></span><span class="opt-body">Justere terrenget</span></label>
       </div>
@@ -390,22 +391,22 @@
         <label class="opt checkbox"><input type="checkbox" name="adkomst_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gir trinnfri adkomst (beskriv under)</span></label>
       </div>
       <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer» eller «Annet område». Ikke skriv opplysninger om din eller andres helse.</p>
-      <textarea class="input-area" name="beskriv_adkomst" aria-label="Beskriv Lage trinnfri adkomst til boligen"></textarea>
+      <textarea class="input-area" name="beskriv_adkomst" aria-label="Beskriv Lage trinnfri adkomst"></textarea>
     </fieldset>
 
     <fieldset class="q">
-      <legend class="q-label">4.2 Samle nødvendige rom på inngangsplanet</legend>
+      <legend class="q-label">4.2 Samle nødvendige rom i inngangsetasjen</legend>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="samle_planlosning" value="ja"><span class="mark"></span><span class="opt-body">Endre planløsningen</span></label>
         <label class="opt checkbox"><input type="checkbox" name="samle_utvide" value="ja"><span class="mark"></span><span class="opt-body">Utvide boligen</span></label>
-        <label class="opt checkbox"><input type="checkbox" name="samle_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som samler nødvendige rom på inngangsplanet (beskriv under)</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="samle_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som samler nødvendige rom på inngangsetasjen (beskriv under)</span></label>
       </div>
       <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
-      <textarea class="input-area" name="beskriv_samle" aria-label="Beskriv Samle nødvendige rom på inngangsplanet"></textarea>
+      <textarea class="input-area" name="beskriv_samle" aria-label="Beskriv Samle nødvendige rom i inngangsetasjen"></textarea>
     </fieldset>
 
     <fieldset class="q">
-      <legend class="q-label">4.3 Gjøre det lettere å bevege seg rundt i boligen</legend>
+      <legend class="q-label">4.3 Tilpasse boligen</legend>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="bolig_terskler" value="ja"><span class="mark"></span><span class="opt-body">Fjerne terskler og nivåforskjeller inne</span></label>
         <label class="opt checkbox"><input type="checkbox" name="bolig_dor" value="ja"><span class="mark"></span><span class="opt-body">Lage større døråpning eller flytte dør</span></label>
@@ -414,7 +415,7 @@
         <label class="opt checkbox"><input type="checkbox" name="bolig_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gjør det lettere å bevege seg rundt i boligen (beskriv under)</span></label>
       </div>
       <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
-      <textarea class="input-area" name="beskriv_bolig" aria-label="Beskriv Gjøre det lettere å bevege seg rundt i boligen"></textarea>
+      <textarea class="input-area" name="beskriv_bolig" aria-label="Beskriv Tilpasse boligen"></textarea>
     </fieldset>
   </div>
 
@@ -444,7 +445,7 @@
     </div>
 
     <fieldset class="q">
-      <legend class="q-label">4.4 Gjøre det enklere å bruke badet</legend>
+      <legend class="q-label">4.4 Tilpasse badet</legend>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="bad_plassering" value="ja"><span class="mark"></span><span class="opt-body">Endre plassering av toalett, servant, dusj eller andre funksjoner</span></label>
         <label class="opt checkbox"><input type="checkbox" name="bad_dusj" value="ja"><span class="mark"></span><span class="opt-body">Lage en trygg og trinnfri dusjsone</span></label>
@@ -452,11 +453,11 @@
         <label class="opt checkbox"><input type="checkbox" name="bad_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gjør det enklere å bruke badet (beskriv under)</span></label>
       </div>
       <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
-      <textarea class="input-area" name="beskriv_bad" aria-label="Beskriv Gjøre det enklere å bruke badet"></textarea>
+      <textarea class="input-area" name="beskriv_bad" aria-label="Beskriv Tilpasse badet"></textarea>
     </fieldset>
 
     <fieldset class="q">
-      <legend class="q-label">4.5 Gjøre boligen tryggere og/eller støtte beboeres fungering</legend>
+      <legend class="q-label">4.5 Gjøre boligen tryggere</legend>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="trygg_lys" value="ja"><span class="mark"></span><span class="opt-body">Installere god belysning inne eller ute</span></label>
         <label class="opt checkbox"><input type="checkbox" name="trygg_brann" value="ja"><span class="mark"></span><span class="opt-body">Forbedre brannsikkerheten</span></label>
@@ -467,7 +468,7 @@
         <label class="opt checkbox"><input type="checkbox" name="trygg_annet" value="ja"><span class="mark"></span><span class="opt-body">Andre forbedringer som gjør boligen eller uteområdet tryggere (beskriv under)</span></label>
       </div>
       <p class="q-help mt-2">Fyll ut bare hvis du krysset av for «Andre forbedringer». Ikke skriv opplysninger om din eller andres helse.</p>
-      <textarea class="input-area" name="beskriv_trygg" aria-label="Beskriv Gjøre boligen tryggere og/eller støtte beboeres fungering"></textarea>
+      <textarea class="input-area" name="beskriv_trygg" aria-label="Beskriv Gjøre boligen tryggere"></textarea>
     </fieldset>
 
     <fieldset class="q">
@@ -475,11 +476,6 @@
       <p class="q-help">Du kan søke om tilskudd fra Husbanken for å justere terrenget og/eller gjøre endringer i boligen for å kunne ta i bruk et vedtak fra Nav om enten hjelpemiddel for tilrettelegging av bolig eller tilskudd til ombygging.</p>
       <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_nav" aria-label="Beskriv Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav"></textarea>
-
-      <div class="callout callout--warn">
-        <img class="icon" src="assets/img/hb-warning-triangle.svg" alt="">
-        <strong data-endret="Nytt. Krysser du av her, må vedtaket fra Nav ligge ved. Det sto ikke noe sted i skjemaet før.">Krysser du av her, må du legge ved en kopi av vedtaket fra Nav.</strong> Uten det kan vi ikke behandle denne delen av søknaden.
-      </div>
     </fieldset>
   </div>
 
@@ -620,7 +616,7 @@
       <li>Vi svarer <strong>1 til 6 uker etter søknadsfristen</strong>. Alle søknadene behandles samlet, så det hjelper ikke å ha søkt tidlig. Svaret kommer i posten, eller i den digitale postkassen din hvis du har en.</li>
       <li>Sier vi ja, kalles det et <strong>tilsagn</strong>. Det er et løfte om at pengene står klare til deg. Ikke start arbeidet før du har fått det.</li>
       <li>Du har <strong>to år</strong> på deg til å få arbeidet gjort. Du betaler regningen til firmaet selv.</li>
-      <li>Til slutt må du <strong>be om utbetaling</strong>. Bruk <strong>skjema HB 8.S.40</strong>, «Søknad om utbetaling av tilskudd for aldersvennlig oppgradering av egen bolig», eller logg inn i Lån og tilskudd fra Husbanken på husbanken.no.</li>
+      <li data-endret="Utbetalingsskjemaet er navngitt med riktig nummer og full tittel.">Til slutt må du <strong>be om utbetaling</strong>. Bruk <strong>skjema HB 8.S.40</strong>, «Søknad om utbetaling av tilskudd for aldersvennlig oppgradering av egen bolig», eller logg inn i Lån og tilskudd fra Husbanken på husbanken.no.</li>
     </ol>
   </div>
 
