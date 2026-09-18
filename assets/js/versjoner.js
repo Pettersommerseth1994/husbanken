@@ -217,7 +217,7 @@ const HB_VERSJONER = [
     nr: 20,
     navn: 'Forskriftens overskrifter',
     dato: '18. september 2026',
-    endring: 'De seks kategoriene har fått forskriftens overskrifter, ordrett, etter krav fra juristen. Fire av dem var omskrevet, og «Gjøre boligen tryggere» manglet «og/eller støtte beboeres fungering». Utbetalingsskjemaet har de samme seks. Kravlista på forsiden følger den digitale søknaden slik den står nå, som igjen er lagt nærmere husbanken.no. Setningen om søknadsfrister er tatt ut, siden datoene ikke er bestemt. «Utskrift fra VPS» er byttet med «forretningsfører». Krysser du av for 4.6, står det nå at vedtaket fra Nav må legges ved.',
+    endring: 'De seks kategoriene har fått forskriftens overskrifter, ordrett, etter krav fra juristen. Fire av dem var omskrevet, og «Gjøre boligen tryggere» manglet «og/eller støtte beboeres fungering». Utbetalingsskjemaet har de samme seks. Kravlista på forsiden følger den digitale søknaden slik den står nå, som igjen er lagt nærmere husbanken.no. Setningen om søknadsfrister er tatt ut, siden datoene ikke er bestemt. «Utskrift fra VPS» er byttet med «forretningsfører». Vedtaket fra Nav må legges ved når du søker om 4.6, og kravet står som en vedleggsboks lik den for tilbudet i seksjon 2.',
     filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'

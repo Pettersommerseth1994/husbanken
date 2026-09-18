@@ -654,6 +654,8 @@ legend.q-label + * { clear: both; }
   align-items: flex-start;
 }
 .attachment-block + .attachment-block { margin-top: 3mm; }
+/* Vedleggskravet i 4.6 kommer rett under skrivefeltet og trenger luft */
+.input-area + .attachment-block { margin-top: 4mm; }
 .attachment-block + .callout { margin-top: 6mm; }
 .attachment-block .att-icon {
   width: 8mm;

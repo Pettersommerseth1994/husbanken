@@ -741,8 +741,10 @@ eid eller leid helårsbolig, og at oppgraderingen skal gjøre boligen mer egnet 
 bedre å ikke si noe enn å love noe som ikke finnes.
 
 **Resten:** «utskrift fra VPS» er byttet med «forretningsfører» i lista over
-dokumentasjon for aksjeboliger. Krysser du av for 4.6, står det nå i en
-varselboks at kopi av vedtaket fra Nav må legges ved. Det sto ikke noe sted før.
+dokumentasjon for aksjeboliger. Vedtaket fra Nav må legges ved når du søker om
+4.6, og det sto ikke noe sted før. Kravet er satt opp som en vedleggsboks lik
+den for tilbudet i seksjon 2, siden begge er dokumenter som må ligge ved. Det er
+ingenting å krysse av på i 4.6, så teksten viser til skrivefeltet over i stedet.
 
 **Åpent:** «Vi svarer 1 til 6 uker etter søknadsfristen» står fortsatt i «Dette
 skjer etterpå». Den setningen viser til en frist som ikke er bestemt, og bør
