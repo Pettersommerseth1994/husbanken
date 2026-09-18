@@ -745,6 +745,8 @@ dokumentasjon for aksjeboliger. Vedtaket fra Nav må legges ved når du søker o
 4.6, og det sto ikke noe sted før. Kravet er satt opp som en vedleggsboks lik
 den for tilbudet i seksjon 2, siden begge er dokumenter som må ligge ved. Det er
 ingenting å krysse av på i 4.6, så teksten viser til skrivefeltet over i stedet.
+Tittelen sier «må legges ved hvis du søker om 4.6»: tilbudet gjelder alle, dette
+bare et lite mindretall, og uten forbeholdet ser de to kravene like ubetingede ut.
 
 **Åpent:** «Vi svarer 1 til 6 uker etter søknadsfristen» står fortsatt i «Dette
 skjer etterpå». Den setningen viser til en frist som ikke er bestemt, og bør
