@@ -314,15 +314,19 @@ og er formulert om funksjon i hverdagen, ikke om diagnose. Det kan hoppes over.
 
 Kompasset er ikke en karakter, men en peiling. To akser, som måler hver sin ting:
 
-| Akse | Måler | Utslag |
+| Akse | Måler | Ytterpunktene |
 | --- | --- | --- |
-| Nord–sør | Om boligen og nærmiljøet bærer deg videre | Nord: bli boende. Sør: se på andre boliger. |
-| Øst–vest | Hvor stort arbeidet er | Øst: små grep holder. Vest: det må bygges om. |
+| Loddrett | Om boligen og nærmiljøet passer for deg videre | Opp: «Rett kurs». Ned: «Ny kurs». |
+| Vannrett | Hvor stort arbeidet er | Høyre: «Små grep». Venstre: «Ombygging». |
 
-Gode svar gir ikke utslag øst–vest i det hele tatt, for da er det ingenting å
-bygge om. Det er derfor de fire himmelretningene faktisk er ulike utfall, og
-ikke bare to punkter på en diagonal. Åtte navngitte kurser dekker feltet mellom
-dem, pluss «Delt kurs» når nåla står nær midten.
+Himmelretningene står ikke noe sted i grensesnittet. De sa ingenting om
+boligen, og de tok plassen til det som betyr noe: navnet på kursen. Kodene N,
+Ø, S og V lever videre i regnestykket som korte navn på de åtte feltene.
+
+Gode svar gir ikke utslag på den vannrette aksen i det hele tatt, for da er det
+ingenting å bygge om. Det er derfor de fire ytterpunktene faktisk er ulike
+utfall, og ikke bare to punkter på en diagonal. Åtte navngitte kurser dekker
+feltet mellom dem, pluss «Delt kurs» når nåla står nær midten.
 
 To regler overstyrer regnestykket, begge hentet fra innsiktsarbeidet:
 
@@ -335,14 +339,20 @@ ser ut som det famler til det har nok å gå på.
 
 Etter hvert svar står det hva svaret teller for. Det står bevisst ikke at nåla
 flyttet seg dit, for ett svar er én stemme blant mange, og nåla viser summen.
-Et sørlig svar kan derfor godt ende med at nåla fortsatt peker nord, bare litt
-kortere. Teksten sier fra om skiftet bare når kursen faktisk byttet navn.
+Et svar som teller mot «Ny kurs» kan derfor godt ende med at nåla fortsatt
+peker mot «Rett kurs», bare litt kortere. Teksten sier fra om skiftet bare når
+kursen faktisk byttet navn.
+
+Eieformen teller ikke. Å leie er ikke et dårligere svar enn å eie, og mange
+trives godt med det. Det er spørsmålet under, om hvor fornøyd du er med
+ordningen, som flytter nåla.
 
 Kompasset har samme størrelse overalt, og navnet på kursen står i selve rosa:
-NORD «Rett kurs», ØST «Små grep», VEST «Ombygging», SØR «Ny kurs». Under
-kompasset står en fast nøkkel som forklarer alle fire med én setning hver, og
-den retningen nåla står i er markert. Nøkkelen følger kompasset hver gang det
-vises, så man aldri skal måtte huske hva nord betydde fra forsiden.
+«Rett kurs» i grønt øverst, «Ny kurs» i rødt nederst, «Små grep» og
+«Ombygging» nøytralt på hver side. Nåla er grønn. Under kompasset står en fast
+nøkkel som forklarer alle fire med én setning hver, og den kursen nåla peker
+mot er markert. Nøkkelen følger kompasset hver gang det vises, så man aldri
+skal måtte huske hva en kurs betydde fra forsiden.
 
 Nåla oppdateres på stedet, ikke ved å tegne boksen på nytt. Byttet vi ut hele
 boksen, ville nettleseren laget et nytt element som er ferdig rotert fra første
@@ -350,7 +360,8 @@ bilde, og da hopper nåla i stedet for å svinge.
 
 Illustrasjonen i toppfeltet, `assets/img/boligkompasset.svg`, er tegnet i samme
 flate stil, palett og bakkelinje som `assets/img/aldersvennlig-oppgradering.svg`,
-så de to ser ut som en familie. Nåla der peker mot nordøst. Den er dekorativ,
+så de to ser ut som en familie. Nåla der er grønn og peker skrått oppover, og
+rosa har ingen bokstaver. Den er dekorativ,
 med tom `alt`, fordi det virkelige kompasset lenger nede på siden har
 tekstalternativ og oppdaterer seg.
 

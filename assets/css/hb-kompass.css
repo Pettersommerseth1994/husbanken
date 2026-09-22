@@ -70,19 +70,20 @@
 @media (prefers-reduced-motion: reduce) {
   .kp-kompass__naal { transition: none; }
 }
-.kp-kompass__naal-nord { fill: var(--hb-red-700); }
+.kp-kompass__naal-nord { fill: var(--hb-green-700); }
 .kp-kompass__naal-sor  { fill: var(--hb-slate-300); }
 .kp-kompass__nav       { fill: var(--hb-slate-700); }
 
+/* Etikettene er kursnavn, ikke himmelretninger, så de settes med
+   vanlige store og små bokstaver. Rett kurs i grønt og Ny kurs i rødt,
+   de to andre nøytralt, for de er verken bra eller dårlig. */
 .kp-kompass__etikett {
-  font: 600 15px/1 var(--font-sans);
-  fill: var(--fg-subtle);
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  font: 600 14px/1 var(--font-sans);
+  fill: var(--fg-default);
+  letter-spacing: 0;
 }
-.kp-kompass__etikett--n { fill: var(--hb-green-700); }
+.kp-kompass__etikett--n { fill: var(--hb-green-800); }
 .kp-kompass__etikett--s { fill: var(--hb-red-700); }
-.kp-kompass__under { font: 400 13px/1 var(--font-sans); fill: var(--fg-subtle); }
 
 /* Kompasset i bunnen av skjermen mens man svarer */
 .kp-peiling {
@@ -142,7 +143,7 @@
   flex: 0 0 auto; width: 19px; height: 19px;
   color: var(--hb-slate-400); margin-top: 1px;
 }
-.kp-nokkel__rad[data-naa="true"] .kp-nokkel__pil { color: var(--hb-red-700); }
+.kp-nokkel__rad[data-naa="true"] .kp-nokkel__pil { color: var(--hb-green-700); }
 .kp-peiling__kurs { font: 600 var(--text-lg)/var(--lh-lg) var(--font-heading); margin: 0 0 4px; }
 .kp-peiling__tekst { font-size: var(--text-sm); line-height: var(--lh-sm); color: var(--fg-subtle); margin: 0; }
 .kp-peiling__utslag {
