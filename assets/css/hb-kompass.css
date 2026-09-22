@@ -379,7 +379,7 @@
 /* Bred skjerm: fanene står i margen og blir stående mens du blar */
 @media (min-width: 900px) {
   .kp-liste__oppsett {
-    grid-template-columns: 224px minmax(0, 1fr);
+    grid-template-columns: 250px minmax(0, 1fr);
     gap: var(--space-6);
     align-items: start;
   }
