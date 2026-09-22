@@ -331,8 +331,16 @@ To regler overstyrer regnestykket, begge hentet fra innsiktsarbeidet:
 * Er nærmiljøet tomt og du ikke kommer deg noe sted, hjelper ingen ombygging.
 
 Nåla er kort i starten og vokser etter hvert som du svarer, slik at kompasset
-ser ut som det famler til det har nok å gå på. Etter hvert svar står det hva
-akkurat det svaret gjorde med kursen.
+ser ut som det famler til det har nok å gå på.
+
+Etter hvert svar står det hva svaret teller for. Det står bevisst ikke at nåla
+flyttet seg dit, for ett svar er én stemme blant mange, og nåla viser summen.
+Et sørlig svar kan derfor godt ende med at nåla fortsatt peker nord, bare litt
+kortere. Teksten sier fra om skiftet bare når kursen faktisk byttet navn.
+
+Nåla oppdateres på stedet, ikke ved å tegne boksen på nytt. Byttet vi ut hele
+boksen, ville nettleseren laget et nytt element som er ferdig rotert fra første
+bilde, og da hopper nåla i stedet for å svinge.
 
 Illustrasjonen i toppfeltet, `assets/img/boligkompasset.svg`, er tegnet i samme
 flate stil, palett og bakkelinje som `assets/img/aldersvennlig-oppgradering.svg`,
@@ -347,8 +355,15 @@ tekstalternativ og oppdaterer seg.
 | **Kompasset** | Ett spørsmål om gangen, fem etapper, nåla svinger under. Litt som en valgomat. |
 | **Enkel liste** | Alle 20 spørsmålene på én side, uten animasjon og uten kompass. Enklest med skjermleser eller forstørring. |
 
-Spørsmålene, lagringen og oppsummeringen er de samme. Du kan bytte underveis
-uten å miste noe.
+Spørsmålene, lagringen og oppsummeringen er de samme. Modus velges på
+startsiden.
+
+I lista har hver etappe sin egen fane i margen, etter samme mønster som
+seksjonene i OneNote. Fanen viser hvor mange spørsmål som er besvart i etappen,
+den lyser opp for den etappen du er i mens du blar, og et trykk tar deg rett
+dit. Fargekodene er en rolig trapp fra mørk grønn til blågrå, med små steg
+mellom, og fargen er aldri eneste kjennetegn: navnet og nummeret står alltid
+ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 
 ### Designkritikken 21. september, punkt for punkt
 
@@ -357,7 +372,7 @@ uten å miste noe.
 | Stegene går ikke opp for hvert svar | Telleren teller spørsmål, ett hakk per spørsmål, og stemmer alltid med hvor du er. Peilingen teller i spørsmål den også, ikke i en egen intern skala. |
 | Lagres dette fortløpende? Da burde det stå nederst | Lagringslinja står nederst på hver skjerm, oppdaterer seg ved hvert svar, og sier forskjellen på innlogget og ikke. |
 | Tekst i knapper kan ikke brekke på to linjer | `white-space: nowrap` på knapper, og korte etiketter. |
-| En femte trekkspill? Trekkspill er ikke fint design, og bør ikke gå til ny side | Ingen trekkspill i kartleggingen. «Derfor spør vi» og «Dette brukes svaret til» står alltid framme. I oppsummeringen utvider «Se hvem som kan være med og betale» på stedet, uten å navigere. |
+| En femte trekkspill? Trekkspill er ikke fint design, og bør ikke gå til ny side | Ingen trekkspill i kartleggingen. «Derfor spør vi» og «Dette brukes svaret til» står alltid framme, i hver sin boks, grønn og blå, fordi de svarer på to ulike spørsmål. I oppsummeringen utvider «Se hvem som kan være med og betale» på stedet, uten å navigere. |
 | Alt for stor H1 med for stort mellomrom | H1 ned ett trinn i skalaen, og luften under halvert. |
 | Hvem er det for, og hva får de ut av det? | Tre korte svar øverst på forsiden: hvem, hvorfor nå, hva du får. |
 | Forsiden viser ikke verdien. Visualiser at testen kan føre mange steder | Et kompass du kan trykke på, som viser de fire kursene kartleggingen kan ende i. |
