@@ -51,6 +51,9 @@ function kpPoengFor(sp, felt) {
   const navn = felt ? felt.navn : sp.id;
   const svar = S[navn];
   if (svar === undefined || svar === null || svar === 'hoppet') return null;
+  /* Haker man av og av igjen, blir svaret en tom liste. Det er ikke
+     det samme som «ingen av delene», det er ikke besvart. */
+  if (Array.isArray(svar) && !svar.length) return null;
 
   if (sp.poeng) {
     const p = sp.poeng(svar);
@@ -75,83 +78,100 @@ function kpEnheter() {
   return ut;
 }
 
-/* Regner ut en kurs. Uten argument gjelder den alle svarene. Med en
-   etappe-id gjelder den bare den etappen, slik at hver kategori kan
-   få sin egen peiling. */
-function kpBeregnKurs(etappeId) {
-  const enheter = kpEnheter().filter(u => !etappeId || u.sp.etappe === etappeId);
-  let sx = 0, sy = 0, antall = 0;
+/* ═══ Fra svar til grader ═════════════════════════════════════════
+   Nåla begynner rett opp, på «Rett kurs», og hvert svar vrir den et
+   bestemt antall grader. Nedover er bort fra «Rett kurs», oppover er
+   tilbake mot den. Summen innenfor ett steg klippes til 0–180 grader,
+   så nåla aldri går forbi hverken toppen eller bunnen.
+
+   Hvilken vei rundt den går, avgjøres av hva slags arbeid svarene
+   peker på: små grep tar den til høyre, større grep til venstre.
+   Begge veiene ender i «Ny kurs» nederst.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Hvor mange grader nedover ett svar drar. Et godt svar drar 22,5
+   grader oppover, så det kan rette opp et dårlig svar tidligere i
+   steget. */
+function kpGraderNed(n) {
+  if (n >= 0.75) return -22.5;
+  if (n >= 0.25) return 0;
+  if (n >= -0.25) return 22.5;
+  if (n >= -0.75) return 45;
+  return 90;
+}
+
+/* Veien rundt: høyre for små grep, venstre for større. */
+const kpSideAv = e => (e <= -0.3 ? -1 : (e >= 0.3 ? 1 : 0));
+
+function kpKursAvVinkel(grader, ekstra = {}) {
+  const rad = grader * Math.PI / 180;
+  const x = Math.sin(rad), y = Math.cos(rad);
+  return Object.assign({ x, y, r: 1, grader, retning: kpRetning(x, y, 0.2), tom: false }, ekstra);
+}
+
+const KP_TOMKURS = { x: 0, y: 1, r: 0, grader: 0, retning: 'MIDT', tom: true, antall: 0 };
+
+/* Kursen til ett steg. Dette er nåla under spørsmålene, og den samme
+   nåla som står på oppsummeringen av steget. */
+function kpKursForSteg(etappeId) {
+  const enheter = kpEnheter().filter(u => u.sp.etappe === etappeId);
+  let ned = 0, side = 0, antall = 0;
+
+  /* Klippes underveis, ikke på summen til slutt. Nåla står et sted, og
+     neste svar vrir den derfra. Ellers ville et godt svar tidlig i
+     steget spist av utslaget til et dårlig svar senere, selv om nåla
+     alt sto på toppen og ikke kunne komme høyere. */
   enheter.forEach(({ sp, felt }) => {
     const p = kpPoengFor(sp, felt);
     if (!p) return;
-    sx += p.e; sy += p.n; antall++;
+    antall++;
+    ned = Math.max(0, Math.min(180, ned + (sp.graderNed ? sp.graderNed(S[sp.id]) : kpGraderNed(p.n))));
+    side += kpSideAv(p.e);
   });
-  if (!antall) return { x: 0, y: 0, r: 0, retning: 'MIDT', antall: 0, tom: true };
+  if (!antall) return Object.assign({}, KP_TOMKURS);
 
-  /* Nord–sør og øst–vest måler to ulike ting, og skalaene er ikke
-     like tette. Gode svar gir ikke utslag øst–vest i det hele tatt,
-     fordi det ikke er noe å bygge om. Derfor får øst–vest et større
-     utslag per poeng, ellers ville nåla nesten alltid blitt stående
-     langs nordøst–sørvest. */
-  let x = (sx / antall) * 1.6;
-  let y = (sy / antall) * 1.15;
+  /* To porter fra innsiktsarbeidet. Er adkomsten stengt, eller er
+     nærmiljøet tomt og du kommer deg ingen steder, holder det ikke at
+     resten er bra. */
+  if (etappeId === 'adkomst'
+      && (S['adkomst-hindringer'] === 'sveert' || S['adkomst-trinn'] === '6+')) {
+    ned = Math.max(ned, 135);
+  }
+  if (etappeId === 'naermiljo'
+      && S['naermiljo-komme-seg'] === 'nei'
+      && (S['naermiljo-tilbud'] || []).includes('ingen')) {
+    ned = Math.max(ned, 135);
+  }
 
-  /* To porter, hentet fra innsiktsarbeidet.
+  return kpKursAvVinkel((side < 0 ? -1 : 1) * ned, { antall });
+}
 
-     Den første: «Hvis inngangspartiet ditt er vanskelig å gjøre
-     tilgjengelig, kan det hende at tilpasninger inne i boligen ikke
-     hjelper så mye.» Kommer du ikke inn og ut, skal ikke et godt bad
-     kunne dra kursen nordover.
+/* Hele kursen settes av det steget som står dårligst.
 
-     Den andre: nærmiljøet kan ikke bygges om. Er det tomt rundt deg,
-     og du ikke kommer deg noe sted, hjelper ingen ombygging. */
-  const gjelder = id => !etappeId || etappeId === id;
-  const stengtAdkomst = S['adkomst-hindringer'] === 'sveert' || S['adkomst-trinn'] === '6+';
-  const tomtNaermiljo = (!S['naermiljo-tilbud'] || !S['naermiljo-tilbud'].length
-                         || (S['naermiljo-tilbud'] || []).includes('ingen'))
-                        && S['naermiljo-komme-seg'] === 'nei';
-  if (stengtAdkomst && gjelder('adkomst')) y = Math.min(y, -0.35);
-  if (tomtNaermiljo && gjelder('naermiljo')) y = Math.min(y, -0.3);
+   Et snitt av gradene virker ikke her. To steg på 180 og to på minus
+   180 peker alle rett ned, men gjennomsnittet av tallene blir null,
+   altså rett opp. Og selv med riktig regnet snitt ville tre gode steg
+   dekket over ett som var umulig.
 
-  let r = Math.hypot(x, y);
-  if (r > 1) { x /= r; y /= r; r = 1; }
+   Det speiler dessuten det innsiktsarbeidet sier: kommer du ikke inn
+   og ut, hjelper det ikke at badet er fint. Nyansene står like under,
+   der hvert steg har sitt eget kompass. */
+function kpBeregnKurs(etappeId) {
+  if (etappeId) return kpKursForSteg(etappeId);
 
-  /* Nåla er kort i starten og vokser etter hvert som du svarer.
-     Kompasset skal se ut som det famler litt før det har nok å gå på. */
-  const konf = Math.min(1, 0.42 + 0.58 * (antall / enheter.length));
-  const kompassSp = KOMPASS_SPORSMAL
-    .filter(sp => !sp.ikkeKompass && (!etappeId || sp.etappe === etappeId));
-  return {
-    x: x * konf, y: y * konf, r: r * konf,
-    retning: kpRetning(x, y, 0.24),
-    antall,
+  const steg = KOMPASS_ETAPPER
+    .map(e => kpKursForSteg(e.id))
+    .filter(k => !k.tom);
+  const kompassSp = KOMPASS_SPORSMAL.filter(sp => !sp.ikkeKompass);
+  const felles = {
+    antall: steg.reduce((n, k) => n + k.antall, 0),
     svart: kompassSp.filter(kpBesvart).length,
     totalt: kompassSp.length
   };
-}
+  if (!steg.length) return Object.assign({}, KP_TOMKURS, felles);
 
-/* Nåla under spørsmålene summerer svarene i steget man står i, og
-   begynner på null igjen når et nytt steg starter. Den la sammen alt
-   før, gjennom hele kartleggingen, og da flyttet den seg bare noen få
-   grader per svar. Nå er utslaget stort nok til å se, og summen
-   gjelder noe avgrenset man er midt inne i. */
-function kpKursForSteg(etappeId) {
-  const enheter = kpEnheter().filter(u => u.sp.etappe === etappeId);
-  let sx = 0, sy = 0, antall = 0;
-  enheter.forEach(({ sp, felt }) => {
-    const p = kpPoengFor(sp, felt);
-    if (!p) return;
-    sx += p.e; sy += p.n; antall++;
-  });
-  if (!antall) return { x: 0, y: 0, r: 0, retning: 'MIDT', tom: true, antall: 0 };
-
-  /* Full lengde. Innenfor ett steg er det ingen usikkerhet å vise
-     fram, bare en retning. */
-  let x = (sx / antall) * 1.6;
-  let y = (sy / antall) * 1.15;
-  let r = Math.hypot(x, y);
-  if (r > 1) { x /= r; y /= r; r = 1; }
-  return { x, y, r, retning: kpRetning(x, y, 0.2), tom: false, antall };
+  const verst = steg.reduce((a, b) => Math.abs(b.grader) > Math.abs(a.grader) ? b : a);
+  return kpKursAvVinkel(verst.grader, felles);
 }
 
 function kpRetning(x, y, grense = 0.18) {
@@ -679,7 +699,8 @@ function kpNokkelHtml(retning) {
       <li class="kp-nokkel__rad"${naa ? ' data-naa="true"' : ''}>
         <svg class="kp-nokkel__pil" viewBox="0 0 24 24" aria-hidden="true">
           <g style="transform:rotate(${p.grader}deg);transform-origin:12px 12px">
-            <path d="M12 3 L16 15 L12 12 L8 15 Z" fill="currentColor"/>
+            <path d="M12 20V5m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor"
+                  stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
         </svg>
         <span><strong>${k.navn}.</strong> ${k.kort}.</span>

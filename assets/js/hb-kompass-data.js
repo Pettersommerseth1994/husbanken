@@ -179,12 +179,17 @@ const KOMPASS_SPORSMAL = [
       { v: 'tur',     tittel: 'Turområde eller park', desc: 'Sted du går tur, uavhengig av årstid.' },
       { v: 'ingen',   tittel: 'Ingen av delene', desc: 'Du må bruke bil eller få skyss til alt av dette.', alene: true }
     ],
+    /* Hvert tilbud du har i nærheten, drar nåla 22,5 grader oppover.
+       Har du ingenting, drar det 45 grader nedover. */
+    graderNed: (verdier) => {
+      const valgt = verdier || [];
+      if (!valgt.length || valgt.includes('ingen')) return 45;
+      return -22.5 * valgt.length;
+    },
     poeng: (verdier) => {
-      if (!verdier || !verdier.length || verdier.includes('ingen')) return { n: -1, e: 0 };
-      const a = verdier.length;
-      if (a >= 5) return { n: 1, e: 0 };
-      if (a >= 3) return { n: 0.6, e: 0 };
-      return { n: -0.2, e: 0 };
+      const valgt = verdier || [];
+      if (!valgt.length || valgt.includes('ingen')) return { n: -1, e: 0 };
+      return { n: Math.min(1, valgt.length / 4), e: 0 };
     },
     maks: { n: 1, e: 1 }
   },

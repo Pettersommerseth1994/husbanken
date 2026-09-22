@@ -344,14 +344,26 @@ Nåla viser tre ulike ting på tre ulike steder, og aldri to av dem samtidig.
 | Etter hvert steg | Steget samlet, med en setning om hvordan svarene fordelte seg. |
 | I oppsummeringen | Ett kompass per steg, ett for helheten, og ett du vrir selv. |
 
-Nåla la sammen alt gjennom hele kartleggingen før, og flyttet seg da bare noen
-få grader per svar. Nå er den avgrenset til ett steg om gangen: den summerer
-svarene i steget man er inne i, og begynner på null igjen når neste steg
-starter. Utslaget blir stort nok til å se, og summen gjelder noe man er midt
-inne i.
+Nåla begynner rett opp, på «Rett kurs», og hvert svar vrir den et bestemt
+antall grader. Et godt svar drar 22,5 grader oppover, et middels svar 22,5 til
+45 nedover, et tungt svar 90. Summen klippes underveis til 0–180 grader, så
+nåla aldri går forbi hverken toppen eller bunnen, og så et godt svar tidlig i
+steget ikke spiser av utslaget til et dårlig svar senere.
 
-Nåla er grønn når den peker i øvre halvdel, rød i nedre, og grå før man har
-svart. Fargen sier det samme som etikettene: opp er en kurs man vil ha.
+Hvilken vei rundt nåla går, avgjøres av hva slags arbeid svarene peker på: små
+grep tar den til høyre, større grep til venstre. Begge veier ender i «Ny kurs»
+nederst.
+
+Den samlede kursen settes av det steget som står dårligst, ikke av et snitt.
+Et snitt virker ikke her: to steg på 180 grader og to på minus 180 peker alle
+rett ned, men gjennomsnittet av tallene blir null, altså rett opp. Og selv
+riktig regnet ville tre gode steg dekket over ett som var umulig. Det speiler
+dessuten innsiktsarbeidet: kommer du ikke inn og ut, hjelper det ikke at badet
+er fint. Nyansene står like under, der hvert steg har sitt eget kompass.
+
+Nåla er grønn når den peker i øvre halvdel, rød i nedre, og grå og kort før man
+har svart i steget. Fargen sier det samme som etikettene: opp er en kurs man
+vil ha. Kort er den bare i den grå tilstanden, aldri ellers.
 
 Boligtype og eieform flytter ikke nåla. De sier hva som er mulig å gjøre, ikke
 hvordan man har det. Det er spørsmålet om hvor fornøyd man er med boforholdet
