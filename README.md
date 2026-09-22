@@ -334,6 +334,12 @@ Nåla er kort i starten og vokser etter hvert som du svarer, slik at kompasset
 ser ut som det famler til det har nok å gå på. Etter hvert svar står det hva
 akkurat det svaret gjorde med kursen.
 
+Illustrasjonen i toppfeltet, `assets/img/boligkompasset.svg`, er tegnet i samme
+flate stil, palett og bakkelinje som `assets/img/aldersvennlig-oppgradering.svg`,
+så de to ser ut som en familie. Nåla der peker mot nordøst. Den er dekorativ,
+med tom `alt`, fordi det virkelige kompasset lenger nede på siden har
+tekstalternativ og oppdaterer seg.
+
 ### To måter å svare på
 
 | Modus | For hvem |
@@ -522,6 +528,7 @@ assets/js/soknad.js  De seks stegene, validering og framdrift
 assets/js/papirskjema.js  Sifferruter, beløp, lagring og utskrift i papirskjemaene
 assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonene
 assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennomløpet og kortet
+assets/img/boligkompasset.svg Illustrasjonen i toppfeltet: kompassrose og bolig på felles bakkelinje
 assets/css/hb-kompass.css Boligkompasset: kompassrosa, etappene, lagringslinja og utskriften
 assets/js/hb-kompass-data.js Boligkompasset: spørsmål, svar, veiledning, anbefalinger og ordninger
 assets/js/hb-kompass.js  Boligkompasset: kursberegningen, de to modusene og oppsummeringen

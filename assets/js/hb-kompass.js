@@ -306,17 +306,23 @@ function kpStartHtml() {
   };
 
   return `
-<section class="hb-section" style="background:var(--hb-green-100);padding-block:var(--space-6)">
+<section class="hb-section kp-hero">
   <div class="hb-shell hb-shell--wide">
-    <h1 class="kp-h1">Boligkompasset</h1>
-    <p class="kp-ingress">
-      Svar på 20 spørsmål om boligen du bor i nå. Du får vite hvor godt den
-      passer deg i dag, hva som skal til for at den fortsatt passer om ti år,
-      og hvem som kan betale for det. Det tar 5–10 minutter.
-    </p>
-    <p class="hb-small" style="margin:0">
-      Du trenger ikke logge inn. Ingenting sendes til Husbanken før du selv velger det.
-    </p>
+    <div class="kp-hero__rad">
+      <div>
+        <h1 class="kp-h1">Boligkompasset</h1>
+        <p class="kp-ingress">
+          Svar på 20 spørsmål om boligen du bor i nå. Du får vite hvor godt den
+          passer deg i dag, hva som skal til for at den fortsatt passer om ti år,
+          og hvem som kan betale for det. Det tar 5–10 minutter.
+        </p>
+        <p class="hb-small" style="margin:0">
+          Du trenger ikke logge inn. Ingenting sendes til Husbanken før du selv velger det.
+        </p>
+      </div>
+      <img class="kp-hero__ill" src="assets/img/boligkompasset.svg" alt=""
+           width="260" height="200">
+    </div>
   </div>
 </section>
 

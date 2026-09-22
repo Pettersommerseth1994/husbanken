@@ -37,6 +37,21 @@
 [tabindex="-1"]:focus { outline: none; }
 [tabindex="-1"]:focus-visible { outline: none; }
 
+/* ═══ Toppfeltet ══════════════════════════════════════════════════
+   Illustrasjonen står ved siden av overskriften på bred skjerm, og
+   under teksten på smal. Overskriften skal bli stående øverst, det
+   var et eget punkt i designkritikken.
+   ─────────────────────────────────────────────────────────────────── */
+
+.kp-hero { background: var(--hb-green-100); padding-block: var(--space-6); }
+.kp-hero__rad { display: grid; gap: var(--space-4); align-items: center; }
+.kp-hero__ill { width: 100%; max-width: 270px; height: auto; justify-self: center; }
+
+@media (min-width: 760px) {
+  .kp-hero__rad { grid-template-columns: 1fr minmax(250px, 330px); gap: var(--space-6); }
+  .kp-hero__ill { max-width: 330px; justify-self: end; }
+}
+
 /* ═══ Kompasset ═══════════════════════════════════════════════════ */
 
 .kp-kompass { display: block; width: 100%; height: auto; }
