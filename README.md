@@ -334,14 +334,22 @@ To regler overstyrer regnestykket, begge hentet fra innsiktsarbeidet:
   ikke et godt bad dra kursen nordover.
 * Er nærmiljøet tomt og du ikke kommer deg noe sted, hjelper ingen ombygging.
 
-Nåla er kort i starten og vokser etter hvert som du svarer, slik at kompasset
-ser ut som det famler til det har nok å gå på.
+### Når nåla viser hva
 
-Etter hvert svar står det hva svaret teller for. Det står bevisst ikke at nåla
-flyttet seg dit, for ett svar er én stemme blant mange, og nåla viser summen.
-Et svar som teller mot «Ny kurs» kan derfor godt ende med at nåla fortsatt
-peker mot «Rett kurs», bare litt kortere. Teksten sier fra om skiftet bare når
-kursen faktisk byttet navn.
+Nåla viser tre ulike ting på tre ulike steder, og aldri to av dem samtidig.
+
+| Sted | Hva nåla viser |
+| --- | --- |
+| Under spørsmålet | Bare dette ene svaret. Grå og på null før du har svart. |
+| Etter hver etappe | Summen av den etappen, med en setning om hvordan svarene fordelte seg. |
+| I oppsummeringen | Ett kompass per etappe, og ett for helheten. |
+
+Nåla under spørsmålet var kumulativ før. Den la sammen alt du hadde svart, og
+flyttet seg noen få grader for hvert svar. Det var umulig å lese noe ut av, og
+det tvang teksten ved siden av til å forklare hvorfor et sørlig svar kunne
+ende med at nåla pekte nord. Nå starter den på null og grått ved hvert
+spørsmål, går til full lengde når du svarer, og peker rett på det du valgte.
+Summen kommer der man faktisk stopper opp: etter hver etappe, og til slutt.
 
 Eieformen teller ikke. Å leie er ikke et dårligere svar enn å eie, og mange
 trives godt med det. Det er spørsmålet under, om hvor fornøyd du er med
@@ -357,6 +365,14 @@ skal måtte huske hva en kurs betydde fra forsiden.
 Nåla oppdateres på stedet, ikke ved å tegne boksen på nytt. Byttet vi ut hele
 boksen, ville nettleseren laget et nytt element som er ferdig rotert fra første
 bilde, og da hopper nåla i stedet for å svinge.
+
+### Kompasset du vrir selv
+
+Nederst i oppsummeringen står et kompass uten utregning bak seg. Der kan man
+dra nåla dit man selv føler at man står, eller flytte den med skyvekontrollen
+under, som virker med tastatur. De to lesningene står ved siden av hverandre,
+og teksten sier fra når de er uenige. Den som bor der, vet noe et regnestykke
+ikke får tak i, og da skal regnestykket ikke få siste ord.
 
 Illustrasjonen i toppfeltet, `assets/img/boligkompasset.svg`, er tegnet i samme
 flate stil, palett og bakkelinje som `assets/img/aldersvennlig-oppgradering.svg`,
@@ -387,7 +403,7 @@ ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 | Punkt | Grep |
 | --- | --- |
 | Stegene går ikke opp for hvert svar | Telleren teller spørsmål, ett hakk per spørsmål, og stemmer alltid med hvor du er. Peilingen teller i spørsmål den også, ikke i en egen intern skala. |
-| Lagres dette fortløpende? Da burde det stå nederst | Lagringslinja står nederst på hver skjerm, oppdaterer seg ved hvert svar, og sier forskjellen på innlogget og ikke. |
+| Lagres dette fortløpende? Da burde det stå nederst | Var løst med en lagringslinje nederst på hver skjerm. Den er tatt ut igjen etter ønske 22. september. Svarene lagres fortsatt ved hvert eneste valg, det blir bare ikke annonsert. |
 | Tekst i knapper kan ikke brekke på to linjer | `white-space: nowrap` på knapper, og korte etiketter. |
 | En femte trekkspill? Trekkspill er ikke fint design, og bør ikke gå til ny side | Ingen trekkspill i kartleggingen. «Derfor spør vi» og «Dette brukes svaret til» står alltid framme, i hver sin boks, grønn og blå, fordi de svarer på to ulike spørsmål. I oppsummeringen utvider «Se hvem som kan være med og betale» på stedet, uten å navigere. |
 | Alt for stor H1 med for stort mellomrom | H1 ned ett trinn i skalaen, og luften under halvert. |
@@ -397,7 +413,7 @@ ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 | Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fem etapper, 26 spørsmål ble 20. |
 | Mer interaktivt. Hvor er kompasset? | Kompasset er selve mekanikken, ikke et bilde. Nåla svinger for hvert svar. |
 | Brå overganger | Myk innfading mellom skjermene, og nåla beveger seg over 700 ms. Alt slås av ved `prefers-reduced-motion`. |
-| Savner en lagre/fortsett senere-knapp | «Lagre og fortsett senere» står i lagringslinja. |
+| Savner en lagre/fortsett senere-knapp | Sto i lagringslinja, og falt ut sammen med den. Man kan fortsatt lukke siden når som helst og fortsette der man slapp. |
 | Burde ligge åpent, ikke krever innlogging | Hele kartleggingen, oppsummeringen og utskriften virker uten innlogging. |
 | Delvis er et dårlig alternativ | Hvert svaralternativ har en undertekst som sier konkret hva det betyr. Der arbeidsdokumentet gir tre alvorlighetsgrader, er «Delvis» byttet med dem, som i «Lett / Vanskelig / Veldig vanskelig». |
 | Overskrifter som ikke er på toppen | Hver skjerm åpner med sin egen `h1`. |
@@ -407,7 +423,7 @@ ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 | Forklare litt mer underveis, bedre forklaringstekster, klarspråk | «Derfor spør vi» og «Dette brukes svaret til» ved hvert spørsmål, og undertekst på hvert svaralternativ. |
 | Oppsummeringen trenger mer kjærlighet, mer visuell, bedre henvisning videre | Kursen i stort format, oversikten med stolper, tiltakene i prioritert rekkefølge med begrunnelsen fra ditt eget svar, og fire kort om veien videre. |
 | Fint om svarene tas med videre inn i søknaden | «Ta svarene med i søknaden» fyller ut steg 2 og 3, og søknadens startside sier at det er gjort. |
-| Spørsmål før man kommer inn i løsningen | «Før du begynner» med forberedelser, og spørsmålet om du svarer for deg selv eller som pårørende. |
+| Spørsmål før man kommer inn i løsningen | Var løst med boksen «Før du begynner». Den er tatt ut igjen etter ønske 22. september. |
 | PDF-en trenger design, og print bør ikke kreve innlogging | Egen utskriftsstil. Oppsummeringen blir et A4-dokument med tittel, dato, telefonnummer, alle ordningene utbrettet, lenkene skrevet ut i klartekst, og en notatrute til slutt. Ingen innlogging. |
 
 ### Kjent åpent punkt
@@ -508,6 +524,10 @@ Minstekravet er 40 000 kr.
 | `boligkompasset.html?modus=liste` | Rett inn i listemodus, alle spørsmålene på én side. |
 | `boligkompasset.html?vis=oppsummering` | Rett til oppsummeringen med de svarene som ligger lagret. |
 
+Nederst på siden ligger dessuten en snarvei som fyller ut tilfeldige svar på
+alle 20 spørsmålene og hopper rett til oppsummeringen. Den er merket som et
+prototypeverktøy, og den kommer ikke med i utskriften.
+
 Svarene lagres i nettleseren (`localStorage`). «Nullstill prototypen» nederst på
 kvitteringen tømmer alt.
 
@@ -561,7 +581,7 @@ assets/js/papirskjema.js  Sifferruter, beløp, lagring og utskrift i papirskjema
 assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonene
 assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennomløpet og kortet
 assets/img/boligkompasset.svg Illustrasjonen i toppfeltet: kompassrose og bolig på felles bakkelinje
-assets/css/hb-kompass.css Boligkompasset: kompassrosa, etappene, lagringslinja og utskriften
+assets/css/hb-kompass.css Boligkompasset: kompassrosa, etappene, sidefanene og utskriften
 assets/js/hb-kompass-data.js Boligkompasset: spørsmål, svar, veiledning, anbefalinger og ordninger
 assets/js/hb-kompass.js  Boligkompasset: kursberegningen, de to modusene og oppsummeringen
 assets/pdf/          Utfyllbare PDF-er, generert fra skjemaene
