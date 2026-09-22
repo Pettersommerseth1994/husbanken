@@ -112,6 +112,7 @@ const HB_AVATAR = `
 const HB_NAV = [
   ['index.html', 'Forside for privatpersoner'],
   ['tilskudd.html', 'Tilskudd til aldersvennlig oppgradering'],
+  ['boligkompasset.html', 'Boligkompasset'],
   ['#', 'Bostøtte'],
   ['#', 'Startlån fra kommunen'],
   ['#', 'Lån fra Husbanken'],

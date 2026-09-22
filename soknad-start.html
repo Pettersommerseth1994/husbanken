@@ -17,6 +17,20 @@
 
     <h1>Søknad om tilskudd til aldersvennlig oppgradering</h1>
 
+    <!-- «Fint om svarene tas med videre inn i søknaden.» Kommer man rett
+         fra Boligkompasset, sier vi hva som faktisk ble med over. -->
+    <div class="hb-note" id="fra-kompasset" hidden style="margin-top:var(--space-4)">
+      <span data-info-kompass></span>
+      <div>
+        <strong>Vi har tatt med svarene fra Boligkompasset</strong>
+        <p style="margin:4px 0 0">
+          Oppgraderingene kompasset anbefalte, står allerede avkrysset i steg 3,
+          og opplysningene om eierform er fylt ut i steg 2. Du kan endre alt
+          underveis. <a class="hb-link" href="boligkompasset.html?vis=oppsummering">Se oppsummeringen din igjen</a>.
+        </p>
+      </div>
+    </div>
+
     <!-- Veilederen. Samme figur og samme grønne ramme som i resten av
          Husbankens søknadsflyter. -->
     <div class="hb-guide" style="margin-top:var(--space-6)">
@@ -204,6 +218,13 @@
     e.href = 'tel:' + HB_REGLER.telefonRaw;
     e.innerHTML = HB_IKON.telefon + '<span>' + HB_REGLER.telefon + '</span>';
   });
+
+  if (d.fraKompasset) {
+    const boks = document.getElementById('fra-kompasset');
+    boks.hidden = false;
+    boks.querySelector('[data-info-kompass]').outerHTML =
+      '<span class="hb-note__icon">' + HB_IKON.info + '</span>';
+  }
 
   /* Har man vært innom før, tilbyr vi å fortsette der man slapp. */
   if (d.steg && d.steg > 1) {

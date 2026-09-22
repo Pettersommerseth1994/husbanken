@@ -126,7 +126,12 @@
       eierform: 'eier',
       innlogget: true
     });
-    setTimeout(() => { location.href = 'soknad-start.html'; }, 1600);
+    /* Kom du hit fra Boligkompasset, sender vi deg tilbake dit.
+       Bare sider i denne prototypen er tillatt som returadresse. */
+    const lovlig = ['soknad-start.html', 'boligkompasset.html', 'tilskudd.html'];
+    const retur = new URLSearchParams(location.search).get('retur');
+    const maal = lovlig.includes(retur) ? retur : 'soknad-start.html';
+    setTimeout(() => { location.href = maal; }, 1600);
   });
 
   document.querySelectorAll('[data-info]').forEach(e => e.innerHTML = HB_IKON.info);

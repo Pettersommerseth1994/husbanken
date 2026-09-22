@@ -21,6 +21,7 @@ skrifter og skript med relative stier.
 | --- | --- |
 | `index.html` | Husbankens forside for privatpersoner. Ordningen ligger som eget felt over tjenestekortene. |
 | `tilskudd.html` | Informasjonssiden: kalkulator, tre eksempelcase, hvem som kan få, de seks oppgraderingene, steg for steg, spørsmål og svar. |
+| `boligkompasset.html` | Boligkompasset: kartlegging av egen bolig i to varianter, og oppsummering med prioriterte tiltak. Krever ikke innlogging. |
 | `logg-inn.html` | BankID med dummydata, i tre skjermbilder. |
 | `soknad-start.html` | Introsiden til søknaden, bygget etter skjermbildet fra Husbanken. |
 | `soknad.html` | Søknaden i seks steg. |
@@ -271,6 +272,114 @@ opplysninger, om
 løsøre ved bad og kjøkken skal med, og ordlyden opp mot det husbanken.no
 lander på. Kommentarene som peker på disse ligger i boardet.
 
+## Boligkompasset
+
+`boligkompasset.html` er Boligkompasset bygget om. Kartleggingen ligger åpent,
+uten innlogging, fordi målgruppen er eldre og fordi terskelen for å logge inn er
+den terskelen flest snur i. Logger du inn, lagres svarene hos Husbanken i
+stedet for i nettleseren. Forskjellen står skrevet i linja nederst på skjermen,
+hele tiden.
+
+### Hvor innholdet kommer fra
+
+Spørsmålene på **dag 1** er hentet fra kolonnene «Forslag spørsmål», «Forslag
+svaralternativer» og «Forslag veiledningstekst» i
+`Arbeidsdokument gruppe4_workshop_Boligkompasset.xlsx`, arket «Spørsmål, svar og
+veiledning». De sju spørsmålene med status «Fjern» er tatt ut, og spørsmål 1 og
+2 er slått sammen, slik merknaden i kolonne K ber om.
+
+**Dag 2**, altså bad og økonomi, står som i studentenes prototype. Der finnes det
+ennå ingen omskriving å følge, og de radene har status «Avklar».
+
+Anbefalingene, tiltakskodene `(1a)`–`(5f)` og støtteordningene er hentet fra
+arkene «Handlingsplan» og «Eksempler på tiltak» i samme arbeidsdokument.
+Prioriteringen mellom dem følger setningen fra innsiktsarbeidet 2025: er
+inngangspartiet vanskelig å gjøre tilgjengelig, hjelper det lite hva som er
+gjort inne.
+
+Skjermbildene, tekstene og komponentbruken er hentet ut av Figma-filen
+`Vedlegg/Design/Detaljert-design.fig`.
+
+Spørsmålet om helse er nytt. Det kom som punkt i designkritikken 21. september,
+og er formulert om funksjon i hverdagen, ikke om diagnose. Det kan hoppes over.
+
+### Antall spørsmål
+
+| | Før | Nå |
+| --- | --- | --- |
+| Spørsmål | 26 | 20 |
+| Kategorier | 7 | 5 etapper |
+
+### Kompasset
+
+Kompasset er ikke en karakter, men en peiling. To akser, som måler hver sin ting:
+
+| Akse | Måler | Utslag |
+| --- | --- | --- |
+| Nord–sør | Om boligen og nærmiljøet bærer deg videre | Nord: bli boende. Sør: se på andre boliger. |
+| Øst–vest | Hvor stort arbeidet er | Øst: små grep holder. Vest: det må bygges om. |
+
+Gode svar gir ikke utslag øst–vest i det hele tatt, for da er det ingenting å
+bygge om. Det er derfor de fire himmelretningene faktisk er ulike utfall, og
+ikke bare to punkter på en diagonal. Åtte navngitte kurser dekker feltet mellom
+dem, pluss «Delt kurs» når nåla står nær midten.
+
+To regler overstyrer regnestykket, begge hentet fra innsiktsarbeidet:
+
+* Er adkomsten stengt, altså «veldig vanskelig» eller mer enn seks trinn, kan
+  ikke et godt bad dra kursen nordover.
+* Er nærmiljøet tomt og du ikke kommer deg noe sted, hjelper ingen ombygging.
+
+Nåla er kort i starten og vokser etter hvert som du svarer, slik at kompasset
+ser ut som det famler til det har nok å gå på. Etter hvert svar står det hva
+akkurat det svaret gjorde med kursen.
+
+### To måter å svare på
+
+| Modus | For hvem |
+| --- | --- |
+| **Kompasset** | Ett spørsmål om gangen, fem etapper, nåla svinger under. Litt som en valgomat. |
+| **Enkel liste** | Alle 20 spørsmålene på én side, uten animasjon og uten kompass. Enklest med skjermleser eller forstørring. |
+
+Spørsmålene, lagringen og oppsummeringen er de samme. Du kan bytte underveis
+uten å miste noe.
+
+### Designkritikken 21. september, punkt for punkt
+
+| Punkt | Grep |
+| --- | --- |
+| Stegene går ikke opp for hvert svar | Telleren teller spørsmål, ett hakk per spørsmål, og stemmer alltid med hvor du er. Peilingen teller i spørsmål den også, ikke i en egen intern skala. |
+| Lagres dette fortløpende? Da burde det stå nederst | Lagringslinja står nederst på hver skjerm, oppdaterer seg ved hvert svar, og sier forskjellen på innlogget og ikke. |
+| Tekst i knapper kan ikke brekke på to linjer | `white-space: nowrap` på knapper, og korte etiketter. |
+| En femte trekkspill? Trekkspill er ikke fint design, og bør ikke gå til ny side | Ingen trekkspill i kartleggingen. «Derfor spør vi» og «Dette brukes svaret til» står alltid framme. I oppsummeringen utvider «Se hvem som kan være med og betale» på stedet, uten å navigere. |
+| Alt for stor H1 med for stort mellomrom | H1 ned ett trinn i skalaen, og luften under halvert. |
+| Hvem er det for, og hva får de ut av det? | Tre korte svar øverst på forsiden: hvem, hvorfor nå, hva du får. |
+| Forsiden viser ikke verdien. Visualiser at testen kan føre mange steder | Et kompass du kan trykke på, som viser de fire kursene kartleggingen kan ende i. |
+| Mangler spørsmål om helse | Nytt spørsmål om hva som er blitt tyngre i hverdagen. Kan hoppes over. |
+| Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fem etapper, 26 spørsmål ble 20. |
+| Mer interaktivt. Hvor er kompasset? | Kompasset er selve mekanikken, ikke et bilde. Nåla svinger for hvert svar. |
+| Brå overganger | Myk innfading mellom skjermene, og nåla beveger seg over 700 ms. Alt slås av ved `prefers-reduced-motion`. |
+| Savner en lagre/fortsett senere-knapp | «Lagre og fortsett senere» står i lagringslinja. |
+| Burde ligge åpent, ikke krever innlogging | Hele kartleggingen, oppsummeringen og utskriften virker uten innlogging. |
+| Delvis er et dårlig alternativ | Hvert svaralternativ har en undertekst som sier konkret hva det betyr. Der arbeidsdokumentet gir tre alvorlighetsgrader, er «Delvis» byttet med dem, som i «Lett / Vanskelig / Veldig vanskelig». |
+| Overskrifter som ikke er på toppen | Hver skjerm åpner med sin egen `h1`. |
+| Alt for gamle mennesker på forsiden | Ingen fotografier. Tegnede figurer og kompasset. |
+| Forstod ikke økonomien. Hvorfor spør dere? | Egen ramme før etappen, og et eget avsnitt i oppsummeringen som sier at tallene ikke påvirket kursen, bare hvilke ordninger vi viser. Etappen kan hoppes over. |
+| Mangler totaloversikten med bar | Én stolpe per etappe i oppsummeringen, med tegnforklaring. |
+| Forklare litt mer underveis, bedre forklaringstekster, klarspråk | «Derfor spør vi» og «Dette brukes svaret til» ved hvert spørsmål, og undertekst på hvert svaralternativ. |
+| Oppsummeringen trenger mer kjærlighet, mer visuell, bedre henvisning videre | Kursen i stort format, oversikten med stolper, tiltakene i prioritert rekkefølge med begrunnelsen fra ditt eget svar, og fire kort om veien videre. |
+| Fint om svarene tas med videre inn i søknaden | «Ta svarene med i søknaden» fyller ut steg 2 og 3, og søknadens startside sier at det er gjort. |
+| Spørsmål før man kommer inn i løsningen | «Før du begynner» med forberedelser, og spørsmålet om du svarer for deg selv eller som pårørende. |
+| PDF-en trenger design, og print bør ikke kreve innlogging | Egen utskriftsstil. Oppsummeringen blir et A4-dokument med tittel, dato, telefonnummer, alle ordningene utbrettet, lenkene skrevet ut i klartekst, og en notatrute til slutt. Ingen innlogging. |
+
+### Kjent åpent punkt
+
+Kolonne J for spørsmål 15 i arbeidsdokumentet inneholder veiledningstekst om
+bad og toalett, mens spørsmålet handler om å komme seg rundt i boligen. Det ser
+ut som en forskyvning i regnearket. Teksten er skrevet om til å handle om
+terskler, nivåforskjeller og dørbredder, som er det spørsmålet faktisk spør om.
+Bør bekreftes av gruppen.
+
 ## Tilgjengelighetsanalysen
 
 `uu-widget.js` er et verktøy som legger seg nederst til høyre i nettleseren,
@@ -357,6 +466,9 @@ Minstekravet er 40 000 kr.
 | `tilskudd.html?belop=400000` | Åpner kalkulatoren på et bestemt beløp. |
 | `soknad.html?demo` | Hopper inn i søknaden med ferdig utfylte testdata. |
 | `soknad.html?demo&steg=5` | Rett til et bestemt steg. |
+| `boligkompasset.html?modus=kompass` | Rett inn i kompassmodus, der du slapp sist. |
+| `boligkompasset.html?modus=liste` | Rett inn i listemodus, alle spørsmålene på én side. |
+| `boligkompasset.html?vis=oppsummering` | Rett til oppsummeringen med de svarene som ligger lagret. |
 
 Svarene lagres i nettleseren (`localStorage`). «Nullstill prototypen» nederst på
 kvitteringen tømmer alt.
@@ -410,6 +522,9 @@ assets/js/soknad.js  De seks stegene, validering og framdrift
 assets/js/papirskjema.js  Sifferruter, beløp, lagring og utskrift i papirskjemaene
 assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonene
 assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennomløpet og kortet
+assets/css/hb-kompass.css Boligkompasset: kompassrosa, etappene, lagringslinja og utskriften
+assets/js/hb-kompass-data.js Boligkompasset: spørsmål, svar, veiledning, anbefalinger og ordninger
+assets/js/hb-kompass.js  Boligkompasset: kursberegningen, de to modusene og oppsummeringen
 assets/pdf/          Utfyllbare PDF-er, generert fra skjemaene
 verktoy/             Generatoren for de utfyllbare PDF-ene, med feltkart
 Brukertester/        Rådata fra de åtte testene 25. og 27. august 2026
