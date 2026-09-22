@@ -338,6 +338,12 @@ flyttet seg dit, for ett svar er én stemme blant mange, og nåla viser summen.
 Et sørlig svar kan derfor godt ende med at nåla fortsatt peker nord, bare litt
 kortere. Teksten sier fra om skiftet bare når kursen faktisk byttet navn.
 
+Kompasset har samme størrelse overalt, og navnet på kursen står i selve rosa:
+NORD «Rett kurs», ØST «Små grep», VEST «Ombygging», SØR «Ny kurs». Under
+kompasset står en fast nøkkel som forklarer alle fire med én setning hver, og
+den retningen nåla står i er markert. Nøkkelen følger kompasset hver gang det
+vises, så man aldri skal måtte huske hva nord betydde fra forsiden.
+
 Nåla oppdateres på stedet, ikke ved å tegne boksen på nytt. Byttet vi ut hele
 boksen, ville nettleseren laget et nytt element som er ferdig rotert fra første
 bilde, og da hopper nåla i stedet for å svinge.
