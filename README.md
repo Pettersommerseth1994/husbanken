@@ -308,7 +308,7 @@ og er formulert om funksjon i hverdagen, ikke om diagnose. Det kan hoppes over.
 | | Før | Nå |
 | --- | --- | --- |
 | Spørsmål | 26 | 20 |
-| Kategorier | 7 | 5 etapper |
+| Kategorier | 7 | 5 steg |
 
 ### Kompasset
 
@@ -317,7 +317,7 @@ Kompasset er ikke en karakter, men en peiling. To akser, som måler hver sin tin
 | Akse | Måler | Ytterpunktene |
 | --- | --- | --- |
 | Loddrett | Om boligen og nærmiljøet passer for deg videre | Opp: «Rett kurs». Ned: «Ny kurs». |
-| Vannrett | Hvor stort arbeidet er | Høyre: «Små grep». Venstre: «Ombygging». |
+| Vannrett | Hvor stort arbeidet er | Høyre: «Små grep». Venstre: «Større grep». |
 
 Himmelretningene står ikke noe sted i grensesnittet. De sa ingenting om
 boligen, og de tok plassen til det som betyr noe: navnet på kursen. Kodene N,
@@ -340,24 +340,27 @@ Nåla viser tre ulike ting på tre ulike steder, og aldri to av dem samtidig.
 
 | Sted | Hva nåla viser |
 | --- | --- |
-| Under spørsmålet | Bare dette ene svaret. Grå og på null før du har svart. |
-| Etter hver etappe | Summen av den etappen, med en setning om hvordan svarene fordelte seg. |
-| I oppsummeringen | Ett kompass per etappe, og ett for helheten. |
+| Under spørsmålene | Summen så langt i det steget du står i. Grå og på null når steget begynner. |
+| Etter hvert steg | Steget samlet, med en setning om hvordan svarene fordelte seg. |
+| I oppsummeringen | Ett kompass per steg, ett for helheten, og ett du vrir selv. |
 
-Nåla under spørsmålet var kumulativ før. Den la sammen alt du hadde svart, og
-flyttet seg noen få grader for hvert svar. Det var umulig å lese noe ut av, og
-det tvang teksten ved siden av til å forklare hvorfor et sørlig svar kunne
-ende med at nåla pekte nord. Nå starter den på null og grått ved hvert
-spørsmål, går til full lengde når du svarer, og peker rett på det du valgte.
-Summen kommer der man faktisk stopper opp: etter hver etappe, og til slutt.
+Nåla la sammen alt gjennom hele kartleggingen før, og flyttet seg da bare noen
+få grader per svar. Nå er den avgrenset til ett steg om gangen: den summerer
+svarene i steget man er inne i, og begynner på null igjen når neste steg
+starter. Utslaget blir stort nok til å se, og summen gjelder noe man er midt
+inne i.
 
-Eieformen teller ikke. Å leie er ikke et dårligere svar enn å eie, og mange
-trives godt med det. Det er spørsmålet under, om hvor fornøyd du er med
-ordningen, som flytter nåla.
+Nåla er grønn når den peker i øvre halvdel, rød i nedre, og grå før man har
+svart. Fargen sier det samme som etikettene: opp er en kurs man vil ha.
+
+Boligtype og eieform flytter ikke nåla. De sier hva som er mulig å gjøre, ikke
+hvordan man har det. Det er spørsmålet om hvor fornøyd man er med boforholdet
+som teller: fornøyd peker opp, delvis fornøyd mot «Små grep», ikke fornøyd mot
+«Ny kurs».
 
 Kompasset har samme størrelse overalt, og navnet på kursen står i selve rosa:
 «Rett kurs» i grønt øverst, «Ny kurs» i rødt nederst, «Små grep» og
-«Ombygging» nøytralt på hver side. Nåla er grønn. Under kompasset står en fast
+«Større grep» nøytralt på hver side. Nåla er grønn. Under kompasset står en fast
 nøkkel som forklarer alle fire med én setning hver, og den kursen nåla peker
 mot er markert. Nøkkelen følger kompasset hver gang det vises, så man aldri
 skal måtte huske hva en kurs betydde fra forsiden.
@@ -368,7 +371,7 @@ bilde, og da hopper nåla i stedet for å svinge.
 
 ### Kompasset du vrir selv
 
-Nederst i oppsummeringen står et kompass uten utregning bak seg. Der kan man
+Like under kursen i oppsummeringen står et kompass uten utregning bak seg. Der kan man
 dra nåla dit man selv føler at man står, eller flytte den med skyvekontrollen
 under, som virker med tastatur. De to lesningene står ved siden av hverandre,
 og teksten sier fra når de er uenige. Den som bor der, vet noe et regnestykke
@@ -385,15 +388,15 @@ tekstalternativ og oppdaterer seg.
 
 | Modus | For hvem |
 | --- | --- |
-| **Kompasset** | Ett spørsmål om gangen, fem etapper, nåla svinger under. Litt som en valgomat. |
+| **Kompasset** | Ett spørsmål om gangen, fem steg, nåla svinger under. Litt som en valgomat. |
 | **Enkel liste** | Alle 20 spørsmålene på én side, uten animasjon og uten kompass. Enklest med skjermleser eller forstørring. |
 
 Spørsmålene, lagringen og oppsummeringen er de samme. Modus velges på
 startsiden.
 
-I lista har hver etappe sin egen fane i margen, etter samme mønster som
-seksjonene i OneNote. Fanen viser hvor mange spørsmål som er besvart i etappen,
-den lyser opp for den etappen du er i mens du blar, og et trykk tar deg rett
+I lista har hvert steg sin egen fane i margen, etter samme mønster som
+seksjonene i OneNote. Fanen viser hvor mange spørsmål som er besvart i steget,
+den lyser opp for det steget du er i mens du blar, og et trykk tar deg rett
 dit. Fargekodene er en rolig trapp fra mørk grønn til blågrå, med små steg
 mellom, og fargen er aldri eneste kjennetegn: navnet og nummeret står alltid
 ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
@@ -410,7 +413,7 @@ ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 | Hvem er det for, og hva får de ut av det? | Tre korte svar øverst på forsiden: hvem, hvorfor nå, hva du får. |
 | Forsiden viser ikke verdien. Visualiser at testen kan føre mange steder | Et kompass du kan trykke på, som viser de fire kursene kartleggingen kan ende i. |
 | Mangler spørsmål om helse | Nytt spørsmål om hva som er blitt tyngre i hverdagen. Kan hoppes over. |
-| Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fem etapper, 26 spørsmål ble 20. |
+| Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fem steg, 26 spørsmål ble 20. |
 | Mer interaktivt. Hvor er kompasset? | Kompasset er selve mekanikken, ikke et bilde. Nåla svinger for hvert svar. |
 | Brå overganger | Myk innfading mellom skjermene, og nåla beveger seg over 700 ms. Alt slås av ved `prefers-reduced-motion`. |
 | Savner en lagre/fortsett senere-knapp | Sto i lagringslinja, og falt ut sammen med den. Man kan fortsatt lukke siden når som helst og fortsette der man slapp. |
@@ -419,7 +422,7 @@ ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 | Overskrifter som ikke er på toppen | Hver skjerm åpner med sin egen `h1`. |
 | Alt for gamle mennesker på forsiden | Ingen fotografier. Tegnede figurer og kompasset. |
 | Forstod ikke økonomien. Hvorfor spør dere? | Egen ramme før etappen, og et eget avsnitt i oppsummeringen som sier at tallene ikke påvirket kursen, bare hvilke ordninger vi viser. Etappen kan hoppes over. |
-| Mangler totaloversikten med bar | Én stolpe per etappe i oppsummeringen, med tegnforklaring. |
+| Mangler totaloversikten med bar | Ett kompass og én stolpe per steg i oppsummeringen, med tegnforklaring. |
 | Forklare litt mer underveis, bedre forklaringstekster, klarspråk | «Derfor spør vi» og «Dette brukes svaret til» ved hvert spørsmål, og undertekst på hvert svaralternativ. |
 | Oppsummeringen trenger mer kjærlighet, mer visuell, bedre henvisning videre | Kursen i stort format, oversikten med stolper, tiltakene i prioritert rekkefølge med begrunnelsen fra ditt eget svar, og fire kort om veien videre. |
 | Fint om svarene tas med videre inn i søknaden | «Ta svarene med i søknaden» fyller ut steg 2 og 3, og søknadens startside sier at det er gjort. |
