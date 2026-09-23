@@ -418,7 +418,10 @@
   min-height: 44px;
 }
 .kp-ressurs:hover { background: var(--hb-blue-100); }
-.kp-ressurs svg { width: 18px; height: 18px; }
+/* Ikonet ligger i en span, og en inline span setter seg på grunnlinja.
+   Da havner pila lavere enn teksten ved siden av. */
+.kp-ressurs > span { display: inline-flex; align-items: center; }
+.kp-ressurs svg { width: 18px; height: 18px; display: block; }
 
 .kp-svardetaljer {
   margin-top: var(--space-6);
@@ -651,11 +654,16 @@
   font-size: var(--text-sm); line-height: var(--lh-sm);
 }
 .kp-tiltak__hvorfor strong { display: block; margin-bottom: 2px; }
-.kp-merkeliste { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+/* Tiltakene i tilskuddet. Dette sto som piller før, men ordlyden er
+   lang og brakk over tre linjer. Da ble den runde enden så stor at
+   teksten la seg utenfor. Nå er det rader med rett kant. */
+.kp-merkeliste { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: grid; gap: 4px; }
 .kp-merke {
-  font-size: 13px; line-height: 1.4;
+  font-size: 13px; line-height: 1.45;
   background: var(--hb-blue-100); color: var(--hb-blue-900);
-  border-radius: var(--radius-pill); padding: 5px 11px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--hb-blue-800);
+  padding: 7px 12px;
 }
 
 /* Vis mer, uten å forlate siden. Designkritikken: trekkspill som

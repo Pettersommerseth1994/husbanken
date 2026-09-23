@@ -406,15 +406,18 @@ Dette er siden folk skal kunne skumme og skrive ut.
 
 | Del | Innhold |
 | --- | --- |
-| Kursen | Kompasset, og ett lite kompass per steg |
-| Vri kompasset selv | Din egen lesning, ved siden av vår |
 | 1. Handlingsplan | To spalter: hva funker i dag, og hva funker ikke, med hva som kan gjøres |
 | 2. Generelle anbefalinger | Delt i «Nå» og «Fremtiden, 5–10 år» |
 | 3. Ressurser | Ordningene som knapper, og telefonnummeret til Husbanken |
+| 4. Kursen din | Kompasset, ett lite kompass per steg, og ett du vrir selv |
 
-Detaljene om hvert tiltak ligger bak «vis mer» i de to spaltene under punkt 2,
-og alle svarene ligger bak et sammenklappet felt til slutt. Da er siden til å
-skumme, uten at noe er borte.
+Handlingsplanen står øverst fordi det er den man handler på. Kompasset er
+bildet, og det står til slutt.
+
+Bare de tre tyngste hindringene vises med én gang. Resten ligger bak «se de
+andre», detaljene om hvert tiltak ligger bak «vis mer», og alle svarene ligger
+bak et sammenklappet felt. Da er siden til å skumme, uten at noe er borte. I
+utskriften brettes alt ut.
 
 ### Kompasset du vrir selv
 

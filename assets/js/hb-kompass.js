@@ -1108,25 +1108,7 @@ function kpOppsummeringHtml() {
 
     <h1 class="kp-h1 kp-utskrift-skjul" style="margin-bottom:var(--space-3)">Oppsummering</h1>
 
-    <div class="kp-resultat">
-      <div class="kp-resultat__topp">
-        <div class="kp-kompass-stort">${kpKompassSvg(kurs)}</div>
-        <div>
-          <p class="kp-resultat__kurs">Kompasset peker mot</p>
-          <p class="kp-resultat__navn">${info.navn}</p>
-          <p class="kp-resultat__tekst">${info.tekst}</p>
-          ${ubesvart ? `<p class="hb-small hb-muted" style="margin:var(--space-2) 0 0">
-            ${ubesvart} av ${kpAntallSporsmal()} spørsmål står ubesvart.</p>` : ''}
-        </div>
-      </div>
-      <div class="kp-resultat__bunn">
-        ${kpOversiktHtml()}
-      </div>
-    </div>
-
-    ${kpEgenKursHtml()}
-
-    <h2 class="hb-h2" style="margin-top:var(--space-6)">1. Handlingsplan</h2>
+    <h2 class="hb-h2">1. Handlingsplan</h2>
     <div class="kp-plan">
       <div class="kp-plan__kol kp-plan__kol--ja">
         <h3 class="hb-h4">Hva funker i dag</h3>
@@ -1136,12 +1118,26 @@ function kpOppsummeringHtml() {
       </div>
       <div class="kp-plan__kol kp-plan__kol--nei">
         <h3 class="hb-h4">Hva funker ikke</h3>
-        ${plan.funkerIkke.length ? `<ul>
-          ${plan.funkerIkke.map(sp => `<li>
+        ${plan.funkerIkke.length ? `
+        <ul>
+          ${plan.funkerIkke.slice(0, 3).map(sp => `<li>
             <span class="kp-plan__merke" aria-hidden="true">✕</span>
             <span>${sp.stikkord}<span class="kp-plan__grep">${sp.grep}</span></span>
           </li>`).join('')}
-        </ul>` : '<p class="hb-small hb-muted">Ingenting av det du svarte peker på en hindring.</p>'}
+        </ul>
+        ${plan.funkerIkke.length > 3 ? `
+        <button type="button" class="kp-mer" aria-expanded="false" data-mer="flere-hindringer">
+          <span data-ikon="chevron"></span>Se de ${plan.funkerIkke.length - 3} andre
+        </button>
+        <div class="kp-mer-panel" id="flere-hindringer" hidden>
+          <ul>
+            ${plan.funkerIkke.slice(3).map(sp => `<li>
+              <span class="kp-plan__merke" aria-hidden="true">✕</span>
+              <span>${sp.stikkord}<span class="kp-plan__grep">${sp.grep}</span></span>
+            </li>`).join('')}
+          </ul>
+        </div>` : ''}`
+        : '<p class="hb-small hb-muted">Ingenting av det du svarte peker på en hindring.</p>'}
       </div>
     </div>
 
@@ -1175,6 +1171,25 @@ function kpOppsummeringHtml() {
     </ul>
     ${kpOkonomiHtml()}
 
+    <h2 class="hb-h2" style="margin-top:var(--space-6)">4. Kursen din</h2>
+    <div class="kp-resultat">
+      <div class="kp-resultat__topp">
+        <div class="kp-kompass-stort">${kpKompassSvg(kurs)}</div>
+        <div>
+          <p class="kp-resultat__kurs">Kompasset peker mot</p>
+          <p class="kp-resultat__navn">${info.navn}</p>
+          <p class="kp-resultat__tekst">${info.tekst}</p>
+          ${ubesvart ? `<p class="hb-small hb-muted" style="margin:var(--space-2) 0 0">
+            ${ubesvart} av ${kpAntallSporsmal()} spørsmål står ubesvart.</p>` : ''}
+        </div>
+      </div>
+      <div class="kp-resultat__bunn">
+        ${kpOversiktHtml()}
+      </div>
+    </div>
+
+    ${kpEgenKursHtml()}
+
     <div class="kp-utskrift-notat">
       <strong>Plass til dine egne notater</strong>
     </div>
@@ -1182,8 +1197,8 @@ function kpOppsummeringHtml() {
     <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-6)" class="kp-utskrift-skjul">
       <button type="button" class="hb-btn hb-btn--primary" data-skriv-ut>Skriv ut eller lagre som PDF</button>
       <button type="button" class="hb-btn hb-btn--secondary" data-til-soknad>Ta svarene med i søknaden</button>
-      <button type="button" class="hb-btn hb-btn--tertiary" data-tilbake-svar>Endre svarene mine</button>
-      <button type="button" class="hb-btn hb-btn--tertiary" data-nullstill>Start på nytt</button>
+      <button type="button" class="hb-btn hb-btn--secondary" data-tilbake-svar>Endre svarene mine</button>
+      <button type="button" class="hb-btn hb-btn--secondary" data-nullstill>Start på nytt</button>
     </div>
 
     <details class="kp-svardetaljer kp-utskrift-skjul">
