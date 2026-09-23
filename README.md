@@ -297,6 +297,12 @@ Prioriteringen mellom dem følger setningen fra innsiktsarbeidet 2025: er
 inngangspartiet vanskelig å gjøre tilgjengelig, hjelper det lite hva som er
 gjort inne.
 
+Boligkompasset henger ikke sammen med tilskuddet til aldersvennlig oppgradering.
+Kartleggingen ser på boligen, og tilskuddet er én av flere ordninger som kan
+være aktuelle når man vet hva man vil gjøre. Teksten skal derfor ikke ramme
+tiltakene inn som «det tilskuddet dekker», og beløpsgrensene i ordningen hører
+hjemme på tilskuddssiden, ikke her.
+
 Skjermbildene, tekstene og komponentbruken er hentet ut av Figma-filen
 `Vedlegg/Design/Detaljert-design.fig`.
 

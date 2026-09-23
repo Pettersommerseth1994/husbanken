@@ -1351,13 +1351,13 @@ const KP_INVESTERING = {
                raad: 'Du oppga at du ikke har tenkt å bruke penger nå. Da er de enkle grepene over stedet å begynne: lys, håndlister og terskler koster lite, og flere av dem kan du gjøre selv. Resten kan vente til det passer.',
                ordninger: [] },
   '0-50':    { navn: 'inntil 50 000 kroner',
-               raad: 'Med det beløpet kommer du langt på de enkle grepene, og du kan ta ett av de mindre byggearbeidene. Husk at tilskuddet krever at du oppgraderer for minst 40 000 kroner.',
+               raad: 'Med det beløpet kommer du langt på de enkle grepene, og du kan ta ett av de mindre byggearbeidene. Flere av ordningene under har en nedre grense for hvor lite arbeidet kan være, så sjekk vilkårene før du deler opp jobben.',
                ordninger: ['aldersvennlig', 'komtilskudd'] },
   '50-200':  { navn: '50 000 – 200 000 kroner',
-               raad: 'Det rekker til et mindre byggearbeid. Med tilskuddet på toppen kan du komme et godt stykke lenger enn beløpet alene tilsier.',
+               raad: 'Det rekker til et mindre byggearbeid. Med et tilskudd eller lån på toppen kan du komme et godt stykke lenger enn beløpet alene tilsier.',
                ordninger: ['aldersvennlig', 'komtilskudd', 'startlaan'] },
   '200-400': { navn: '200 000 – 400 000 kroner',
-               raad: 'Det rekker til et av de store tiltakene, typisk badet eller inngangen. Snakk med banken om rekkefølgen: tilskudd søkes før arbeidet settes i gang.',
+               raad: 'Det rekker til et av de store tiltakene, typisk badet eller inngangen. Snakk med banken om rekkefølgen, og husk at de fleste tilskudd må være søkt om før arbeidet settes i gang.',
                ordninger: ['aldersvennlig', 'startlaan', 'husbanklaan', 'komtilskudd'] },
   '400-600': { navn: '400 000 – 600 000 kroner',
                raad: 'Det rekker til flere store tiltak samtidig, eller til å endre planløsningen. På dette nivået lønner det seg å få en fagperson til å se på helheten før du begynner.',
@@ -1391,10 +1391,7 @@ function kpOkonomiHtml() {
       til å velge hvilke tiltak og ordninger vi viser deg.
     </p>
     <p style="margin:var(--space-2) 0 0">${valgt.raad}</p>
-    <p class="hb-small hb-muted" style="margin:var(--space-2) 0 0">
-      Tilskuddet dekker 25 prosent av det du oppgraderer for, opptil 75 000
-      kroner. Ingenting er sjekket mot bank eller register.
-    </p>
+
   </div>`;
 }
 
