@@ -307,8 +307,8 @@ og er formulert om funksjon i hverdagen, ikke om diagnose. Det kan hoppes over.
 
 | | Før | Nå |
 | --- | --- | --- |
-| Spørsmål | 26 | 20 |
-| Kategorier | 7 | 5 steg |
+| Spørsmål | 26 | 17 |
+| Kategorier | 7 | 4 steg |
 
 ### Kompasset
 
@@ -333,6 +333,24 @@ To regler overstyrer regnestykket, begge hentet fra innsiktsarbeidet:
 * Er adkomsten stengt, altså «veldig vanskelig» eller mer enn seks trinn, kan
   ikke et godt bad dra kursen nordover.
 * Er nærmiljøet tomt og du ikke kommer deg noe sted, hjelper ingen ombygging.
+
+### Stegene
+
+Rekkefølgen går innenfra og ut, slik skissen fra 23. september viser: man
+begynner med det som er nærmest, og beveger seg utover.
+
+| | Steg |
+| --- | --- |
+| 1 | Deg og boligen din |
+| 2 | Inne i boligen din |
+| 3 | Veien inn til boligen din |
+| 4 | Nærmiljøet ditt |
+
+Steget om økonomi er borte. De fire spørsmålene om eiendom, lån, sparepenger og
+månedlig betjening er byttet med ett spørsmål sist i steg 1: hvor mye man
+ønsker å investere i en oppgradering. Det er lettere å svare på, det er mindre
+personvernfølsomt, og det gjør den samme jobben, nemlig å velge hvilke tiltak
+og ordninger vi viser fram.
 
 ### Når nåla viser hva
 
@@ -381,6 +399,23 @@ Nåla oppdateres på stedet, ikke ved å tegne boksen på nytt. Byttet vi ut hel
 boksen, ville nettleseren laget et nytt element som er ferdig rotert fra første
 bilde, og da hopper nåla i stedet for å svinge.
 
+### Oppsummeringen
+
+Bygget etter skissen fra 23. september, og holdt så kort som mulig i høyden.
+Dette er siden folk skal kunne skumme og skrive ut.
+
+| Del | Innhold |
+| --- | --- |
+| Kursen | Kompasset, og ett lite kompass per steg |
+| Vri kompasset selv | Din egen lesning, ved siden av vår |
+| 1. Handlingsplan | To spalter: hva funker i dag, og hva funker ikke, med hva som kan gjøres |
+| 2. Generelle anbefalinger | Delt i «Nå» og «Fremtiden, 5–10 år» |
+| 3. Ressurser | Ordningene som knapper, og telefonnummeret til Husbanken |
+
+Detaljene om hvert tiltak ligger bak «vis mer» i de to spaltene under punkt 2,
+og alle svarene ligger bak et sammenklappet felt til slutt. Da er siden til å
+skumme, uten at noe er borte.
+
 ### Kompasset du vrir selv
 
 Like under kursen i oppsummeringen står et kompass uten utregning bak seg. Der kan man
@@ -400,7 +435,7 @@ tekstalternativ og oppdaterer seg.
 
 | Modus | For hvem |
 | --- | --- |
-| **Kompasset** | Ett spørsmål om gangen, fem steg, nåla svinger under. Litt som en valgomat. |
+| **Kompasset** | Ett spørsmål om gangen, fire steg, nåla svinger under. Litt som en valgomat. |
 | **Enkel liste** | Alle 20 spørsmålene på én side, uten animasjon og uten kompass. Enklest med skjermleser eller forstørring. |
 
 Spørsmålene, lagringen og oppsummeringen er de samme. Modus velges på
@@ -425,7 +460,7 @@ ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 | Hvem er det for, og hva får de ut av det? | Tre korte svar øverst på forsiden: hvem, hvorfor nå, hva du får. |
 | Forsiden viser ikke verdien. Visualiser at testen kan føre mange steder | Et kompass du kan trykke på, som viser de fire kursene kartleggingen kan ende i. |
 | Mangler spørsmål om helse | Nytt spørsmål om hva som er blitt tyngre i hverdagen. Kan hoppes over. |
-| Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fem steg, 26 spørsmål ble 20. |
+| Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fire steg, 26 spørsmål ble 17. |
 | Mer interaktivt. Hvor er kompasset? | Kompasset er selve mekanikken, ikke et bilde. Nåla svinger for hvert svar. |
 | Brå overganger | Myk innfading mellom skjermene, og nåla beveger seg over 700 ms. Alt slås av ved `prefers-reduced-motion`. |
 | Savner en lagre/fortsett senere-knapp | Sto i lagringslinja, og falt ut sammen med den. Man kan fortsatt lukke siden når som helst og fortsette der man slapp. |
