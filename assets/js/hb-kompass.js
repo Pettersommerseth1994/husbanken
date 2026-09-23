@@ -411,7 +411,41 @@ function kpStartHtml() {
       </div>
     </div>` : ''}
 
-    <div class="hb-cardgrid hb-cardgrid--3" style="margin-bottom:var(--space-6)">
+    <h2 class="hb-h3">Velg hvordan du vil svare</h2>
+    <p style="max-width:56ch">
+      Spørsmålene er de samme, svarene lagres på samme sted, og du får samme
+      oppsummering.
+    </p>
+    <div class="kp-modus" style="margin-top:var(--space-4)">
+      <div class="kp-modus__kort kp-modus__kort--anbefalt">
+        <span class="kp-modus__merke">Anbefalt</span>
+        <h3 class="hb-h4">Med kompasset</h3>
+        <p>
+          Ett spørsmål om gangen, i ${KOMPASS_ETAPPER.length} steg. Under hvert spørsmål ser du
+          kompassnåla flytte seg, og du får vite hva svaret ditt betydde.
+          Litt som en valgomat.
+        </p>
+        <p><strong>${KOMPASS_ETAPPER.length} steg · ${kpAntallSporsmal()} spørsmål · 5–10 minutter</strong></p>
+        <button type="button" class="hb-btn hb-btn--primary hb-btn--block" data-start="kompass">
+          Start kartleggingen <span data-ikon="pil"></span>
+        </button>
+      </div>
+      <div class="kp-modus__kort">
+        <span class="kp-modus__merke" style="background:var(--hb-slate-100);color:var(--fg-subtle)">Rett på sak</span>
+        <h3 class="hb-h4">Som en enkel liste</h3>
+        <p>
+          Alle ${kpAntallSporsmal()} spørsmålene under hverandre på én side. Ingen animasjon,
+          ingen kompassnål. Bla nedover, svar, og trykk «Se oppsummeringen»
+          til slutt. Enklest hvis du bruker skjermleser eller forstørring.
+        </p>
+        <p><strong>Én side · ${kpAntallSporsmal()} spørsmål</strong></p>
+        <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-start="liste">
+          Ta spørsmålene i en liste
+        </button>
+      </div>
+    </div>
+
+    <div class="hb-cardgrid hb-cardgrid--3" style="margin:var(--space-7) 0 var(--space-6)">
       <div class="hb-card">
         <h2 class="hb-h4">Hvem er det for?</h2>
         <p class="hb-small">
@@ -457,40 +491,6 @@ function kpStartHtml() {
         <div>
           <div class="kp-kompass-stort" id="start-kompass">${kpKompassSvg(kurs)}</div>
         </div>
-      </div>
-    </div>
-
-    <h2 class="hb-h3">Velg hvordan du vil svare</h2>
-    <p style="max-width:56ch">
-      Spørsmålene er de samme, svarene lagres på samme sted, og du får samme
-      oppsummering.
-    </p>
-    <div class="kp-modus" style="margin-top:var(--space-4)">
-      <div class="kp-modus__kort kp-modus__kort--anbefalt">
-        <span class="kp-modus__merke">Anbefalt</span>
-        <h3 class="hb-h4">Med kompasset</h3>
-        <p>
-          Ett spørsmål om gangen, i ${KOMPASS_ETAPPER.length} steg. Under hvert spørsmål ser du
-          kompassnåla flytte seg, og du får vite hva svaret ditt betydde.
-          Litt som en valgomat.
-        </p>
-        <p><strong>${KOMPASS_ETAPPER.length} steg · ${kpAntallSporsmal()} spørsmål · 5–10 minutter</strong></p>
-        <button type="button" class="hb-btn hb-btn--primary hb-btn--block" data-start="kompass">
-          Start kartleggingen <span data-ikon="pil"></span>
-        </button>
-      </div>
-      <div class="kp-modus__kort">
-        <span class="kp-modus__merke" style="background:var(--hb-slate-100);color:var(--fg-subtle)">Rett på sak</span>
-        <h3 class="hb-h4">Som en enkel liste</h3>
-        <p>
-          Alle ${kpAntallSporsmal()} spørsmålene under hverandre på én side. Ingen animasjon,
-          ingen kompassnål. Bla nedover, svar, og trykk «Se oppsummeringen»
-          til slutt. Enklest hvis du bruker skjermleser eller forstørring.
-        </p>
-        <p><strong>Én side · ${kpAntallSporsmal()} spørsmål</strong></p>
-        <button type="button" class="hb-btn hb-btn--secondary hb-btn--block" data-start="liste">
-          Ta spørsmålene i en liste
-        </button>
       </div>
     </div>
 
