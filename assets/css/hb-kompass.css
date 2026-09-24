@@ -18,7 +18,7 @@
 .kp-h1--smal { max-width: 26ch; }
 
 .kp-ingress {
-  font: 300 var(--text-lg)/var(--lh-lg) var(--font-heading);
+  font: 400 var(--text-lg)/var(--lh-lg) var(--font-heading);
   margin: 0 0 var(--space-4);
   max-width: 54ch;
 }
