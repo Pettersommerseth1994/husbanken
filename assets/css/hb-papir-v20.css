@@ -10,12 +10,6 @@
    bare gjelder skjermen (verktøylinja) skjules i @media print.
    ────────────────────────────────────────────────────────────────── */
 
-/* Sekundærteksten er mørkere på papir enn i skjermdesignet. slate-500 gir
-   5,3:1 mot hvitt, og i de små gradene her, 7,5 til 8,5 pt, blir tynne streker
-   i lysegrått grøtete i halvtonerasteret på en vanlig kontorskriver. slate-600
-   gir 7,3:1, som er over AAA-kravet, og holder seg i utskrift. */
-:root { --papir-sekundar: var(--hb-slate-600); }
-
 /* ───────────────────────── SIDE / UTSKRIFT ───────────────────────── */
 @page {
   size: A4;
@@ -94,8 +88,7 @@ body {
   align-items: center;
   font-size: 8pt;
   line-height: 1.2;
-  font-weight: 500;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
   border-bottom: 0.5pt solid var(--hb-slate-200);
   padding-bottom: 3mm;
   margin-bottom: 3mm;
@@ -135,7 +128,7 @@ body {
 }
 .hero p.lede {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 11pt;
   line-height: 15pt;
   color: var(--hb-slate-700);
@@ -288,9 +281,9 @@ body {
   border-radius: 1.5mm;
   padding: 2.5mm 3mm;
 }
-.fact .lbl  { display: block; font-size: 8pt; line-height: 11pt; font-weight: 500; color: var(--papir-sekundar); }
+.fact .lbl  { display: block; font-size: 8pt; line-height: 11pt; color: var(--hb-slate-500); }
 .fact .val  { display: block; font-size: 14pt; line-height: 17pt; font-weight: 600; color: var(--hb-slate-700); font-variant-numeric: tabular-nums; }
-.fact .note { display: block; font-size: 8pt; line-height: 11pt; font-weight: 500; color: var(--papir-sekundar); }
+.fact .note { display: block; font-size: 8pt; line-height: 11pt; color: var(--hb-slate-500); }
 .fact--free { background: var(--hb-green-100); border-color: var(--hb-green-200); border-left-color: var(--hb-green-800); }
 .fact--free .val { color: var(--hb-green-800); }
 
@@ -315,7 +308,7 @@ body {
   font-size: 8pt;
   line-height: 11pt;
   font-weight: 600;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
   margin-bottom: 0.5mm;
 }
 .route-step .t {
@@ -450,7 +443,7 @@ legend.q-label + * { clear: both; }
 .q-help {
   font-size: 8.5pt;
   line-height: 12pt;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
   margin: 0 0 1.5mm;
   max-width: 160mm;
 }
@@ -550,7 +543,7 @@ legend.q-label + * { clear: both; }
 .opt .opt-body { flex: 1; }
 .opt .opt-help {
   display: block;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
   font-size: 8.5pt;
   line-height: 12pt;
   margin-top: 0.3mm;
@@ -584,7 +577,7 @@ legend.q-label + * { clear: both; }
 .field-grid .sub-label {
   display: block;
   font-size: 8.5pt;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
   font-weight: 500;
   margin-bottom: 1mm;
 }
@@ -636,7 +629,7 @@ legend.q-label + * { clear: both; }
   text-align: left;
   font-weight: 600;
   font-size: 8.5pt;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
   border-bottom: 0.75pt solid var(--hb-slate-300);
   padding: 0 3mm 1.5mm 0;
 }
@@ -648,7 +641,7 @@ legend.q-label + * { clear: both; }
 }
 .examples tr:last-child td { border-bottom: 0; }
 .examples .get { font-weight: 600; color: var(--hb-green-800); }
-.examples .zero { color: var(--papir-sekundar); }
+.examples .zero { color: var(--hb-slate-500); }
 
 /* ───────────────────────── VEDLEGG ───────────────────────── */
 .attachment-block {
@@ -687,7 +680,7 @@ legend.q-label + * { clear: both; }
   margin: 2mm 0 0;
   font-size: 8.5pt;
   line-height: 12pt;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
 }
 .attachment-block .att-list {
   margin: 1mm 0 0;
@@ -716,8 +709,7 @@ legend.q-label + * { clear: both; }
 }
 .sig-block .sig-label {
   font-size: 8.5pt;
-  font-weight: 500;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
   margin-top: 1mm;
 }
 .sig-line {
@@ -733,8 +725,7 @@ legend.q-label + * { clear: both; }
   display: flex;
   justify-content: space-between;
   font-size: 7.5pt;
-  font-weight: 500;
-  color: var(--papir-sekundar);
+  color: var(--hb-slate-500);
 }
 .pg-footer .return-addr { max-width: 110mm; line-height: 11pt; }
 .pg-footer .pg-num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--hb-slate-700); }
@@ -789,7 +780,7 @@ legend.q-label + * { clear: both; }
 /* utility */
 .mt-2 { margin-top: 2mm; }
 .mt-4 { margin-top: 4mm; }
-.small { font-size: 9pt; line-height: 12.5pt; color: var(--papir-sekundar); }
+.small { font-size: 9pt; line-height: 12.5pt; color: var(--hb-slate-500); }
 
 /* ──────────────────── UTFYLLBARE FELTER ────────────────────
    Skjemaet fylles ut i nettleseren og skrives ut derfra. Feltene ser

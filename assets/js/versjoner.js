@@ -219,6 +219,16 @@ const HB_VERSJONER = [
     dato: '18. september 2026',
     endring: 'De seks kategoriene har fått forskriftens overskrifter, ordrett, etter krav fra juristen. Fire av dem var omskrevet, og «Gjøre boligen tryggere» manglet «og/eller støtte beboeres fungering». Utbetalingsskjemaet har de samme seks. Kravlista på forsiden følger den digitale søknaden slik den står nå, som igjen er lagt nærmere husbanken.no. Setningen om søknadsfrister er tatt ut, siden datoene ikke er bestemt. «Utskrift fra VPS» er byttet med «forretningsfører». Vedtaket fra Nav må legges ved når du søker om 4.6, og kravet står som en vedleggsboks lik den for tilbudet i seksjon 2.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v20.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v20.html'
+    }
+  },
+  {
+    nr: 21,
+    navn: 'Tydeligere på papir',
+    dato: '24. september 2026',
+    endring: 'En som ringte inn skulle få skjemaet tilsendt, og deler av teksten ble for svak i utskriften. Sekundærteksten sto i den lyseste gråtonen, 5,3:1 mot hvitt, og den bærer det som står med minst skrift: hjelpeteksten under spørsmålene, etikettene over skrivefeltene, notatene under svaralternativene, sidetoppen og bunnteksten. Det holder på skjerm, men i 7,5 til 8,5 pt blir tynne streker i lysegrått grøtete i halvtonerasteret på en kontorskriver. Gråtonen er byttet til en mørkere, 7,3:1, som er over AAA-kravet. Den minste teksten, sidetopp, bunntekst og etikettene under signaturlinjene, har i tillegg gått fra Regular til Medium. Ingressen på forsiden sto i Inter Light, den tynneste skriften i hele skjemaet, og står nå i Regular. Ingen tekst har byttet størrelse, så sideinndelingen er den samme.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

@@ -83,7 +83,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 17, 15. september 2026 | `...-v17.html` | Alle spørsmål nummerert, og samtykkeskjemaet navngitt. |
 | 18, 16. september 2026 | `...-v18.html` | Sletting ti år etter utbetaling, og fødselsnummer på side 9. |
 | 19, 16. september 2026 | `...-v19.html` | Skjema-ID-ene på plass, og tittelen er skjemaets offisielle navn. |
-| 20, 18. september 2026 | uten suffiks | Forskriftens overskrifter på de seks kategoriene. Se under. |
+| 20, 18. september 2026 | `...-v20.html` | Forskriftens overskrifter på de seks kategoriene. |
+| 21, 24. september 2026 | uten suffiks | Mørkere sekundærtekst, så utskriften holder. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -990,6 +991,44 @@ bare et lite mindretall, og uten forbeholdet ser de to kravene like ubetingede u
 **Åpent:** «Vi svarer 1 til 6 uker etter søknadsfristen» står fortsatt i «Dette
 skjer etterpå». Den setningen viser til en frist som ikke er bestemt, og bør
 sees på sammen med resten av fristspråket.
+
+### Iterasjon 21, tydeligere på papir
+
+En som ringte inn skulle få skjemaet tilsendt på papir, og den som printet det
+meldte fra at deler av teksten ble for svak i utskriften.
+
+**Det var sekundærteksten.** Den sto i `--hb-slate-500`, den lyseste gråtonen
+designsystemet har for tekst, og gir 5,3:1 mot hvitt. Den bærer mye av det som
+står med minst skrift: hjelpeteksten under spørsmålene, etikettene over
+skrivefeltene, notatene under svaralternativene, tekstene i faktakortene på
+forsiden, sidetoppen og bunnteksten. På skjerm holder 5,3:1 med god margin til
+AA-kravet. På papir er regnestykket et annet: i 7,5 til 8,5 pt er strekene i
+Inter så tynne at halvtonerasteret på en vanlig kontorskriver bryter dem opp, og
+lysegrått blir grøtete i stedet for grått.
+
+**Den er byttet til `--hb-slate-600`**, som gir 7,3:1 og ligger over AAA-kravet
+på 7:1. Papirlaget har fått en egen token, `--papir-sekundar`, så det er tydelig
+at papiret har et annet krav enn skjermen, og så gråtonen ikke blir justert
+tilbake ved et uhell. Designsystemet er ikke rørt.
+
+**Den minste teksten har i tillegg gått fra Regular til Medium:** sidetopp,
+bunntekst, etikettene under signaturlinjene og tekstene i faktakortene, alt som
+står i 8 pt eller mindre. Inter har en ekte Medium i samme optiske snitt, så det
+er ikke en kunstig fetstil.
+
+**Ingressen på forsiden sto i Inter Light.** Den var den tynneste skriften i hele
+skjemaet, i 11 pt, og står nå i Regular.
+
+Ingen tekst har byttet størrelse. Det var det eneste grepet som ville flyttet
+sideinndelingen, og side 5 har 0,4 mm å gå på. Alle ni sidene måler fortsatt
+297 mm, og utbetalingsskjemaet sine fire likeså.
+
+**Åpent:** de lyse fyllene bak faktakortene og merknadsboksene trykkes med
+`print-color-adjust: exact`, som var nødvendig for at avkryssingene skulle komme
+med. Et fyll på fire prosent grått rasteres også, og på en sliten skriver kan det
+legge seg som en svak prikking bak teksten. Teksten oppå tåler det nå, men hvis
+noen melder fra om det igjen, er neste grep å la fyllene stå hvite i utskrift og
+la rammene bære boksene.
 
 ## Utfyllbar PDF
 

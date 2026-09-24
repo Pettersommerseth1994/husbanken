@@ -6,10 +6,10 @@
 <title>Søknad om tilskudd til aldersvennlig oppgradering av egen bolig – Husbanken</title>
 <meta name="description" content="Papirskjema for å søke om tilskudd til aldersvennlig oppgradering. Samme spørsmål og samme rekkefølge som den digitale søknaden på husbanken.no.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v20.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="soknad" data-versjon="21">
+<body data-skjema="soknad" data-versjon="20">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <button type="button" id="btn-print" class="primary">Skriv ut / Lagre PDF</button>
@@ -18,7 +18,7 @@
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-soknad-v20" autocomplete="on">
 
 <section class="page">
   <header class="pg-meta">
@@ -42,7 +42,7 @@
   <div class="krav-panel">
     <h2>For å få tilskudd må du</h2>
     <ul>
-      <li>være <strong>over 62 år</strong> selv, eller bo med en over 62 år</li>
+      <li data-endret="Kravlista følger nå den digitale søknaden, som er lagt nærmere teksten på husbanken.no.">være <strong>over 62 år</strong> selv, eller bo med en over 62 år</li>
       <li><strong>bo i boligen</strong>, og det må være en eid eller leid helårsbolig</li>
       <li>oppgradere så boligen blir <strong>mer egnet til å bo i over tid</strong></li>
       <li>legge ved et <strong>tilbud eller prisoverslag</strong></li>
@@ -371,7 +371,7 @@
     <p class="section-intro">For å få tilskudd må du oppgradere minst én av de seks kategoriene under. Kryss av for kategorien, og for det du skal gjøre innenfor den. Du kan velge flere. Velger du flere, legger vi kostnadene sammen.</p>
 
     <fieldset class="q">
-      <legend class="q-label">4.1 Lage trinnfri adkomst til boligen</legend>
+      <legend class="q-label" data-endret="De seks overskriftene er nå ordrett som i forskriften. Juristen krever det. Fire av dem var omskrevet, og 4.5 manglet «og/eller støtte beboeres fungering».">4.1 Lage trinnfri adkomst til boligen</legend>
       <div class="options">
         <label class="opt checkbox"><input type="checkbox" name="adkomst_terreng" value="ja"><span class="mark"></span><span class="opt-body">Justere terrenget</span></label>
       </div>
@@ -476,7 +476,7 @@
       <p class="q-help mt-2">Beskriv oppgraderingen med dine egne ord. Ikke skriv opplysninger om din eller andres helse.</p>
       <textarea class="input-area" name="beskriv_nav" aria-label="Beskriv Gjøre terreng- og/eller bygningsmessige endringer ved vedtak fra Nav"></textarea>
 
-      <div class="attachment-block">
+      <div class="attachment-block" data-endret="Nytt vedleggskrav, satt opp som tilbudet i seksjon 2, siden begge er dokumenter som må ligge ved. Tittelen sier at kravet bare gjelder dem som søker om 4.6, slik at flertallet ikke tror de mangler et vedlegg. Det er ingenting å krysse av på i 4.6, så teksten viser til feltet over i stedet.">
         <img class="att-icon" src="assets/img/attachment-1.svg" alt="">
         <div class="att-body">
           <div class="att-title">Vedtaket fra Nav (må legges ved hvis du søker om 4.6)</div>

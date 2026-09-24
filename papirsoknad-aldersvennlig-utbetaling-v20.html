@@ -6,10 +6,10 @@
 <title>Søknad om utbetaling av tilskudd for aldersvennlig oppgradering av egen bolig – Husbanken</title>
 <meta name="description" content="Papirskjema for å be om utbetaling av tilskudd til aldersvennlig oppgradering. Utbetalingen skjer ikke av seg selv, du må be om den selv.">
 <link rel="stylesheet" href="ds/colors_and_type.css">
-<link rel="stylesheet" href="assets/css/hb-papir.css">
+<link rel="stylesheet" href="assets/css/hb-papir-v20.css">
 <link rel="stylesheet" href="assets/css/hb-versjoner.css">
 </head>
-<body data-skjema="utbetaling" data-versjon="21">
+<body data-skjema="utbetaling" data-versjon="20">
 
 <div class="toolbar" role="toolbar" aria-label="Skjemaverktøy">
   <button type="button" id="btn-print" class="primary">Skriv ut / Lagre PDF</button>
@@ -18,7 +18,7 @@
   <span class="saved-indicator" id="saved-indicator">Lagrer automatisk</span>
 </div>
 
-<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling" autocomplete="on">
+<form data-papirskjema data-lager="hb-papir-aldersvennlig-utbetaling-v20" autocomplete="on">
 
 <!-- ════════════════════════════ SIDE 1 ════════════════════════════ -->
 <section class="page">
@@ -166,7 +166,7 @@
 
     <fieldset class="q"><legend class="q-label">2.2 Hvilke oppgraderinger ble gjort? Sett kryss for alt som ble gjort.</legend>
       <div class="options two-col">
-        <label class="opt checkbox"><input type="checkbox" name="oppgradering_adkomst" value="ja"><span class="mark"></span><span class="opt-body">Lage trinnfri adkomst til boligen</span></label>
+        <label class="opt checkbox"><input type="checkbox" name="oppgradering_adkomst" value="ja"><span class="mark"></span><span class="opt-body" data-endret="De seks kategoriene følger forskriftens ordlyd, som i søknaden.">Lage trinnfri adkomst til boligen</span></label>
         <label class="opt checkbox"><input type="checkbox" name="oppgradering_samle" value="ja"><span class="mark"></span><span class="opt-body">Samle nødvendige rom på inngangsplanet</span></label>
         <label class="opt checkbox"><input type="checkbox" name="oppgradering_bolig" value="ja"><span class="mark"></span><span class="opt-body">Gjøre det lettere å bevege seg rundt i boligen</span></label>
         <label class="opt checkbox"><input type="checkbox" name="oppgradering_bad" value="ja"><span class="mark"></span><span class="opt-body">Gjøre det enklere å bruke badet</span></label>
