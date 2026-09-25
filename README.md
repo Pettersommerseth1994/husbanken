@@ -448,6 +448,15 @@ rosa har ingen bokstaver. Den er dekorativ,
 med tom `alt`, fordi det virkelige kompasset lenger nede på siden har
 tekstalternativ og oppdaterer seg.
 
+Fanemerket er den samme rosa en gang til, `assets/img/favicon-boligkompasset.svg`.
+Der er huset, gradmerkene og de fine strekene tatt bort, for på seksten piksler
+blir de bare grøt. Igjen står ringen, nåla i samme nordøstlige vinkel som i
+illustrasjonen, og navet. Nettleseren tar SVG-en; `favicon-boligkompasset.png`
+ligger som reserve for eldre nettlesere, og `apple-touch-boligkompasset.png` er
+utgaven med hvit bunn som iOS legger på hjemskjermen. Boligkompasset er den
+eneste siden som bruker dette merket. De andre sidene i prototypen hører til
+Husbanken generelt og beholder logoen.
+
 ### To måter å svare på
 
 | Modus | For hvem |
@@ -648,6 +657,7 @@ assets/js/papirskjema.js  Sifferruter, beløp, lagring og utskrift i papirskjema
 assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonene
 assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennomløpet og kortet
 assets/img/boligkompasset.svg Illustrasjonen i toppfeltet: kompassrose og bolig på felles bakkelinje
+assets/img/favicon-boligkompasset.svg Fanemerket: samme kompassrose, forenklet så den leses på seksten piksler
 assets/css/hb-kompass.css Boligkompasset: kompassrosa, etappene, sidefanene og utskriften
 assets/js/hb-kompass-data.js Boligkompasset: spørsmål, svar, veiledning, anbefalinger og ordninger
 assets/js/hb-kompass.js  Boligkompasset: kursberegningen, de to modusene og oppsummeringen
