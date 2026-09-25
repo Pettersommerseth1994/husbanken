@@ -550,6 +550,12 @@ const KP_ETAPPEFIG = {
   krone: '<circle cx="48" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="5"/><path d="M60 38c-3-4-8-6-12-6-7 0-11 4-11 9 0 10 23 6 23 16 0 5-5 9-12 9-5 0-10-2-13-6M48 24v52" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>'
 };
 
+/* Overtittel over H1, i stedet for en halvsetning bak et kolon. Den ligger
+   inni overskrifta, ikke som et eget avsnitt over, slik at skjermleseren
+   får med seg begge delene, og i samme rekkefølge som øyet ser dem. */
+const kpTittel = (over, tittel) =>
+  `<h1 class="hb-h2 kp-tittel"><span class="kp-tittel__over">${over}</span> ${tittel}</h1>`;
+
 function kpEtappeHtml(f) {
   return `
 <div class="kp-sporsmal">
@@ -634,7 +640,7 @@ function kpEtappeSluttHtml(f) {
     const svart = sp.filter(kpBesvart).length;
     return `
 <div class="kp-sporsmal">
-  <h1 class="hb-h2">${f.e.navn}: hva vi gjør med svarene</h1>
+  ${kpTittel('Hva vi gjør med svarene', f.e.navn)}
   <p class="kp-sporsmal__under">
     Dette steget flytter ikke nåla. Kompasset ser bare på boligen.
   </p>
@@ -652,7 +658,7 @@ function kpEtappeSluttHtml(f) {
 
   return `
 <div class="kp-sporsmal">
-  <h1 class="hb-h2">${f.e.navn}: slik ser det ut</h1>
+  ${kpTittel('Slik ser det ut', f.e.navn)}
   <p class="kp-sporsmal__under">
     Her står nåla slik svarene i dette steget samlet sett peker. Neste steg
     begynner på null igjen.

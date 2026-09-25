@@ -360,6 +360,14 @@ månedlig betjening er byttet med ett spørsmål sist i steg 1: hvor mye man
 personvernfølsomt, og det gjør den samme jobben, nemlig å velge hvilke tiltak
 og ordninger vi viser fram.
 
+Overskriftene på sidene mellom stegene har fått overtittel. Der det før stod
+«Deg og boligen din: slik ser det ut» i én linje, står nå «Slik ser det ut» i
+grønt over «Deg og boligen din». Navnet på steget er det man leter etter, og da
+skal det ikke ligge foran et kolon. Overtittelen ligger inni `<h1>`-en som et
+`<span>` med `display: block`, ikke som et eget avsnitt over, slik at
+skjermleseren får med seg begge delene og i den rekkefølgen øyet ser dem.
+Funksjonen `kpTittel` lager dem, så alle slike overskrifter ser like ut.
+
 ### Når nåla viser hva
 
 Nåla viser tre ulike ting på tre ulike steder, og aldri to av dem samtidig.
