@@ -229,6 +229,16 @@ const HB_VERSJONER = [
     dato: '24. september 2026',
     endring: 'En som ringte inn skulle få skjemaet tilsendt, og deler av teksten ble for svak i utskriften. Sekundærteksten sto i den lyseste gråtonen, 5,3:1 mot hvitt, og den bærer det som står med minst skrift: hjelpeteksten under spørsmålene, etikettene over skrivefeltene, notatene under svaralternativene, sidetoppen og bunnteksten. Det holder på skjerm, men i 7,5 til 8,5 pt blir tynne streker i lysegrått grøtete i halvtonerasteret på en kontorskriver. Gråtonen er byttet til en mørkere, 7,3:1, som er over AAA-kravet. Den minste teksten, sidetopp, bunntekst og etikettene under signaturlinjene, har i tillegg gått fra Regular til Medium. Ingressen på forsiden sto i Inter Light, den tynneste skriften i hele skjemaet, og står nå i Regular. Ingen tekst har byttet størrelse, så sideinndelingen er den samme.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v21.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v21.html'
+    }
+  },
+  {
+    nr: 22,
+    navn: 'Tilsagn før arbeidet starter',
+    dato: '25. september 2026',
+    endring: 'Kravlista på forsiden sa «søke før du setter i gang arbeidet». Det er ikke innsendingen som er startsignalet, men tilsagnet: forskriften gir ikke tilskudd til tiltak som er igangsatt eller gjennomført. Sier skjemaet noe annet, kan vi havne i et dilemma hvis en søknad avslås fordi arbeidet var satt i gang da den ble behandlet. Punktet heter nå «ha fått tilsagn om tilskudd før du setter i gang arbeidet», og det samme er rettet på startsiden og informasjonssiden i den digitale prototypen. Boksen om betaling lovte 25 prosent tilbake. Det stemmer ikke når den endelige regningen er høyere enn tilsagnet, for da regnes ikke beløpet opp. Den sier nå at du søker om utbetaling av tilskuddet, og at pengene kommer til din egen konto, ikke til firmaet.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

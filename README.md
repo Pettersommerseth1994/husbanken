@@ -84,7 +84,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 18, 16. september 2026 | `...-v18.html` | Sletting ti år etter utbetaling, og fødselsnummer på side 9. |
 | 19, 16. september 2026 | `...-v19.html` | Skjema-ID-ene på plass, og tittelen er skjemaets offisielle navn. |
 | 20, 18. september 2026 | `...-v20.html` | Forskriftens overskrifter på de seks kategoriene. |
-| 21, 24. september 2026 | uten suffiks | Mørkere sekundærtekst, så utskriften holder. Se under. |
+| 21, 24. september 2026 | `...-v21.html` | Mørkere sekundærtekst, så utskriften holder. |
+| 22, 25. september 2026 | uten suffiks | Tilsagn, ikke innsending, er startsignalet. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -1029,6 +1030,38 @@ med. Et fyll på fire prosent grått rasteres også, og på en sliten skriver ka
 legge seg som en svak prikking bak teksten. Teksten oppå tåler det nå, men hvis
 noen melder fra om det igjen, er neste grep å la fyllene stå hvite i utskrift og
 la rammene bære boksene.
+
+### Iterasjon 22, tilsagn før arbeidet starter
+
+Fagsiden leste gjennom skjemaet etter at det gikk live, og fant to ting.
+
+**Kravlista på forsiden sa «søke før du setter i gang arbeidet».** Det er feil på
+en måte som kan koste en søker penger. Forskriften gir ikke tilskudd til tiltak
+som er igangsatt eller gjennomført, og det er ikke innsendingen som er
+startsignalet, men tilsagnet. Mellom de to kan det gå lang tid. Leser noen
+punktet som at de kan begynne så snart søknaden er postlagt, og søknaden siden
+avslås fordi arbeidet er i gang, har vi selv skrevet grunnlaget for klagen.
+Punktet heter nå **«ha fått tilsagn om tilskudd før du setter i gang arbeidet»**.
+
+Den samme setningen sto tre steder i den digitale prototypen, på startsiden for
+søknaden og to steder på informasjonssiden, og er rettet der også. Skjemaet og
+prototypen sier nå det samme.
+
+**Boksen om betaling lovte 25 prosent tilbake.** Det stemmer ikke som et løfte:
+det som betales ut er tilsagnsbeløpet, og blir den endelige regningen høyere enn
+det, regnes beløpet ikke opp. Boksen sier nå at du søker om utbetaling av
+tilskuddet, og at pengene kommer til din egen konto, ikke til firmaet.
+
+Utbetalingsskjemaet sa dette riktig fra før: «aldri mer enn beløpet i tilsagnet»,
+og «Ble det dyrere, får du likevel ikke mer enn tilsagnet». Det er bare søknaden
+som lovte for mye.
+
+**Merk:** boksen «Du skal ikke regne ut tilskuddet selv» på side 7 sier fortsatt
+25 prosent. Den står riktig, for den beskriver hvordan tilsagnet regnes ut når
+søknaden behandles, ikke hva som betales ut til slutt.
+
+Feltkartet til den utfyllbare PDF-en er målt på nytt og er uendret, alle 86
+feltene ligger der de lå. Ingen av sidene endret høyde.
 
 ## Utfyllbar PDF
 
