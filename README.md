@@ -635,7 +635,8 @@ Siden blir liggende på <https://pettersommerseth1994.github.io/husbanken/>.
 ## Mappestruktur
 
 ```
-ds/                  Husbankens designsystem: tokens, skrifter, logo. Urørt.
+ds/                  Husbankens designsystem: tokens, skrifter, logo. Bare én
+                     endring, `.hb-ingress` fra vekt 300 til 400, se iterasjon 22
 assets/css/hb-app.css    Komponentlag bygget kun på tokens fra ds/
 assets/css/hb-papir.css  Samme, for papirskjemaene på A4
 assets/css/hb-papir-v1.css  Pinnet kopi, slik iterasjon 1 så ut
