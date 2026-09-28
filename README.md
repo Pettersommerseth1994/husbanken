@@ -373,7 +373,7 @@ havner `hb.farger` foran `ds`, og Digdirs farger vinner likevel.
 | Før | Nå |
 | --- | --- |
 | `hb-btn` med varianter | `ds-button`, `data-variant`, `data-size="lg"` |
-| `hb-choice` | `ds-field` med `data-variant="outline"` |
+| `hb-choice` | `ds-field` med `data-variant="outline"`, gruppert i `ds-fieldset` |
 | `hb-note` | `ds-alert` |
 | `hb-panel`, `hb-card` | `ds-card`, `data-variant="tinted"` |
 | `hb-h2`–`hb-h4` | `ds-heading` med `data-size` |
@@ -387,6 +387,14 @@ blir den 55.
 oppsett og hjelpeklasser, ikke komponenter, og Designsystemet har ikke noe som
 svarer til dem. Det samme gjelder alt som heter `kp-`: kompassrosa, sidefanene
 og handlingsplanen finnes ikke i noe designsystem.
+
+Svarrutene ligger i `ds-fieldset`, Designsystemets beholder for en gruppe
+felter. Den har ingen ramme, bare 16 piksler luft mellom barna. Uten den står
+rutene helt inntil hverandre og to nabobokser leses som én ramme.
+
+Valgt svar markeres med blå, tykkere ramme, ikke med fyll. Det er `outline`-
+variantens eget uttrykk. Den mørke ringen som av og til ligger utenpå, er
+tastaturfokus, og den er Husbankens `slate-700`.
 
 Designsystemets `data-clickdelegatefor` gjør hele svarruta til trykkflate.
 Selve delegeringen ligger i React-pakka deres, som prototypen ikke bruker, så

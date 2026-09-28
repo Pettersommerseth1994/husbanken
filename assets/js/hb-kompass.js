@@ -310,7 +310,7 @@ function kpHvorforBoks(sp) {
 function kpValgHtml(navn, valg, type, gjeldende) {
   const flertall = type === 'flervalg';
   const valgt = flertall ? (Array.isArray(gjeldende) ? gjeldende : []) : gjeldende;
-  return valg.map((v, i) => {
+  const rutene = valg.map((v, i) => {
     const av = flertall ? valgt.includes(v.v) : valgt === v.v;
     const id = `valg-${navn}-${i}`;
     return `
@@ -322,6 +322,10 @@ function kpValgHtml(navn, valg, type, gjeldende) {
       ${v.desc ? `<p class="ds-paragraph" data-field="description">${v.desc}</p>` : ''}
     </div>`;
   }).join('');
+  /* ds-fieldset er Designsystemets egen beholder for en gruppe felter. Den
+     har ingen ramme, bare luft mellom barna. Uten den står svarrutene helt
+     inntil hverandre, og to nabobokser leses som én. */
+  return `<div class="ds-fieldset">${rutene}</div>`;
 }
 
 /* ═══ Flyten i kompassmodus ═══════════════════════════════════════ */
