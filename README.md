@@ -29,6 +29,13 @@ skrifter og skript med relative stier.
 | `designbeslutninger.html` | Hvert designgrep koblet til funnet fra brukertestene. |
 | `uu-widget.html` | Tilgjengelighetsanalysen: hva den måler, og bokmerket du drar opp i bokmerkelinja. |
 
+## Dagens lånesøknad, gjenskapt
+
+`lan-miljovennlig-bolig/` er en klikkbar kopi av dagens søknad om lån til å
+bygge miljøvennlig bolig, fra forsiden etter innlogging til innsendt søknad.
+Den er uten innlogging og backend, og er ment for å teste og endre flyten.
+Se [`lan-miljovennlig-bolig/README.md`](lan-miljovennlig-bolig/README.md).
+
 ## Papirskjemaene
 
 Ordningen må også kunne søkes om på papir. To skjemaer dekker de to gangene
