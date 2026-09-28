@@ -318,6 +318,80 @@ Skjermbildene, tekstene og komponentbruken er hentet ut av Figma-filen
 Spørsmålet om helse er nytt. Det kom som punkt i designkritikken 21. september,
 og er formulert om funksjon i hverdagen, ikke om diagnose. Det kan hoppes over.
 
+### Designsystemet.no i Husbankens farger
+
+Boligkompasset bruker komponentene fra [Designsystemet.no][ds], Digdirs
+designsystem for offentlig sektor, i Husbankens palett. Resten av prototypen
+står på `hb-app.css` som før.
+
+[ds]: https://designsystemet.no
+
+Grunnen til å kunne gjøre det er at Digdirs komponent-CSS ikke inneholder én
+eneste farge. Den leser bare `--ds-color-*`. Da kan paletten byttes uten at noe
+i komponentfilene røres.
+
+| Fil | Hva den er |
+| --- | --- |
+| `ds-no/designsystemet-komponenter.css` | `@digdir/designsystemet-css` 1.23.0, uendret. Ingen farger, bare form |
+| `ds-no/designsystemet-tema.css` | Digdirs tema: størrelser, typeskala, radier, skygger. Uendret |
+| `ds-no/husbanken-farger.css` | Generert. Setter `--ds-color-*` til Husbankens palett |
+| `ds-no/boligkompasset-stiler.css` | Lagrekkefølgen, se under |
+| `verktoy/lag-hb-tema.py` | Generatoren for fargefila |
+
+Pakka er MIT-lisensiert, og `ds-no/LICENSE` ligger ved.
+
+**Fargene.** Digdirs egen generator er et npm-verktøy, og her finnes ingen node.
+`lag-hb-tema.py` gjør jobben på en annen måte: for hvert av de 16 semantiske
+trinnene leses hvor lyst Digdir har lagt det, og Husbanken-fargen på samme
+lyshet settes inn. Da beholder komponentene kontrastforholdene de er tegnet
+for. 65 av 112 trinn er Husbankens egne farger uendret. De 47 andre er avledet,
+fordi paletten ikke har en farge på akkurat den lysheten; de står i samme kulør,
+og hver linje i fila sier hvilken. Alle 49 kontrastkravene er kontrollert.
+
+Der Husbanken selv har bestemt fargen, overstyrer det lyshetssøket. `accent` er
+blå, som resten av prototypen: `--action-primary` blir `accent-base-default`,
+`--fg-link` blir `accent-text-subtle`. Grønn ligger på `brand1` og brukes til
+merkefargen, kompasset og callouts. Husbanken har ingen gul, så `warning`
+beholder Digdirs.
+
+**Lagrekkefølgen** er verdt et avsnitt, for den var ikke åpenbar. Digdirs CSS
+ligger i `@layer`, og ulagde regler slår lagde uansett spesifisitet. De nakne
+`h1`-`h4`-reglene i `hb-app.css` vant derfor over `.ds-heading`, og `data-size`
+ble stående uten virkning. `boligkompasset-stiler.css` importerer alt gjennom
+ett stilark og sier rekkefølgen rett ut:
+
+```
+hb-grunnlag → ds.theme → ds.base → ds.components → hb-farger → hb-kompass
+```
+
+Navnene er flate med vilje. Skriver man `hb.grunnlag` og `hb.farger`, blir begge
+undernivåer av det samme `hb`-laget, og et lag rangeres der forelderen står. Da
+havner `hb.farger` foran `ds`, og Digdirs farger vinner likevel.
+
+**Komponentene som ble byttet:**
+
+| Før | Nå |
+| --- | --- |
+| `hb-btn` med varianter | `ds-button`, `data-variant`, `data-size="lg"` |
+| `hb-choice` | `ds-field` med `data-variant="outline"` |
+| `hb-note` | `ds-alert` |
+| `hb-panel`, `hb-card` | `ds-card`, `data-variant="tinted"` |
+| `hb-h2`–`hb-h4` | `ds-heading` med `data-size` |
+| `hb-small` | `ds-paragraph` med `data-size="sm"` |
+
+`data-size="lg"` overalt, fordi Husbankens egen knapp var 56 piksler høy for
+målgruppa over 60. Det er systemets egen måte å be om den høyden på, og målt
+blir den 55.
+
+`hb-shell`, `hb-section`, `hb-cardgrid` og `hb-muted` står igjen. Det er
+oppsett og hjelpeklasser, ikke komponenter, og Designsystemet har ikke noe som
+svarer til dem. Det samme gjelder alt som heter `kp-`: kompassrosa, sidefanene
+og handlingsplanen finnes ikke i noe designsystem.
+
+Designsystemets `data-clickdelegatefor` gjør hele svarruta til trykkflate.
+Selve delegeringen ligger i React-pakka deres, som prototypen ikke bruker, så
+`kpKlikkDelegering` i `hb-kompass.js` gjør det i stedet.
+
 ### Antall spørsmål
 
 | | Før | Nå |
@@ -675,6 +749,8 @@ assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennoml
 assets/img/boligkompasset.svg Illustrasjonen i toppfeltet: kompassrose og bolig på felles bakkelinje
 assets/img/favicon-boligkompasset.svg Fanemerket: samme kompassrose, forenklet så den leses på seksten piksler
 assets/css/hb-kompass.css Boligkompasset: kompassrosa, etappene, sidefanene og utskriften
+ds-no/               Designsystemet.no, uendret, pluss Husbanken-paletten lagt oppå
+verktoy/lag-hb-tema.py   Generatoren for ds-no/husbanken-farger.css
 assets/js/hb-kompass-data.js Boligkompasset: spørsmål, svar, veiledning, anbefalinger og ordninger
 assets/js/hb-kompass.js  Boligkompasset: kursberegningen, de to modusene og oppsummeringen
 assets/pdf/          Utfyllbare PDF-er, generert fra skjemaene

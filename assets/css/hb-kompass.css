@@ -27,9 +27,9 @@
    Designkritikken: «Tekst i knapper kan ikke brekke på to linjer».
    ─────────────────────────────────────────────────────────────────── */
 
-.hb-btn { white-space: nowrap; }
+.ds-button { white-space: nowrap; }
 @media (max-width: 380px) {
-  .hb-btn { white-space: normal; text-wrap: balance; }
+  .ds-button { white-space: normal; text-wrap: balance; }
 }
 
 /* Overskrifter som får fokus programmatisk når skjermen bytter, skal
@@ -357,7 +357,7 @@
   margin: 0; font-size: var(--text-sm); line-height: var(--lh-sm);
   color: var(--fg-subtle); max-width: 52ch;
 }
-.kp-snarvei .hb-btn { min-height: 44px; padding: 8px var(--space-3); font-size: var(--text-sm); }
+.kp-snarvei .ds-button { min-height: 44px; padding: 8px var(--space-3); font-size: var(--text-sm); }
 
 /* ═══ Etappeoppsummeringen ════════════════════════════════════════ */
 
@@ -496,7 +496,7 @@
 }
 .kp-modus__kort h3 { margin: 0; }
 .kp-modus__kort p { margin: 0; font-size: var(--text-sm); line-height: var(--lh-sm); color: var(--fg-subtle); }
-.kp-modus__kort .hb-btn { margin-top: auto; }
+.kp-modus__kort .ds-button { margin-top: auto; }
 
 .kp-bytt {
   display: inline-flex; align-items: center; gap: 8px;
