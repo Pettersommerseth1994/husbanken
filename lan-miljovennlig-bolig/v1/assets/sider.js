@@ -3,12 +3,12 @@
    informasjonssiden, kvitteringen og Min søknad.
    ────────────────────────────────────────────────────────────────── */
 
-const IKKE_MED = 'Denne ordningen er ikke med i prototypen. Bare «Lån til å bygge klimavennlig bolig» er laget.';
+const IKKE_MED = 'Denne ordningen er ikke med i kopien. Bare «Lån til å bygge miljøvennlig bolig» er gjenskapt.';
 
-function ordningskort(href, bilde, tittel, tekst, niva, endret) {
+function ordningskort(href, bilde, tittel, tekst, niva) {
   const ikkeMed = href === '#' ? ` data-ikke-med="${IKKE_MED}"` : '';
   return `
-    <a class="lan-ordning" href="${href}"${ikkeMed}${endret ? ` data-endret="${endret}"` : ''}>
+    <a class="lan-ordning" href="${href}"${ikkeMed}>
       <img src="img/${bilde}" alt="">
       <span class="lan-ordning__tittel" role="heading" aria-level="${niva}">${tittel}</span>
       <span class="lan-ordning__tekst">${tekst}</span>
@@ -25,7 +25,7 @@ function hvaVilDuInnhold(niva) {
     </div>
     <${h} class="lan-h4">Lån</${h}>
     <div class="lan-ordningsliste">
-      ${ordningskort('informasjon.html', 'illustrasjon-miljovennlig-kompakt.svg', 'Lån til å bygge klimavennlig bolig', 'For deg som vil søke om lån til oppføring av boliger som følger Husbankens klimakrav.', niva + 1, 1)}
+      ${ordningskort('informasjon.html', 'illustrasjon-miljovennlig-kompakt.svg', 'Lån til å bygge miljøvennlig bolig', 'For deg som skal bygge en bolig med godt inneklima og lav miljøbelastning.', niva + 1)}
       ${ordningskort('#', 'illustrasjon-livslop-kompakt.svg', 'Lån til å bygge bolig med livsløpsstandard', 'For deg som skal bygge en bolig tilpasset ulike faser i livet.', niva + 1)}
       ${ordningskort('#', 'illustrasjon-oppgradere-kompakt.svg', 'Lån til å oppgradere bolig', 'For deg som skal oppgradere boligen med betydelig lavere energiforbruk og god tilgjengelighet.', niva + 1)}
       ${ordningskort('#', 'illustrasjon-debitor-kompakt.svg', 'Lån til å kjøpe nybygget bolig', 'For deg som skal kjøpe en bolig i et prosjekt som er godkjent av Husbanken.', niva + 1)}
@@ -126,13 +126,13 @@ function informasjon() {
   lanMonter();
   const fornavn = lanPerson().fornavn;
   document.getElementById('side').innerHTML = `
-    ${brodsmuler([['hva-vil-du-soke-om.html', 'Hva vil du søke om?'], [null, 'Bygge klimavennlig bolig']])}
-    <h1 class="lan-h1" style="margin-top:var(--space-4)" data-endret="2">Søk om lån til å bygge klimavennlig bolig</h1>
+    ${brodsmuler([['hva-vil-du-soke-om.html', 'Hva vil du søke om?'], [null, 'Bygge miljøvennlig bolig']])}
+    <h1 class="lan-h1" style="margin-top:var(--space-4)">Søk om lån til å bygge miljøvennlig bolig</h1>
 
     <div class="lan-guide lan-guide--stor">
       <img src="img/hb-avatar-poster.svg" alt="">
       <p class="lan-guide__hei">Hei, ${lanEsc(fornavn)}!</p>
-      <p data-endret="3">Dette lånet er for deg som skal bygge bolig med lavt klimagassavtrykk.</p>
+      <p>Dette lånet er for deg som skal bygge bolig med lavt energiforbruk og fornybare energikilder.</p>
       <div class="lan-panel lan-panel--bla">
         <p class="lan-fet" style="font-size:var(--text-lg)">Viktig informasjon til deg som vil søke</p>
         <ul class="lan-mb0">
@@ -154,9 +154,6 @@ function informasjon() {
 
     <div style="margin:var(--space-6) 0">
       <hr class="lan-skille">
-      <div data-endret="4">${lanLesMer('Dette skal til for å få lånet', `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo eget magna fermentum iaculis. Sed viverra tellus in hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc sed augue lacus viverra vitae congue eu consequat.</p>`)}</div>
-      <hr class="lan-skille">
       ${lanLesMer('Vi henter og bruker personopplysninger om deg', `
         <p>Husbanken kan innhente og behandle personopplysninger som er nødvendige for å saksbehandle og forvalte våre lån- og tilskuddsordninger, jf. § 10 i Husbankloven. Opplysningene kan også brukes til forskning, statistikk og analyse, test/feilretting og til å kontrollere innvilgede lån/tilskudd.</p>
         <p>For mer informasjon om behandlingen av personopplysninger, herunder retten til å klage (forvaltningsloven § 14), hvilke kilder opplysningene blir hentet fra og hva de skal brukes til, <a href="https://www.husbanken.no/om-husbanken/personvern/" target="_blank" rel="noopener">les mer på husbanken.no</a>. Her får du også informasjon om din rett til innsyn, retting, sletting mv. I tillegg får du kontaktopplysninger til personvernombud, informasjon om utlevering av opplysningene, oppbevaringstid for opplysningene mv.</p>`)}
@@ -168,7 +165,8 @@ function informasjon() {
       <hr class="lan-skille">
       ${lanLesMer('Dokumentasjon du må laste opp', `
         <p>Du må laste opp følgende dokumentasjon på byggeprosjektet:</p>
-        <ul><li>Rammetillatelse eller igangsettingstillatelse fra kommunen</li><li data-endret="5">Klimabudsjett</li><li>Fasade-, snitt- og plantegninger</li><li>Situasjonsplan</li><li>Byggebeskrivelse</li><li>Kontrakt eller avtale med entreprenør</li></ul>
+        <ul><li>Rammetillatelse eller igangsettingstillatelse fra kommunen</li><li>Fasade-, snitt- og plantegninger</li><li>Situasjonsplan</li><li>Byggebeskrivelse</li><li>Kontrakt eller avtale med entreprenør</li></ul>
+        <p>Hvis du søker om tiltaket Fleksibilitet i planløsningen, må fleksibiliteten i planløsningen vises i plantegningene og være beskrevet i byggebeskrivelsen.</p>
         <p>Du må også dokumentere egenkapital og gjeld. Ut fra hva du svarer i søknaden, kan du bli bedt om å laste opp:</p>
         <ul>
           <li>Kontoutskrift eller bilde fra nettbanken som viser egenkapital</li>

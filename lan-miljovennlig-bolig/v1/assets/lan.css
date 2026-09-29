@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────────────
-   Lån til å bygge klimavennlig bolig, klikkbar prototype
+   Lån til å bygge miljøvennlig bolig, gjenskapt som klikkbar flyt
    Oppsettet følger dagens selvbetjeningsløsning: smal kolonne på
    640 px, ett steg om gangen, knapperad under feltene, ingen stepper.
    Tokens fra ../ds/colors_and_type.css.
@@ -145,8 +145,6 @@ h1[tabindex="-1"]:focus, h2[tabindex="-1"]:focus { outline: none; }
 .lan-panel--gronn { background: var(--lan-gronn); border-radius: var(--radius-xl); }
 .lan-panel--gul { background: var(--lan-gul); border-radius: var(--radius-xl); }
 .lan-panel--rod { background: var(--lan-rod); border-radius: var(--radius-xl); }
-/* Gult varsel med trekant, som callout--warn i papirsøknaden */
-.lan-panel--varsel { background: rgb(255, 244, 224); border-radius: var(--radius-xl); }
 .lan-panel--ikon { display: grid; grid-template-columns: 24px 1fr; gap: var(--space-3); align-items: start; }
 .lan-panel--ikon > svg { margin-top: 2px; }
 .lan-panel dl { margin: 0; }
@@ -224,11 +222,11 @@ h1[tabindex="-1"]:focus, h2[tabindex="-1"]:focus { outline: none; }
 .lan-felt--feil .lan-input, .lan-felt--feil .lan-textarea, .lan-felt--feil .lan-select {
   border: 2px solid var(--lan-feil);
 }
-.lan-feilmelding, .lan-advarsel {
+.lan-feilmelding {
   display: flex; gap: 6px; align-items: flex-start;
   color: var(--lan-feil); font-weight: 500; margin-top: var(--space-2);
 }
-.lan-feilmelding svg, .lan-advarsel svg { flex: 0 0 auto; margin-top: 3px; }
+.lan-feilmelding svg { flex: 0 0 auto; margin-top: 3px; }
 
 /* Feilliste over knappene */
 .lan-feilliste {

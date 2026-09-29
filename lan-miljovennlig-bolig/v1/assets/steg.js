@@ -1,10 +1,9 @@
 /* ──────────────────────────────────────────────────────────────────
-   Stegene i «Søknad om lån til å bygge klimavennlig bolig»
+   Stegene i «Søknad om lån til å bygge miljøvennlig bolig»
 
-   Bygget på MiljovennligBoligSoknad i dagens løsning. I versjon 2 er
-   tiltakene og sertifikatene byttet med klimakravene: oppvarmet kjeller,
-   klimagassavtrykk og klimagassbudsjett. Det er her du endrer flyten.
-   Hvert steg er et objekt:
+   Gjenskapt fra MiljovennligBoligSoknad i dagens løsning, med samme
+   rekkefølge, tekster, vilkår og feilmeldinger. Det er her du endrer
+   flyten. Hvert steg er et objekt:
 
      id, tittel        Stegets id i URL-en og overskriften
      synlig(d)         Når steget vises. Mangler den, vises steget alltid
@@ -18,11 +17,7 @@
    egen, beregnet, og feltene janei, radio, avkrysning, tekstfelt,
    tall, belop, dato, tekstomrade, kommune og fil. Et felt har felt,
    label, beskrivelse, feil og eventuelt synlig(d), valider(v, d),
-   advarsel(v, d), min, maks, enhet og valgfri. advarsel gir en rød
-   tekst under feltet mens man skriver, uten å stoppe Neste.
-
-   endret: N merker elementet som endring nummer N i versjonsboksen,
-   se versjoner.js.
+   min, maks, enhet og valgfri.
 
    {du} {Du} {deg} {din} {Din} {dine} {ditt} {jeg} {Jeg} blir til
    flertall når søkeren låner sammen med noen.
@@ -37,12 +32,9 @@ const ekstern = (href, tekst) => `<a href="${href}" target="_blank" rel="noopene
 const mobilGyldig = v => (String(v).replace(/\s/g, '').length !== 8 || !/^[49]\d{7}$/.test(String(v).replace(/\s/g, ''))
   ? 'Skriv et norsk mobilnummer, 8 siffer.' : null);
 
-const heltall = v => /^\d+$/.test(String(v).replace(/\s/g, ''));
-
-/* Grenseverdien for klimagassavtrykket er det høyeste tallet som
-   kvalifiserer, og den er høyere når kjelleren er oppvarmet. */
-const CO2_ENHET = 'kg CO₂-ekv./m² BTA';
-const co2Grense = d => (d['bolig.oppvarmetkjeller'] === true ? 232 : 179);
+const TRE_TILTAK = 'TILTAK_TRE_ELLER_FLERE_GODKJENTE_TILTAK';
+const SERTIFIKAT = 'MILJOSERTIFIKAT_SVANEMERKE_ELLER_BREEAM_NOR';
+const FLEKSIBEL = 'MILJOTILTAK_FLEKSIBEL_PLANLOSNING';
 
 const EIERSKAP = [
   { v: 'EIERSKAP_TOMT_JA', l: 'Ja, {jeg} eier tomten' },
@@ -66,7 +58,6 @@ function bufferUtregning(d) {
     ['kostnader.utendoersarbeid', 'utendørs arbeid'],
     ['kostnader.byggehus', 'byggekostnader (hus)'],
     ['kostnader.byggegarasje', 'byggekostnader (garasje)'],
-    ['kostnader.klimaraadgivning', 'klimarådgivning'],
     ['kostnader.prosjektering', 'prosjektering, gebyr og avgifter'],
     ['kostnader.laanefinansiering', 'lånekostnader']
   ];
@@ -97,36 +88,34 @@ function terminbeloep(d) {
    laste opp». Selve opplastingen skjer i steget Vedlegg.
    ─────────────────────────────────────────────────────────────────── */
 
-/* Dokumentasjonen på byggeprosjektet hang før på tiltakene. Nå som de er
-   borte, kreves den alltid. */
-const alltid = () => true;
+const harFleksibel = d => (d.fleksibelplanlosning || []).length > 0;
+const tiltakValgt = d => (d.tiltak === TRE_TILTAK && (d.miljotiltak || []).length > 0)
+  || (d.tiltak === SERTIFIKAT && (d.miljosertifikat || []).length > 0);
 
 const VEDLEGGSKRAV = [
-  { felt: 'boligkvalitet.fasadeplansnittvedlegg', synlig: alltid,
+  { felt: 'boligkvalitet.fasadeplansnittvedlegg', synlig: tiltakValgt,
     label: 'fasade-, snitt- og plan-tegninger', overskrift: 'Last opp fasade-, snitt- og plantegninger',
-    detaljer: ['Tegninger av alle fasader i byggeprosjektet', 'Tegninger av typiske snitt i byggeprosjektet',
-      'Plantegninger for alle etasjer i byggeprosjektet'],
+    detaljer: d => ['Tegninger av alle fasader i byggeprosjektet', 'Tegninger av typiske snitt i byggeprosjektet',
+      harFleksibel(d) ? 'Plantegninger for alle etasjer i byggeprosjektet. Plantegningene må også vise fleksibiliteten i planløsningen.'
+        : 'Plantegninger for alle etasjer i byggeprosjektet'],
     feil: 'Last opp fasade-, snitt- og plantegningene.' },
-  { felt: 'boligkvalitet.situasjonsplanvedlegg', synlig: alltid,
+  { felt: 'boligkvalitet.situasjonsplanvedlegg', synlig: tiltakValgt,
     label: 'situasjonsplan', overskrift: 'Last opp situasjonsplanen',
     beskrivelse: 'Situasjonsplanen er et kart som viser bygningen det søkes om, med hovedmålet på bygningen og avstand til nærmeste grense tegnet inn.',
     feil: 'Last opp situasjonsplanen.' },
-  { felt: 'boligkvalitet.byggebeskrivelsevedlegg', synlig: alltid,
+  { felt: 'boligkvalitet.byggebeskrivelsevedlegg', synlig: tiltakValgt,
     label: 'byggebeskrivelse', overskrift: 'Last opp byggebeskrivelsen',
-    beskrivelse: 'En faglig beskrivelse, ofte fra entreprenøren.',
+    beskrivelse: d => (harFleksibel(d) ? 'En faglig beskrivelse, ofte fra entreprenøren. Byggebeskrivelsen må også beskrive fleksibiliteten i planløsningen.'
+      : 'En faglig beskrivelse, ofte fra entreprenøren.'),
     feil: 'Last opp byggebeskrivelsen.' },
-  { felt: 'boligkvalitet.kontraktvedlegg', synlig: alltid,
+  { felt: 'boligkvalitet.kontraktvedlegg', synlig: tiltakValgt,
     label: 'kontrakt eller avtale med entreprenør', overskrift: 'Last opp kontrakten eller avtalen med entreprenøren',
     beskrivelse: 'For eksempel avtalen med firmaet som skal gjøre arbeidet eller en entreprise.',
     feil: 'Last opp kontrakten eller avtalen med entreprenøren.' },
-  { felt: 'boligkvalitet.rammetillatelsevedlegg', synlig: alltid,
+  { felt: 'boligkvalitet.rammetillatelsevedlegg', synlig: tiltakValgt,
     label: 'rammetillatelse eller igangsettingstillatelse fra kommunen', overskrift: 'Last opp rammetillatelsen eller igangsettingstillatelsen fra kommunen.',
     beskrivelse: 'Før vi kan behandle søknaden, må prosjektet ha fått minst rammetillatelse eller igangsettingstillatelse fra kommunen.',
     feil: 'Last opp rammetillatelsen eller igangsettingstillatelsen fra kommunen.' },
-  { felt: 'klima.klimabudsjettvedlegg', synlig: d => d['klima.harklimabudsjett'] !== false, endret: 14,
-    label: 'klimabudsjett', overskrift: 'Last opp klimabudsjettet',
-    beskrivelse: 'Klimabudsjettet må være laget etter NS 3720:2018.',
-    feil: 'Last opp klimabudsjettet.' },
   { felt: 'utkastkjopekontraktellerfesteavtalevedlegg',
     synlig: d => ['EIERSKAP_TOMT_FREMTIDIG_KJOEP', 'EIERSKAP_TOMT_FREMTIDIG_FESTEAVTALE'].includes(d.eierskaptomt),
     label: d => (d.eierskaptomt === 'EIERSKAP_TOMT_FREMTIDIG_KJOEP' ? 'utkast til kjøpekontrakt' : 'utkast til festeavtale'),
@@ -398,9 +387,7 @@ const SKJEMA_STEG = [
     id: 'tiltak',
     tittel: 'Tiltak',
     elementer: [
-      { type: 'ingress', endret: 6, tekst: 'For å kunne søke om lån til å bygge klimavennlig bolig må vi vite om kjelleren er oppvarmet eller ikke.' },
-      { type: 'panel', variant: 'varsel', ikon: LAN_IKON.varsel, endret: 7,
-        html: '<p>Grenseverdiene for å få lån til klimavennlig bolig er forskjellige om prosjektet har oppvarmet kjeller eller ikke.</p>' },
+      { type: 'ingress', tekst: 'For å kunne søke om lån til å bygge miljøvennlig bolig må {du} enten velge minst 3 godkjente tiltak eller et godkjent sertifikat.' },
       { type: 'lesmer', tittel: 'Dette er kravene for å få lån', html: () => `
         <p>${tx('For å få lån må {du} oppfylle minst 3 av disse tiltakene')}:</p>
         <ul>
@@ -415,34 +402,56 @@ const SKJEMA_STEG = [
         <ul><li>Svanemerke</li><li>Breeam-NOR, enten:<ul><li>Very good</li><li>Excellent</li><li>Outstanding</li></ul></li></ul>
         <p>${tx('{Du} må oppbevare dokumentasjon på at kravene er oppfylt i 5 år fra lånet blir utbetalt.')}</p>` },
       { type: 'tekst', html: `<p class="lan-mt" style="margin-bottom:var(--space-6)">For mer informasjon, se ${ekstern('https://www.husbanken.no/', 'Veileder for lån fra Husbanken')}.</p>` },
-      { type: 'janei', felt: 'bolig.oppvarmetkjeller', endret: 8, label: 'Vil kjelleren være oppvarmet?',
-        feil: 'Velg om kjelleren vil være oppvarmet.' }
+      { type: 'radio', felt: 'tiltak', label: 'Hva søker {du} om lån til?', feil: 'Velg hva {du} søker om lån til.',
+        valg: [{ v: TRE_TILTAK, l: '3 eller flere godkjente tiltak' }, { v: SERTIFIKAT, l: 'Svanemerke- eller Breeam-NOR-sertifikat' }] }
     ]
   },
   {
-    id: 'klimagassavtrykk',
-    tittel: 'Klimagassavtrykk',
+    id: 'tiltak2',
+    synlig: d => d.tiltak === TRE_TILTAK,
+    tittel: 'Velg tiltak',
     elementer: [
-      { type: 'tall', felt: 'klima.klimagassavtrykk', endret: 9, enhet: CO2_ENHET,
-        label: 'Hva er antatt kg CO₂-ekv./m² BTA på prosjektet?',
-        feil: 'Skriv antatt klimagassavtrykk for prosjektet.',
-        feilTall: 'Klimagassavtrykket kan bare være tall, for eksempel 150.',
-        advarsel: (v, d) => (heltall(v) && api.num(v) > co2Grense(d)
-          ? `For å kvalifisere til dette lånet må CO₂-utslippet være ${co2Grense(d)} ${CO2_ENHET} eller lavere.` : null) }
+      { type: 'avkrysning', felt: 'miljotiltak', label: 'Hvilke tiltak skal {du} gjøre?', beskrivelse: 'Velg minst 3.', min: 3,
+        feil: 'Velg hvilke tiltak {du} skal gjøre.',
+        valg: [
+          { v: 'MILJOTILTAK_VEKTPROSENT_HELSE_MILJOFARLIG_STOFFER', l: 'Materialene inneholder maks 0,1 vektprosent helse- og miljøfarlige stoffer' },
+          { v: 'MILJOTILTAK_MINIMUM_VEKTPROSENT_KILDESORTERES', l: 'Minimum 70 vektprosent kildesorteres' },
+          { v: FLEKSIBEL, l: 'Fleksibilitet i planløsningen' },
+          { v: 'MILJOTILTAK_MINST_10_MILJODOKUMENTERTE_PRODUKTER', l: 'Miljødokumentasjon på minst 10 forskjellige produkter' },
+          { v: 'MILJOTILTAK_FOSSILT_BRENSEL_IKKE_BRUKT_I_BYGGEPERIODE', l: 'Fossilt brensel er ikke brukt til oppvarming og tørk i byggeperioden' }
+        ] },
+      { type: 'tekst', html: '<p style="margin-bottom:var(--space-6)">{Du} må oppbevare dokumentasjon på at kravene er oppfylt i 5 år fra lånet blir utbetalt.</p>' },
+      { type: 'avkrysning', felt: 'fleksibelplanlosning', synlig: d => har(d, 'miljotiltak', FLEKSIBEL),
+        label: 'Hva slags fleksibilitet har planløsningen?', feil: 'Velg hva slags fleksibilitet planløsningen har.',
+        valg: [
+          { v: 'MILJOTILTAK_FLEKSIBILITET_PLANLOSNING_ROM_KAN_DELES', l: 'Minst ett rom kan deles i 2' },
+          { v: 'MILJOTILTAK_FLEKSIBILITET_PLANLOSNING_ROM_KAN_SLAS_SAMMEN', l: '2 rom kan slås sammen' },
+          { v: 'MILJOTILTAK_FLEKSIBILITET_PLANLOSNING_KAN_ETABLERE_HYBEL', l: 'Det er mulig å etablere hybel med eget bad og kjøkkenløsning' }
+        ] },
+      { type: 'tekst', synlig: d => har(d, 'miljotiltak', FLEKSIBEL), html: `<p>Det er viktig at</p>
+        ${liste(['fleksibiliteten i planløsningen vises i plantegningene', 'fleksibiliteten i planløsningen er beskrevet i byggebeskrivelsen'])}` },
+      { type: 'vedleggskrav', synlig: d => (d.miljotiltak || []).length > 0, krav: VEDLEGGSKRAV.slice(0, 5).map(k => k.felt) }
     ]
   },
   {
-    id: 'klimagassbudsjett',
-    tittel: 'Klimagass&shy;budsjett',
+    id: 'tiltak3',
+    synlig: d => d.tiltak === SERTIFIKAT,
+    tittel: 'Velg tiltak',
     elementer: [
-      { type: 'ingress', tekst: 'For å få lån krever vi at det er laget et klimagassbudsjett for prosjektet. Budsjettet viser hvor store klimagassutslipp boligen er beregnet å gi, og det må være laget etter Norsk Standard NS 3720:2018.' },
-      { type: 'tekst', html: '<p style="margin-bottom:var(--space-6)">Budsjettet lages vanligvis av en klimarådgiver, arkitekten eller entreprenøren. {Du} laster det opp senere i søknaden.</p>' },
-      { type: 'janei', felt: 'klima.harklimabudsjett', endret: 10,
-        label: 'Er det blitt utformet et klimabudsjett for prosjektet etter NS 3720:2018?',
-        feil: 'Velg om det er utformet et klimabudsjett for prosjektet.',
-        advarsel: v => (v === false
-          ? 'Uten et klimabudsjett etter NS 3720:2018 kvalifiserer {du} ikke til dette lånet. {Du} må få laget budsjettet før {du} søker.' : null) },
-      { type: 'vedleggskrav', krav: ['klima.klimabudsjettvedlegg'] }
+      { type: 'avkrysning', felt: 'miljosertifikat', label: 'Hvilket sertifikat har boligen fått?', feil: 'Velg hvilket sertifikat boligen har fått.',
+        valg: [
+          { v: 'MILJOTILTAK_SVANEMERKE_SERTIFIKAT', l: 'Svanemerke' },
+          { v: 'MILJOTILTAK_BREEAM_NOR_SERTIFIKAT', l: 'Breeam-NOR: enten Very good, Excellent eller Outstanding' }
+        ] },
+      { type: 'radio', felt: 'breeamnorsertifikat', synlig: d => har(d, 'miljosertifikat', 'MILJOTILTAK_BREEAM_NOR_SERTIFIKAT'),
+        label: 'Hvilket Breeam-NOR-sertifikat har boligen fått?', feil: 'Velg hvilket Breeam-NOR-sertifikat boligen har fått.',
+        valg: [
+          { v: 'MILJOTILTAK_BREEAM_NOR_SERTIFIKAT_VERY_GOOD', l: 'Very good' },
+          { v: 'MILJOTILTAK_BREEAM_NOR_SERTIFIKAT_EXCELLENT', l: 'Excellent' },
+          { v: 'MILJOTILTAK_BREEAM_NOR_SERTIFIKAT_OUTSTANDING', l: 'Outstanding' }
+        ] },
+      { type: 'tekst', synlig: d => (d.miljosertifikat || []).length > 0, html: '<p>{Du} må oppbevare sertifikatet i 5 år fra lånet blir utbetalt.</p>' },
+      { type: 'vedleggskrav', synlig: d => (d.miljosertifikat || []).length > 0, krav: VEDLEGGSKRAV.slice(0, 5).map(k => k.felt) }
     ]
   },
 
@@ -481,12 +490,10 @@ const SKJEMA_STEG = [
     id: 'boligsteg',
     tittel: 'Boligen',
     elementer: [
-      { type: 'tall', felt: 'bolig.stoerrelse', endret: 11, enhet: 'kvadratmeter', min: 1,
-        label: 'Hvor stor blir boligen, målt i kvadratmeter BTA?', feil: 'Skriv hvor stor boligen blir.',
-        feilTall: 'Størrelsen på boligen kan bare være tall, for eksempel 84.',
-        advarsel: v => (heltall(v) && api.num(v) >= 1000
-          ? 'Som privatperson kan du kun oppføre boliger som er under 1000 kvm for å få dette lånet.' : null) },
-      { type: 'lesmer', endret: 11, tittel: 'Dette er BTA', html: '<p>BTA betyr bruttoareal. Det er hele arealet i boligen, målt til utsiden av ytterveggene, i alle etasjer. Kjeller og loft regnes med, og det samme gjør arealet veggene tar opp. En garasje, bod eller et anneks som står for seg selv, regnes ikke med.</p>' },
+      { type: 'tall', felt: 'bolig.stoerrelse', enhet: 'kvadratmeter', min: 1,
+        label: 'Hvor stor blir boligen innvendig, målt i kvadratmeter BRA-i?', feil: 'Skriv hvor stor boligen blir innvendig.',
+        feilTall: 'Størrelsen på boligen kan bare være tall, for eksempel 84.' },
+      { type: 'lesmer', tittel: 'Dette er BRA-i', html: '<p>BRA-i er det innvendige arealet i boligen. Det dekker alle innvendige rom med takhøyde over 1,90 meter. Kjellere, boder og lignende regnes med hvis de har direkte adkomst fra hoveddelen av boligen. Areal som ligger utenfor boligen, som utvendig bod, garasje og anneks, regnes ikke som BRA-i.</p>' },
       { type: 'janei', felt: 'bolig.oenskergarasje', label: 'Ønsker {du} at lånet også skal dekke bygging av garasje?',
         feil: 'Velg om lånet også skal dekke bygging av garasje.' },
       { type: 'tall', felt: 'bolig.garasjestoerrelse', synlig: d => d['bolig.oenskergarasje'] === true, enhet: 'kvadratmeter', min: 1,
@@ -531,9 +538,9 @@ const SKJEMA_STEG = [
     tittel: 'Prosjektkostnader',
     elementer: [
       { type: 'ingress', tekst: 'I de neste stegene ber vi deg oppgi kostnadene {du} regner med for prosjektet. Summen av kostnadene påvirker hvor mye {du} kan få i lån.' },
-      { type: 'panel', variant: 'bla', ikon: true, endret: 12, html: d => `
+      { type: 'panel', variant: 'bla', ikon: true, html: d => `
         <p>Du vil bli bedt om å fylle ut, hver for seg, kostnader til</p>
-        ${liste([kjoeperTomt(d) && 'kjøp av tomten', 'utendørs arbeid', 'byggekostnader', 'klimarådgivning', 'prosjektering, gebyrer og avgifter', 'lånekostnader', 'buffer til uforutsette kostnader'].filter(Boolean))}
+        ${liste([kjoeperTomt(d) && 'kjøp av tomten', 'utendørs arbeid', 'byggekostnader', 'prosjektering, gebyrer og avgifter', 'lånekostnader', 'buffer til uforutsette kostnader'].filter(Boolean))}
         <p>${tx('Oppgi både kostnader {du} regner med, og kostnader {du} allerede har betalt.')}</p>` },
       { type: 'tekst', html: '<p class="lan-sekundaer">Når {du} søker, må {du} ha et budsjett med prosjektkostnader, basert på kontrakt og pristilbud fra entreprenøren. Kontakt entreprenøren hvis {du} mangler noen av kostnadene.</p>' }
     ]
@@ -579,15 +586,6 @@ const SKJEMA_STEG = [
         label: 'Hvor store kostnader regner {du} med for å bygge huset?', feil: 'Skriv hvor store kostnader {du} regner med for å bygge huset.' },
       { type: 'belop', felt: 'kostnader.byggegarasje', enhet: 'kroner inkludert mva.', synlig: d => d['bolig.oenskergarasje'] === true,
         label: 'Hvor store kostnader regner {du} med for å bygge garasjen?', feil: 'Skriv hvor store kostnader {du} regner med for å bygge garasjen.' }
-    ]
-  },
-  {
-    id: 'klimaraadgivningsteg',
-    tittel: 'Kostnader knyttet til utarbeidelse av klimagass&shy;regnskap og -budsjett',
-    elementer: [
-      { type: 'ingress', tekst: 'Skriv hvor store kostnader {du} regner med til klimarådgivning.' },
-      { type: 'belop', felt: 'kostnader.klimaraadgivning', endret: 13, enhet: 'kroner inkludert mva.',
-        label: 'Hvor store kostnader regner {du} med til klimarådgivning?', feil: 'Skriv hvor store kostnader {du} regner med til klimarådgivning.' }
     ]
   },
   {
@@ -659,7 +657,6 @@ const SKJEMA_STEG = [
           ['Utendørs arbeid', d['kostnader.utendoersarbeid'], true, 'utendoerskostnader'],
           ['Bygge huset', d['kostnader.byggehus'] ?? 0, true, 'byggekostnadersteg'],
           ['Bygge garasjen', d['kostnader.byggegarasje'], true, 'byggekostnadersteg'],
-          ['Klimarådgivning', d['kostnader.klimaraadgivning'], true, 'klimaraadgivningsteg'],
           ['Prosjektering, gebyrer og avgifter', d['kostnader.prosjektering'], true, 'prosjekteringsteg'],
           ['Lånekostnader', d['kostnader.laanefinansiering'] ?? 0, false, 'lanekostnader'],
           ['Buffer til uforutsette kostnader', bufferUtregning(d).bufferVerdi, false, 'buffer']
@@ -945,7 +942,7 @@ const SKJEMA_STEG = [
         <p class="lan-fet lan-mb0">Trenger du mer tid?</p>
         <p>Alt er lagret. Du kan trygt gå ut av søknaden og komme tilbake når du er klar til å fortsette.</p></div></div>` },
       ...VEDLEGGSKRAV.map(k => ({
-        type: 'fil', felt: k.felt, synlig: k.synlig, label: k.overskrift, oppsLabel: k.label, endret: k.endret,
+        type: 'fil', felt: k.felt, synlig: k.synlig, label: k.overskrift, oppsLabel: k.label,
         beskrivelse: k.beskrivelse, detaljer: k.detaljer, feil: k.feil
       })),
       { type: 'janei', felt: 'vedlegg.leggtilnoemer', label: 'Vil du legge til andre opplysninger?',

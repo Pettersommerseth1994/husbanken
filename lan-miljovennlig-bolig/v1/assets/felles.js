@@ -6,7 +6,7 @@
    ────────────────────────────────────────────────────────────────── */
 
 const LAN_TJENESTE = 'Lån og tilskudd fra Husbanken';
-const LAN_SKJEMANAVN = 'Søknad om lån til å bygge klimavennlig bolig';
+const LAN_SKJEMANAVN = 'Søknad om lån til å bygge miljøvennlig bolig';
 
 /* ═══ Testpersoner ════════════════════════════════════════════════
    Byttes i stripa øverst. Alle navn og tall er oppdiktet.
@@ -72,7 +72,7 @@ const LAN_RENTE = { TERMINBELOEP_MAANED: 5.1, TERMINBELOEP_KVARTAL: 5.15 };
 
 /* ═══ Lagring ═════════════════════════════════════════════════════ */
 
-const LAN_LAGER = 'lan-klimavennlig-v2';
+const LAN_LAGER = 'lan-miljovennlig-v1';
 
 function lanLes() {
   try { return JSON.parse(localStorage.getItem(LAN_LAGER)) || {}; } catch { return {}; }
@@ -117,7 +117,6 @@ const LAN_IKON = {
   pluss: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
   binders: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m20 11.5-7.8 7.8a5 5 0 0 1-7.1-7.1l8.3-8.3a3.3 3.3 0 0 1 4.7 4.7l-8.3 8.3a1.7 1.7 0 0 1-2.4-2.4l7.6-7.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   info: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.15" fill="currentColor"/></svg>',
-  varsel: '<svg width="24" height="24" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 2.06 20.94 19.94H1.06L11 2.06Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8.94v5.12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="11" cy="16.6" r=".9" fill="currentColor"/></svg>',
   feil: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 7v6.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17" r="1.3" fill="#fff"/></svg>',
   person: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
   hake: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -149,7 +148,7 @@ ${lanProtobar()}
 <header class="lan-header">
   <div class="lan-header__rad">
     <a class="lan-header__logo" href="index.html">
-      <img src="../ds/logo/husbanken-primary.png" alt="Husbanken">
+      <img src="../../ds/logo/husbanken-primary.png" alt="Husbanken">
       <span class="lan-header__tjeneste">${LAN_TJENESTE}</span>
     </a>
     <div class="lan-header__hoyre">

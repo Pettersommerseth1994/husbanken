@@ -174,9 +174,8 @@ function feltHtml(el, x) {
   const v = x[el.felt];
   const label = tx(el.label, x);
   const beskrivelse = hjelp(el, x, id);
-  const aria = `aria-describedby="${el.beskrivelse ? `${id}-hjelp ` : ''}${id}-feil${el.advarsel ? ` ${id}-advarsel` : ''}"`;
-  const feil = `<div class="lan-feilmelding" id="${id}-feil" hidden></div>${el.advarsel
-    ? `<div class="lan-advarsel" id="${id}-advarsel" role="status" hidden></div>` : ''}`;
+  const aria = `aria-describedby="${el.beskrivelse ? `${id}-hjelp ` : ''}${id}-feil"`;
+  const feil = `<div class="lan-feilmelding" id="${id}-feil" hidden></div>`;
 
   const valgliste = (valg, type, erValgt) => valg.map((o, i) => `
       <label class="lan-valg">
@@ -270,25 +269,9 @@ function elementHtml(el, x, sti) {
 /* Skjulte elementer bygges først når de blir synlige. */
 function wrap(el, x, sti) {
   if (el.type === 'beregnet') return '';
-  const endret = el.endret ? ` data-endret="${el.endret}"` : '';
   return elSynlig(el, x)
-    ? `<div data-el="${sti}"${endret}>${elementHtml(el, x, sti)}</div>`
-    : `<div data-el="${sti}"${endret} data-lat="1" hidden></div>`;
-}
-
-/* Advarsler under et felt, som vises mens man skriver. De stopper ikke
-   Neste, de sier bare fra om at svaret ikke kvalifiserer til lånet. */
-function visAdvarsler() {
-  const s = stegMedId(aktiv);
-  const x = kilde(s);
-  gjennomgaa(s.elementer, x, (el, vis) => {
-    if (!vis || !el.advarsel) return;
-    const boks = document.getElementById(`${feltId(el.felt)}-advarsel`);
-    if (!boks) return;
-    const m = tom(x[el.felt]) ? null : el.advarsel(x[el.felt], x, D);
-    boks.hidden = !m;
-    boks.innerHTML = m ? `${LAN_IKON.feil}<span>${tx(m, x)}</span>` : '';
-  });
+    ? `<div data-el="${sti}">${elementHtml(el, x, sti)}</div>`
+    : `<div data-el="${sti}" data-lat="1" hidden></div>`;
 }
 
 /* ═══ Visning av ett steg ═════════════════════════════════════════ */
@@ -317,7 +300,6 @@ function renderSteg() {
     </div>
     ${fortsettSenere()}`;
   lanInitLesMer(rot);
-  visAdvarsler();
   if (s.etterRender) s.etterRender(rot, x, api);
   if (M.visFeilVedAnkomst === s.id) {
     delete M.visFeilVedAnkomst;
@@ -352,7 +334,6 @@ function oppdater() {
       lanInitLesMer(node);
     }
   });
-  visAdvarsler();
   if (forsokt) visFeil(false);
 }
 
