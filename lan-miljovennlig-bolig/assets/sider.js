@@ -139,6 +139,7 @@ function informasjon() {
           <li>Du kan ikke få lån hvis byggingen allerede har startet. Grunnarbeid, som støping av såle, er tillatt, men grunnmuren kan ikke være oppført.</li>
           <li>Byggearbeidet må starte senest seks måneder etter at lånet er innvilget.</li>
           <li>Lånet kan ikke brukes til refinansiering.</li>
+          <li>Test</li>
         </ul>
       </div>
       <p class="lan-mb0"><a href="https://www.husbanken.no/" target="_blank" rel="noopener">Mer om dette lånet (åpnes i ny fane)</a></p>
