@@ -239,6 +239,16 @@ const HB_VERSJONER = [
     dato: '25. september 2026',
     endring: 'Kravlista på forsiden sa «søke før du setter i gang arbeidet». Det er ikke innsendingen som er startsignalet, men tilsagnet: forskriften gir ikke tilskudd til tiltak som er igangsatt eller gjennomført. Sier skjemaet noe annet, kan vi havne i et dilemma hvis en søknad avslås fordi arbeidet var satt i gang da den ble behandlet. Punktet heter nå «ha fått tilsagn om tilskudd før du setter i gang arbeidet», og det samme er rettet på startsiden og informasjonssiden i den digitale prototypen. Boksen om betaling lovte 25 prosent tilbake. Det stemmer ikke når den endelige regningen er høyere enn tilsagnet, for da regnes ikke beløpet opp. Den sier nå at du søker om utbetaling av tilskuddet, og at pengene kommer til din egen konto, ikke til firmaet.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v22.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v22.html'
+    }
+  },
+  {
+    nr: 23,
+    navn: 'Ny tekst i kravlista',
+    dato: '29. september 2026',
+    endring: 'Kravlista på forsiden har fått ny tekst. «Eid eller leid helårsbolig» er uthevet, slik at eierformen står like tydelig som kravet om å bo i boligen. Siste punkt sier nå «vente med å starte arbeidet til søknaden er godkjent» i stedet for «ha fått tilsagn om tilskudd før du setter i gang arbeidet». Meningen er den samme, men ordene er hverdagslige: «tilsagn» er Husbankens ord, «godkjent» er søkerens. De fem andre punktene står som før.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

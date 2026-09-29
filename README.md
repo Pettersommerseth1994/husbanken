@@ -92,7 +92,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 19, 16. september 2026 | `...-v19.html` | Skjema-ID-ene på plass, og tittelen er skjemaets offisielle navn. |
 | 20, 18. september 2026 | `...-v20.html` | Forskriftens overskrifter på de seks kategoriene. |
 | 21, 24. september 2026 | `...-v21.html` | Mørkere sekundærtekst, så utskriften holder. |
-| 22, 25. september 2026 | uten suffiks | Tilsagn, ikke innsending, er startsignalet. Se under. |
+| 22, 25. september 2026 | `...-v22.html` | Tilsagn, ikke innsending, er startsignalet. Se under. |
+| 23, 29. september 2026 | uten suffiks | Ny tekst i kravlista på forsiden. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -1172,6 +1173,23 @@ søknaden behandles, ikke hva som betales ut til slutt.
 
 Feltkartet til den utfyllbare PDF-en er målt på nytt og er uendret, alle 86
 feltene ligger der de lå. Ingen av sidene endret høyde.
+
+### Iterasjon 23, ny tekst i kravlista
+
+Kravlista på forsiden har fått ny tekst, levert som en ferdig skisse.
+
+**Eierformen er uthevet.** Punktet om boligen sier nå at du må **bo i boligen**,
+og at det må være en **eid eller leid helårsbolig**, begge i halvfet. Før sto
+bare første del uthevet, og kravet til eierform forsvant i resten av setningen.
+
+**Siste punkt er skrevet med søkerens ord.** «Ha fått tilsagn om tilskudd før
+du setter i gang arbeidet» er byttet med **«vente med å starte arbeidet til
+søknaden er godkjent»**. Kravet er det samme som i iterasjon 22: det er svaret,
+ikke innsendingen, som er startsignalet. Men «tilsagn» er et fagord, og
+«godkjent» er det søkeren selv ville sagt.
+
+De fire andre punktene står uendret. Den digitale prototypen, startsiden for
+søknaden og informasjonssiden, sier fortsatt «tilsagn om tilskudd».
 
 ## Utfyllbar PDF
 
