@@ -11,5 +11,7 @@ ref/
 Boligkompasset/
 
 # Kildekoden fra Bitbucket. Intern, skal aldri inn i dette repoet.
-# Bare designet og flyten er gjenskapt, i lan-miljovennlig-bolig/.
+# Bare designet og flyten er gjenskapt, i lan-miljovennlig-bolig/ og
+# grunnlan-esoknad/.
 husbanken-lanogtilskudd-selvbetjening-lanesoknad-*/
+husbanken-lanogtilskudd-selvbetjening-grunnlan-esoknad-*/

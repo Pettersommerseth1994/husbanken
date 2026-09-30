@@ -36,6 +36,13 @@ bygge miljøvennlig bolig, fra forsiden etter innlogging til innsendt søknad.
 Den er uten innlogging og backend, og er ment for å teste og endre flyten.
 Se [`lan-miljovennlig-bolig/README.md`](lan-miljovennlig-bolig/README.md).
 
+## E-søknaden for bransje, gjenskapt
+
+`grunnlan-esoknad/` er en klikkbar kopi av dagens e-søknad om lån og tilskudd
+for eiendomsutviklere og boligutviklere, fra søknadsoversikten til søknaden er
+sendt til signering. Den er uten innlogging og backend.
+Se [`grunnlan-esoknad/README.md`](grunnlan-esoknad/README.md).
+
 ## Papirskjemaene
 
 Ordningen må også kunne søkes om på papir. To skjemaer dekker de to gangene
