@@ -428,7 +428,17 @@ const SKJEMA_STEG = [
         feil: 'Skriv antatt klimagassavtrykk for prosjektet.',
         feilTall: 'Klimagassavtrykket kan bare være tall, for eksempel 150.',
         advarsel: (v, d) => (heltall(v) && api.num(v) > co2Grense(d)
-          ? `For å kvalifisere til dette lånet må CO₂-utslippet være ${co2Grense(d)} ${CO2_ENHET} eller lavere.` : null) }
+          ? `For å kvalifisere til dette lånet må CO₂-utslippet være ${co2Grense(d)} ${CO2_ENHET} eller lavere.` : null) },
+      { type: 'lesmer', endret: 15, tittel: 'Dette er kg CO₂-ekv./m² BTA', html: d => tx(`
+        <p>Tallet viser hvor store klimagassutslipp boligen gir, fordelt på hver kvadratmeter.</p>
+        <ul>
+          <li><b>kg CO₂-ekv.</b> betyr kilo CO₂-ekvivalenter. Alle klimagassene regnes om til den mengden CO₂ som gir samme effekt på klimaet, så de kan legges sammen.</li>
+          <li><b>m² BTA</b> er bruttoarealet til boligen, det samme arealet {du} oppgir på steget Boligen.</li>
+        </ul>
+        <p class="lan-mb0">Slik regnes det ut:</p>
+        <p class="lan-fet">Samlede klimagassutslipp i kg CO₂-ekv. ÷ BTA i m²</p>
+        <p>For eksempel gir 150 000 kg CO₂-ekv. for en bolig på 1 000 m² BTA et klimagassavtrykk på 150 kg CO₂-ekv./m² BTA.</p>
+        <p>{Du} finner tallet i klimagassbudsjettet for prosjektet, som er laget etter NS 3720:2018. For å få lånet må tallet være ${co2Grense(d)} eller lavere${d['bolig.oppvarmetkjeller'] === true ? ', siden kjelleren skal være oppvarmet' : d['bolig.oppvarmetkjeller'] === false ? ', siden kjelleren ikke skal være oppvarmet' : ''}.</p>`) }
     ]
   },
   {

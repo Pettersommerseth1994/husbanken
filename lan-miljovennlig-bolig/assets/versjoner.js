@@ -51,7 +51,8 @@ const LAN_VERSJONER = [
       { side: 'soknad.html', steg: 'boligsteg', tekst: 'BTA i stedet for BRA-i, og advarsel fra 1000 kvadratmeter.' },
       { side: 'soknad.html', steg: 'prosjektkostnadersteg', tekst: 'Klimarådgivning er med i prosjektkostnadene, bufferen og totalen.' },
       { side: 'soknad.html', steg: 'klimaraadgivningsteg', tekst: 'Nytt steg: kostnader til klimagassregnskap og -budsjett.' },
-      { side: 'soknad.html', steg: 'vedleggsteg', tekst: 'Klimabudsjettet lastes opp her. Dokumentasjonen på byggeprosjektet kreves nå alltid.' }
+      { side: 'soknad.html', steg: 'vedleggsteg', tekst: 'Klimabudsjettet lastes opp her. Dokumentasjonen på byggeprosjektet kreves nå alltid.' },
+      { side: 'soknad.html', steg: 'klimagassavtrykk', tekst: 'Ny forklaring: «Dette er kg CO₂-ekv./m² BTA», med utregning og eksempel.' }
     ]
   }
 ];
