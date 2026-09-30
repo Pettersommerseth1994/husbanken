@@ -29,4 +29,4 @@
 @import url('designsystemet-komponenter.css');
 
 @import url('husbanken-farger.css')           layer(hb-farger);
-@import url('../assets/css/hb-kompass.css')   layer(hb-kompass);
+@import url('../assets/css/hb-kompass.css?v=19') layer(hb-kompass);

@@ -519,29 +519,35 @@ function kpFramdriftHtml() {
     : KOMPASS_ETAPPER.findIndex(e => e.id === f.e.id) + 1;
   const pst = f.t === 'slutt' ? 100 : Math.round((nr / totalt) * 100);
 
+  /* Stegene står øverst, med navnet over sin egen strek. Den samlede
+     linja ligger nederst, med telleren ved siden av, så tallet og linja
+     leses sammen. */
   return `
 <div class="kp-framdrift kp-utskrift-skjul">
   <div class="hb-shell">
-    <div class="kp-framdrift__topp">
-      <span class="kp-framdrift__etappe">
-        Steg ${etappeNr} av ${KOMPASS_ETAPPER.length}${f.t === 'slutt' ? ' · Oppsummering' : ' · ' + f.e.navn}
-      </span>
+    <p class="kp-framdrift__etappe">
+      Steg ${etappeNr} av ${KOMPASS_ETAPPER.length}${f.t === 'slutt' ? ' · Oppsummering' : ' · ' + f.e.navn}
+    </p>
+    <ol class="kp-etapper">
+      ${KOMPASS_ETAPPER.map((e, i) => {
+        const tilstand = i + 1 < etappeNr ? 'ferdig' : i + 1 === etappeNr ? 'aktiv' : 'igjen';
+        return `
+        <li data-tilstand="${tilstand}"${tilstand === 'aktiv' ? ' aria-current="step"' : ''}>
+          <span class="kp-etapper__navn">${e.navn}</span>
+          <span class="kp-etapper__merke" data-tilstand="${tilstand}"></span>
+        </li>`;
+      }).join('')}
+    </ol>
+    <div class="kp-framdrift__bunn">
+      <div class="kp-framdrift__spor">
+        <div class="kp-framdrift__fyll" style="width:${pst}%"></div>
+      </div>
       <span class="kp-framdrift__teller">
         ${f.t === 'sp' ? `Spørsmål ${nr} av ${totalt}`
           : f.t === 'slutt' ? `${totalt} av ${totalt} spørsmål`
           : `${nr} av ${totalt} spørsmål besvart`}
       </span>
     </div>
-    <div class="kp-framdrift__spor">
-      <div class="kp-framdrift__fyll" style="width:${pst}%"></div>
-    </div>
-    <ul class="kp-etapper">
-      ${KOMPASS_ETAPPER.map((e, i) => `
-        <li>
-          <span class="kp-etapper__merke" data-tilstand="${i + 1 < etappeNr ? 'ferdig' : i + 1 === etappeNr ? 'aktiv' : 'igjen'}"></span>
-          <span class="kp-etapper__navn">${e.navn}</span>
-        </li>`).join('')}
-    </ul>
   </div>
 </div>`;
 }
