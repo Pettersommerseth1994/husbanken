@@ -100,7 +100,7 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 20, 18. september 2026 | `...-v20.html` | Forskriftens overskrifter på de seks kategoriene. |
 | 21, 24. september 2026 | `...-v21.html` | Mørkere sekundærtekst, så utskriften holder. |
 | 22, 25. september 2026 | `...-v22.html` | Tilsagn, ikke innsending, er startsignalet. Se under. |
-| 23, 29. september 2026 | uten suffiks | Ny tekst i kravlista på forsiden. Se under. |
+| 23, 29.–30. september 2026 | uten suffiks | Ny tekst i kravlista, og utbetalingsskjemaet bygget om etter søknaden. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -1197,6 +1197,44 @@ ikke innsendingen, som er startsignalet. Men «tilsagn» er et fagord, og
 
 De fire andre punktene står uendret. Den digitale prototypen, startsiden for
 søknaden og informasjonssiden, sier fortsatt «tilsagn om tilskudd».
+
+**Utbetalingsskjemaet er bygget om etter søknaden.** De to skjemaene hadde
+glidd fra hverandre: søknaden fikk kravliste, nøkkeltall og en egen seksjon for
+personalia gjennom iterasjon 6 til 23, mens utbetalingsskjemaet sto omtrent som
+i iterasjon 5. Nå har de samme oppbygging.
+
+- **Forsiden** har en kravliste, «For å få utbetalt tilskuddet må du», med de
+  fem kravene som før sto spredt i «Slik bruker du dette skjemaet»: tilsagn,
+  ferdig arbeid, betalt regning, regningen som vedlegg og fristen på to år.
+- **«Slik bruker du dette skjemaet»** er kortet ned til de samme to punktene
+  som i søknaden.
+- **Fire nøkkeltall**, i samme ruter som i søknaden: 25 prosent av det du
+  betalte, aldri mer enn tilsagnet, to års frist, og at tilskuddet ikke er
+  skattepliktig. Alle tallene sto fra før et annet sted i skjemaet.
+- **Tidslinja** med de fire stegene står under nøkkeltallene, der søknaden har
+  eksempeltabellen.
+- **Personalia** er flyttet fra forsiden til side 2, som seksjon 1 «Om deg».
+  De andre seksjonene har rykket ett nummer ned, og henvisningene til
+  spørsmålene om konto peker nå på 5.2 og 5.3.
+- **Tittelen** står på to linjer. Den er et ord lengre enn søknadens og brøt
+  over tre i 22 pt. I 21 pt, med klassen `tittel-lang`, er det om lag 5 mm til
+  overs på den lengste linja. «Utbetalingen skjer ikke av seg selv» er tatt ut
+  av ingressen.
+- **Samtykket** har fått samme boks om personopplysninger som søknaden.
+- **Innsendingslista** begynner med vedleggene og slutter med «Send alt i samme
+  konvolutt». «Se at du har svart på alt som gjelder for deg» er tatt ut, slik
+  det ble i søknaden etter kommentar #15.
+
+Skjemaet er nå **fem sider**, fordi forsiden ikke lenger har plass til
+personalia og seksjon 1. Side 2 har god luft nederst, men seksjon 3 er for høy
+til å få plass der. Ingen felter har skiftet navn, så det som er lagret i
+nettleseren blir med. Feltkartet til den utfyllbare PDF-en er målt på nytt, alle
+52 feltene, og PDF-en er laget på nytt.
+
+**Åpent, ikke rørt:** samtykket i utbetalingsskjemaet begynner fortsatt med
+«Arbeidet er utført, og jeg har betalt regningen selv», i jeg-form, før resten
+går over til du-form. Og setningen om at Husbanken kan kontakte foretaket står
+fortsatt, se Slack-punktet fra 15:22.
 
 ## Utfyllbar PDF
 

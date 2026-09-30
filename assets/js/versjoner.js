@@ -247,7 +247,7 @@ const HB_VERSJONER = [
     nr: 23,
     navn: 'Ny tekst i kravlista',
     dato: '29. september 2026',
-    endring: 'Kravlista på forsiden har fått ny tekst. «Eid eller leid helårsbolig» er uthevet, slik at eierformen står like tydelig som kravet om å bo i boligen. Siste punkt sier nå «vente med å starte arbeidet til søknaden er godkjent» i stedet for «ha fått tilsagn om tilskudd før du setter i gang arbeidet». Meningen er den samme, men ordene er hverdagslige: «tilsagn» er Husbankens ord, «godkjent» er søkerens. De fem andre punktene står som før.',
+    endring: 'Kravlista på forsiden har fått ny tekst. «Eid eller leid helårsbolig» er uthevet, slik at eierformen står like tydelig som kravet om å bo i boligen. Siste punkt sier nå «vente med å starte arbeidet til søknaden er godkjent» i stedet for «ha fått tilsagn om tilskudd før du setter i gang arbeidet». Meningen er den samme, men ordene er hverdagslige: «tilsagn» er Husbankens ord, «godkjent» er søkerens. De fem andre punktene står som før. Utbetalingsskjemaet er bygget om etter søknaden. Forsiden har fått en egen kravliste, en kortere «Slik bruker du dette skjemaet» og fire nøkkeltall, med tidslinja under. Personalia er flyttet til side 2 som seksjon 1, «Om deg», og de andre seksjonene har rykket ett nummer ned. Samtykket har fått samme boks om personopplysninger som søknaden, og innsendingslista slutter med «Send alt i samme konvolutt». Tittelen står på to linjer i 21 pt i stedet for tre i 22 pt, og «Utbetalingen skjer ikke av seg selv» er tatt ut av ingressen. Skjemaet er nå fem sider.',
     filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'

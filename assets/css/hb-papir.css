@@ -124,6 +124,13 @@ body {
   color: var(--hb-slate-700);
   margin: 0 0 2mm;
 }
+/* Tittelen på utbetalingsskjemaet er et ord lengre enn søknadens og brøt
+   over tre linjer i 22 pt. Ett punkt mindre holder den på to, med om lag
+   5 mm til overs på den lengste linja. */
+.hero h1.tittel-lang {
+  font-size: 21pt;
+  line-height: 25pt;
+}
 .hero .eyebrow {
   font-size: 8pt;
   line-height: 11pt;
