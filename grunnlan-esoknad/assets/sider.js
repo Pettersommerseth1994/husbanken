@@ -149,6 +149,7 @@ async function soknadsvalg(valg, pf) {
 const TILTAK_BRANSJE = ['OPPFORING', 'OPPGRADERING', 'KJOP', 'OMBYGGING'];
 
 const opprettRegler = {
+  laneformal: d => d.tiltak === 'OPPFORING',
   formal: d => !!d.tiltak && d.tiltak !== 'KJOP',
   avtale: d => d.formal === 'UTLEIE' || d.tiltak === 'KJOP',
   antall: d => d.avtale === 'TILVISNING',
@@ -160,6 +161,7 @@ const opprettRegler = {
 
 function opprettRens(d) {
   const r = opprettRegler;
+  if (!r.laneformal(d)) delete d.laneformal;
   if (!r.formal(d)) delete d.formal;
   if (!r.avtale(d)) delete d.avtale;
   if (d.tiltak === 'OPPGRADERING' && ['TILVISNING', 'TILDELING'].includes(d.avtale)) delete d.avtale;
@@ -207,6 +209,8 @@ function opprett() {
 
         ${F.radio({ felt: 'tiltak', label: 'Hva skal dere gjøre?', valg: TILTAK_BRANSJE.map(k => ({ v: k, l: S.TILTAK[k].valg })) })}
 
+        ${r.laneformal(d) ? F.radio({ felt: 'laneformal', label: 'Velg formål', valg: Object.entries(S.LANEFORMAL).map(([v, l]) => ({ v, l })) }) : ''}
+
         ${r.formal(d) ? F.radio({ felt: 'formal', label: 'Skal boligene selges eller leies ut?', valg: [{ v: 'SALG', l: 'Salg' }, { v: 'UTLEIE', l: 'Utleie' }] }) : ''}
 
         ${r.avtale(d) ? F.radio({ felt: 'avtale', label: 'Har dere inngått avtale med en kommune eller et statlig helseforetak?', hjelp: hjelpAvtale,
@@ -238,6 +242,7 @@ function opprett() {
     valider: () => [
       !epost.length && { nokkel: 'harGyldigEpost', melding: `Det er ikke registrerte varslingsadresser for ${eEsc(org.navn)}. Dette må registreres i Altinn før du kan fullføre søknaden.` },
       !d.tiltak && { nokkel: 'tiltak', melding: 'Du må krysse av for hva prosjektet innebærer at du skal gjøre.' },
+      r.laneformal(d) && !d.laneformal && { nokkel: 'laneformal', melding: 'Du må velge formål.' },
       r.formal(d) && !d.formal && { nokkel: 'formal', melding: 'Du må krysse av for om boligen skal selges eller leies ut.' },
       r.avtale(d) && !d.avtale && { nokkel: 'avtale', melding: 'Du må krysse av for type avtale med kommune.' },
       r.antall(d) && (V.tom(d.antall) ? { nokkel: 'antall', melding: 'Du må skrive antall tilvisningsboliger.' }
@@ -256,7 +261,8 @@ function opprett() {
         await eVent(600);
         const lant = d.lantaker ? eForetak(d.lantaker) : null;
         const pf = S.ny(t, {
-          prosjektTiltakKode: d.tiltak, formalKode: d.formal, kommuneavtaleTypeKode: d.avtale, antallTilvisningsboliger: d.antall,
+          prosjektTiltakKode: d.tiltak, laneformal: d.laneformal, formalKode: d.formal,
+          livslopsboliger: d.laneformal ? d.laneformal === 'LIVSLOPSSTANDARD' : undefined, miljoboliger: d.laneformal ? d.laneformal === 'KLIMAVENNLIG' : undefined, kommuneavtaleTypeKode: d.avtale, antallTilvisningsboliger: d.antall,
           finansieringsProdukter: d.produkter, sokerErLantaker: d.sokerErLantaker !== false ? (r.sokerErLantaker(d) ? true : undefined) : false,
           lantakerHarOrgNr: d.harOrgnr
         });

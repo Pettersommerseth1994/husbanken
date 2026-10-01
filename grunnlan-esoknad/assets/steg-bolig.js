@@ -33,19 +33,6 @@ function prosentFerdig(koder) {
   return p;
 }
 
-const MILJO_HJELP = 'Husbanken kan gi lån til oppføring av boliger med godt inneklima og miljøvennlige materialer og byggemetoder.  Les <a href="https://lovdata.no/dokument/SF/forskrift/2019-11-18-1546" target="_blank" rel="noopener">forskrift om lån fra Husbanken (åpner i ny fane)</a> eller Husbankens veileder for mer informasjon.';
-const MILJOKRITERIER = [
-  { v: 'MILJOKRITERIER_HELSE_MILJOFARLIGE_STOFFER', l: 'Bygget inneholder ikke produkter med mer enn 0,1 vektprosent av spesifiserte helse- og miljøfarlige stoffer',
-    hjelp: 'Produkter og materialer skal ikke inneholde mer enn 0,1 vektprosent helse- og miljøfarlige stoffer som står oppført på <a href="https://miljostatus.miljodirektoratet.no/" target="_blank" rel="noopener">miljømyndighetenes prioritetsliste. (åpner i ny fane)</a> Les Husbankens veileder for en liste over produktgrupper som er omfattet av kravet og ulike verktøy som kan være til hjelp i vurdering og dokumentasjon av helse- og miljøfarlige stoffer.' },
-  { v: 'MILJOKRITERIER_AVFALL', l: 'Avfallet fra prosjektet vil bli sortert og levert til avfallsmottak eller gjenvinning i henhold til gjeldende kriterier',
-    hjelp: '<p>Avfallet skal sorteres i ulike avfallstyper når:</p><ul><li>Minimum <b>70 vektprosent</b> av avfallet som oppstår i tiltaket overskrider <b>100 m².</b></li><li>Minimum <b>80 vektprosent</b> av avfallet når tiltaket overskrider <b>300 m².</b></li></ul><p>Det sorterte avfallet skal leveres til godkjent avfallsmottak eller direkte til gjenvinning.</p>' },
-  { v: 'MILJOKRITERIER_FLEKSIBEL_PLANLOSNING', l: 'Fleksibel planløsning',
-    hjelp: 'Oppfyllelse av kravet skal dokumenteres med alternativ planløsning. Etter sammenslåing av rom skal det være minst ett soverom i tillegg til stue i den nye planløsningen. Rom før og etter endringen må tilfredsstille kravene for rom til varig opphold i TEK17. Les Husbankens veileder for mer informasjon.' },
-  { v: 'MILJOKRITERIER_MILJODOKUMENTASJON', l: 'Produkter innenfor utvalgte bygningsdeler i henhold til veilederen har tilstrekkelig miljødokumentasjon',
-    hjelp: 'Oppfyllelse av kravet skal dokumenteres ved at minst 10 forskjellige byggeprodukter fra bygningsdelene nevnt i Husbankens veileder har EPD-er, Svanemerket eller EU Ecolabel. Hvert av de dokumenterte produktene må omfatte minst 25 prosent av bygningsdelens areal, volum eller vekt for å oppfylle kravet.' },
-  { v: 'MILJOKRITERIER_FOSSILT_BRENSEL', l: 'Prosjektet har ikke brukt fossilt brensel til oppvarming og tørking under arbeidet',
-    hjelp: 'Dette kriteriet gjelder fossil olje, propan, diesel, gass, koks eller kull med mer. Tilsvarende fornybare løsninger er tillatt. Les Husbankens veileder for mer informasjon.' }
-];
 const LIVSLOP_HJELP = [
   '<p>En livsløpsbolig skal utover kravene til tilgjengelig boenhet i gjeldende byggteknisk forskrift oppfylle fire ekstra kvaliteter:</p><p>a. tilgjengelig parsengsrom<br>b. tilgjengelig innvendig bod<br>c. vaskesøyle på tilgjengelig bad eller vaskerom<br>d. forberedt for installering av velferds- og smarthusteknologi</p><p>Les Husbankens veileder for mer detaljert informasjon.</p>',
   '<p>Husbanken kan finansiere leiligheter i andre etasje i fire- og seksmannsboliger uten at det er trinnfri atkomst til boligene ved ferdigstillelse.</p><p>Husbanken krever da at det er forberedt for innvending løfteinnretning.</p><p>Les Husbankens veileder for mer detaljert informasjon.</p>',
@@ -88,10 +75,6 @@ STEG.boligkvaliteter = {
   },
 
   vedEndring: (felt, pf) => {
-    if (felt === 'livslopsboliger' && pf.livslopsboliger === false) pf.boenheter.forEach(f => { if (B.livslopBk(pf).some(k => k && k.id === f.bkId)) delete f.bkId; });
-    if (felt === 'miljoboliger' && !pf.miljoboliger) { delete pf.miljoKrav; delete pf.breeam; delete pf.miljokriterier; delete pf.fleksibelType; }
-    if (felt === 'miljoKrav') { if (pf.miljoKrav !== 'BREEAM_NOR') delete pf.breeam; if (pf.miljoKrav !== 'TRE_AV_FEM') { delete pf.miljokriterier; delete pf.fleksibelType; } }
-    if (felt === 'miljokriterier' && !(pf.miljokriterier || []).includes('MILJOKRITERIER_FLEKSIBEL_PLANLOSNING')) delete pf.fleksibelType;
     const alle = /^adresseBk\.a(\d+)$/.exec(felt);
     if (alle) { S.boenheter(pf, Number(alle[1])).forEach(f => { f.bkId = Number(pf.adresseBk[`a${alle[1]}`]); }); delete pf.adresseBk; }
     const m = /^boenheter\.(\d+)\.bkId$/.exec(felt);
@@ -115,7 +98,7 @@ STEG.boligkvaliteter = {
     return `
       ${a ? blokkKvalitetskrav(pf) : ''}
       ${B.visB(pf) ? blokkEnergikarakter(pf) : ''}
-      ${c ? blokkMiljo(pf) : ''}
+      ${c ? blokkKlima(pf) : ''}
       ${d ? S.alleValgteBygg(pf).map(({ e, b }) => `
         <h2 class="e-h2 e-mt">${eEsc(S.byggNavn(b))}</h2>
         ${S.valgteAdresser(b).map(adr => adresseBlokk(pf, e, b, adr)).join('')}`).join('') : ''}
@@ -142,17 +125,12 @@ STEG.boligkvaliteter = {
       if (!pf.energikarakterEtter) feil('energikarakterEtter', 'Du må legge inn energikarakter');
     }
     if (B.visC(pf)) {
-      const m = pf.miljoboliger; const l = pf.livslopsboliger;
-      if (m == null && l == null) feil('miljoboliger', 'Du må svare på om prosjektet følger krav for miljøboliger og livsløpsboliger');
-      else if (m === false && l === false) feil('miljoboliger', "Du må velge 'Ja' for minst 1 av kravene om miljøboliger og livsløpsboliger");
-      else if (m == null) feil('miljoboliger', 'Miljøboliger må fylles ut');
-      else if (l == null) feil('livslopsboliger', 'Livsløpsbolig må fylles ut');
-      if (m === true) {
-        if (!pf.miljoKrav) feil('miljoKrav', 'Miljøkrav må fylles ut');
-        if (pf.miljoKrav === 'BREEAM_NOR' && !pf.breeam) feil('breeam', 'Breeam må fylles ut');
-        if (pf.miljoKrav === 'TRE_AV_FEM' && (pf.miljokriterier || []).length < 3) feil('miljokriterier', 'Du må velge minst 3 miljøkriterier');
-        if ((pf.miljokriterier || []).includes('MILJOKRITERIER_FLEKSIBEL_PLANLOSNING') && pf.miljoKrav === 'TRE_AV_FEM' && !pf.fleksibelType) feil('fleksibelType', 'Fleksibel planløsningstype må fylles ut');
-      }
+      const k = pf.klima || {};
+      if (V.tom(k.btaTotalt)) feil('klima.btaTotalt', 'Du må skrive totalt BTA for prosjektet.');
+      else if (!V.heltall(k.btaTotalt) || eNum(k.btaTotalt) < 1) feil('klima.btaTotalt', 'BTA kan bare være tall, for eksempel 1200.');
+      if (V.tom(k.co2)) feil('klima.co2', 'Du må skrive antatt kg CO₂-ekv./m² BTA for prosjektet.');
+      else if (!V.heltall(k.co2)) feil('klima.co2', 'Klimagassavtrykket kan bare være tall, for eksempel 150.');
+      if (k.oppvarmetKjeller == null) feil('klima.oppvarmetKjeller', 'Du må svare på om kjelleren vil være oppvarmet.');
     }
     if (!B.visD(pf)) return f;
 
@@ -320,22 +298,37 @@ function blokkEnergikarakter(pf) {
     ${F.radio({ felt: 'energikarakterEtter', label: `Energikarakter <b>etter</b> ${t}`, rad: true, valg })}` });
 }
 
-function blokkMiljo(pf) {
-  const fleks = F.radio({ felt: 'fleksibelType', label: '<span class="e-sr">Type fleksibel planløsning</span>', valg: [
-    { v: 'MILJOKRITERIER_FLEKSIBEL_PLANLOSNING_MINST_ETT_ROM_I_TO', l: 'Minst ett rom skal utformes slik at det kan deles i to' },
-    { v: 'MILJOKRITERIER_FLEKSIBEL_PLANLOSNING_TO_ROM_TIL_ETT', l: 'To rom kan slås sammen' },
-    { v: 'MILJOKRITERIER_FLEKSIBEL_PLANLOSNING_MULIG_HYBEL', l: 'Det er mulig å etablere en hybel der det er lagt til rette for eget bad og kjøkkenløsning' }] });
+const BTA_HJELP = 'BTA betyr bruttoareal. Det er hele arealet i prosjektet, målt til utsiden av ytterveggene, i alle etasjer. Kjeller og loft regnes med, og det samme gjør arealet veggene tar opp. En garasje, bod eller et anneks som står for seg selv, regnes ikke med.';
+const CO2_ENHET = 'kg CO₂-ekv./m² BTA';
+const co2Grense = pf => ((pf.klima || {}).oppvarmetKjeller === true ? 232 : 179);
+
+/* Et tallfelt med enheten til høyre, som i lånesøknaden */
+function tallMedEnhet({ felt, label, enhet, hjelp }) {
+  const id = F.id(felt);
+  return `<div class="e-felt${F.harFeil(felt) ? ' e-felt--feil' : ''}" data-feltboks="${felt}">
+    <div class="e-felt__labelrad"><label class="e-felt__label" for="${id}">${label}</label>${hjelp ? F.hjelpKnapp(felt) : ''}</div>
+    ${hjelp ? F.hjelpTekst(felt, hjelp) : ''}
+    <div class="e-enhet"><input class="e-input e-input--s" id="${id}" inputmode="numeric" data-felt="${felt}" data-type="tekst" value="${eEsc(F.hent(felt) ?? '')}" aria-describedby="${id}-feil"><span class="e-enhet__tekst">${enhet}</span></div>
+    ${F.feilHtml(felt)}
+  </div>`;
+}
+
+function blokkKlima(pf) {
+  const kjeller = (pf.klima || {}).oppvarmetKjeller;
   return `<div class="e-avsnitt">
-    ${F.janei({ felt: 'miljoboliger', label: 'Følger prosjektet krav for miljøboliger?', hjelp: MILJO_HJELP })}
-    ${pf.miljoboliger ? `<div style="margin:-var(--space-2) 0 var(--space-5)">
-      ${F.radio({ felt: 'miljoKrav', label: 'Hvilke krav til miljøvenlige boliger oppfyller prosjektet?', valg: [
-        { v: 'SVANEMERKE', l: 'Bygget vil oppfylle kravene til Svanemerke-sertifikat.', hjelp: '<a href="https://www.svanemerket.no/" target="_blank" rel="noopener">Les mer om kravene til Svanemerket-sertifikat. (åpner i ny fane)</a>' },
-        { v: 'BREEAM_NOR', l: 'Bygget vil oppfylle kravene til BREEAM-NOR-sertifikat', hjelp: '<a href="https://byggalliansen.no/sertifisering/breeam/" target="_blank" rel="noopener">Les mer om kravene til de forskjellige klassifiseringene for BREEAM-NOR. (åpner i ny fane)</a>',
-          under: F.radio({ felt: 'breeam', label: '<span class="e-sr">BREEAM-NOR-klassifisering</span>', valg: [{ v: 'BREEAM_VERY_GOOD', l: 'Very Good' }, { v: 'BREEAM_EXCELLENT', l: 'Excellent' }, { v: 'BREEAM_OUTSTANDING', l: 'Outstanding' }] }) },
-        { v: 'TRE_AV_FEM', l: 'Prosjektet må oppfylle 3 av 5 miljøkriterier.', hjelp: 'Som et alternativ til Svanemerket- eller BREEAM-NOR-sertifikat kan prosjektet velge å oppfylle 3 av 5 utvalgte miljøkriterier. Les Husbankens veileder for mer informasjon.',
-          under: F.avkryss({ felt: 'miljokriterier', label: '<span class="e-sr">Miljøkriterier</span>', valg: MILJOKRITERIER.map(k => (k.v === 'MILJOKRITERIER_FLEKSIBEL_PLANLOSNING' ? { ...k, under: fleks } : k)) }) }
-      ] })}</div>` : ''}
-    ${F.janei({ felt: 'livslopsboliger', label: 'Følger prosjektet krav for livsløpsboliger?', hjelp: MILJO_HJELP })}
+    ${tallMedEnhet({ felt: 'klima.btaTotalt', label: 'Hva er totalt BTA på hele prosjektet?', enhet: 'm² BTA', hjelp: BTA_HJELP })}
+    ${tallMedEnhet({ felt: 'klima.co2', label: 'Hva er antatt kg CO₂-ekv./m² BTA for prosjektet?', enhet: CO2_ENHET })}
+    ${F.lesmer('co2-forklaring', 'Dette er kg CO₂-ekv./m² BTA', `
+      <p>Tallet viser hvor store klimagassutslipp prosjektet gir, fordelt på hver kvadratmeter.</p>
+      <ul>
+        <li><b>kg CO₂-ekv.</b> betyr kilo CO₂-ekvivalenter. Alle klimagassene regnes om til den mengden CO₂ som gir samme effekt på klimaet, så de kan legges sammen.</li>
+        <li><b>m² BTA</b> er bruttoarealet til prosjektet, det samme arealet dere oppgir over.</li>
+      </ul>
+      <p class="e-mb0">Slik regnes det ut:</p>
+      <p class="e-fet">Samlede klimagassutslipp i kg CO₂-ekv. ÷ BTA i m²</p>
+      <p>For eksempel gir 150 000 kg CO₂-ekv. for et prosjekt på 1 000 m² BTA et klimagassavtrykk på 150 kg CO₂-ekv./m² BTA.</p>
+      <p>Dere finner tallet i klimagassbudsjettet for prosjektet, som er laget etter NS 3720:2018. For å få lånet må tallet være ${co2Grense(pf)} eller lavere${kjeller === true ? ', siden kjelleren skal være oppvarmet' : kjeller === false ? ', siden kjelleren ikke skal være oppvarmet' : ''}.</p>`)}
+    ${F.janei({ felt: 'klima.oppvarmetKjeller', label: 'Vil kjelleren være oppvarmet?', rad: false })}
   </div>`;
 }
 

@@ -74,6 +74,20 @@ F.janei({ felt: 'sentralGodkjenning', label: 'Har foretaket sentral godkjenning?
 Feilene vises når brukeren har trykket «Neste steg», og «Neste steg» går
 bare videre når steget er uten feil, som i dag.
 
+## Endret fra dagens løsning
+
+Prototypen er ikke lenger en ren kopi. Disse endringene er gjort med vilje:
+
+- **«Velg formål»** på «Opprett søknad» når tiltaket er oppføring: Klimavennlig
+  bolig eller Livsløpsstandard. Livsløpsstandard gir livsløpskolonnene i
+  boligtabellen, som før fulgte svaret på Bolig-steget.
+- **Bolig-steget** spør ikke lenger om kravene til miljøboliger og
+  livsløpsboliger. I stedet spør det om totalt BTA for hele prosjektet, antatt
+  kg CO₂-ekv./m² BTA med en forklaring under, og om kjelleren vil være
+  oppvarmet. Det gjelder oppføring og ombygging uten avtale med kommunen, der
+  de gamle spørsmålene sto.
+- **Klimabudsjett** er et nytt vedlegg i de samme tilfellene.
+
 ## Avvik fra dagens løsning
 
 - Tilskudd til utleieboliger regnes ut med faste testsatser: 4 000 kroner per

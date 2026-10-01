@@ -498,3 +498,15 @@ a.e-stepper__lenke .e-stepper__tekst { text-decoration: underline; text-underlin
 .e-footer__versjon { font-size: var(--text-xs); color: rgb(190, 198, 204); margin-top: var(--space-2); }
 
 abbr[title="kroner"] { text-decoration: none; }
+
+/* Les mer, som i lånesøknaden */
+.e-lesmer { margin: 0 0 var(--space-5) calc(-1 * var(--space-2)); }
+.e-lesmer__knapp {
+  display: inline-flex; align-items: center; gap: var(--space-2); background: transparent; border: 0; border-radius: 8px;
+  padding: var(--space-2); font: 500 var(--text-base)/1.5 var(--font-sans); color: var(--e-lenke); cursor: pointer; text-align: left;
+}
+.e-lesmer__knapp:hover { background: var(--e-info); }
+.e-lesmer__knapp svg { flex: 0 0 auto; transition: transform var(--duration-fast) var(--ease-out); }
+.e-lesmer__knapp[aria-expanded="true"] svg { transform: rotate(180deg); }
+.e-lesmer__innhold { margin: var(--space-2) 0 0 var(--space-2); padding-left: var(--space-3); border-left: 3px solid rgb(229, 229, 229); }
+.e-lesmer__innhold > :last-child { margin-bottom: 0; }

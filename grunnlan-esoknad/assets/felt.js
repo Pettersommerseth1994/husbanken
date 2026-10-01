@@ -180,6 +180,16 @@ F.sjekk = ({ felt, label, nokkel = felt }) => `
 /* Lesevisning: etikett over verdi */
 F.les = (label, verdi) => `<div class="e-felt"><span class="e-felt__label">${label}</span><p class="e-felt__verdi">${verdi}</p></div>`;
 
+/* «Les mer»: en lenkeknapp med pil som åpner en forklaring under.
+   Bruker samme mekanisme som hjelpetekstene, så den husker om den er åpen. */
+F.lesmer = (nokkel, tittel, html) => {
+  const apen = F.apneHjelp.has(nokkel);
+  return `<div class="e-lesmer">
+    <button type="button" class="e-lesmer__knapp" data-hjelp="${eEsc(nokkel)}" aria-expanded="${apen}" aria-controls="${F.id(`h-${nokkel}`)}">${E_IKON.pilNed}<span>${tittel}</span></button>
+    <div class="e-lesmer__innhold" id="${F.id(`h-${nokkel}`)}"${apen ? '' : ' hidden'}>${html}</div>
+  </div>`;
+};
+
 /* Trekkspill som husker om det er lukket */
 F.trekkspill = ({ nokkel, tittel, kropp, klasse = '' }) => {
   const apen = !F.lukket.has(nokkel);

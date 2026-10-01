@@ -12,6 +12,7 @@ S.TILTAK = {
   KJOP: { valg: 'Kjøpe boliger', kort: 'Kjøp', produkt: 'Lån til kjøp' },
   OMBYGGING: { valg: 'Gjøre om bygg til boligformål (ombygging)', kort: 'Ombygging', produkt: 'Lån til ombygging' }
 };
+S.LANEFORMAL = { KLIMAVENNLIG: 'Klimavennlig bolig', LIVSLOPSSTANDARD: 'Livsløpsstandard' };
 S.PRODUKTNAVN = { OPPFORING: 'Lån til oppføring', KJOP: 'Lån til kjøp', OMBYGGING: 'Lån til ombygging', OPPGRADERING: 'Lån til oppgradering', TILSKUDDUTLEIE: 'Tilskudd til utleieboliger' };
 S.VIRKEMIDDEL = { GRUNNLAN: 'Lån', TILSKUDDUTLEIE: 'Tilskudd' };
 
@@ -31,6 +32,9 @@ S.kanLeggeTilBoliger = pf => !!pf.prosjektTiltakKode && !S.er(pf, 'KJOP');
 /* Kvalitetskrav og boligkonfigurasjoner gjelder ikke når det er avtale med kommunen */
 S.visBK = pf => !S.harAvtale(pf) || (S.er(pf, 'OPPFORING') && S.salg(pf));
 S.boligsosialt = pf => S.harAvtale(pf);
+/* Totalt BTA, klimagassavtrykk og kjeller spørres om der miljø- og
+   livsløpskravene sto før: oppføring og ombygging uten avtale med kommunen. */
+S.visKlima = pf => S.oppfOmb(pf) && S.visBK(pf);
 S.visPrimaer = pf => S.produkt(pf, 'TILSKUDDUTLEIE');
 S.virkemidler = pf => [S.lanProdukt(pf) && 'GRUNNLAN', S.produkt(pf, 'TILSKUDDUTLEIE') && 'TILSKUDDUTLEIE'].filter(Boolean);
 S.lantakerOrg = pf => (pf.sokerErLantaker !== false ? pf.soker : pf.lantaker) || null;
@@ -170,6 +174,7 @@ S.VEDLEGG = [
     regel: pf => !S.salg(pf) && eNum(S.okonomi(pf).andrelan) > 0 },
   { id: 'DOKUMENTASJONTILSKUDDANDRE_VEDLEGG', tittel: 'Dokumentasjon på tilskudd fra andre', hjelp: 'Skriftlig beskrivelse av tilskudd.',
     regel: pf => !S.salg(pf) && eNum(S.okonomi(pf).andreTilskudd) > 0 },
+  { id: 'KLIMABUDSJETT_VEDLEGG', tittel: 'Klimabudsjett', hjelp: 'Klimabudsjettet må være laget etter NS 3720:2018.', regel: pf => S.visKlima(pf) },
   { id: 'FASADETEGNINGER_VEDLEGG', tittel: 'Fasadetegninger', hjelp: 'Fasadetegningen må ha angitt målestokk.', regel: pf => S.er(pf, 'OPPFORING', 'OPPGRADERING', 'OMBYGGING') },
   { id: 'FASADETEGNINGERFORTILTAKET_VEDLEGG', tittel: 'Fasadetegninger før tiltaket', hjelp: 'Fasadetegningen må ha angitt målestokk, og skal vise situasjonen før planlagt endring.', regel: pf => S.er(pf, 'OPPGRADERING', 'OMBYGGING') },
   { id: 'FESTEKONTRAKT_VEDLEGG', tittel: 'Festekontrakt', regel: pf => S.alleValgteBygg(pf).some(({ e }) => eNum(e.festeNr) > 0) },
@@ -247,7 +252,8 @@ function eEksempelsoknader(t) {
     eiendommer: [{ id: id(), kommuneNr: '3301', gaardsNr: '112', bruksNr: '9', festeNr: '0', seksjonsNr: '0', fraMatrikkelen: true, bygg: [
       { id: id(), navn: 'Havnelageret', fraMatrikkelen: false, visForValgtTiltak: true, bygningstypeProsjektert: 'Stort frittliggende boligbygg på 3 og 4 etasjer',
         adresserFraMatrikkelen: [], adresser: [{ id: a1, veiNavn: 'Havnegata', veiNummer: '20', veiBokstav: 'A', enabled: true }, { id: a2, veiNavn: 'Havnegata', veiNummer: '20', veiBokstav: 'B', enabled: true }] }] }],
-    boenheter: [], boligkonfigurasjoner: [], miljoboliger: true, miljoKrav: 'SVANEMERKE', livslopsboliger: false,
+    boenheter: [], boligkonfigurasjoner: [], laneformal: 'KLIMAVENNLIG', miljoboliger: true, livslopsboliger: false,
+    klima: { btaTotalt: '1850', co2: '165', oppvarmetKjeller: false },
     okonomi: { byggekostnader: 38500000, tomtekostnader: 4200000, omsetningsverdi: 46000000, gjeld: 0, grunnlan: 36000000, egenkapital: 6700000, lanType: 'ANNUITETSLAN', avdragsfriPeriode: '2', nedbetalingsPeriode: '40' },
     vedlegg: [], kundeskjema: 'ok', besokt: S.STEG.map(s => s.path)
   };
@@ -262,7 +268,7 @@ function eEksempelsoknader(t) {
   const pabegynt = {
     id: id(), navn: 'Solsiden rekkehus', status: 'UFERDIG', hilsStatus: 'UKJENT', opprettet: dagerSiden(90),
     sistEndretDato: dagerSiden(85), sistEndretAv: E_BRUKER,
-    prosjektTiltakKode: 'OPPFORING', formalKode: 'SALG', finansieringsProdukter: ['OPPFORING'],
+    prosjektTiltakKode: 'OPPFORING', laneformal: 'LIVSLOPSSTANDARD', livslopsboliger: true, miljoboliger: false, formalKode: 'SALG', finansieringsProdukter: ['OPPFORING'],
     soker, eiendommer: [], boenheter: [], okonomi: {}, vedlegg: [], besokt: ['prosjektinformasjon', 'eiendomsopplysninger'],
     oppstart: neste(3), ferdig: neste(18), kjop: true, omsattApentMarked: true, sentralGodkjenning: false,
     naerstaendeArbeid: false, naerstaendeSelger: false, forbildeprosjekt: false,

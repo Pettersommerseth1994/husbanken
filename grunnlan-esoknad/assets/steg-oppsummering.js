@@ -109,7 +109,7 @@ function kortFormal(pf) {
   const org = E_FORETAK.find(f => f.orgnr === pf.soker.orgNr) || {};
   const k = pf.kontaktinformasjon || {};
   return OP.kort(pf, { tittel: 'Formål', ikon: 'personer', kropp: `
-    <dl class="e-dl">${OP.rad('Type prosjekt', S.TILTAK[pf.prosjektTiltakKode].valg)}</dl>
+    <dl class="e-dl">${OP.rad('Type prosjekt', S.TILTAK[pf.prosjektTiltakKode].valg)}${OP.rad('Formål', S.LANEFORMAL[pf.laneformal])}</dl>
     <h3 class="e-h3">Prosjekteiers navn og kontaktinfo</h3>
     <dl class="e-dl">${OP.rad('Foretaksnavn', eEsc(pf.soker.orgNavn))}${OP.rad('Org.nr.', eOrgnr(pf.soker.orgNr))}
       ${OP.rad('Kontaktadresse', org.gateadresse ? `${eEsc(org.gateadresse)}, ${org.postnr} ${eEsc(org.poststed)}` : '')}
@@ -200,11 +200,9 @@ function kortBoenheter(pf) {
   }).join('');
   const sum = k => alle.reduce((s, x) => s + eNum(x.fo[k]), 0);
   const med = alle.filter(x => !S.utmalingsvarsel(pf, x.b, x.adr, x.fo)).length;
-  const miljo = pf.miljoboliger && S.visBK(pf) && a ? `<p class="e-fet e-mb0">Miljøboligkvaliteter for prosjektet</p><ul>${[
-    pf.miljoKrav === 'SVANEMERKE' && 'Bygget vil oppfylle kravene til Svanemerke-sertifikat.',
-    pf.miljoKrav === 'BREEAM_NOR' && `Bygget vil oppfylle kravene til BREEAM-NOR-sertifikat (${{ BREEAM_VERY_GOOD: 'Very Good', BREEAM_EXCELLENT: 'Excellent', BREEAM_OUTSTANDING: 'Outstanding' }[pf.breeam] || ''})`,
-    ...(pf.miljoKrav === 'TRE_AV_FEM' ? (pf.miljokriterier || []).map(v => (MILJOKRITERIER.find(k => k.v === v) || {}).l) : [])
-  ].filter(Boolean).map(t => `<li>${t}</li>`).join('')}</ul>` : '';
+  const k = pf.klima || {};
+  const miljo = S.visKlima(pf) ? `<dl class="e-dl">${OP.rad('Totalt BTA på hele prosjektet', k.btaTotalt ? `${eTusen(k.btaTotalt)} m² BTA` : null)}
+    ${OP.rad('Antatt klimagassavtrykk', k.co2 ? `${eEsc(k.co2)} kg CO₂-ekv./m² BTA` : null)}${OP.rad('Vil kjelleren være oppvarmet?', OP.jaNei(k.oppvarmetKjeller))}</dl>` : '';
   const kvalitetskrav = !a && S.visBK(pf) && B.kvalitetsBk(pf).length ? `<h3 class="e-h3">Kvalitetskrav</h3>
     <table class="e-tabell" style="margin-bottom:var(--space-5)"><thead><tr><th>Navn</th><th>Energi og Miljø</th><th>Universell utforming</th></tr></thead><tbody>
     ${B.kvalitetsBk(pf).map(k => `<tr><td>${eEsc(k.navn)}</td><td>${k.koder.map(kvalitet).filter(x => x && x.kat === 'EM').map(x => x.navn).join(', ')}</td><td>${k.koder.map(kvalitet).filter(x => x && x.kat === 'UU').map(x => x.navn).join(', ')}</td></tr>`).join('')}</tbody></table>` : '';
