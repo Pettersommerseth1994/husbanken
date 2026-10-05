@@ -21,7 +21,8 @@ skrifter og skript med relative stier.
 | --- | --- |
 | `index.html` | Husbankens forside for privatpersoner. Ordningen ligger som eget felt over tjenestekortene. |
 | `tilskudd.html` | Informasjonssiden: kalkulator, tre eksempelcase, hvem som kan få, de seks oppgraderingene, steg for steg, spørsmål og svar. |
-| `boligkompasset.html` | Boligkompasset: kartlegging av egen bolig i to varianter, og oppsummering med prioriterte tiltak. Krever ikke innlogging. |
+| `boligkompasset.html` | Boligkompasset: kartlegging av egen bolig, og oppsummering med prioriterte tiltak. Krever ikke innlogging. Bygget med Fasaden. |
+| `boligkompasset-papir.html` | Papirutgaven av Boligkompasset, som PDF i `assets/pdf/boligkompasset-papirutgave.pdf`. |
 | `logg-inn.html` | BankID med dummydata, i tre skjermbilder. |
 | `soknad-start.html` | Introsiden til søknaden, bygget etter skjermbildet fra Husbanken. |
 | `soknad.html` | Søknaden i seks steg. |
@@ -299,20 +300,43 @@ hele tiden.
 
 ### Hvor innholdet kommer fra
 
-Spørsmålene på **dag 1** er hentet fra kolonnene «Forslag spørsmål», «Forslag
-svaralternativer» og «Forslag veiledningstekst» i
-`Arbeidsdokument gruppe4_workshop_Boligkompasset.xlsx`, arket «Spørsmål, svar og
-veiledning». De sju spørsmålene med status «Fjern» er tatt ut, og spørsmål 1 og
-2 er slått sammen, slik merknaden i kolonne K ber om.
+Steg, spørsmål, hjelpetekster og svaralternativer er hentet fra
+`MASTERFIL - Boligkompasset justert.xlsx`. Arket har fire faner, én per steg,
+og tolv spørsmål. Overskriften i A1 er stegets navn, uten «STEG n:» og uten
+store bokstaver, og B1 er ingressen. Under står hvert spørsmål med
+hjelpeteksten og svarene.
 
-**Dag 2**, altså bad og økonomi, står som i studentenes prototype. Der finnes det
-ennå ingen omskriving å følge, og de radene har status «Avklar».
+Noen ting fra arket er tolket, og bør bekreftes:
+
+* **1a og 1b står på samme side**, slik fane 1 sier. Sida har fått
+  overskriften «Eier eller leier du, og hvordan bor du?», og fellesteksten
+  «Eieform og boligtype avgjør …» står under. Ingen av de to flytter nåla,
+  slik arket ber om.
+* **10a og 11a står på hver sin side.** Det står ingen «Ny side» mellom dem i
+  fane 4, men det gjør det mellom alle de andre spørsmålene. Da blir telleren
+  «Spørsmål 1 av 12» til «12 av 12».
+* **De betingede spørsmålene.** 5b «Hvor ligger toalettet?» vises når 5a er
+  besvart uten kryss for toalett. I 6a vises «Baderomsdøren slår innover» bare
+  når «Jeg har et lite bad» er krysset av, de to om dusj bare når det er dusj i
+  5a, og den om badekar bare når det er badekar. «Usikker» utelukker de andre.
+  Merknaden «manglende avkrysning i 3a kan gi betinget videre» har ingen
+  oppfølging i arket ennå, så den er ikke lagt inn.
+* **Merknadene til designerne er ikke vist.** «Bruk av bildeeksempler av
+  ulike …» står i tre av hjelpetekstene. Det er en beskjed til oss, ikke tekst
+  til brukeren. Bildene finnes ikke ennå.
+* **Tre små rettelser i teksten.** «det har det blitt tyngre» er blitt «det
+  har blitt tyngre» i 2a. I ingressen til steg 4 er «hvordan din tilgang det du
+  trenger» skrevet om til «hvordan du vil få tilgang til det du trenger», og
+  «utfordrende om når du blir eldre» til «utfordrende når du blir eldre».
+
+Poengene som flytter nåla, og anbefalingene, står ikke i masterfila. De er
+satt i `hb-kompass-data.js`, etter de samme reglene som før.
 
 Anbefalingene, tiltakskodene `(1a)`–`(5f)` og støtteordningene er hentet fra
-arkene «Handlingsplan» og «Eksempler på tiltak» i samme arbeidsdokument.
-Prioriteringen mellom dem følger setningen fra innsiktsarbeidet 2025: er
-inngangspartiet vanskelig å gjøre tilgjengelig, hjelper det lite hva som er
-gjort inne.
+arkene «Handlingsplan» og «Eksempler på tiltak» i arbeidsdokumentet fra
+workshopen. Prioriteringen mellom dem følger setningen fra innsiktsarbeidet
+2025: er inngangspartiet vanskelig å gjøre tilgjengelig, hjelper det lite hva
+som er gjort inne.
 
 Boligkompasset henger ikke sammen med tilskuddet til aldersvennlig oppgradering.
 Kartleggingen ser på boligen, og tilskuddet er én av flere ordninger som kan
@@ -320,100 +344,68 @@ være aktuelle når man vet hva man vil gjøre. Teksten skal derfor ikke ramme
 tiltakene inn som «det tilskuddet dekker», og beløpsgrensene i ordningen hører
 hjemme på tilskuddssiden, ikke her.
 
-Skjermbildene, tekstene og komponentbruken er hentet ut av Figma-filen
-`Vedlegg/Design/Detaljert-design.fig`.
+### Fasaden, Husbankens designsystem
 
-Spørsmålet om helse er nytt. Det kom som punkt i designkritikken 21. september,
-og er formulert om funksjon i hverdagen, ikke om diagnose. Det kan hoppes over.
+Boligkompasset er bygget med Fasaden, Husbankens eget designsystem
+(`felles-rammeverk-designsystem`, versjon 26.0.1). Før brukte det
+Designsystemet.no i Husbankens farger. De filene er tatt ut.
 
-### Designsystemet.no i Husbankens farger
+Fasaden er skrevet i SCSS, og pakkene ligger i Husbankens interne
+npm-register. `verktoy/bygg-fasaden.py` bygger CSS-en fra kildekoden i
+Fasaden-repoet med Dart Sass:
 
-Boligkompasset bruker komponentene fra [Designsystemet.no][ds], Digdirs
-designsystem for offentlig sektor, i Husbankens palett. Resten av prototypen
-står på `hb-app.css` som før.
-
-[ds]: https://designsystemet.no
-
-Grunnen til å kunne gjøre det er at Digdirs komponent-CSS ikke inneholder én
-eneste farge. Den leser bare `--ds-color-*`. Da kan paletten byttes uten at noe
-i komponentfilene røres.
+```
+python3 verktoy/bygg-fasaden.py <fasaden-repo> <sass>
+```
 
 | Fil | Hva den er |
 | --- | --- |
-| `ds-no/designsystemet-komponenter.css` | `@digdir/designsystemet-css` 1.23.0, uendret. Ingen farger, bare form |
-| `ds-no/designsystemet-tema.css` | Digdirs tema: størrelser, typeskala, radier, skygger. Uendret |
-| `ds-no/husbanken-farger.css` | Generert. Setter `--ds-color-*` til Husbankens palett |
-| `ds-no/boligkompasset-stiler.css` | Lagrekkefølgen, se under |
-| `verktoy/lag-hb-tema.py` | Generatoren for fargefila |
+| `fasaden/fasaden.css` | Fasadens `esoknad.scss`, bygget. Ikke rediger for hånd |
+| `fasaden/boligkompasset-stiler.css` | Lagrekkefølgen for Boligkompasset |
+| `fasaden/papir-stiler.css` | Stilene for papirutgaven |
+| `verktoy/bygg-fasaden.py` | Bygger `fasaden.css` |
 
-Pakka er MIT-lisensiert, og `ds-no/LICENSE` ligger ved.
+To ting skjer i byggingen som er verdt å vite om:
 
-**Fargene.** Digdirs egen generator er et npm-verktøy, og her finnes ingen node.
-`lag-hb-tema.py` gjør jobben på en annen måte: for hvert av de 16 semantiske
-trinnene leses hvor lyst Digdir har lagt det, og Husbanken-fargen på samme
-lyshet settes inn. Da beholder komponentene kontrastforholdene de er tegnet
-for. 65 av 112 trinn er Husbankens egne farger uendret. De 47 andre er avledet,
-fordi paletten ikke har en farge på akkurat den lysheten; de står i samme kulør,
-og hver linje i fila sier hvilken. Alle 49 kontrastkravene er kontrollert.
+* **Alt ligger under `.fasaden`.** Fasaden og det felles skallet i
+  `hb-app.css` bruker begge prefikset `hb-`, og `.hb-footer`, `.hb-card`,
+  `.hb-label` og flere finnes i begge. Med `.fasaden` rundt treffer Fasaden
+  bare innholdet i Boligkompasset. Toppen og bunnen, som deles med de andre
+  prosjektene, ser ut som før.
+* **rem er regnet om.** Fasaden setter roten til 62,5 %, så 1rem blir 10 px.
+  Det ville gjort alt annet på sida mindre. Byggeskriptet regner om fra 10 til
+  16 px, så størrelsene blir de samme som i Fasaden.
 
-Der Husbanken selv har bestemt fargen, overstyrer det lyshetssøket. `accent` er
-blå, som resten av prototypen: `--action-primary` blir `accent-base-default`,
-`--fg-link` blir `accent-text-subtle`. Grønn ligger på `brand1` og brukes til
-merkefargen, kompasset og callouts. Husbanken har ingen gul, så `warning`
-beholder Digdirs.
-
-**Lagrekkefølgen** er verdt et avsnitt, for den var ikke åpenbar. Digdirs CSS
-ligger i `@layer`, og ulagde regler slår lagde uansett spesifisitet. De nakne
-`h1`-`h4`-reglene i `hb-app.css` vant derfor over `.ds-heading`, og `data-size`
-ble stående uten virkning. `boligkompasset-stiler.css` importerer alt gjennom
-ett stilark og sier rekkefølgen rett ut:
-
-```
-hb-grunnlag → ds.theme → ds.base → ds.components → hb-farger → hb-kompass
-```
-
-Navnene er flate med vilje. Skriver man `hb.grunnlag` og `hb.farger`, blir begge
-undernivåer av det samme `hb`-laget, og et lag rangeres der forelderen står. Da
-havner `hb.farger` foran `ds`, og Digdirs farger vinner likevel.
+Lagrekkefølgen er `hb-grunnlag → fasaden → hb-kompass`. Fasaden står etter
+grunnlaget, så de nakne `h1`- og `p`-reglene i `hb-app.css` ikke slår Fasadens
+typografi.
 
 **Komponentene som ble byttet:**
 
-| Før | Nå |
+| Designsystemet.no | Fasaden |
 | --- | --- |
-| `hb-btn` med varianter | `ds-button`, `data-variant`, `data-size="lg"` |
-| `hb-choice` | `ds-field` med `data-variant="outline"`, gruppert i `ds-fieldset` |
-| `hb-note` | `ds-alert` |
-| `hb-panel`, `hb-card` | `ds-card`, `data-variant="tinted"` |
-| `hb-h2`–`hb-h4` | `ds-heading` med `data-size` |
-| `hb-small` | `ds-paragraph` med `data-size="sm"` |
+| `ds-button` | `hb-button` med `--prominent`, `--standard`, `--subtle` eller `--link`, og `--l` |
+| `ds-field` og `ds-fieldset` | `hb-felt`, `hb-feltliste`, `hb-radiobutton` og `hb-checkbox`, som felt-radio og felt-checkboxgruppe |
+| `ds-alert` | `hb-callout hb-callout--info` |
+| `ds-card` | `hb-card`, `hb-panel` |
+| `ds-heading` | `hb-h1`–`hb-h4`, med `hb-h1-overtittel` |
+| `ds-paragraph` | `hb-text--sm`, `hb-text--ingress`, `hb-felt-beskrivelse` |
+| Egen framdriftslinje | `hb-progress-stepper` for stegene og `hb-progress-bar` for spørsmålene |
 
-`data-size="lg"` overalt, fordi Husbankens egen knapp var 56 piksler høy for
-målgruppa over 60. Det er systemets egen måte å be om den høyden på, og målt
-blir den 55.
+Hjelpeteksten til hvert spørsmål står framme som `hb-felt-beskrivelse`, ikke
+bak Fasadens spørsmålstegn i `hb-hjelpetekst`. Teksten er lang, og
+designkritikken var tydelig på at det som er gjemt bak et trykk, ikke blir lest.
 
-`hb-shell`, `hb-section`, `hb-cardgrid` og `hb-muted` står igjen. Det er
-oppsett og hjelpeklasser, ikke komponenter, og Designsystemet har ikke noe som
-svarer til dem. Det samme gjelder alt som heter `kp-`: kompassrosa, sidefanene
+`hb-shell`, `hb-section` og `hb-summary` står igjen fra `hb-app.css`. Det er
+oppsett, ikke komponenter. Det samme gjelder alt som heter `kp-`: kompassrosa
 og handlingsplanen finnes ikke i noe designsystem.
-
-Svarrutene ligger i `ds-fieldset`, Designsystemets beholder for en gruppe
-felter. Den har ingen ramme, bare 16 piksler luft mellom barna. Uten den står
-rutene helt inntil hverandre og to nabobokser leses som én ramme.
-
-Valgt svar markeres med blå, tykkere ramme, ikke med fyll. Det er `outline`-
-variantens eget uttrykk. Den mørke ringen som av og til ligger utenpå, er
-tastaturfokus, og den er Husbankens `slate-700`.
-
-Designsystemets `data-clickdelegatefor` gjør hele svarruta til trykkflate.
-Selve delegeringen ligger i React-pakka deres, som prototypen ikke bruker, så
-`kpKlikkDelegering` i `hb-kompass.js` gjør det i stedet.
 
 ### Antall spørsmål
 
 | | Før | Nå |
 | --- | --- | --- |
-| Spørsmål | 26 | 17 |
-| Kategorier | 7 | 4 steg |
+| Spørsmål | 17 | 12 |
+| Steg | 4 | 4 |
 
 ### Kompasset
 
@@ -435,9 +427,10 @@ feltet mellom dem, pluss «Delt kurs» når nåla står nær midten.
 
 To regler overstyrer regnestykket, begge hentet fra innsiktsarbeidet:
 
-* Er adkomsten stengt, altså «veldig vanskelig» eller mer enn seks trinn, kan
-  ikke et godt bad dra kursen nordover.
-* Er nærmiljøet tomt og du ikke kommer deg noe sted, hjelper ingen ombygging.
+* Er det veldig vanskelig å komme seg inn i boligen, kan ikke et godt bad dra
+  kursen nordover.
+* Har du sterkt begrenset tilgang til service og tjenester, og ingen som kan
+  hjelpe deg, hjelper ingen ombygging.
 
 ### Stegene
 
@@ -449,29 +442,26 @@ begynner med det som er nærmest, og beveger seg utover.
 | 1 | Deg og boligen din |
 | 2 | Inne i boligen din |
 | 3 | Veien inn til boligen din |
-| 4 | Nærmiljøet ditt |
+| 4 | Utenfor boligen din |
 
-Steget om økonomi er borte. De fire spørsmålene om eiendom, lån, sparepenger og
-månedlig betjening er byttet med ett spørsmål sist i steg 1: hvor mye man
-ønsker å investere i en oppgradering. Det er lettere å svare på, det er mindre
-personvernfølsomt, og det gjør den samme jobben, nemlig å velge hvilke tiltak
-og ordninger vi viser fram.
+Spørsmålet om hvor mye man ønsker å investere, er tatt ut sammen med resten
+av spørsmålene som ikke står i masterfila. Oppsummeringen viser derfor alle
+ordningene ved hvert tiltak.
 
-Overskriftene på sidene mellom stegene har fått overtittel. Der det før stod
-«Deg og boligen din: slik ser det ut» i én linje, står nå «Slik ser det ut» i
-grønt over «Deg og boligen din». Navnet på steget er det man leter etter, og da
-skal det ikke ligge foran et kolon. Overtittelen ligger inni `<h1>`-en som et
-`<span>` med `display: block`, ikke som et eget avsnitt over, slik at
-skjermleseren får med seg begge delene og i den rekkefølgen øyet ser dem.
-Funksjonen `kpTittel` lager dem, så alle slike overskrifter ser like ut.
+Overskriftene har overtittel, Fasadens `hb-h1-overtittel`: «Slik ser det ut»
+over «Deg og boligen din», og «Spørsmål 3 av 12» over spørsmålet. Overtittelen
+ligger inni `<h1>`-en, slik at skjermleseren får med seg begge delene og i den
+rekkefølgen øyet ser dem. Funksjonen `kpTittel` lager dem. Spørsmålene er lange
+setninger, så de settes i `hb-h2`-størrelse selv om de er sidas `h1`.
 
 ### Når nåla viser hva
 
-Nåla viser tre ulike ting på tre ulike steder, og aldri to av dem samtidig.
+Kompasset vises ikke under spørsmålene lenger, bare etter hvert steg og i
+oppsummeringen. Én nål som flyttet seg for hvert svar, var vanskelig å lese noe
+ut av, og den tok oppmerksomheten bort fra spørsmålet.
 
 | Sted | Hva nåla viser |
 | --- | --- |
-| Under spørsmålene | Summen så langt i det steget du står i. Grå og på null når steget begynner. |
 | Etter hvert steg | Steget samlet, med en setning om hvordan svarene fordelte seg. |
 | I oppsummeringen | Ett kompass per steg, ett for helheten, og ett du vrir selv. |
 
@@ -496,10 +486,9 @@ Nåla er grønn når den peker i øvre halvdel, rød i nedre, og grå og kort f�
 har svart i steget. Fargen sier det samme som etikettene: opp er en kurs man
 vil ha. Kort er den bare i den grå tilstanden, aldri ellers.
 
-Boligtype og eieform flytter ikke nåla. De sier hva som er mulig å gjøre, ikke
-hvordan man har det. Det er spørsmålet om hvor fornøyd man er med boforholdet
-som teller: fornøyd peker opp, delvis fornøyd mot «Små grep», ikke fornøyd mot
-«Ny kurs».
+Eieform og inngang, 1a og 1b, flytter ikke nåla. De sier hva som er mulig å
+gjøre, og hvem man må snakke med, ikke hvordan man har det. I steg 1 er det
+spørsmålet om hverdagen som teller.
 
 Kompasset har samme størrelse overalt, og navnet på kursen står i selve rosa:
 «Rett kurs» i grønt øverst, «Ny kurs» i rødt nederst, «Små grep» og
@@ -507,10 +496,6 @@ Kompasset har samme størrelse overalt, og navnet på kursen står i selve rosa:
 nøkkel som forklarer alle fire med én setning hver, og den kursen nåla peker
 mot er markert. Nøkkelen følger kompasset hver gang det vises, så man aldri
 skal måtte huske hva en kurs betydde fra forsiden.
-
-Nåla oppdateres på stedet, ikke ved å tegne boksen på nytt. Byttet vi ut hele
-boksen, ville nettleseren laget et nytt element som er ferdig rotert fra første
-bilde, og da hopper nåla i stedet for å svinge.
 
 ### Oppsummeringen
 
@@ -562,22 +547,32 @@ utgaven med hvit bunn som iOS legger på hjemskjermen. Boligkompasset er den
 eneste siden som bruker dette merket. De andre sidene i prototypen hører til
 Husbanken generelt og beholder logoen.
 
-### To måter å svare på
+### Skjerm og papir
 
-| Modus | For hvem |
+| Utgave | For hvem |
 | --- | --- |
-| **Kompasset** | Ett spørsmål om gangen, fire steg, nåla svinger under. Litt som en valgomat. |
-| **Enkel liste** | Alle 20 spørsmålene på én side, uten animasjon og uten kompass. Enklest med skjermleser eller forstørring. |
+| **På skjerm** | Ett spørsmål om gangen, fire steg, og kompasset etter hvert steg. |
+| **På papir** | Alle spørsmålene og svarene på et A4-skjema som skrives ut og fylles ut med penn, for eksempel hos en ergoterapeut. |
 
-Spørsmålene, lagringen og oppsummeringen er de samme. Modus velges på
-startsiden.
+Listevisningen, med alle spørsmålene på én skjermside, er tatt ut. Papirutgaven
+har tatt plassen dens på startsiden, med knappen «Åpne papirutgaven (PDF)», som
+åpner PDF-en i et nytt vindu.
 
-I lista har hvert steg sin egen fane i margen, etter samme mønster som
-seksjonene i OneNote. Fanen viser hvor mange spørsmål som er besvart i steget,
-den lyser opp for det steget du er i mens du blar, og et trykk tar deg rett
-dit. Fargekodene er en rolig trapp fra mørk grønn til blågrå, med små steg
-mellom, og fargen er aldri eneste kjennetegn: navnet og nummeret står alltid
-ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
+`boligkompasset-papir.html` tegner skjemaet fra den samme innholdsfila som
+skjermutgaven, så de to ikke kommer i utakt. Hvert spørsmål står samlet på én
+side med hjelpeteksten og alle svarene. Det som på skjermen bare vises etter et
+annet svar, står med «Svar bare hvis …». Nummereringen er den samme som i
+masterfila: 1a, 1b, 2a og så videre.
+
+PDF-en lages fra sida med Chrome:
+
+```
+./verktoy/lag-papirutgave.sh
+```
+
+Kjør det etter at spørsmålene er endret, så PDF-en stemmer med skjermutgaven.
+
+«Ta svarene med i søknaden» er også tatt ut av oppsummeringen.
 
 ### Designkritikken 21. september, punkt for punkt
 
@@ -586,34 +581,31 @@ ved siden av. På smal skjerm blir fanene en rad som ligger fast øverst.
 | Stegene går ikke opp for hvert svar | Telleren teller spørsmål, ett hakk per spørsmål, og stemmer alltid med hvor du er. Peilingen teller i spørsmål den også, ikke i en egen intern skala. |
 | Lagres dette fortløpende? Da burde det stå nederst | Var løst med en lagringslinje nederst på hver skjerm. Den er tatt ut igjen etter ønske 22. september. Svarene lagres fortsatt ved hvert eneste valg, det blir bare ikke annonsert. |
 | Tekst i knapper kan ikke brekke på to linjer | `white-space: nowrap` på knapper, og korte etiketter. |
-| En femte trekkspill? Trekkspill er ikke fint design, og bør ikke gå til ny side | Ingen trekkspill i kartleggingen. «Derfor spør vi» og «Dette brukes svaret til» står alltid framme, i hver sin boks, grønn og blå, fordi de svarer på to ulike spørsmål. I oppsummeringen utvider «Se hvem som kan være med og betale» på stedet, uten å navigere. |
+| En femte trekkspill? Trekkspill er ikke fint design, og bør ikke gå til ny side | Ingen trekkspill i kartleggingen. Hjelpeteksten fra masterfila står alltid framme under spørsmålet. I oppsummeringen utvider tiltakene seg på stedet, uten å navigere. |
 | Alt for stor H1 med for stort mellomrom | H1 ned ett trinn i skalaen, og luften under halvert. |
 | Hvem er det for, og hva får de ut av det? | Tre korte svar øverst på forsiden: hvem, hvorfor nå, hva du får. |
 | Forsiden viser ikke verdien. Visualiser at testen kan føre mange steder | Et kompass du kan trykke på, som viser de fire kursene kartleggingen kan ende i. |
 | Mangler spørsmål om helse | Nytt spørsmål om hva som er blitt tyngre i hverdagen. Kan hoppes over. |
-| Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fire steg, 26 spørsmål ble 17. |
-| Mer interaktivt. Hvor er kompasset? | Kompasset er selve mekanikken, ikke et bilde. Nåla svinger for hvert svar. |
-| Brå overganger | Myk innfading mellom skjermene, og nåla beveger seg over 700 ms. Alt slås av ved `prefers-reduced-motion`. |
+| Mange kategorier, enklere spørsmålsreise | Sju kategorier ble fire steg, og 26 spørsmål ble 12. |
+| Mer interaktivt. Hvor er kompasset? | Kompasset er selve mekanikken, ikke et bilde. Det vises etter hvert steg og i oppsummeringen, der du også kan vri det selv. |
+| Brå overganger | Myk innfading mellom skjermene. Slås av ved `prefers-reduced-motion`. |
 | Savner en lagre/fortsett senere-knapp | Sto i lagringslinja, og falt ut sammen med den. Man kan fortsatt lukke siden når som helst og fortsette der man slapp. |
 | Burde ligge åpent, ikke krever innlogging | Hele kartleggingen, oppsummeringen og utskriften virker uten innlogging. |
-| Delvis er et dårlig alternativ | Hvert svaralternativ har en undertekst som sier konkret hva det betyr. Der arbeidsdokumentet gir tre alvorlighetsgrader, er «Delvis» byttet med dem, som i «Lett / Vanskelig / Veldig vanskelig». |
+| Delvis er et dårlig alternativ | Svaralternativene følger masterfila. Der den gir alvorlighetsgrader, står de i stedet for «Delvis», som i «Lett / Vanskelig / Veldig vanskelig». |
 | Overskrifter som ikke er på toppen | Hver skjerm åpner med sin egen `h1`. |
 | Alt for gamle mennesker på forsiden | Ingen fotografier. Tegnede figurer og kompasset. |
-| Forstod ikke økonomien. Hvorfor spør dere? | Egen ramme før etappen, og et eget avsnitt i oppsummeringen som sier at tallene ikke påvirket kursen, bare hvilke ordninger vi viser. Etappen kan hoppes over. |
 | Mangler totaloversikten med bar | Ett kompass og én stolpe per steg i oppsummeringen, med tegnforklaring. |
-| Forklare litt mer underveis, bedre forklaringstekster, klarspråk | «Derfor spør vi» og «Dette brukes svaret til» ved hvert spørsmål, og undertekst på hvert svaralternativ. |
+| Forklare litt mer underveis, bedre forklaringstekster, klarspråk | Hjelpeteksten fra masterfila står framme ved hvert spørsmål. |
 | Oppsummeringen trenger mer kjærlighet, mer visuell, bedre henvisning videre | Kursen i stort format, oversikten med stolper, tiltakene i prioritert rekkefølge med begrunnelsen fra ditt eget svar, og fire kort om veien videre. |
-| Fint om svarene tas med videre inn i søknaden | «Ta svarene med i søknaden» fyller ut steg 2 og 3, og søknadens startside sier at det er gjort. |
 | Spørsmål før man kommer inn i løsningen | Var løst med boksen «Før du begynner». Den er tatt ut igjen etter ønske 22. september. |
 | PDF-en trenger design, og print bør ikke kreve innlogging | Egen utskriftsstil. Oppsummeringen blir et A4-dokument med tittel, dato, telefonnummer, alle ordningene utbrettet, lenkene skrevet ut i klartekst, og en notatrute til slutt. Ingen innlogging. |
 
 ### Kjent åpent punkt
 
-Kolonne J for spørsmål 15 i arbeidsdokumentet inneholder veiledningstekst om
-bad og toalett, mens spørsmålet handler om å komme seg rundt i boligen. Det ser
-ut som en forskyvning i regnearket. Teksten er skrevet om til å handle om
-terskler, nivåforskjeller og dørbredder, som er det spørsmålet faktisk spør om.
-Bør bekreftes av gruppen.
+6a har ikke noe svar for den som ikke har noen av hindringene. Krysser man ikke
+av for noe, står spørsmålet som ubesvart, og det teller ikke i kursen. Et
+alternativ som «Ingen av disse» ville gjort det tydelig. Bør tas med i
+masterfila.
 
 ## Tilgjengelighetsanalysen
 
@@ -702,11 +694,11 @@ Minstekravet er 40 000 kr.
 | `soknad.html?demo` | Hopper inn i søknaden med ferdig utfylte testdata. |
 | `soknad.html?demo&steg=5` | Rett til et bestemt steg. |
 | `boligkompasset.html?modus=kompass` | Rett inn i kompassmodus, der du slapp sist. |
-| `boligkompasset.html?modus=liste` | Rett inn i listemodus, alle spørsmålene på én side. |
+| `boligkompasset-papir.html` | Papirutgaven som nettside, med knapp for å skrive ut. |
 | `boligkompasset.html?vis=oppsummering` | Rett til oppsummeringen med de svarene som ligger lagret. |
 
 Nederst på siden ligger dessuten en snarvei som fyller ut tilfeldige svar på
-alle 20 spørsmålene og hopper rett til oppsummeringen. Den er merket som et
+alle 12 spørsmålene og hopper rett til oppsummeringen. Den er merket som et
 prototypeverktøy, og den kommer ikke med i utskriften.
 
 Svarene lagres i nettleseren (`localStorage`). «Nullstill prototypen» nederst på
@@ -764,11 +756,13 @@ assets/js/versjoner.js   Versjonslista, og cellene som hopper mellom iterasjonen
 assets/js/uu-widget.js   Tilgjengelighetsanalysen: kravlista, sjekkene, gjennomløpet og kortet
 assets/img/boligkompasset.svg Illustrasjonen i toppfeltet: kompassrose og bolig på felles bakkelinje
 assets/img/favicon-boligkompasset.svg Fanemerket: samme kompassrose, forenklet så den leses på seksten piksler
-assets/css/hb-kompass.css Boligkompasset: kompassrosa, etappene, sidefanene og utskriften
-ds-no/               Designsystemet.no, uendret, pluss Husbanken-paletten lagt oppå
-verktoy/lag-hb-tema.py   Generatoren for ds-no/husbanken-farger.css
-assets/js/hb-kompass-data.js Boligkompasset: spørsmål, svar, veiledning, anbefalinger og ordninger
-assets/js/hb-kompass.js  Boligkompasset: kursberegningen, de to modusene og oppsummeringen
+assets/css/hb-kompass.css Boligkompasset: kompassrosa, oppsettet rundt Fasaden og utskriften
+fasaden/             Fasaden, Husbankens designsystem, bygget, og stilene for Boligkompasset
+verktoy/bygg-fasaden.py  Bygger fasaden/fasaden.css fra Fasaden-repoet
+verktoy/lag-papirutgave.sh  Lager PDF-en av papirutgaven til Boligkompasset
+assets/js/hb-kompass-data.js Boligkompasset: spørsmål, svar, hjelpetekst, anbefalinger og ordninger
+assets/js/hb-kompass.js  Boligkompasset: kursberegningen, stegene og oppsummeringen
+assets/js/hb-kompass-papir.js Boligkompasset: papirutgaven
 assets/pdf/          Utfyllbare PDF-er, generert fra skjemaene
 verktoy/             Generatoren for de utfyllbare PDF-ene, med feltkart
 Brukertester/        Rådata fra de åtte testene 25. og 27. august 2026
