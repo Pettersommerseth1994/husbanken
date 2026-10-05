@@ -38,8 +38,8 @@ STEG.oppsummering = {
         ${kortProsjekt(pf)}
         ${kortEiendom(pf)}
         ${kortBoenheter(pf)}
-        ${kortOkonomi(pf)}
-        ${kortVedlegg(pf)}
+        ${S.energi(pf) ? kortEnergi(pf) : S.istand(pf) ? kortIstandsetting(pf) : kortOkonomi(pf)}
+        ${S.energi(pf) ? '' : kortVedlegg(pf)}
         ${kan ? kortSignering(pf) : ''}
       </div>
       ${kan ? `
@@ -114,12 +114,12 @@ function kortFormal(pf) {
     <dl class="e-dl">${OP.rad('Foretaksnavn', eEsc(pf.soker.orgNavn))}${OP.rad('Org.nr.', eOrgnr(pf.soker.orgNr))}
       ${OP.rad('Kontaktadresse', org.gateadresse ? `${eEsc(org.gateadresse)}, ${org.postnr} ${eEsc(org.poststed)}` : '')}
       ${OP.rad('E-post', eEsc(((org.varsling || []).find(v => v.email) || {}).email || ''))}</dl>
-    ${!S.salg(pf) ? `<h3 class="e-h3">Låntakers navn og kontaktinfo</h3>
+    ${!S.salg(pf) && !S.er(pf, 'ENERGITILSKUDD', 'ISTANDSETTING') ? `<h3 class="e-h3">Låntakers navn og kontaktinfo</h3>
       <dl class="e-dl">${OP.rad('Foretaksnavn', eEsc(pf.lantaker ? pf.lantaker.orgNavn : 'Ikke definert'))}${OP.rad('Org.nr.', pf.lantaker ? eOrgnr(pf.lantaker.orgNr) : 'Har ikke organisasjonsnummer')}</dl>` : ''}
     <dl class="e-dl">
       ${OP.rad('Kjøpe nye eller brukte boliger', pf.eksisterendeBoligmasse == null ? null : pf.eksisterendeBoligmasse ? 'Brukte boliger' : 'Nye boliger')}
       ${OP.rad('Skal tomten/boligene/bygget kjøpes?', pf.kjop == null ? null : pf.kjop ? 'Kjøpes' : 'Eier fra før')}
-      ${OP.rad('Formålet med boligene', { UTLEIE: 'Boliger for utleie', SALG: 'Boliger for salg' }[pf.formalKode])}
+      ${OP.rad('Formålet med boligene', { UTLEIE: 'Boliger for utleie', SALG: 'Boliger for salg', OMSORGSYKEHJEM: 'Omsorgsboliger', SYKEHJEM: 'Sykehjem' }[pf.formalKode])}
       ${OP.rad('Avtale med kommune/helseforetak', { TILVISNING: 'Tilvisningsavtale', TILDELING: 'Tildelingsavtale', INGENAVTALE: 'Ingen avtale' }[pf.kommuneavtaleTypeKode])}
       ${OP.rad('Antall boliger med tilvisningsrett', pf.antallTilvisningsboliger)}
       ${OP.rad('Søker om', `<ul>${(pf.finansieringsProdukter || []).map(p => `<li>${S.PRODUKTNAVN[p]}</li>`).join('')}</ul>`)}
@@ -147,7 +147,9 @@ function kortProsjekt(pf) {
       ${OP.rad('Eiendommen omsatt i de åpne markedet?', OP.jaNei(pf.omsattApentMarked))}
       ${OP.rad('Tidligere kontakt med Husbanken om prosjektet?', OP.jaNei(pf.forbildeprosjekt))}
       ${pf.forbildeprosjekt ? `${OP.rad('Henvendelsen gjaldt', 'Generell forespørsel om prosjektet')}${OP.rad('Saksreferanse', eEsc((pf.forbildeInfo || {}).saksreferanse))}${OP.rad('Kontaktperson Husbanken', eEsc((pf.forbildeInfo || {}).navn))}` : ''}
-      ${OP.rad('Planlagt oppstart', pf.oppstart)}${OP.rad('Planlagt ferdigstilt', pf.ferdig)}
+      ${OP.rad('Planlagt oppstart', pf.oppstart)}${OP.rad(S.energi(pf) ? 'Planlagt ferdigstillelse' : 'Planlagt ferdigstilt', pf.ferdig)}
+      ${S.energi(pf) ? `${OP.rad('Antall sykehjemsplasser', pf.antallSykehjemplasser ? eEsc(pf.antallSykehjemplasser) : null)}${OP.rad('Har kommunen fått tilskudd til energitiltak for samme prosjekt tidligere?', OP.jaNei(pf.harFattEnergitilskuddTidligere))}${OP.rad('Saksnummer fra Enova eller Husbanken', eEsc(pf.saksnummerEnovaHusbanken || ''))}` : ''}
+      ${S.istand(pf) ? OP.rad('Skal tilskuddet videretildeles til privat aktør', OP.jaNei(pf.tilskuddetVideretildeles)) : ''}
       ${(pf.malgrupper || []).length ? OP.rad('Målgrupper for boligene', `<ul>${pf.malgrupper.map(m => `<li>${mg[m]}</li>`).join('')}</ul>`) : ''}
       ${pf.energikarakterFor && pf.energikarakterEtter ? `${OP.rad('Energikarakter før', pf.energikarakterFor)}${OP.rad('Energikarakter etter', pf.energikarakterEtter)}` : ''}
     </dl>
@@ -186,7 +188,7 @@ function kortBoenheter(pf) {
           <td class="e-tall">${eEsc(fo.antallRom || '')} stk</td>
           ${liv ? livBk.map(k => `<td class="e-senter">${k && fo.bkId === k.id ? '✓' : ''}</td>`).join('') : ''}
           ${!a && S.visBK(pf) ? `<td>${eEsc((bk(fo) || {}).navn || '')}</td>` : ''}
-          ${S.utleie(pf) ? `<td class="e-tall">${eKr(fo.utleiepris)}</td>` : ''}
+          ${S.husleie(pf) ? `<td class="e-tall">${eKr(fo.utleiepris)}</td>` : ''}
           ${S.salg(pf) ? `<td class="e-tall">${eKr(fo.salgspris)}</td>` : ''}
         </tr>`).join('')}`;
     }).join('');
@@ -195,7 +197,7 @@ function kortBoenheter(pf) {
         ${liv ? `<tr><th colspan="${prim ? 6 : 5}" style="border:0"></th><th colspan="3" class="e-senter">Livsløp</th><th style="border:0"></th></tr>` : ''}
         <tr><th>Adresse</th><th>${a ? 'Bolignr.' : 'Bolignummer'}</th>${a ? '<th>Utbyggers boligbetegnelse</th>' : ''}<th class="e-tall">BRA-i</th>${prim ? '<th class="e-tall">Primærareal</th>' : ''}<th class="e-tall">Antall rom</th>
           ${liv ? '<th class="e-senter">Oppfyller alle krav til livsløpsboliger</th><th class="e-senter">Forberedt for innvendig løfteinnretning</th><th class="e-senter">Oppfyller ikke krav</th>' : ''}
-          ${!a && S.visBK(pf) ? '<th>Boligkvaliteter</th>' : ''}${S.utleie(pf) ? '<th class="e-tall">Husleie</th>' : ''}${S.salg(pf) ? '<th class="e-tall">Salgspris</th>' : ''}</tr>
+          ${!a && S.visBK(pf) ? '<th>Boligkvaliteter</th>' : ''}${S.husleie(pf) ? '<th class="e-tall">Husleie</th>' : ''}${S.salg(pf) ? '<th class="e-tall">Salgspris</th>' : ''}</tr>
       </thead><tbody>${rader}</tbody></table></div>`;
   }).join('');
   const sum = k => alle.reduce((s, x) => s + eNum(x.fo[k]), 0);
@@ -211,7 +213,7 @@ function kortBoenheter(pf) {
     <table class="e-tabell e-tabell--enkel" style="max-width:36rem">
       ${S.er(pf, 'OPPFORING') ? `<tr><td>Med i låneutmåling</td><td class="e-tall">${med} stk</td></tr><tr><td>Ikke med i låneutmåling</td><td class="e-tall">${alle.length - med} stk</td></tr>` : ''}
       <tr class="e-tabell__sum"><td>Totalt</td><td class="e-tall">${alle.length} stk</td><td class="e-tall">${sum('bruksAreal')} m²</td>
-        ${S.utleie(pf) ? `<td class="e-tall">${eKr(sum('utleiepris'))}</td>` : ''}${S.salg(pf) ? `<td class="e-tall">${eKr(sum('salgspris'))}</td>` : ''}</tr>
+        ${S.husleie(pf) ? `<td class="e-tall">${eKr(sum('utleiepris'))}</td>` : ''}${S.salg(pf) ? `<td class="e-tall">${eKr(sum('salgspris'))}</td>` : ''}</tr>
     </table>` });
 }
 
@@ -271,4 +273,29 @@ function kortSignering(pf) {
       <p class="e-liten e-sekundaer e-mb0">Prototype: personene med signaturrett er oppdiktet.</p>
     </div>
   </section>`;
+}
+
+function kortEnergi(pf) {
+  const sum = S.energiSum(pf);
+  const rad = (l, v, fet = false) => `<tr${fet ? ' class="e-tabell__sum"' : ''}><td>${l}</td><td class="e-tall">${eKr(v)}</td></tr>`;
+  const grupper = EN.eiendommer(pf);
+  return OP.kort(pf, { tittel: 'Tilskudd og energibesparelse', ikon: 'energi', steg: 'okonomienergi', kropp: `
+    <h3 class="e-h3">Totalt for prosjektet</h3>
+    <div class="e-tabell-rulle"><table class="e-tabell"><thead><tr><th>Energitiltak</th><th class="e-tall">Tilskudd</th><th class="e-tall">Energibesparelse</th></tr></thead><tbody>
+      ${S.energiPerTiltak(pf).map(g => `<tr><td>${eEsc(g.tiltak.navn)}</td><td class="e-tall">${eKr(g.tilskudd)}</td><td class="e-tall">${EN.kWh(g.besparelse)}</td></tr>`).join('')}
+      ${sum.tilskudd > sum.etterMaks ? `<tr><td>Reduksjon grunnet maksimal utmåling per prosjekt</td><td class="e-tall">- ${eKr(sum.tilskudd - sum.etterMaks)}</td><td></td></tr>` : ''}
+      <tr class="e-tabell__sum"><td>Total</td><td class="e-tall">${eKr(sum.etterMaks)}</td><td class="e-tall">${EN.kWh(sum.besparelse)}</td></tr>
+    </tbody></table></div>
+    ${grupper.map(({ bygg }) => bygg.map(({ b }) => `<h3 class="e-h3">${eEsc(S.byggNavn(b))}, beregnet som ${S.ENERGI_TYPE_TEKST[S.energiType(pf, b)]}</h3>
+      <ul>${S.energiTiltakIBygg(b).filter(r => r.kode).map(r => `<li>${eEsc(S.energitiltak(r.kode).navn)}: ${eTusen(r.verdi)} ${S.energitiltak(r.kode).enhet}</li>`).join('')}</ul>`).join('')).join('')}` });
+}
+
+function kortIstandsetting(pf) {
+  const adresser = new Map(S.alleValgteAdresser(pf).map(x => [x.a.id, x.a]));
+  const rader = S.aktiveBoenheter(pf);
+  return OP.kort(pf, { tittel: 'Økonomi', ikon: 'kroner', steg: 'okonomiistandsetting', kropp: `
+    <div class="e-tabell-rulle"><table class="e-tabell"><thead><tr><th>Boenhet</th><th class="e-tall">Istandsettingskostnad</th><th class="e-tall">Tilskudd</th></tr></thead><tbody>
+      ${rader.map(fo => `<tr><td>${eEsc(S.adresseTekst(adresser.get(fo.adresseId) || {}))} (${fo.etasje}${fo.bruksenhetsNr})</td><td class="e-tall">${eKr(fo.istandsettingskostnad)}</td><td class="e-tall">${eKr(S.istandTilskudd(fo))}</td></tr>`).join('')}
+      <tr class="e-tabell__sum"><td>Totalt tilskudd</td><td></td><td class="e-tall">${eKr(S.istandSum(pf))}</td></tr>
+    </tbody></table></div>` });
 }

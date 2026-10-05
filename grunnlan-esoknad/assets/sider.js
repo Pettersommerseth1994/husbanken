@@ -147,16 +147,29 @@ async function soknadsvalg(valg, pf) {
 /* ═══ Opprett søknad ══════════════════════════════════════════════ */
 
 const TILTAK_BRANSJE = ['OPPFORING', 'OPPGRADERING', 'KJOP', 'OMBYGGING'];
+const TILTAK_KOMMUNE = ['OPPFORING', 'KJOP', 'OMBYGGING', 'ENERGITILSKUDD', 'ISTANDSETTING'];
+const FORMAL_ENERGI = [{ v: 'UTLEIE', l: 'Utleie' }, { v: 'OMSORGSYKEHJEM', l: 'Omsorgsboliger' }, { v: 'SYKEHJEM', l: 'Sykehjem' }];
+
+/* En kommune bygger, kjøper og istandsetter alltid for utleie, har ikke avtale med seg selv
+   og er selv låntaker. Bare ved energitiltak velger den formål. */
+let opprettKommune = false;
 
 const opprettRegler = {
   laneformal: d => d.tiltak === 'OPPFORING',
-  formal: d => !!d.tiltak && d.tiltak !== 'KJOP',
-  avtale: d => d.formal === 'UTLEIE' || d.tiltak === 'KJOP',
+  formal: d => (opprettKommune ? d.tiltak === 'ENERGITILSKUDD' : !!d.tiltak && d.tiltak !== 'KJOP'),
+  avtale: d => !opprettKommune && (d.formal === 'UTLEIE' || d.tiltak === 'KJOP'),
   antall: d => d.avtale === 'TILVISNING',
-  sokerErLantaker: d => d.tiltak === 'KJOP' || (!!d.formal && d.formal !== 'SALG'),
+  sokerErLantaker: d => !opprettKommune && (d.tiltak === 'KJOP' || (!!d.formal && d.formal !== 'SALG')),
   harOrgnr: d => opprettRegler.sokerErLantaker(d) && d.sokerErLantaker === false,
   lantaker: d => opprettRegler.harOrgnr(d) && d.harOrgnr === true,
-  produkter: d => [d.tiltak, (opprettRegler.avtale(d) && d.avtale === 'TILDELING' && d.tiltak !== 'OPPGRADERING') && 'TILSKUDDUTLEIE'].filter(Boolean)
+  produkter: d => {
+    if (opprettKommune) {
+      if (d.tiltak === 'ENERGITILSKUDD') return ['ENERGITILSKUDD'];
+      if (d.tiltak === 'ISTANDSETTING') return ['TILSKUDDISTANDSETTING'];
+      return [d.tiltak, d.tiltak && 'TILSKUDDUTLEIE'].filter(Boolean);
+    }
+    return [d.tiltak, (opprettRegler.avtale(d) && d.avtale === 'TILDELING' && d.tiltak !== 'OPPGRADERING') && 'TILSKUDDUTLEIE'].filter(Boolean);
+  }
 };
 
 function opprettRens(d) {
@@ -182,6 +195,7 @@ function opprett() {
   const tlf = (org.varsling || []).map(v => v.tlf).filter(Boolean);
   if (!E_KUNDETYPER.includes(org.kundeType) || (eForetak(org.orgnr) || {}).orgnr !== org.orgnr) { location.href = 'index.html'; return; }
 
+  opprettKommune = org.kundeType === 'KOMMUNE';
   const r = opprettRegler;
   const d = {};
   F.pf = d;
@@ -207,11 +221,13 @@ function opprett() {
           <dl class="e-dl"><dt>E-post</dt><dd>${epost.length ? epost.map(eEsc).join('<br>') : 'Ingen'}</dd><dt>Telefon</dt><dd>${tlf.length ? tlf.join('<br>') : 'Ingen'}</dd></dl>
           ${F.gruppefeil('harGyldigEpost')}` })}
 
-        ${F.radio({ felt: 'tiltak', label: 'Hva skal dere gjøre?', valg: TILTAK_BRANSJE.map(k => ({ v: k, l: S.TILTAK[k].valg })) })}
+        ${F.radio({ felt: 'tiltak', label: 'Hva skal dere gjøre?', valg: (opprettKommune ? TILTAK_KOMMUNE : TILTAK_BRANSJE).map(k => ({ v: k, l: S.TILTAK[k].valg })) })}
 
         ${r.laneformal(d) ? F.radio({ felt: 'laneformal', label: 'Velg formål', valg: Object.entries(S.LANEFORMAL).map(([v, l]) => ({ v, l })) }) : ''}
 
-        ${r.formal(d) ? F.radio({ felt: 'formal', label: 'Skal boligene selges eller leies ut?', valg: [{ v: 'SALG', l: 'Salg' }, { v: 'UTLEIE', l: 'Utleie' }] }) : ''}
+        ${r.formal(d) ? (opprettKommune
+    ? F.radio({ felt: 'formal', label: 'Formål', hjelp: '<p>Hvis prosjektet inneholder både utleieboliger og omsorgsboliger/sykehjem må det sendes inn to søknader.</p>', valg: FORMAL_ENERGI })
+    : F.radio({ felt: 'formal', label: 'Skal boligene selges eller leies ut?', valg: [{ v: 'SALG', l: 'Salg' }, { v: 'UTLEIE', l: 'Utleie' }] })) : ''}
 
         ${r.avtale(d) ? F.radio({ felt: 'avtale', label: 'Har dere inngått avtale med en kommune eller et statlig helseforetak?', hjelp: hjelpAvtale,
           etter: '',
@@ -243,7 +259,7 @@ function opprett() {
       !epost.length && { nokkel: 'harGyldigEpost', melding: `Det er ikke registrerte varslingsadresser for ${eEsc(org.navn)}. Dette må registreres i Altinn før du kan fullføre søknaden.` },
       !d.tiltak && { nokkel: 'tiltak', melding: 'Du må krysse av for hva prosjektet innebærer at du skal gjøre.' },
       r.laneformal(d) && !d.laneformal && { nokkel: 'laneformal', melding: 'Du må velge formål.' },
-      r.formal(d) && !d.formal && { nokkel: 'formal', melding: 'Du må krysse av for om boligen skal selges eller leies ut.' },
+      r.formal(d) && !d.formal && { nokkel: 'formal', melding: opprettKommune ? 'Du må velge formål.' : 'Du må krysse av for om boligen skal selges eller leies ut.' },
       r.avtale(d) && !d.avtale && { nokkel: 'avtale', melding: 'Du må krysse av for type avtale med kommune.' },
       r.antall(d) && (V.tom(d.antall) ? { nokkel: 'antall', melding: 'Du må skrive antall tilvisningsboliger.' }
         : !V.heltall(d.antall) ? { nokkel: 'antall', melding: 'Du kan kun angi hele tall.' }

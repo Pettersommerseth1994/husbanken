@@ -29,6 +29,9 @@ const E_FORETAK = [
   { orgnr: '945678904', navn: 'Vestbygg Avdeling Sør', orgform: 'BEDR', sektor: '2100', kundeType: 'UTBYGGER',
     gateadresse: 'Havnegata 2', postnr: '4611', poststed: 'Kristiansand', hovedforetak: '956789015',
     varsling: [{ email: 'sor@vestbygg.example', tlf: '' }], representerbar: true },
+  { orgnr: '958935420', navn: 'Oslo Kommune', orgform: 'KOMM', sektor: '6500', kundeType: 'KOMMUNE',
+    gateadresse: 'Rådhuset', postnr: '0037', poststed: 'Oslo',
+    varsling: [{ email: 'postmottak@byr.oslo.kommune.no', tlf: '' }], representerbar: true },
   { orgnr: '967890126', navn: 'Eksempel Helseforetak SF', orgform: 'SF', sektor: '1120', kundeType: null,
     gateadresse: 'Postboks 50', postnr: '7030', poststed: 'Trondheim',
     varsling: [{ email: 'post@eksempel-hf.example', tlf: '' }], representerbar: true },
@@ -177,6 +180,7 @@ const E_IKON = {
   hake: eSvg('<circle cx="12" cy="12" r="9.5"/><path d="m7.5 12.5 3 3 6-6.5"/>', 22),
   stopp: eSvg('<circle cx="12" cy="12" r="9.5"/><path d="M12 7v6"/><circle cx="12" cy="16.5" r=".6" fill="currentColor"/>', 22),
   feil: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 7v6.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17" r="1.3" fill="#fff"/></svg>',
+  energi: eSvg('<path d="M13 2.5 5 13.5h6l-1 8 8-11h-6l1-8Z"/>', 26),
   pluss: eSvg('<path d="M12 5v14M5 12h14"/>', 20, 2.2),
   soppel: eSvg('<path d="M4 6.5h16M9.5 6.5V4h5v2.5M6.5 6.5l1 13.5h9l1-13.5M10 10v7M14 10v7"/>', 20),
   kopier: eSvg('<rect x="8" y="8" width="12" height="13" rx="1.5"/><path d="M16 8V4.5A1.5 1.5 0 0 0 14.5 3h-9A1.5 1.5 0 0 0 4 4.5v11A1.5 1.5 0 0 0 5.5 17H8"/>', 20),
@@ -313,6 +317,7 @@ function eVisTestdata() {
         <li><b>Fjordbyen Eiendom AS</b> og <b>Nordlys Boligutvikling AS</b>: vanlige utbyggere.</li>
         <li><b>Kystbygg Utvikling AS</b>: mangler e-post i varslingsadressene, så «Opprett søknad» stopper.</li>
         <li><b>Vestbygg Avdeling Sør</b>: en underenhet, så «Ny søknad» er sperret.</li>
+        <li><b>Oslo Kommune</b>: kommune. Får andre valg under «Hva skal dere gjøre?», blant annet energitiltak og istandsetting.</li>
         <li><b>Eksempel Helseforetak SF</b>: ikke i målgruppen, så «Ny søknad» er sperret.</li>
       </ul>
       <h3 class="e-h4">Organisasjonsnumre som finnes i «Enhetsregisteret»</h3>

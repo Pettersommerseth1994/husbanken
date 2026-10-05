@@ -7,14 +7,26 @@ const mndTekst = n => `${eTo((n % 12) + 1)}.${Math.floor(n / 12)}`;
 
 const P = {
   selskap: pf => (pf.lantaker && pf.lantaker.orgNavn) || pf.soker.orgNavn,
-  visPeriode: pf => !S.er(pf, 'KJOP'),
-  visKjop: pf => !S.er(pf, 'KJOP'),
+  visPeriode: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING'),
+  visKjop: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING'),
   visOmsatt: pf => S.er(pf, 'KJOP') || pf.kjop === true,
-  visArbeid: pf => !S.er(pf, 'KJOP'),
-  visSelger: pf => S.er(pf, 'KJOP') || pf.kjop === true,
-  visMalgrupper: pf => S.utleie(pf) && S.harAvtale(pf),
+  visSentral: pf => !S.er(pf, 'ENERGITILSKUDD', 'ISTANDSETTING'),
+  visArbeid: pf => !S.er(pf, 'KJOP') && !S.kommune(pf),
+  visSelger: pf => (S.er(pf, 'KJOP') || pf.kjop === true) && !S.kommune(pf),
+  visMalgrupper: pf => S.utleie(pf) && (S.harAvtale(pf) || S.kommune(pf)) && !S.energi(pf),
   visKontaktKommune: pf => S.harAvtale(pf),
-  visHusbanken: pf => !S.er(pf, 'KJOP')
+  visHusbanken: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING')
+};
+
+/* Tidligst neste måned og høyst to år fram, som Planlagt ferdigstilt ved istandsetting */
+const FERDIG_FEIL = (pf, felt, b, a) => {
+  const naa = naaMnd();
+  if (V.tom(pf[felt])) return felt === 'oppstart' ? 'Du må velge måned og år for planlagt oppstart.' : 'Du må velge måned og år for planlagt ferdigstillelse.';
+  if (!b) return 'Dato format er feil. Dato må være på format MM.ÅÅÅÅ';
+  if (V.mndTall(b) < naa + 1) return felt === 'oppstart' ? 'Planlagt oppstart må være etter dagens dato.' : 'Planlagt ferdigstillingsdato må være etter dagens dato.';
+  if (V.mndTall(b) > naa + 24) return 'Planlagt ferdigstillingsdato må være maks 2 år etter dagens dato.';
+  if (a && V.mndTall(b) <= V.mndTall(a)) return 'Planlagt ferdigstillelse må være etter Planlagt oppstart';
+  return null;
 };
 
 const NAERSTAENDE_HJELP = pf => `<p>Mulige relasjoner:</p><ul>
@@ -33,6 +45,8 @@ STEG.prosjektinformasjon = {
     if (!P.visOmsatt(pf)) delete pf.omsattApentMarked;
     if (!P.visSelger(pf)) { delete pf.naerstaendeSelger; pf.naerstaendeSelgere = []; }
     if (pf.forbildeprosjekt !== true) delete pf.forbildeInfo;
+    if (pf.formalKode !== 'SYKEHJEM') delete pf.antallSykehjemplasser;
+    if (pf.harFattEnergitilskuddTidligere !== true) delete pf.saksnummerEnovaHusbanken;
     if (pf.navn !== undefined) W.tegnSkall();
   },
 
@@ -42,8 +56,12 @@ STEG.prosjektinformasjon = {
       return a && b && V.mndTall(b) > V.mndTall(a) ? `${V.mndTall(b) - V.mndTall(a)} måneder` : 'Ingen periode valgt';
     })();
     const [kjopLabel] = KJOP_LABEL[pf.prosjektTiltakKode] || ['Skal dere kjøpe, eller eier dere fra før?'];
+    const energi = S.energi(pf);
     return `
-      ${F.tekst({ felt: 'navn', label: 'Prosjektnavn', maks: 36, bredde: 'l' }).replace('data-type="tekst"', 'data-type="tekst" data-levende')}
+      ${S.istand(pf) ? eCallout('info', '<p><a href="https://www.husbanken.no/kommune/lan-og-tilskudd/tilskudd-utleieboliger/" target="_blank" rel="noopener">Mer informasjon om tilskudd til istandsetting ligger på våre nettsider. (åpner i ny fane)</a></p>') : ''}
+      ${F.tekst({ felt: 'navn', label: 'Prosjektnavn', maks: 36, bredde: 'l',
+    hjelp: energi ? 'Med prosjekt menes den administrative enheten energitiltak skal gjennomføres på. Hvis den administrative enheten har avdelinger som ligger geografisk adskilt fra hverandre regnes hver avdeling som egne prosjekt ift. energitiltak.' : undefined })
+    .replace('data-type="tekst"', 'data-type="tekst" data-levende')}
 
       ${P.visPeriode(pf) ? eKort({ tittel: 'Når skal bygningsarbeidet foregå?', kropp: `
         ${eCallout('info', '<p>Maksimal tillatt varighet er 24 måneder</p>')}
@@ -56,7 +74,12 @@ STEG.prosjektinformasjon = {
       ${P.visKjop(pf) ? F.radio({ felt: 'kjop', label: kjopLabel, rad: true, valg: [{ v: true, l: 'Kjøp' }, { v: false, l: 'Eier fra før' }] }) : ''}
       ${S.er(pf, 'KJOP') ? F.radio({ felt: 'eksisterendeBoligmasse', label: 'Er boligene du skal kjøpe nye eller brukte?', rad: true, valg: [{ v: true, l: 'Brukte boliger' }, { v: false, l: 'Nye boliger' }] }) : ''}
       ${P.visOmsatt(pf) ? F.janei({ felt: 'omsattApentMarked', label: 'Er eiendommen omsatt i det åpne markedet?' }) : ''}
-      ${F.janei({ felt: 'sentralGodkjenning', label: `Har ${eEsc(P.selskap(pf))} sentral godkjenning?` })}
+      ${P.visSentral(pf) ? F.janei({ felt: 'sentralGodkjenning', label: `Har ${eEsc(P.selskap(pf))} sentral godkjenning?` }) : ''}
+
+      ${S.istand(pf) ? `
+        ${F.mnd({ felt: 'ferdig', label: 'Planlagt ferdigstilt' })}
+        ${F.janei({ felt: 'tilskuddetVideretildeles', label: 'Skal tilskuddet videretildeles til privat aktør',
+    hjelp: 'Kommunen kan gi tilskudd videre til selskaper og andre aktører. Vilkår for å gi tilskudd videre, er at kommunen sikrer seg rett til å tildele boligene til sine boligsøkere i minst tre år' })}` : ''}
 
       ${P.visArbeid(pf) ? `
         ${F.janei({ felt: 'naerstaendeArbeid', label: `Skal arbeid utføres av foretak med relasjon til ${eEsc(pf.soker.orgNavn)}?`, hjelp: NAERSTAENDE_HJELP(pf) })}
@@ -99,6 +122,14 @@ STEG.prosjektinformasjon = {
           ${F.tekst({ felt: 'forbildeInfo.navn', label: 'Navn på kontaktperson i Husbanken', maks: 36 })}
           ${F.gruppefeil('forbilde')}` }) : ''}` : ''}
 
+      ${energi ? `
+        ${eKort({ tittel: 'Når skal energitiltakene gjennomføres?', kropp: `<div class="e-to">
+          ${F.mnd({ felt: 'oppstart', label: 'Planlagt oppstart' })}
+          ${F.mnd({ felt: 'ferdig', label: 'Planlagt ferdigstillelse' })}</div>` })}
+        ${pf.formalKode === 'SYKEHJEM' ? F.tall({ felt: 'antallSykehjemplasser', label: 'Antall sykehjemsplasser' }) : ''}
+        ${F.janei({ felt: 'harFattEnergitilskuddTidligere', label: 'Har kommunen fått tilskudd til energitiltak for samme prosjekt tidligere?' })}
+        ${pf.harFattEnergitilskuddTidligere ? F.tekst({ felt: 'saksnummerEnovaHusbanken', label: 'Fyll inn saksnummer', maks: 36, bredde: 'm' }) : ''}` : ''}
+
       ${eKort({ tittel: 'Kontaktperson', kropp: `
         <p>Skriv inn kontakpersonen til prosjektet</p>
         ${F.tekst({ felt: 'kontaktinformasjon.navn', label: 'Fullt navn', maks: 36, autocomplete: 'name' })}
@@ -130,10 +161,27 @@ STEG.prosjektinformasjon = {
       else if (V.mndTall(b) < min) feil('ferdig', 'Planlagt ferdigstillingsdato må være etter dagens dato.');
       else if (V.mndTall(b) > maks) feil('ferdig', 'Planlagt ferdigstillingsdato må være maks 2 år etter dagens dato.');
     }
+    if (S.energi(pf)) {
+      const a = V.mnd(pf.oppstart); const b = V.mnd(pf.ferdig);
+      const fo = FERDIG_FEIL(pf, 'oppstart', a, null);
+      if (fo) feil('oppstart', fo);
+      const ff = FERDIG_FEIL(pf, 'ferdig', b, a);
+      if (ff) feil('ferdig', ff);
+      if (pf.formalKode === 'SYKEHJEM') {
+        if (V.tom(pf.antallSykehjemplasser) || !V.heltall(pf.antallSykehjemplasser) || eNum(pf.antallSykehjemplasser) < 1) feil('antallSykehjemplasser', 'Du må spesifisere antall sykehjemsplasser.');
+      }
+      if (pf.harFattEnergitilskuddTidligere == null) feil('harFattEnergitilskuddTidligere', 'Du må fylle ut om kommunen har fått tilskudd til energitiltak for samme prosjekt tidligere');
+      if (pf.harFattEnergitilskuddTidligere && V.tom(pf.saksnummerEnovaHusbanken)) feil('saksnummerEnovaHusbanken', 'Du må skrive inn saksnummer fra Enova eller Husbanken');
+    }
+    if (S.istand(pf)) {
+      const ff = FERDIG_FEIL(pf, 'ferdig', V.mnd(pf.ferdig), null);
+      if (ff) feil('ferdig', ff);
+      if (pf.tilskuddetVideretildeles == null) feil('tilskuddetVideretildeles', 'Du må krysse av for om tilskuddet skal videretildeles til privat aktør.');
+    }
     if (P.visKjop(pf) && pf.kjop == null) feil('kjop', (KJOP_LABEL[pf.prosjektTiltakKode] || [])[1] || 'Du må krysse av for om du skal kjøpe eller eier fra før.');
     if (S.er(pf, 'KJOP') && pf.eksisterendeBoligmasse == null) feil('eksisterendeBoligmasse', 'Du må krysse av for om det er nye eller brukte boliger.');
     if (P.visOmsatt(pf) && pf.omsattApentMarked == null) feil('omsattApentMarked', 'Du må krysse av for om eiendommen er omsatt i det åpne markedet eller ikke.');
-    if (pf.sentralGodkjenning == null) feil('sentralGodkjenning', 'Du må krysse av for om dere har sentral godkjenning.');
+    if (P.visSentral(pf) && pf.sentralGodkjenning == null) feil('sentralGodkjenning', 'Du må krysse av for om dere har sentral godkjenning.');
 
     if (P.visArbeid(pf)) {
       if (pf.naerstaendeArbeid == null) feil('naerstaendeArbeid', 'Du må krysse av for om det skal brukes nærstående.');

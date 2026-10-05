@@ -9,7 +9,8 @@
 const STEG = {};
 const W = { t: null, pf: null, path: null, stepperApen: false };
 
-W.stegIndeks = path => S.STEG.findIndex(s => s.path === path);
+W.steg = () => S.steg(W.pf);
+W.stegIndeks = path => W.steg().findIndex(s => s.path === path);
 W.lagre = () => {
   W.pf.sistEndretDato = new Date().toISOString();
   W.pf.sistEndretAv = E_BRUKER;
@@ -27,14 +28,14 @@ function wizardStart() {
   if (['SIGNERINGAVVIST', 'SIGNERINGKANSELLERT'].includes(W.pf.status)) { W.pf.status = 'UFERDIG'; W.lagre(); }
   let path = p.get('steg');
   if (p.get('fortsett')) path = W.pf.utfyllingssteg || 'prosjektinformasjon';
-  if (!STEG[path]) path = 'prosjektinformasjon';
+  if (!STEG[path] || W.stegIndeks(path) < 0) path = 'prosjektinformasjon';
   if (!W.kanEndres()) path = 'oppsummering';
   F.lagreFn = W.lagre;
   F.koble(document.getElementById('steg'));
   W.visSteg(path, { erstatt: true });
   window.addEventListener('popstate', () => {
     const ny = new URLSearchParams(location.search).get('steg');
-    if (STEG[ny]) W.visSteg(ny, { historikk: false });
+    if (STEG[ny] && W.stegIndeks(ny) >= 0) W.visSteg(ny, { historikk: false });
   });
   document.getElementById('skjema').addEventListener('click', W.klikk);
 }
@@ -55,7 +56,7 @@ W.visSteg = (path, { erstatt = false, historikk = true } = {}) => {
   if (historikk) { if (erstatt) history.replaceState(null, '', url); else history.pushState(null, '', url); }
   W.tegnSkall();
   F.tegn();
-  document.title = `${S.STEG[W.stegIndeks(path)].tittel} | ${E_TJENESTE}`;
+  document.title = `${W.steg()[W.stegIndeks(path)].tittel} | ${E_TJENESTE}`;
   window.scrollTo(0, 0);
 };
 
@@ -64,7 +65,8 @@ W.tegnSkall = () => {
   const i = W.stegIndeks(W.path);
   const bred = STEG[W.path].bred;
   document.getElementById('side').className = `e-side${bred ? ' e-side--lg' : ''}`;
-  const steg = S.STEG.map((s, j) => {
+  const alle = W.steg();
+  const steg = alle.map((s, j) => {
     const ferdig = j < i || (pf.besokt || []).includes(s.path) && j !== i && j < i;
     const kanKlikke = W.kanEndres() && j !== i && (pf.besokt || []).includes(s.path);
     const innhold = `<span class="e-stepper__ikon">${E_IKON[s.ikon]}</span><span class="e-stepper__tekst" data-nr="${j + 1}">${s.tittel}</span>`;
@@ -77,7 +79,7 @@ W.tegnSkall = () => {
     <p class="e-soknadstype"><span class="e-soknadstype__navn">${eEsc(pf.navn || '')}</span>(${S.TILTAK[pf.prosjektTiltakKode].kort})</p>
     ${W.kanEndres() ? `<nav class="e-stepper${W.stepperApen ? ' er-apen' : ''}" aria-label="Steg i søknaden">
       <button type="button" class="e-stepper__mobil" data-stepper aria-expanded="${W.stepperApen}">
-        <span><span class="e-liten e-sekundaer">Steg ${i + 1} av ${S.STEG.length}</span><b>${S.STEG[i].tittel}</b></span>${E_IKON.pilNed}
+        <span><span class="e-liten e-sekundaer">Steg ${i + 1} av ${alle.length}</span><b>${alle[i].tittel}</b></span>${E_IKON.pilNed}
       </button>
       <ol class="e-stepper__liste">${steg}</ol>
     </nav>` : ''}`;
@@ -125,8 +127,8 @@ W.klikk = e => {
   if (nav) {
     e.preventDefault();
     const i = W.stegIndeks(W.path);
-    if (nav.dataset.nav === 'neste') W.gaa(S.STEG[i + 1].path);
-    if (nav.dataset.nav === 'forrige') W.gaa(S.STEG[i - 1].path);
+    if (nav.dataset.nav === 'neste') W.gaa(W.steg()[i + 1].path);
+    if (nav.dataset.nav === 'forrige') W.gaa(W.steg()[i - 1].path);
     if (nav.dataset.nav === 'avslutt') {
       if (STEG[W.path].vedForlat) STEG[W.path].vedForlat(W.pf);
       W.lagre();

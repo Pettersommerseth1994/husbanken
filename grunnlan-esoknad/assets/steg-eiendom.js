@@ -40,7 +40,7 @@ STEG.eiendomsopplysninger = {
       ${pf.eiendommer.map((e, i) => F.trekkspill({ nokkel: `eiendom-${e.id}`, tittel: EI.hentet(e) ? S.eiendomTittel(e) : 'Legg til eiendom du ønsker å finansiere',
         kropp: EI.hentet(e) ? eiendomHentet(pf, e, i) : eiendomNy(pf, e, i) })).join('')}
       ${pf.eiendommer.length ? '' : '<p>Du har ikke lagt til noen eiendommer ennå</p>'}
-      <p><button type="button" class="e-knapp" data-handling="leggTilEiendom">${E_IKON.pluss}Legg til eiendom</button></p>
+      ${S.istand(pf) ? '' : `<p><button type="button" class="e-knapp" data-handling="leggTilEiendom">${E_IKON.pluss}Legg til eiendom</button></p>`}
       ${F.sammendrag()}
       ${F.visFeil && ikkeHentet ? eCallout('feil', '<p>Du må hente eiendomsinformasjon</p>') : ''}
       ${W.knapper({ nesteDeaktivert: STEG.eiendomsopplysninger.ikkeAdresser(pf) })}`;
@@ -61,7 +61,7 @@ STEG.eiendomsopplysninger = {
         const bp = `${p}.bygg.${j}`;
         const harValgt = S.valgteAdresser(b).length > 0;
         valgt += S.valgteAdresser(b).length;
-        if (b.fraMatrikkelen && harValgt && S.kjentType(b) && b.erBygningstypeFraMatrikkelenRiktig == null) feil(`${bp}.erBygningstypeFraMatrikkelenRiktig`, 'Du må svare på om bygningstype fra Matrikkelen stemmer med prosjektert bygningstype');
+        if (b.fraMatrikkelen && harValgt && S.kjentType(b) && !S.energi(pf) && b.erBygningstypeFraMatrikkelenRiktig == null) feil(`${bp}.erBygningstypeFraMatrikkelenRiktig`, 'Du må svare på om bygningstype fra Matrikkelen stemmer med prosjektert bygningstype');
         if (visProsjektert(pf, b) && harValgt && V.tom(b.bygningstypeProsjektert)) feil(`${bp}.bygningstypeProsjektert`, 'Du må velge prosjektert bygningstype');
         if (!b.fraMatrikkelen && !harValgt) feil(`${bp}-adresser`, 'Du må velge minst én adresse til et bygg som skal være med på søknaden');
         (b.adresser || []).forEach((a, k) => {
@@ -176,7 +176,7 @@ function eiendomNy(pf, e, i) {
     </div>`;
 }
 
-const visProsjektert = (pf, b) => !b.fraMatrikkelen || !S.kjentType(b) || b.erBygningstypeFraMatrikkelenRiktig === false;
+const visProsjektert = (pf, b) => !b.fraMatrikkelen || !S.kjentType(b) || (b.erBygningstypeFraMatrikkelenRiktig === false && !S.energi(pf));
 
 function eiendomHentet(pf, e, i) {
   const p = `eiendommer.${i}`;
@@ -208,7 +208,7 @@ function byggKort(pf, e, i, b, j) {
   const kropp = `
     ${b.fraMatrikkelen ? `<div class="e-to">
       ${F.les('Bygningstype fra Matrikkelen', eEsc(S.bygningstypeTekst(b)))}
-      ${S.kjentType(b) ? F.janei({ felt: `${bp}.erBygningstypeFraMatrikkelenRiktig`, label: 'Stemmer bygningstype fra Matrikkelen med prosjektert bygningstype?' }) : ''}
+      ${S.kjentType(b) && !S.energi(pf) ? F.janei({ felt: `${bp}.erBygningstypeFraMatrikkelenRiktig`, label: 'Stemmer bygningstype fra Matrikkelen med prosjektert bygningstype?' }) : ''}
     </div>` : ''}
     ${visProsjektert(pf, b) ? F.velg({ felt: `${bp}.bygningstypeProsjektert`, label: 'Prosjektert bygningstype',
       beskrivelse: 'Vi vil vite hvilke bygningstyper det skal være på eiendommen ved prosjektets slutt, ikke dagens bygningstype.',

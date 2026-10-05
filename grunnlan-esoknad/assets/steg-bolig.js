@@ -42,7 +42,7 @@ const LIVSLOP_HJELP = [
 const B = {
   visBoliger: pf => (S.visBK(pf) ? (pf.boligkonfigurasjoner || []).some(k => !k.utenforKvalitetskriterier) : true),
   visA: pf => S.visBK(pf) && !S.oppfOmb(pf),
-  visB: pf => B.visBoliger(pf) && !S.er(pf, 'KJOP', 'OPPFORING', 'OMBYGGING') && !S.boligsosialt(pf),
+  visB: pf => B.visBoliger(pf) && !S.er(pf, 'KJOP', 'OPPFORING', 'OMBYGGING', 'ENERGITILSKUDD', 'ISTANDSETTING') && !S.boligsosialt(pf),
   visC: pf => S.oppfOmb(pf) && S.visBK(pf),
   visD: pf => B.visBoliger(pf) || S.oppfOmb(pf),
   visVelgBk: pf => S.visBK(pf) && !S.oppfOmb(pf),
@@ -154,7 +154,10 @@ STEG.boligkvaliteter = {
           return null;
         };
         const bb = fo.boligbetegnelse;
-        if (V.tom(bb)) feil(`${p}.boligbetegnelse`, 'Du må skrive boligbetegnelse.');
+        if (S.istand(pf)) {
+          if (V.tom(fo.istandsettingskostnad)) feil(`${p}.istandsettingskostnad`, 'Du må skrive istandsettingskostnad.');
+          else if (eNum(fo.istandsettingskostnad) > 9000000) feil(`${p}.istandsettingskostnad`, 'Istandsettingskostnad kan ikke være større enn 9000000.');
+        } else if (V.tom(bb)) feil(`${p}.boligbetegnelse`, 'Du må skrive boligbetegnelse.');
         else if (bb.length > 15) feil(`${p}.boligbetegnelse`, 'Boligbetegnelse kan ikke være mer enn 15 tegn.');
         else if (!/^[a-zæøåA-ZÆØÅ0-9 _\-.,#&:;()[\]]+$/.test(bb)) feil(`${p}.boligbetegnelse`, 'Boligbetegnelsen kan inneholde bokstavene A til Å, tallene 0 til 9, mellomrom, og spesialtegnene _ - . , # & : ; ( ) [ ]');
         else if (betegnelser[bb.toLowerCase()] > 1) feil(`${p}.boligbetegnelse`, 'Boligbetegnelsen må være unik');
@@ -172,7 +175,7 @@ STEG.boligkvaliteter = {
           if (V.tom(fo.salgspris)) feil(`${p}.salgspris`, 'Du må skrive salgspris.');
           else if (eNum(fo.salgspris) > 90000000) feil(`${p}.salgspris`, 'Salgspris kan ikke være større enn 90000000.');
         }
-        if (S.utleie(pf)) {
+        if (S.husleie(pf)) {
           if (V.tom(fo.utleiepris)) feil(`${p}.utleiepris`, 'Du må skrive husleie.');
           else if (eNum(fo.utleiepris) > 100000) feil(`${p}.utleiepris`, 'Husleie kan ikke være større enn 100000.');
         }
@@ -373,13 +376,14 @@ function etasjeBlokk(pf, b, a, etasje, kanLegge) {
   const alle = rader.length && rader.every(f => f.enabled);
   const kol = [
     { h: oppf ? '<span class="e-sr">Merknad</span>' : `<label class="e-valg" style="padding:0"><input type="checkbox" data-felt="etasjeAlle.a${a.id}.${etasje}" data-type="sjekk" id="${F.id(`alle-${a.id}-${etasje}`)}" ${alle ? 'checked' : ''}><span>Bolignummer</span></label>` },
-    { h: `<span style="display:inline-flex;gap:6px;align-items:center">Utbyggers boligbetegnelse ${F.hjelpKnapp(`bet-${a.id}-${etasje}`)}</span>`, felt: 'boligbetegnelse', type: 'tekst', bredde: 'm' },
+    !S.istand(pf) && { h: `<span style="display:inline-flex;gap:6px;align-items:center">Utbyggers boligbetegnelse ${F.hjelpKnapp(`bet-${a.id}-${etasje}`)}</span>`, felt: 'boligbetegnelse', type: 'tekst', bredde: 'm' },
     { h: '<abbr title="Bruksareal">BRA-i</abbr>', felt: 'bruksAreal', type: 'tekst', bredde: 'xs' },
     S.visPrimaer(pf) && { h: 'P-rom', felt: 'primaerAreal', type: 'tekst', bredde: 'xs' },
     { h: 'Antall rom', felt: 'antallRom', type: 'tekst', bredde: 'xs' },
     B.visVelgBk(pf) && { h: 'Velg boligkvalitet', felt: 'bkId', type: 'bk' },
     S.salg(pf) && { h: 'Salgspris', felt: 'salgspris', type: 'belop' },
-    S.utleie(pf) && { h: 'Husleie', felt: 'utleiepris', type: 'belop' }
+    S.husleie(pf) && { h: 'Husleie', felt: 'utleiepris', type: 'belop' },
+    S.istand(pf) && { h: 'Istandsettingskostnad', felt: 'istandsettingskostnad', type: 'belop' }
   ].filter(Boolean);
   const livKol = liv ? ['Oppfyller alle krav til livsløpsboliger', 'Forberedt for innvendig løfteinnretning', 'Oppfyller ikke krav'] : [];
 

@@ -45,9 +45,33 @@ To eksempelsøknader ligger klare første gang: en påbegynt, som også viser
 «Utsett sletting», og en innvilget, som viser igangsettelse, utsatt oppstart og
 endre låntaker. «Start på nytt» henter dem tilbake.
 
-Ikke med: kommune, fylkeskommune, kommunekontrollerte foretak og borettslag,
-energitiltak, istandsetting og rentekompensasjon for skole. Det gjelder også
-nynorsk, utlogging og automatisk utlogging etter 28 minutter.
+Ikke med: fylkeskommune, kommunekontrollerte foretak og borettslag, og
+rentekompensasjon for skole. Det gjelder også nynorsk, utlogging og automatisk
+utlogging etter 28 minutter.
+
+## Kommune
+
+Bytt til **Oslo Kommune** i profilmenyen øverst til høyre. Da får «Hva skal
+dere gjøre?» de fem valgene en kommune har: oppføring, kjøp, ombygging,
+energitiltak og istandsetting. En kommune bygger, kjøper og istandsetter alltid
+for utleie, har ikke avtale med seg selv og er selv låntaker, så de spørsmålene
+er borte. Bare energitiltak spør om formål: utleie, omsorgsboliger eller
+sykehjem.
+
+- **Energitiltak** har egne steg i stedet for Økonomi og Vedlegg: Prosjekt,
+  Eiendom, Bolig, Energitiltak, Tilskudd og energibesparelse, Kundeopplysninger
+  og Oppsummering. Ved sykehjem hoppes Bolig over. På Energitiltak legger man
+  til tiltak per bygg, og tilskudd og energibesparelse regnes ut per bygg, per
+  tiltak og for prosjektet, med tak på 5 millioner kroner.
+- **Istandsetting** har Økonomi som en utmåling: 50 % av istandsettingskostnaden
+  per boenhet, høyst 150 000 kroner. Kostnaden legges inn på Bolig-steget.
+- **Oppføring, kjøp og ombygging** bruker samme steg som for en utbygger, med
+  tilskudd til utleieboliger.
+
+Satsene for energitiltak er oppdiktede testverdier, ikke Husbankens. Det er
+også gjettet at istandsetting krever vedleggene prosjektbeskrivelse og
+pristilbud, og at kommunen signerer etter samme signaturbestemmelse som et
+foretak.
 
 ## Filene
 
@@ -59,6 +83,7 @@ nynorsk, utlogging og automatisk utlogging etter 28 minutter.
 | `assets/sider.js` | Sidene utenfor veiviseren. |
 | `assets/wizard.js` | Veiviseren: stepper, knapperad og navigasjon. |
 | `assets/steg-*.js` | Ett steg per fil, med innhold, validering og handlinger. |
+| `assets/steg-energi.js` | Stegene bare kommunen har: Energitiltak, Tilskudd og energibesparelse, og Økonomi ved istandsetting. |
 | `assets/esoknad.css` | Utseendet, bygget på `../ds/colors_and_type.css`. |
 
 ## Slik endrer du et steg
