@@ -532,7 +532,13 @@ function kpStartHtml() {
    Fasadens progress stepper viser de fire stegene, og Fasadens
    progressbar under viser hvor langt du er kommet i spørsmålene.
    Telleren teller spørsmål, ett hakk per spørsmål.
+
+   Linja tegnes på nytt for hver skjerm, og da spilte Fasadens animasjon
+   av det aktive steget hver gang, også mellom to spørsmål i samme steg.
+   Nå får den bare spille når du går videre til et nytt steg.
    ─────────────────────────────────────────────────────────────────── */
+
+let kpForrigeSteg = null;
 
 function kpFramdriftHtml() {
   const f = KP_FLYT[kpPos];
@@ -543,9 +549,11 @@ function kpFramdriftHtml() {
   const pst = f.t === 'slutt' ? 100 : Math.round((nr / totalt) * 100);
   const teller = f.t === 'sp' ? `Spørsmål ${nr} av ${totalt}`
     : `${nr} av ${totalt} spørsmål besvart`;
+  const nyttSteg = kpForrigeSteg !== null && etappeNr > kpForrigeSteg;
+  kpForrigeSteg = etappeNr;
 
   return `
-<div class="kp-framdrift kp-utskrift-skjul">
+<div class="kp-framdrift kp-utskrift-skjul${nyttSteg ? '' : ' kp-framdrift--rolig'}">
   <div class="hb-shell">
     <div class="hb-progress-stepper">
       <nav class="hb-progress-stepper-nav" aria-label="Stegene i Boligkompasset">
@@ -1253,9 +1261,11 @@ function kpTegn() {
 
   if (kpModus === 'start') {
     frem.innerHTML = '';
+    kpForrigeSteg = null;
     rot.innerHTML = kpStartHtml();
   } else if (kpModus === 'oppsummering') {
     frem.innerHTML = '';
+    kpForrigeSteg = null;
     rot.innerHTML = kpOppsummeringHtml();
   } else {
     /* Står posisjonen på siste plass i flyten, er kartleggingen ferdig.

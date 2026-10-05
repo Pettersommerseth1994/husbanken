@@ -193,6 +193,12 @@
    del av komponenten. Her er sidetittelen spørsmålet, så stepperen
    brukes bare til de fire stegene. Lufta under lista er tatt ned. */
 .kp-framdrift .hb-progress-stepper-nav { margin-bottom: var(--space-3); }
+/* Uten animasjon når du står i samme steg som på forrige skjerm.
+   Sluttilstanden fra Fasadens makeIconActive settes direkte. */
+.kp-framdrift--rolig .hb-progress-stepper-list-item.hb-is-active .hb-icon--encapsulated {
+  animation: none; background: #3b444c; color: #fff; transform: none;
+}
+.kp-framdrift--rolig .hb-progress-stepper-list-item.hb-is-active::after { animation: none; transform: none; }
 .kp-framdrift__steg { margin: 0; font-size: var(--text-sm); }
 @media (min-width: 768px) { .kp-framdrift__steg { display: none; } }
 .kp-framdrift__bunn { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-2); }
