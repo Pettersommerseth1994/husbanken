@@ -55,6 +55,17 @@ const regnFelt = (pf, r) => regnRad({ tekst: `<label for="${F.id(`okonomi.${r.fe
 
 STEG.okonomi = {
   tegn: pf => {
+    if (S.bl(pf)) {
+      return `
+        ${eCallout('advarsel', `<p class="e-fet">Tilbakebetalingsplikt</p><p class="e-mb0">${S.blTilbakebetaling(pf)}</p>`)}
+        ${F.belop({ felt: 'okonomi.kjopskostnad', label: 'Kjøpskostnad', hjelp: 'Kjøpesummen for boenheten.' })}
+        <div class="e-regn e-mt">
+          ${regnRad({ tekst: `Foreløpig beregnet tilskudd (${S.BL_ANDEL * 100} % av kjøpesummen)`, tegn: '', sum: true, verdi: regnTall(S.blTilskudd(pf)) })}
+        </div>
+        <p class="e-liten e-sekundaer">Det endelige tilskuddet fastsettes av Husbanken ved behandlingen av søknaden.</p>
+        ${F.sammendrag()}
+        ${W.knapper()}`;
+    }
     const o = S.okonomi(pf);
     const rader = OK.rader(pf).filter(r => r.vis);
     const salg = S.salg(pf);
@@ -118,6 +129,12 @@ STEG.okonomi = {
 
   valider: pf => {
     const o = S.okonomi(pf);
+    if (S.bl(pf)) {
+      if (V.tom(o.kjopskostnad)) return [{ nokkel: 'okonomi.kjopskostnad', melding: 'Du må skrive kjøpskostnad.' }];
+      if (eNum(o.kjopskostnad) < 1) return [{ nokkel: 'okonomi.kjopskostnad', melding: 'Kjøpskostnaden må være større enn 0.' }];
+      if (eNum(o.kjopskostnad) > 9000000000) return [{ nokkel: 'okonomi.kjopskostnad', melding: 'Kjøpskostnaden kan ikke være større enn 9000000000.' }];
+      return [];
+    }
     const f = [];
     const feil = (nokkel, melding) => f.push({ nokkel, melding });
     const belop = (felt, navn, paakrevd) => {

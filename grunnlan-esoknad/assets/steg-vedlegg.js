@@ -16,7 +16,7 @@ STEG.vedlegg = {
     pf.vedlegg = pf.vedlegg || [];
     return `
       <h2 class="e-h2">Vedlegg</h2>
-      <p>Last opp dokumentasjonen vi trenger for å behandle søknaden. Hvilke vedlegg som kreves, kommer an på svarene dine i søknaden.</p>
+      <p>Last opp dokumentasjonen vi trenger for å behandle søknaden. Hvilke vedlegg som kreves, kommer an på svarene i søknaden.</p>
       ${S.vedleggskrav(pf).length ? '' : '<p>Det kreves ingen vedlegg til denne søknaden.</p>'}
       ${S.vedleggskrav(pf).map(k => {
         const filer = pf.vedlegg.filter(v => v.kategori === k.id);

@@ -358,6 +358,13 @@ const V = {
   orgnr: v => /^\d{9}$/.test(String(v || '').replace(/[\s.-]/g, '')),
   navn: v => /^[a-zæøåA-ZÆØÅ0-9_.,\-\s]*$/.test(String(v)),
   heltall: v => /^\d+$/.test(String(v).replace(/\s/g, '')),
+  /* "DD.MM.ÅÅÅÅ" → Date eller null */
+  dato: v => {
+    const m = /^(\d{1,2})\.(\d{1,2})\.((?:19|20)\d{2})\s*$/.exec(String(v || ''));
+    if (!m) return null;
+    const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+    return d.getDate() === Number(m[1]) && d.getMonth() === Number(m[2]) - 1 ? d : null;
+  },
   /* "MM.ÅÅÅÅ" → { m, y } eller null */
   mnd: v => {
     const m = /^(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/.exec(String(v || ''));

@@ -7,15 +7,15 @@ const mndTekst = n => `${eTo((n % 12) + 1)}.${Math.floor(n / 12)}`;
 
 const P = {
   selskap: pf => (pf.lantaker && pf.lantaker.orgNavn) || pf.soker.orgNavn,
-  visPeriode: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING'),
-  visKjop: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING'),
+  visPeriode: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING', 'KJOP_BORETTSLAG'),
+  visKjop: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING', 'KJOP_BORETTSLAG'),
   visOmsatt: pf => S.er(pf, 'KJOP') || pf.kjop === true,
-  visSentral: pf => !S.er(pf, 'ENERGITILSKUDD', 'ISTANDSETTING'),
+  visSentral: pf => !S.er(pf, 'ENERGITILSKUDD', 'ISTANDSETTING', 'KJOP_BORETTSLAG'),
   visArbeid: pf => !S.er(pf, 'KJOP') && !S.kommune(pf),
   visSelger: pf => (S.er(pf, 'KJOP') || pf.kjop === true) && !S.kommune(pf),
   visMalgrupper: pf => S.utleie(pf) && (S.harAvtale(pf) || S.kommune(pf)) && !S.energi(pf),
   visKontaktKommune: pf => S.harAvtale(pf),
-  visHusbanken: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING')
+  visHusbanken: pf => !S.er(pf, 'KJOP', 'ENERGITILSKUDD', 'ISTANDSETTING', 'KJOP_BORETTSLAG')
 };
 
 /* Tidligst neste måned og høyst to år fram, som Planlagt ferdigstilt ved istandsetting */
@@ -57,8 +57,11 @@ STEG.prosjektinformasjon = {
     })();
     const [kjopLabel] = KJOP_LABEL[pf.prosjektTiltakKode] || ['Skal dere kjøpe, eller eier dere fra før?'];
     const energi = S.energi(pf);
+    const bl = S.bl(pf);
     return `
       ${S.istand(pf) ? eCallout('info', '<p><a href="https://www.husbanken.no/kommune/lan-og-tilskudd/tilskudd-utleieboliger/" target="_blank" rel="noopener">Mer informasjon om tilskudd til istandsetting ligger på våre nettsider. (åpner i ny fane)</a></p>') : ''}
+      ${bl ? eCallout('info', `<p class="e-fet">Søknadsfrist</p><p class="e-mb0">Det avklares om kjøpet må være foretatt innenfor et bestemt tidsvindu før ${eEsc(pf.soker.orgNavn)} kan søke. Teksten oppdateres når dette er avklart.</p>`) : ''}
+      ${bl ? eCallout('advarsel', `<p class="e-fet">Tilbakebetalingsplikt</p><p class="e-mb0">${S.blTilbakebetaling(pf)}</p>`) : ''}
       ${F.tekst({ felt: 'navn', label: 'Prosjektnavn', maks: 36, bredde: 'l',
     hjelp: energi ? 'Med prosjekt menes den administrative enheten energitiltak skal gjennomføres på. Hvis den administrative enheten har avdelinger som ligger geografisk adskilt fra hverandre regnes hver avdeling som egne prosjekt ift. energitiltak.' : undefined })
     .replace('data-type="tekst"', 'data-type="tekst" data-levende')}
@@ -75,6 +78,8 @@ STEG.prosjektinformasjon = {
       ${S.er(pf, 'KJOP') ? F.radio({ felt: 'eksisterendeBoligmasse', label: 'Er boligene du skal kjøpe nye eller brukte?', rad: true, valg: [{ v: true, l: 'Brukte boliger' }, { v: false, l: 'Nye boliger' }] }) : ''}
       ${P.visOmsatt(pf) ? F.janei({ felt: 'omsattApentMarked', label: 'Er eiendommen omsatt i det åpne markedet?' }) : ''}
       ${P.visSentral(pf) ? F.janei({ felt: 'sentralGodkjenning', label: `Har ${eEsc(P.selskap(pf))} sentral godkjenning?` }) : ''}
+
+      ${bl ? F.tekst({ felt: 'overtakelsesdato', label: 'Overtakelsesdato/kjøpsdato', plassholder: 'DD.MM.ÅÅÅÅ', bredde: 's', inputmode: 'numeric', beskrivelse: 'Datoen boligen overtas eller ble kjøpt.' }) : ''}
 
       ${S.istand(pf) ? `
         ${F.mnd({ felt: 'ferdig', label: 'Planlagt ferdigstilt' })}
@@ -172,6 +177,10 @@ STEG.prosjektinformasjon = {
       }
       if (pf.harFattEnergitilskuddTidligere == null) feil('harFattEnergitilskuddTidligere', 'Du må fylle ut om kommunen har fått tilskudd til energitiltak for samme prosjekt tidligere');
       if (pf.harFattEnergitilskuddTidligere && V.tom(pf.saksnummerEnovaHusbanken)) feil('saksnummerEnovaHusbanken', 'Du må skrive inn saksnummer fra Enova eller Husbanken');
+    }
+    if (S.bl(pf)) {
+      if (V.tom(pf.overtakelsesdato)) feil('overtakelsesdato', 'Du må skrive overtakelsesdato/kjøpsdato.');
+      else if (!V.dato(pf.overtakelsesdato)) feil('overtakelsesdato', 'Dato format er feil. Dato må være på format DD.MM.ÅÅÅÅ');
     }
     if (S.istand(pf)) {
       const ff = FERDIG_FEIL(pf, 'ferdig', V.mnd(pf.ferdig), null);

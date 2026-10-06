@@ -73,6 +73,10 @@ flowchart LR
     direction LR
     E1[Prosjekt] --> E2[Eiendom] --> E3[Bolig] --> E4[Energitiltak] --> E5[Tilskudd og<br/>energibesparelse] --> E6[Kundeopplysninger] --> E7[Oppsummering]
   end
+  subgraph B[Kjøp av borettslagsleilighet, kommune]
+    direction LR
+    B1[Prosjekt] --> B2[Eiendom:<br/>velg én boenhet] --> B3[Økonomi:<br/>kjøpskostnad] --> B4[Vedlegg:<br/>kontrakt og salgsoppgave] --> B5[Kundeopplysninger] --> B6[Oppsummering]
+  end
   subgraph I[Istandsetting, kommune]
     direction LR
     I1[Prosjekt] --> I2[Eiendom] --> I3[Bolig] --> I4[Økonomi:<br/>tilskuddsutmåling] --> I5[Vedlegg] --> I6[Kundeopplysninger] --> I7[Oppsummering]

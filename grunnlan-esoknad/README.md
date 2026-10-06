@@ -65,6 +65,14 @@ sykehjem.
   tiltak og for prosjektet, med tak på 5 millioner kroner.
 - **Istandsetting** har Økonomi som en utmåling: 50 % av istandsettingskostnaden
   per boenhet, høyst 150 000 kroner. Kostnaden legges inn på Bolig-steget.
+- **Kjøp av borettslagsleilighet** er en forsøksordning for bostedsløse og
+  vanskeligstilte barnefamilier, bare for kommuner og bare tilskudd, ikke lån.
+  Forsøksordningen forklares på søknadsoversikten og når valget tas. Stegene er
+  Prosjekt, Eiendom, Økonomi, Vedlegg, Kundeopplysninger og Oppsummering.
+  Eiendom viser borettslaget (org.nr. og navn) og en liste over boligene, der
+  kommunen velger én og fyller ut antall soverom. Økonomi har ett felt,
+  kjøpskostnad, og viser foreløpig beregnet tilskudd (10 %). Bare kjøpekontrakt
+  og salgsoppgave kreves som vedlegg.
 - **Oppføring, kjøp og ombygging** bruker samme steg som for en utbygger, med
   tilskudd til utleieboliger.
 
@@ -125,3 +133,12 @@ Prototypen er ikke lenger en ren kopi. Disse endringene er gjort med vilje:
   raden, som er en kjent feil.
 - Tekster som ligger i Husbankens designsystem og ikke i repoet, som knappene
   i bekreftelsesdialogene og noen standard feilmeldinger, er gjettet.
+
+## Åpne punkter i forsøksordningen
+
+- Nøyaktig ordlyd på feltet «Overtakelsesdato/kjøpsdato».
+- Søknadsfristen, og om kjøpet må være foretatt innenfor et bestemt tidsvindu.
+  Boksen på Prosjekt sier foreløpig bare at det avklares.
+- Innloggingen er ikke med i prototypen, så informasjonen «før innlogging» ligger
+  på søknadsoversikten og når valget tas.
+- Borettslaget og boligene er oppdiktede testdata fra «Matrikkelen».

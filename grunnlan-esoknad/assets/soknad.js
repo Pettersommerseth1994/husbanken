@@ -12,11 +12,12 @@ S.TILTAK = {
   KJOP: { valg: 'Kjøpe boliger', kort: 'Kjøp', produkt: 'Lån til kjøp' },
   OMBYGGING: { valg: 'Gjøre om bygg til boligformål (ombygging)', kort: 'Ombygging', produkt: 'Lån til ombygging' },
   ENERGITILSKUDD: { valg: 'Energitiltak', kort: 'Energitiltak', produkt: 'Tilskudd til energitiltak' },
-  ISTANDSETTING: { valg: 'Istandsette boliger (for utleie)', kort: 'Istandsetting', produkt: 'Tilskudd til istandsetting' }
+  ISTANDSETTING: { valg: 'Istandsette boliger (for utleie)', kort: 'Istandsetting', produkt: 'Tilskudd til istandsetting' },
+  KJOP_BORETTSLAG: { valg: 'Kjøp av borettslagsleilighet', kort: 'Kjøp av borettslagsleilighet', produkt: 'Tilskudd til kjøp av borettslagsleilighet' }
 };
 S.LANEFORMAL = { KLIMAVENNLIG: 'Klimavennlig bolig', LIVSLOPSSTANDARD: 'Livsløpsstandard' };
 S.PRODUKTNAVN = { OPPFORING: 'Lån til oppføring', KJOP: 'Lån til kjøp', OMBYGGING: 'Lån til ombygging', OPPGRADERING: 'Lån til oppgradering', TILSKUDDUTLEIE: 'Tilskudd til utleieboliger',
-  ENERGITILSKUDD: 'Tilskudd til energitiltak', TILSKUDDISTANDSETTING: 'Tilskudd til istandsetting' };
+  ENERGITILSKUDD: 'Tilskudd til energitiltak', TILSKUDDISTANDSETTING: 'Tilskudd til istandsetting', TILSKUDDBORETTSLAG: 'Tilskudd til kjøp av borettslagsleilighet' };
 S.VIRKEMIDDEL = { GRUNNLAN: 'Lån', TILSKUDDUTLEIE: 'Tilskudd' };
 
 S.finn = (t, id) => t.soknader.find(s => String(s.id) === String(id));
@@ -34,18 +35,24 @@ S.oppfOmb = pf => S.er(pf, 'OPPFORING', 'OMBYGGING');
 S.kanLeggeTilBoliger = pf => !!pf.prosjektTiltakKode && !S.er(pf, 'KJOP', 'ISTANDSETTING');
 S.energi = pf => S.er(pf, 'ENERGITILSKUDD');
 S.istand = pf => S.er(pf, 'ISTANDSETTING');
+/* Forsøksordning: kommuner kjøper borettslagsleiligheter til bostedsløse og vanskeligstilte barnefamilier. Bare tilskudd, ikke lån. */
+S.bl = pf => S.er(pf, 'KJOP_BORETTSLAG');
+S.BL_ANDEL = 0.10;
+S.blTilskudd = pf => Math.round(eNum(S.okonomi(pf).kjopskostnad) * S.BL_ANDEL);
+S.blBoenhet = pf => S.aktiveBoenheter(pf)[0] || null;
+S.blTilbakebetaling = pf => `Dersom nybygget ikke blir realisert, har ${eEsc(pf.soker.orgNavn)} plikt til å betale tilbake tilskuddet.`;
 S.kommune = pf => (pf.soker || {}).kundeType === 'KOMMUNE';
 S.sykehjem = pf => pf.formalKode === 'SYKEHJEM' && eNum(pf.antallSykehjemplasser) > 0;
 /* Husleie spørres om for utleie, men ikke ved istandsetting */
 S.husleie = pf => S.utleie(pf) && !S.istand(pf);
 /* Kvalitetskrav og boligkonfigurasjoner gjelder ikke når det er avtale med kommunen */
-S.visBK = pf => !S.er(pf, 'ENERGITILSKUDD', 'ISTANDSETTING') && (!S.harAvtale(pf) || (S.er(pf, 'OPPFORING') && S.salg(pf)));
+S.visBK = pf => !S.er(pf, 'ENERGITILSKUDD', 'ISTANDSETTING', 'KJOP_BORETTSLAG') && (!S.harAvtale(pf) || (S.er(pf, 'OPPFORING') && S.salg(pf)));
 S.boligsosialt = pf => S.harAvtale(pf);
 /* Totalt BTA, klimagassavtrykk og kjeller spørres om der miljø- og
    livsløpskravene sto før: oppføring og ombygging uten avtale med kommunen. */
 S.visKlima = pf => S.oppfOmb(pf) && S.visBK(pf);
 S.visPrimaer = pf => S.produkt(pf, 'TILSKUDDUTLEIE');
-S.virkemidler = pf => [S.lanProdukt(pf) && 'GRUNNLAN', (S.produkt(pf, 'TILSKUDDUTLEIE') || S.produkt(pf, 'ENERGITILSKUDD') || S.produkt(pf, 'TILSKUDDISTANDSETTING')) && 'TILSKUDDUTLEIE'].filter(Boolean);
+S.virkemidler = pf => [S.lanProdukt(pf) && 'GRUNNLAN', (S.produkt(pf, 'TILSKUDDUTLEIE') || S.produkt(pf, 'ENERGITILSKUDD') || S.produkt(pf, 'TILSKUDDISTANDSETTING') || S.produkt(pf, 'TILSKUDDBORETTSLAG')) && 'TILSKUDDUTLEIE'].filter(Boolean);
 S.lantakerOrg = pf => (pf.sokerErLantaker !== false ? pf.soker : pf.lantaker) || null;
 S.aktivKunde = pf => (pf.lantaker && pf.lantaker.orgNr ? pf.lantaker : pf.soker);
 S.navn = pf => pf.navn || 'Ny søknad';
@@ -71,6 +78,7 @@ S.steg = pf => {
       S.STEG[5], S.STEG[6]
     ];
   }
+  if (S.bl(pf)) return [S.STEG[0], S.STEG[1], S.STEG[3], S.STEG[4], S.STEG[5], S.STEG[6]];
   if (S.istand(pf)) return [S.STEG[0], S.STEG[1], S.STEG[2], { path: 'okonomiistandsetting', tittel: 'Økonomi', ikon: 'kroner' }, S.STEG[4], S.STEG[5], S.STEG[6]];
   return S.STEG;
 };
@@ -259,6 +267,7 @@ S.VEDLEGG = [
   { id: 'FASADETEGNINGERFORTILTAKET_VEDLEGG', tittel: 'Fasadetegninger før tiltaket', hjelp: 'Fasadetegningen må ha angitt målestokk, og skal vise situasjonen før planlagt endring.', regel: pf => S.er(pf, 'OPPGRADERING', 'OMBYGGING') },
   { id: 'FESTEKONTRAKT_VEDLEGG', tittel: 'Festekontrakt', regel: pf => S.alleValgteBygg(pf).some(({ e }) => eNum(e.festeNr) > 0) },
   { id: 'KJOPEKONTRAKT_VEDLEGG', tittel: 'Kjøpekontrakt', regel: pf => S.er(pf, 'KJOP') || S.produkt(pf, 'KJOP') },
+  { id: 'SALGSOPPGAVE_VEDLEGG', tittel: 'Salgsoppgave', regel: S.bl },
   { id: 'PLANTEGNINGER_VEDLEGG', tittel: 'Plantegninger', hjelp: 'Plantegninger må ha angitt målestokk.', regel: pf => S.er(pf, 'OPPFORING', 'OPPGRADERING', 'OMBYGGING') },
   { id: 'PLANTEGNINGERFORTILTAKET_VEDLEGG', tittel: 'Plantegninger før tiltaket', hjelp: 'Plantegninger må ha angitt målestokk, og skal vise situasjonen før planlagt endring.', regel: pf => S.er(pf, 'OPPGRADERING', 'OMBYGGING') },
   { id: 'KONTRAKT_VEDLEGG', tittel: 'Pristilbud/Kontrakt/Prisoverslag på tiltaket', regel: pf => S.er(pf, 'OPPFORING', 'OPPGRADERING', 'OMBYGGING', 'ISTANDSETTING') },
@@ -281,7 +290,9 @@ S.VEDLEGG = [
       <p><a href="https://husbanken.no/bransje/" target="_blank" rel="noopener">Les mer om dette i veilederen (åpner i ny fane)</a>.</p>` },
   { id: 'RAMMETILLATELSE', tittel: 'Rammetillatelse', regel: pf => S.alleValgteAdresser(pf).some(({ a }) => !a.fraMatrikkelen) }
 ];
-S.vedleggskrav = pf => S.VEDLEGG.filter(k => k.regel(pf));
+S.vedleggskrav = pf => (S.bl(pf)
+  ? S.VEDLEGG.filter(k => ['KJOPEKONTRAKT_VEDLEGG', 'SALGSOPPGAVE_VEDLEGG'].includes(k.id))
+  : S.VEDLEGG.filter(k => k.regel(pf)));
 
 /* ═══ Ny søknad ═══════════════════════════════════════════════════ */
 
@@ -295,7 +306,7 @@ S.ny = (t, valg) => {
     ...valg
   };
   if (pf.prosjektTiltakKode === 'KJOP') pf.formalKode = 'UTLEIE';
-  if (S.kommune(pf) && !pf.formalKode) pf.formalKode = 'UTLEIE';   // kommunen bygger, kjøper og istandsetter alltid for utleie
+  if (S.kommune(pf) && !pf.formalKode && !S.bl(pf)) pf.formalKode = 'UTLEIE';   // kommunen bygger, kjøper og istandsetter alltid for utleie
   if (pf.sokerErLantaker !== false) pf.lantaker = { ...pf.soker };
   if (S.oppfOmb(pf)) S.standardKonfigurasjoner(pf, t);
   t.soknader.unshift(pf);

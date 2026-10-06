@@ -37,6 +37,7 @@ function forsiden() {
     rot.innerHTML = `
       <h1 class="e-h1">${eEsc(org.navn)}</h1>
       ${grunner.length ? eCallout('advarsel', grunner.map(g => `<p>${g}</p>`).join(''), false, ' id="disableNySoknadReasons"') : ''}
+      ${org.kundeType === 'KOMMUNE' ? eCallout('info', BL_INFO) : ''}
       <p><button type="button" class="e-knapp e-knapp--prominent" id="nySoknad" ${grunner.length ? 'disabled' : ''}>Ny søknad</button></p>
       <h1 class="e-h1 e-mt" id="oversiktOverSoknader" style="margin-top:var(--space-7)">Oversikt over søknader</h1>
       ${mine.length ? `<div class="e-tabell-rulle"><table class="e-tabell e-oversikt">
@@ -147,7 +148,12 @@ async function soknadsvalg(valg, pf) {
 /* ═══ Opprett søknad ══════════════════════════════════════════════ */
 
 const TILTAK_BRANSJE = ['OPPFORING', 'OPPGRADERING', 'KJOP', 'OMBYGGING'];
-const TILTAK_KOMMUNE = ['OPPFORING', 'KJOP', 'OMBYGGING', 'ENERGITILSKUDD', 'ISTANDSETTING'];
+const TILTAK_KOMMUNE = ['OPPFORING', 'KJOP', 'OMBYGGING', 'ENERGITILSKUDD', 'ISTANDSETTING', 'KJOP_BORETTSLAG'];
+
+/* Forsøksordningen, forklart før man går i gang */
+const BL_INFO = `<h2>Forsøksordning for bostedsløse og vanskeligstilte barnefamilier</h2>
+  <p>Kommuner kan søke om tilskudd til å kjøpe borettslagsleiligheter til bostedsløse og vanskeligstilte barnefamilier. Tilskuddet er 10 % av kjøpesummen.</p>
+  <p>Dette er bare tilskudd. Ordningen gir ikke lån, og den gjelder ikke kjøp eller utleie av andre boliger. Ordningen er en forsøksordning og er bare åpen for kommuner.</p>`;
 const FORMAL_ENERGI = [{ v: 'UTLEIE', l: 'Utleie' }, { v: 'OMSORGSYKEHJEM', l: 'Omsorgsboliger' }, { v: 'SYKEHJEM', l: 'Sykehjem' }];
 
 /* En kommune bygger, kjøper og istandsetter alltid for utleie, har ikke avtale med seg selv
@@ -166,6 +172,7 @@ const opprettRegler = {
     if (opprettKommune) {
       if (d.tiltak === 'ENERGITILSKUDD') return ['ENERGITILSKUDD'];
       if (d.tiltak === 'ISTANDSETTING') return ['TILSKUDDISTANDSETTING'];
+      if (d.tiltak === 'KJOP_BORETTSLAG') return ['TILSKUDDBORETTSLAG'];
       return [d.tiltak, d.tiltak && 'TILSKUDDUTLEIE'].filter(Boolean);
     }
     return [d.tiltak, (opprettRegler.avtale(d) && d.avtale === 'TILDELING' && d.tiltak !== 'OPPGRADERING') && 'TILSKUDDUTLEIE'].filter(Boolean);
@@ -222,6 +229,8 @@ function opprett() {
           ${F.gruppefeil('harGyldigEpost')}` })}
 
         ${F.radio({ felt: 'tiltak', label: 'Hva skal dere gjøre?', valg: (opprettKommune ? TILTAK_KOMMUNE : TILTAK_BRANSJE).map(k => ({ v: k, l: S.TILTAK[k].valg })) })}
+
+        ${d.tiltak === 'KJOP_BORETTSLAG' ? eCallout('info', BL_INFO) : ''}
 
         ${r.laneformal(d) ? F.radio({ felt: 'laneformal', label: 'Velg formål', valg: Object.entries(S.LANEFORMAL).map(([v, l]) => ({ v, l })) }) : ''}
 

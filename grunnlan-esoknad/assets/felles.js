@@ -104,9 +104,11 @@ function eMatrikkel({ kommuneNr, gaardsNr, bruksNr }, nyId) {
   if (Number(bruksNr) === 999) return { fraMatrikkelen: false, finnerIkkeAdresse: true, bygg: [] };
   const gate = E_GATER[(Number(gaardsNr) * 7 + Number(bruksNr)) % E_GATER.length];
   const nr = 2 + ((Number(gaardsNr) + Number(bruksNr)) % 20) * 2;
+  const BL = ['Sagene', 'Grünerløkka', 'Majorstuen', 'Tøyen', 'Ullern', 'Nordstrand', 'Bjerke', 'Frogner'];
+  const borettslag = { orgnr: String(910000000 + ((Number(gaardsNr) * 1000 + Number(bruksNr)) % 80000000)), navn: `${BL[(Number(gaardsNr) + Number(bruksNr)) % BL.length]} Borettslag` };
   const adr = (bokstav, antall, bruksareal, veiNummer = nr) => ({ id: nyId(), veiNavn: gate, veiNummer, veiBokstav: bokstav, enabled: false, fraMatrikkelen: true, antallBoliger: antall, bruksareal });
   return {
-    fraMatrikkelen: true, finnerIkkeAdresse: false,
+    fraMatrikkelen: true, finnerIkkeAdresse: false, borettslag,
     bygg: [
       { id: nyId(), navn: 'Bygg 1', fraMatrikkelen: true, bygningstypeFraMatrikkelen: '142', visForValgtTiltak: true,
         adresserFraMatrikkelen: [adr('A', 6, 68), adr('B', 6, 74)], adresser: [] },

@@ -17,6 +17,7 @@ STEG.eiendomsopplysninger = {
   foer: pf => { if (!pf.eiendommer || !pf.eiendommer.length) pf.eiendommer = [EI.nyEiendom()]; },
 
   vedEndring: (felt, pf) => {
+    if (felt === 'valgtBoenhet') pf.boenheter.forEach(f => { f.enabled = String(f.id) === String(pf.valgtBoenhet); });
     const m = /^eiendommer\.(\d+)\.kommuneSok$/.exec(felt);
     if (m) {
       const e = pf.eiendommer[Number(m[1])];
@@ -38,9 +39,9 @@ STEG.eiendomsopplysninger = {
     const ikkeHentet = pf.eiendommer.some(e => !EI.hentet(e));
     return `
       ${pf.eiendommer.map((e, i) => F.trekkspill({ nokkel: `eiendom-${e.id}`, tittel: EI.hentet(e) ? S.eiendomTittel(e) : 'Legg til eiendom du ønsker å finansiere',
-        kropp: EI.hentet(e) ? eiendomHentet(pf, e, i) : eiendomNy(pf, e, i) })).join('')}
+        kropp: EI.hentet(e) ? (S.bl(pf) ? eiendomHentetBL(pf, e, i) : eiendomHentet(pf, e, i)) : eiendomNy(pf, e, i) })).join('')}
       ${pf.eiendommer.length ? '' : '<p>Du har ikke lagt til noen eiendommer ennå</p>'}
-      ${S.istand(pf) ? '' : `<p><button type="button" class="e-knapp" data-handling="leggTilEiendom">${E_IKON.pluss}Legg til eiendom</button></p>`}
+      ${S.istand(pf) || S.bl(pf) ? '' : `<p><button type="button" class="e-knapp" data-handling="leggTilEiendom">${E_IKON.pluss}Legg til eiendom</button></p>`}
       ${F.sammendrag()}
       ${F.visFeil && ikkeHentet ? eCallout('feil', '<p>Du må hente eiendomsinformasjon</p>') : ''}
       ${W.knapper({ nesteDeaktivert: STEG.eiendomsopplysninger.ikkeAdresser(pf) })}`;
@@ -50,6 +51,20 @@ STEG.eiendomsopplysninger = {
     const f = [];
     const feil = (nokkel, melding) => f.push({ nokkel, melding });
     const hentede = pf.eiendommer.filter(EI.hentet);
+    if (S.bl(pf)) {
+      pf.eiendommer.forEach((e, i) => { if (!EI.hentet(e)) eiendomFeltFeil(e, i).forEach(x => f.push(x)); });
+      if (hentede.length) {
+        const valgt = pf.boenheter.find(x => String(x.id) === String(pf.valgtBoenhet));
+        if (!valgt) feil('valgtBoenhet', 'Du må velge én boenhet.');
+        else {
+          const p = `boenheter.${pf.boenheter.indexOf(valgt)}.antallSoverom`;
+          if (V.tom(valgt.antallSoverom)) feil(p, 'Du må skrive antall soverom.');
+          else if (!V.heltall(valgt.antallSoverom)) feil(p, 'Du kan kun angi hele tall.');
+          else if (eNum(valgt.antallSoverom) > 20) feil(p, 'Antall soverom kan ikke være større enn 20.');
+        }
+      }
+      return f;
+    }
     pf.eiendommer.forEach((e, i) => {
       const p = `eiendommer.${i}`;
       if (!EI.hentet(e)) {
@@ -98,6 +113,18 @@ STEG.eiendomsopplysninger = {
       ferdig();
       Object.assign(e, eMatrikkel(e, S.nyId));
       e.skalVisesIListeMedAlleBygg = false;
+      if (S.bl(pf)) {
+        /* Alle boligene i borettslaget listes, og kommunen velger én */
+        pf.boenheter = pf.boenheter || [];
+        e.bygg = e.bygg.filter(b => b.visForValgtTiltak !== false);
+        let n = 0;
+        e.bygg.forEach(b => b.adresserFraMatrikkelen.forEach(a => {
+          a.enabled = true;
+          S.lagMatrikkelBoenheter(pf, a);
+          S.boenheter(pf, a.id).forEach(fo => { fo.enabled = false; fo.andelsNr = String(1000 + (++n)); fo.bruttoareal = Math.round(eNum(fo.bruksAreal) * 1.1); });
+        }));
+        delete pf.valgtBoenhet;
+      }
       delete e.kommuneSok;
       return true;
     },
@@ -172,6 +199,40 @@ function eiendomNy(pf, e, i) {
     </div>
     <div class="e-knappegruppe e-mt">
       <button type="button" class="e-knapp" data-handling="hent" data-i="${i}">Hent eiendomsinformasjon</button>
+      <button type="button" class="e-knapp e-knapp--subtil-destruktiv" data-handling="slettEiendom" data-i="${i}">${E_IKON.soppel}Slett eiendommen</button>
+    </div>`;
+}
+
+/* Kjøp av borettslagsleilighet: borettslaget og en liste over boligene, der kommunen velger én */
+function eiendomHentetBL(pf, e, i) {
+  const bl = e.borettslag;
+  const rader = e.bygg.flatMap(b => S.valgteAdresser(b).flatMap(a => S.boenheter(pf, a.id).map(fo => ({ a, fo }))));
+  return `
+    <div class="e-rutenett" style="margin-bottom:var(--space-5)">
+      ${F.les('Kommune', eEsc(S.kommuneTekst(e)))}${F.les('Gårdsnr.', e.gaardsNr)}${F.les('Bruksnr.', e.bruksNr)}
+      ${F.les('Festenr.', e.festeNr ?? 0)}${F.les('Seksjonsnr.', e.seksjonsNr ?? 0)}
+    </div>
+    ${e.fraMatrikkelen === false ? eCallout('feil', '<p class="e-fet e-mb0">Ingen treff i matrikkelen</p><p>Vi fant ingen treff i matrikkelen på dette gårds- og bruksnummeret.</p>') : ''}
+    ${bl ? `<div class="e-rutenett" style="margin-bottom:var(--space-5)">${F.les('Borettslag', eEsc(bl.navn))}${F.les('Org.nr.', eOrgnr(bl.orgnr))}</div>` : ''}
+    <fieldset class="e-felt" data-feltboks="valgtBoenhet" id="${F.id('valgtBoenhet')}">
+      <legend>Velg boenhet ${F.hjelpKnapp('bl-boenhet')}</legend>
+      ${F.hjelpTekst('bl-boenhet', 'Det kan bare søkes om tilskudd til én boenhet per søknad.')}
+      <div class="e-tabell-rulle"><table class="e-tabell">
+        <thead><tr><th><span class="e-sr">Velg</span></th><th>Adresse</th><th>Bolignr.</th><th>Andelsnr.</th><th class="e-tall">Bruttoareal</th><th class="e-tall">Antall rom</th><th>Antall soverom</th></tr></thead>
+        <tbody>${rader.map(({ a, fo }) => {
+    const valgt = String(pf.valgtBoenhet) === String(fo.id);
+    const p = `boenheter.${pf.boenheter.indexOf(fo)}.antallSoverom`;
+    return `<tr class="${valgt ? 'er-valgt' : ''}">
+            <td><input type="radio" name="${F.id('valgtBoenhet')}" id="${F.id(`bl-${fo.id}`)}" value="${fo.id}" data-felt="valgtBoenhet" data-type="radio" ${valgt ? 'checked' : ''} aria-label="Velg ${eEsc(S.adresseTekst(a))} ${fo.etasje}${fo.bruksenhetsNr}"></td>
+            <td>${eEsc(S.adresseTekst(a))}</td><td>${fo.etasje}${fo.bruksenhetsNr}</td><td>${eEsc(fo.andelsNr)}</td>
+            <td class="e-tall">${eEsc(fo.bruttoareal)} m²</td><td class="e-tall">${eEsc(fo.antallRom || '')}</td>
+            <td data-feltboks="${p}"><input class="e-input e-input--xs${F.harFeil(p) ? ' er-feil' : ''}" id="${F.id(p)}" inputmode="numeric" data-felt="${p}" data-type="tekst" value="${eEsc(fo.antallSoverom ?? '')}" ${valgt ? '' : 'disabled'} aria-label="Antall soverom">${valgt ? F.feilHtml(p) : ''}</td>
+          </tr>`;
+  }).join('')}</tbody></table></div>
+      ${F.feilHtml('valgtBoenhet')}
+      <p class="e-liten e-sekundaer">Antall soverom fremkommer ikke alltid av matrikkelen, og fylles ut av kommunen.</p>
+    </fieldset>
+    <div class="e-knappegruppe e-mt">
       <button type="button" class="e-knapp e-knapp--subtil-destruktiv" data-handling="slettEiendom" data-i="${i}">${E_IKON.soppel}Slett eiendommen</button>
     </div>`;
 }
