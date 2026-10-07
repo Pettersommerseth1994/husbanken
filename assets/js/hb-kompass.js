@@ -306,19 +306,21 @@ function kpKnapp(tekst, data, variant = 'prominent', ikon = '') {
 /* Svaralternativene er Fasadens radioknapp og avkryssingsboks, satt opp
    slik felt-radio og felt-checkboxgruppe gjør det: en liste i et
    fieldset, med input, og etiketten i en hb-label ved siden av.
-   Alternativer med «vis» tas bare med når betingelsen er oppfylt. */
+   Alternativer med «vis» tas bare med når betingelsen er oppfylt.
+
+   Et alternativ med «under» hører til et annet alternativ, og står i
+   en egen liste inni det, slik Fasadens avkrysning på to nivåer gjør
+   det. Da står det innrykket rett under svaret som fikk det fram. */
 function kpValgHtml(navn, valg, type, gjeldende, legend) {
   const flertall = type === 'flervalg';
   const valgt = flertall ? (Array.isArray(gjeldende) ? gjeldende : []) : gjeldende;
   const synlige = valg.filter(v => !v.vis || v.vis(S));
-  return `
-  <fieldset class="hb-felt ${flertall ? 'hb-felt-checkboxgruppe' : 'hb-felt-radio'}">
-    <legend class="hb-screenreader-only">${legend}</legend>
-    <ul class="hb-feltliste">
-      ${synlige.map(v => {
-        const id = `valg-${navn}-${v.v}`;
-        const av = flertall ? valgt.includes(v.v) : valgt === v.v;
-        return `
+
+  const rad = v => {
+    const id = `valg-${navn}-${v.v}`;
+    const av = flertall ? valgt.includes(v.v) : valgt === v.v;
+    const barn = synlige.filter(b => b.under === v.v);
+    return `
       <li>
         <input class="${flertall ? 'hb-checkbox' : 'hb-radiobutton'}" id="${id}"
                type="${flertall ? 'checkbox' : 'radio'}" name="${navn}" value="${v.v}"
@@ -327,8 +329,15 @@ function kpValgHtml(navn, valg, type, gjeldende, legend) {
           <label class="hb-label-tekst" for="${id}">${v.tittel}</label>
           ${v.desc ? `<p class="hb-felt-beskrivelse--alternativ">${v.desc}</p>` : ''}
         </div>
+        ${barn.length ? `<ul class="hb-feltliste kp-underliste">${barn.map(rad).join('')}</ul>` : ''}
       </li>`;
-      }).join('')}
+  };
+
+  return `
+  <fieldset class="hb-felt ${flertall ? 'hb-felt-checkboxgruppe' : 'hb-felt-radio'}">
+    <legend class="hb-screenreader-only">${legend}</legend>
+    <ul class="hb-feltliste">
+      ${synlige.filter(v => !v.under).map(rad).join('')}
     </ul>
   </fieldset>`;
 }

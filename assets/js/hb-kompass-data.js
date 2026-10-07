@@ -83,7 +83,9 @@ const KOMPASS_ETAPPER = [
         positivt er små grep
 
    «vis» på et svaralternativ, og «betinget» på et spørsmål, er de
-   betingelsene arket merker med *BETINGET VIDERE.
+   betingelsene arket merker med *BETINGET VIDERE. «under» sier at
+   alternativet hører til et annet alternativ i samme spørsmål, og
+   står innrykket under det.
    ─────────────────────────────────────────────────────────────────── */
 
 const kpHar = (S, id, v) => Array.isArray(S[id]) && S[id].includes(v);
@@ -238,7 +240,7 @@ const KOMPASS_SPORSMAL = [
       { v: 'terskel',      tittel: 'Baderomsdøren har terskel' },
       { v: 'lite',         tittel: 'Jeg har et lite bad' },
       { v: 'dor-innover',  tittel: 'Baderomsdøren slår innover i rommet',
-        vis: S => kpHar(S, 'bad-bruk', 'lite') },
+        under: 'lite', vis: S => kpHar(S, 'bad-bruk', 'lite') },
       { v: 'dusj-kant',    tittel: 'Dusjkabinett eller dusjnisje har en høydeforskjell',
         vis: S => kpHar(S, 'bad-innhold', 'dusj') },
       { v: 'dusj-stol',    tittel: 'Dusjen har ikke plass til dusjstol/-krakk',

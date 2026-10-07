@@ -230,6 +230,12 @@
 
 .kp-felt + .kp-felt { margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--hb-slate-200); }
 .kp-felt { margin-top: var(--space-4); }
+
+/* Et svaralternativ som hører til et annet, som «Baderomsdøren slår
+   innover» under «Jeg har et lite bad». Fasadens avkrysning på to nivåer
+   legger barna i en egen liste med vanlig listeinnrykk, 40 px.
+   .hb-feltliste nuller innrykket, så det settes tilbake her. */
+.fasaden .kp-underliste { padding-left: 2.5rem; margin-top: 0.25rem; }
 .kp-felt .hb-felt-beskrivelse { max-width: 62ch; }
 
 /* Oppfølgingen, som 5b, står innrykket under svaret den hører til */
