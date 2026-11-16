@@ -25,7 +25,7 @@ function hvaVilDuInnhold(niva) {
     </div>
     <${h} class="lan-h4">Lån</${h}>
     <div class="lan-ordningsliste">
-      ${ordningskort('informasjon.html', 'illustrasjon-miljovennlig-kompakt.svg', 'Lån til å bygge klimavennlig bolig', 'For deg som vil søke om lån til oppføring av boliger som følger Husbankens klimakrav.', niva + 1, 1)}
+      ${ordningskort('informasjon.html', 'illustrasjon-miljovennlig-kompakt.svg', 'Lån til å bygge klimavennlig bolig', 'For deg som vil søke om lån til oppføring av boliger som følger Husbankens klimakrav.', niva + 1)}
       ${ordningskort('#', 'illustrasjon-livslop-kompakt.svg', 'Lån til å bygge bolig med livsløpsstandard', 'For deg som skal bygge en bolig tilpasset ulike faser i livet.', niva + 1)}
       ${ordningskort('#', 'illustrasjon-oppgradere-kompakt.svg', 'Lån til å oppgradere bolig', 'For deg som skal oppgradere boligen med betydelig lavere energiforbruk og god tilgjengelighet.', niva + 1)}
       ${ordningskort('#', 'illustrasjon-debitor-kompakt.svg', 'Lån til å kjøpe nybygget bolig', 'For deg som skal kjøpe en bolig i et prosjekt som er godkjent av Husbanken.', niva + 1)}
@@ -127,18 +127,19 @@ function informasjon() {
   const fornavn = lanPerson().fornavn;
   document.getElementById('side').innerHTML = `
     ${brodsmuler([['hva-vil-du-soke-om.html', 'Hva vil du søke om?'], [null, 'Bygge klimavennlig bolig']])}
-    <h1 class="lan-h1" style="margin-top:var(--space-4)" data-endret="2">Søk om lån til å bygge klimavennlig bolig</h1>
+    <h1 class="lan-h1" style="margin-top:var(--space-4)">Søk om lån til å bygge klimavennlig bolig</h1>
 
     <div class="lan-guide lan-guide--stor">
       <img src="img/hb-avatar-poster.svg" alt="">
       <p class="lan-guide__hei">Hei, ${lanEsc(fornavn)}!</p>
-      <p data-endret="3">Dette lånet er for deg som skal bygge bolig med lavt klimagassavtrykk.</p>
+      <p>Dette lånet er for deg som skal bygge bolig med lavt klimagassavtrykk.</p>
       <div class="lan-panel lan-panel--bla">
         <p class="lan-fet" style="font-size:var(--text-lg)">Viktig informasjon til deg som vil søke</p>
         <ul class="lan-mb0">
           <li>Du kan ikke få lån hvis byggingen allerede har startet. Grunnarbeid, som støping av såle, er tillatt, men grunnmuren kan ikke være oppført.</li>
           <li>Byggearbeidet må starte senest seks måneder etter at lånet er innvilget.</li>
           <li>Lånet kan ikke brukes til refinansiering.</li>
+          <li data-endret="6">Du må sende inn et klimagassregnskap før lånet blir utbetalt.</li>
         </ul>
       </div>
       <p class="lan-mb0"><a href="https://www.husbanken.no/" target="_blank" rel="noopener">Mer om dette lånet (åpnes i ny fane)</a></p>
@@ -154,8 +155,20 @@ function informasjon() {
 
     <div style="margin:var(--space-6) 0">
       <hr class="lan-skille">
-      <div data-endret="4">${lanLesMer('Dette skal til for å få lånet', `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo eget magna fermentum iaculis. Sed viverra tellus in hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc sed augue lacus viverra vitae congue eu consequat.</p>`)}</div>
+      <div data-endret="7">${lanLesMer('Dette skal til for å få lånet', `
+        <p>Boligen må gi minst 10 prosent lavere klimagassutslipp enn kravet i byggteknisk forskrift (TEK17). Det betyr at klimagassavtrykket må være:</p>
+        <ul>
+          <li>179 kg CO₂-ekv./m² BTA eller lavere uten oppvarmet kjeller</li>
+          <li>232 kg CO₂-ekv./m² BTA eller lavere med oppvarmet kjeller</li>
+        </ul>
+        <p>Du må også:</p>
+        <ul>
+          <li>søke om lån til én bolig, med høyst én utleiedel</li>
+          <li>bygge en bolig som er mindre enn 1000 kvadratmeter BTA</li>
+          <li>ha et klimagassbudsjett etter NS 3720:2018 når du søker</li>
+        </ul>
+        <p class="lan-fet lan-mb0">Klimagassregnskap når lånet skal utbetales</p>
+        <p>Når boligen er ferdig og du søker om å få lånet utbetalt, må du sende inn et klimagassregnskap. Regnskapet bekrefter at klimagassutslippene er de samme som du oppga i budsjettet. Det skal lages etter byggteknisk forskrift § 17-1, med metoden i NS 3720:2018.</p>`)}</div>
       <hr class="lan-skille">
       ${lanLesMer('Vi henter og bruker personopplysninger om deg', `
         <p>Husbanken kan innhente og behandle personopplysninger som er nødvendige for å saksbehandle og forvalte våre lån- og tilskuddsordninger, jf. § 10 i Husbankloven. Opplysningene kan også brukes til forskning, statistikk og analyse, test/feilretting og til å kontrollere innvilgede lån/tilskudd.</p>
@@ -168,7 +181,7 @@ function informasjon() {
       <hr class="lan-skille">
       ${lanLesMer('Dokumentasjon du må laste opp', `
         <p>Du må laste opp følgende dokumentasjon på byggeprosjektet:</p>
-        <ul><li>Rammetillatelse eller igangsettingstillatelse fra kommunen</li><li data-endret="5">Klimabudsjett</li><li>Fasade-, snitt- og plantegninger</li><li>Situasjonsplan</li><li>Byggebeskrivelse</li><li>Kontrakt eller avtale med entreprenør</li></ul>
+        <ul><li>Rammetillatelse eller igangsettingstillatelse fra kommunen</li><li>Klimabudsjett</li><li>Fasade-, snitt- og plantegninger</li><li>Situasjonsplan</li><li>Byggebeskrivelse</li><li>Kontrakt eller avtale med entreprenør</li></ul>
         <p>Du må også dokumentere egenkapital og gjeld. Ut fra hva du svarer i søknaden, kan du bli bedt om å laste opp:</p>
         <ul>
           <li>Kontoutskrift eller bilde fra nettbanken som viser egenkapital</li>

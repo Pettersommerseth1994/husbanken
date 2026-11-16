@@ -123,10 +123,14 @@ const VEDLEGGSKRAV = [
     label: 'rammetillatelse eller igangsettingstillatelse fra kommunen', overskrift: 'Last opp rammetillatelsen eller igangsettingstillatelsen fra kommunen.',
     beskrivelse: 'Før vi kan behandle søknaden, må prosjektet ha fått minst rammetillatelse eller igangsettingstillatelse fra kommunen.',
     feil: 'Last opp rammetillatelsen eller igangsettingstillatelsen fra kommunen.' },
-  { felt: 'klima.klimabudsjettvedlegg', synlig: d => d['klima.harklimabudsjett'] !== false, endret: 14,
+  { felt: 'klima.klimabudsjettvedlegg', synlig: d => d['klima.harklimabudsjett'] !== false,
     label: 'klimabudsjett', overskrift: 'Last opp klimabudsjettet',
     beskrivelse: 'Klimabudsjettet må være laget etter NS 3720:2018.',
     feil: 'Last opp klimabudsjettet.' },
+  { felt: 'kostnader.klimaraadgivningvedlegg', synlig: d => api.num(d['kostnader.klimaraadgivning']) > 0,
+    label: 'dokumentasjon på kostnadene til klimarådgivning', overskrift: 'Last opp dokumentasjon på kostnadene til klimarådgivning',
+    beskrivelse: 'For eksempel et pristilbud eller en avtale med klimarådgiveren.',
+    feil: 'Last opp dokumentasjon på kostnadene til klimarådgivning.' },
   { felt: 'utkastkjopekontraktellerfesteavtalevedlegg',
     synlig: d => ['EIERSKAP_TOMT_FREMTIDIG_KJOEP', 'EIERSKAP_TOMT_FREMTIDIG_FESTEAVTALE'].includes(d.eierskaptomt),
     label: d => (d.eierskaptomt === 'EIERSKAP_TOMT_FREMTIDIG_KJOEP' ? 'utkast til kjøpekontrakt' : 'utkast til festeavtale'),
@@ -398,24 +402,25 @@ const SKJEMA_STEG = [
     id: 'tiltak',
     tittel: 'Tiltak',
     elementer: [
-      { type: 'ingress', endret: 6, tekst: 'For å kunne søke om lån til å bygge klimavennlig bolig må vi vite om kjelleren er oppvarmet eller ikke.' },
-      { type: 'panel', variant: 'varsel', ikon: LAN_IKON.varsel, endret: 7,
+      { type: 'ingress', tekst: 'For å kunne søke om lån til å bygge klimavennlig bolig må vi vite om kjelleren er oppvarmet eller ikke.' },
+      { type: 'panel', variant: 'varsel', ikon: LAN_IKON.varsel,
         html: '<p>Grenseverdiene for å få lån til klimavennlig bolig er forskjellige om prosjektet har oppvarmet kjeller eller ikke.</p>' },
-      { type: 'lesmer', tittel: 'Dette er kravene for å få lån', html: () => `
-        <p>${tx('For å få lån må {du} oppfylle minst 3 av disse tiltakene')}:</p>
+      { type: 'lesmer', endret: 1, tittel: 'Dette er kravene for å få lån', html: () => tx(`
+        <p>For å få lån må boligen gi minst 10 prosent lavere klimagassutslipp enn kravet i byggteknisk forskrift (TEK17). Det betyr at:</p>
         <ul>
-          <li>Materialene inneholder maks 0,1 vektprosent helse- og miljøfarlige stoffer</li>
-          <li>Minimum 70 vektprosent blir kildesortert (80 vektprosent for bygg over 300 kvadratmeter)</li>
-          <li>${tx('Det er fleksibilitet i planløsningen, hvor {du} må velge minst 1 av disse')}:
-            <ul><li>Minst ett rom kan deles i to</li><li>To rom kan slås sammen</li><li>Det er mulig å etablere hybel med eget bad og kjøkkenløsning</li></ul></li>
-          <li>Minst 10 forskjellige produkter har miljødokumentasjon</li>
-          <li>Fossilt brensel er ikke brukt til oppvarming og tørk i byggeperioden</li>
+          <li>klimagassavtrykket må være 179 kg CO₂-ekv./m² BTA eller lavere uten oppvarmet kjeller</li>
+          <li>klimagassavtrykket må være 232 kg CO₂-ekv./m² BTA eller lavere med oppvarmet kjeller</li>
         </ul>
-        <p>${tx('Alternativt kan {du} få lån dersom boligen har fått et av disse sertifikatene')}:</p>
-        <ul><li>Svanemerke</li><li>Breeam-NOR, enten:<ul><li>Very good</li><li>Excellent</li><li>Outstanding</li></ul></li></ul>
-        <p>${tx('{Du} må oppbevare dokumentasjon på at kravene er oppfylt i 5 år fra lånet blir utbetalt.')}</p>` },
+        <p>{Du} må også:</p>
+        <ul>
+          <li>søke om lån til én bolig, med høyst én utleiedel</li>
+          <li>bygge en bolig som er mindre enn 1000 kvadratmeter BTA</li>
+          <li>laste opp et klimagassbudsjett etter NS 3720:2018 når {du} søker</li>
+          <li>sende inn et klimagassregnskap når {du} søker om å få lånet utbetalt</li>
+        </ul>
+        <p>Klimagassregnskapet viser at boligen faktisk ble bygget med de utslippene {du} oppga i søknaden. Det skal lages etter byggteknisk forskrift § 17-1, med metoden i NS 3720:2018.</p>`) },
       { type: 'tekst', html: `<p class="lan-mt" style="margin-bottom:var(--space-6)">For mer informasjon, se ${ekstern('https://www.husbanken.no/', 'Veileder for lån fra Husbanken')}.</p>` },
-      { type: 'janei', felt: 'bolig.oppvarmetkjeller', endret: 8, label: 'Vil kjelleren være oppvarmet?',
+      { type: 'janei', felt: 'bolig.oppvarmetkjeller', label: 'Vil kjelleren være oppvarmet?',
         feil: 'Velg om kjelleren vil være oppvarmet.' }
     ]
   },
@@ -423,13 +428,13 @@ const SKJEMA_STEG = [
     id: 'klimagassavtrykk',
     tittel: 'Klimagassavtrykk',
     elementer: [
-      { type: 'tall', felt: 'klima.klimagassavtrykk', endret: 9, enhet: CO2_ENHET,
+      { type: 'tall', felt: 'klima.klimagassavtrykk', enhet: CO2_ENHET,
         label: 'Hva er antatt kg CO₂-ekv./m² BTA på prosjektet?',
         feil: 'Skriv antatt klimagassavtrykk for prosjektet.',
         feilTall: 'Klimagassavtrykket kan bare være tall, for eksempel 150.',
         advarsel: (v, d) => (heltall(v) && api.num(v) > co2Grense(d)
           ? `For å kvalifisere til dette lånet må CO₂-utslippet være ${co2Grense(d)} ${CO2_ENHET} eller lavere.` : null) },
-      { type: 'lesmer', endret: 15, tittel: 'Dette er kg CO₂-ekv./m² BTA', html: d => tx(`
+      { type: 'lesmer', tittel: 'Dette er kg CO₂-ekv./m² BTA', html: d => tx(`
         <p>Tallet viser hvor store klimagassutslipp boligen gir, fordelt på hver kvadratmeter.</p>
         <ul>
           <li><b>kg CO₂-ekv.</b> betyr kilo CO₂-ekvivalenter. Alle klimagassene regnes om til den mengden CO₂ som gir samme effekt på klimaet, så de kan legges sammen.</li>
@@ -446,8 +451,11 @@ const SKJEMA_STEG = [
     tittel: 'Klimagass&shy;budsjett',
     elementer: [
       { type: 'ingress', tekst: 'For å få lån krever vi at det er laget et klimagassbudsjett for prosjektet. Budsjettet viser hvor store klimagassutslipp boligen er beregnet å gi, og det må være laget etter Norsk Standard NS 3720:2018.' },
-      { type: 'tekst', html: '<p style="margin-bottom:var(--space-6)">Budsjettet lages vanligvis av en klimarådgiver, arkitekten eller entreprenøren. {Du} laster det opp senere i søknaden.</p>' },
-      { type: 'janei', felt: 'klima.harklimabudsjett', endret: 10,
+      { type: 'tekst', html: '<p>Budsjettet lages vanligvis av en klimarådgiver, arkitekten eller entreprenøren. {Du} laster det opp senere i søknaden.</p>' },
+      { type: 'panel', variant: 'bla', endret: 2, html: `<p class="lan-fet">Klimagassregnskap når lånet skal utbetales</p>
+        <p>Når boligen er ferdig og {du} søker om å få lånet utbetalt, må {du} sende inn et klimagassregnskap. Regnskapet bekrefter at klimagassutslippene er de samme som {du} oppga i budsjettet.</p>
+        <p class="lan-mb0">Regnskapet skal lages etter byggteknisk forskrift § 17-1, med metoden i NS 3720:2018.</p>` },
+      { type: 'janei', felt: 'klima.harklimabudsjett',
         label: 'Er det blitt utformet et klimabudsjett for prosjektet etter NS 3720:2018?',
         feil: 'Velg om det er utformet et klimabudsjett for prosjektet.',
         advarsel: v => (v === false
@@ -491,12 +499,12 @@ const SKJEMA_STEG = [
     id: 'boligsteg',
     tittel: 'Boligen',
     elementer: [
-      { type: 'tall', felt: 'bolig.stoerrelse', endret: 11, enhet: 'kvadratmeter', min: 1,
+      { type: 'ingress', endret: 3, tekst: 'Som privatperson kan {du} søke om lån til én bolig, med høyst én utleiedel.' },
+      { type: 'tall', felt: 'bolig.stoerrelse', endret: 4, enhet: 'kvadratmeter', min: 1, maks: 999,
         label: 'Hvor stor blir boligen, målt i kvadratmeter BTA?', feil: 'Skriv hvor stor boligen blir.',
         feilTall: 'Størrelsen på boligen kan bare være tall, for eksempel 84.',
-        advarsel: v => (heltall(v) && api.num(v) >= 1000
-          ? 'Som privatperson kan du kun oppføre boliger som er under 1000 kvm for å få dette lånet.' : null) },
-      { type: 'lesmer', endret: 11, tittel: 'Dette er BTA', html: '<p>BTA betyr bruttoareal. Det er hele arealet i boligen, målt til utsiden av ytterveggene, i alle etasjer. Kjeller og loft regnes med, og det samme gjør arealet veggene tar opp. En garasje, bod eller et anneks som står for seg selv, regnes ikke med.</p>' },
+        feilMaks: 'Som privatperson kan {du} bare få dette lånet til en bolig som er mindre enn 1000 kvadratmeter BTA.' },
+      { type: 'lesmer', tittel: 'Dette er BTA', html: '<p>BTA betyr bruttoareal. Det er hele arealet i boligen, målt til utsiden av ytterveggene, i alle etasjer. Kjeller og loft regnes med, og det samme gjør arealet veggene tar opp. En garasje, bod eller et anneks som står for seg selv, regnes ikke med.</p>' },
       { type: 'janei', felt: 'bolig.oenskergarasje', label: 'Ønsker {du} at lånet også skal dekke bygging av garasje?',
         feil: 'Velg om lånet også skal dekke bygging av garasje.' },
       { type: 'tall', felt: 'bolig.garasjestoerrelse', synlig: d => d['bolig.oenskergarasje'] === true, enhet: 'kvadratmeter', min: 1,
@@ -541,7 +549,7 @@ const SKJEMA_STEG = [
     tittel: 'Prosjektkostnader',
     elementer: [
       { type: 'ingress', tekst: 'I de neste stegene ber vi deg oppgi kostnadene {du} regner med for prosjektet. Summen av kostnadene påvirker hvor mye {du} kan få i lån.' },
-      { type: 'panel', variant: 'bla', ikon: true, endret: 12, html: d => `
+      { type: 'panel', variant: 'bla', ikon: true, html: d => `
         <p>Du vil bli bedt om å fylle ut, hver for seg, kostnader til</p>
         ${liste([kjoeperTomt(d) && 'kjøp av tomten', 'utendørs arbeid', 'byggekostnader', 'klimarådgivning', 'prosjektering, gebyrer og avgifter', 'lånekostnader', 'buffer til uforutsette kostnader'].filter(Boolean))}
         <p>${tx('Oppgi både kostnader {du} regner med, og kostnader {du} allerede har betalt.')}</p>` },
@@ -596,8 +604,9 @@ const SKJEMA_STEG = [
     tittel: 'Kostnader knyttet til utarbeidelse av klimagass&shy;regnskap og -budsjett',
     elementer: [
       { type: 'ingress', tekst: 'Skriv hvor store kostnader {du} regner med til klimarådgivning.' },
-      { type: 'belop', felt: 'kostnader.klimaraadgivning', endret: 13, enhet: 'kroner inkludert mva.',
-        label: 'Hvor store kostnader regner {du} med til klimarådgivning?', feil: 'Skriv hvor store kostnader {du} regner med til klimarådgivning.' }
+      { type: 'belop', felt: 'kostnader.klimaraadgivning', enhet: 'kroner inkludert mva.',
+        label: 'Hvor store kostnader regner {du} med til klimarådgivning?', feil: 'Skriv hvor store kostnader {du} regner med til klimarådgivning.' },
+      { type: 'vedleggskrav', endret: 5, krav: ['kostnader.klimaraadgivningvedlegg'] }
     ]
   },
   {

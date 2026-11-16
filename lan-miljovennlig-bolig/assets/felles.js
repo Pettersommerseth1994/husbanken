@@ -72,7 +72,7 @@ const LAN_RENTE = { TERMINBELOEP_MAANED: 5.1, TERMINBELOEP_KVARTAL: 5.15 };
 
 /* ═══ Lagring ═════════════════════════════════════════════════════ */
 
-const LAN_LAGER = 'lan-klimavennlig-v2';
+const LAN_LAGER = 'lan-klimavennlig-v3';
 
 function lanLes() {
   try { return JSON.parse(localStorage.getItem(LAN_LAGER)) || {}; } catch { return {}; }

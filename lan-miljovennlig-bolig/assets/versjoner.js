@@ -36,7 +36,7 @@ const LAN_VERSJONER = [
     nr: 2,
     navn: 'Klimavennlig bolig',
     dato: '29. september 2026',
-    mappe: '',
+    mappe: 'v2/',
     endringer: [
       { side: 'hva-vil-du-soke-om.html', tekst: 'Lånet heter nå «Lån til å bygge klimavennlig bolig», med ny tekst om Husbankens klimakrav.' },
       { side: 'informasjon.html', tekst: 'Miljøvennlig er byttet med klimavennlig i tittelen og ellers i hele søknaden.' },
@@ -53,6 +53,21 @@ const LAN_VERSJONER = [
       { side: 'soknad.html', steg: 'klimaraadgivningsteg', tekst: 'Nytt steg: kostnader til klimagassregnskap og -budsjett.' },
       { side: 'soknad.html', steg: 'vedleggsteg', tekst: 'Klimabudsjettet lastes opp her. Dokumentasjonen på byggeprosjektet kreves nå alltid.' },
       { side: 'soknad.html', steg: 'klimagassavtrykk', tekst: 'Ny forklaring: «Dette er kg CO₂-ekv./m² BTA», med utregning og eksempel.' }
+    ]
+  },
+  {
+    nr: 3,
+    navn: 'Post-it-lappene fra Miro',
+    dato: '16. november 2026',
+    mappe: '',
+    endringer: [
+      { side: 'soknad.html', steg: 'tiltak', tekst: '«Dette er kravene for å få lån» har de nye klimakravene i stedet for de gamle miljøtiltakene og sertifikatene.' },
+      { side: 'soknad.html', steg: 'klimagassbudsjett', tekst: 'Ny boks: klimagassregnskap etter TEK § 17-1 og NS 3720:2018 må sendes inn ved utbetaling.' },
+      { side: 'soknad.html', steg: 'boligsteg', tekst: 'Ny ingress: privatpersoner kan søke om én bolig, med høyst én utleiedel.' },
+      { side: 'soknad.html', steg: 'boligsteg', tekst: 'Arealgrensen stopper søkeren: boligen må være 999 kvadratmeter BTA eller mindre. Før var det bare en advarsel.' },
+      { side: 'soknad.html', steg: 'klimaraadgivningsteg', tekst: 'Nytt vedlegg: dokumentasjon på kostnadene til klimarådgivning, når kostnaden er over 0.' },
+      { side: 'informasjon.html', tekst: 'Viktig informasjon sier at klimagassregnskapet må sendes inn før lånet blir utbetalt.' },
+      { side: 'informasjon.html', tekst: '«Dette skal til for å få lånet» har kravene i stedet for plassholderteksten, også om klimagassregnskapet.' }
     ]
   }
 ];

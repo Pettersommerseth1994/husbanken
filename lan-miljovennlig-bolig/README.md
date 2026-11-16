@@ -35,7 +35,8 @@ sammen med hvordan du legger til en ny versjon.
 | Versjon | Mappe | Hva som endret seg |
 | --- | --- | --- |
 | 1, 28. september 2026 | `v1/` | Dagens søknad om lån til å bygge miljøvennlig bolig, gjenskapt. |
-| 2, 29. september 2026 | denne mappa | Klimavennlig i stedet for miljøvennlig. Oppvarmet kjeller erstatter tiltak og sertifikat, og det er nye steg for klimagassavtrykk, klimagassbudsjett etter NS 3720:2018 og kostnader til klimarådgivning. BTA i stedet for BRA-i, advarsel fra 1000 kvadratmeter, og klimabudsjettet som vedlegg. |
+| 2, 29. september 2026 | `v2/` | Klimavennlig i stedet for miljøvennlig. Oppvarmet kjeller erstatter tiltak og sertifikat, og det er nye steg for klimagassavtrykk, klimagassbudsjett etter NS 3720:2018 og kostnader til klimarådgivning. BTA i stedet for BRA-i, advarsel fra 1000 kvadratmeter, og klimabudsjettet som vedlegg. |
+| 3, 16. november 2026 | denne mappa | Post-it-lappene fra Miro: de nye klimakravene på Tiltak og informasjonssiden, klimagassregnskap ved utbetaling, én bolig med høyst én utleiedel, arealgrensen stopper søkeren, og vedlegg for kostnadene til klimarådgivning. |
 
 Den siste versjonen ligger alltid rett i `lan-miljovennlig-bolig/`, så lenker
 som er delt ut peker på det nyeste. Hver versjon lagrer svarene sine for seg.
