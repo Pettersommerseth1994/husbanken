@@ -43,7 +43,7 @@ const B = {
   visBoliger: pf => (S.visBK(pf) ? (pf.boligkonfigurasjoner || []).some(k => !k.utenforKvalitetskriterier) : true),
   visA: pf => S.visBK(pf) && !S.oppfOmb(pf),
   visB: pf => B.visBoliger(pf) && !S.er(pf, 'KJOP', 'OPPFORING', 'OMBYGGING', 'ENERGITILSKUDD', 'ISTANDSETTING') && !S.boligsosialt(pf),
-  visC: pf => S.oppfOmb(pf) && S.visBK(pf),
+  visC: pf => S.visKlima(pf),
   visD: pf => B.visBoliger(pf) || S.oppfOmb(pf),
   visVelgBk: pf => S.visBK(pf) && !S.oppfOmb(pf),
   visLivslop: pf => S.visBK(pf) && S.oppfOmb(pf) && pf.livslopsboliger === true,
@@ -332,6 +332,8 @@ function blokkKlima(pf) {
       <p>For eksempel gir 150 000 kg CO₂-ekv. for et prosjekt på 1 000 m² BTA et klimagassavtrykk på 150 kg CO₂-ekv./m² BTA.</p>
       <p>Dere finner tallet i klimagassbudsjettet for prosjektet, som er laget etter NS 3720:2018. For å få lånet må tallet være ${co2Grense(pf)} eller lavere${kjeller === true ? ', siden kjelleren skal være oppvarmet' : kjeller === false ? ', siden kjelleren ikke skal være oppvarmet' : ''}.</p>`)}
     ${F.janei({ felt: 'klima.oppvarmetKjeller', label: 'Vil kjelleren være oppvarmet?', rad: false })}
+    ${eCallout('info', `<p class="e-fet">Klimagassregnskap når lånet skal utbetales</p>
+      <p>Når boligene er ferdige og dere søker om å få lånet utbetalt, må dere sende inn et klimagassregnskap. Regnskapet bekrefter at klimagassutslippene er de samme som dere oppga i budsjettet. Det skal lages etter byggteknisk forskrift § 17-1, med metoden i NS 3720:2018.</p>`)}
   </div>`;
 }
 

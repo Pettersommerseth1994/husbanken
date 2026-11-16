@@ -29,7 +29,7 @@ python3 -m http.server 4321
 ## Hva som er med
 
 Kundetypen er bransje («Eiendomsutvikler/Boligutvikler»), med alle de fire
-tiltakene bransjen kan velge: oppføring, oppgradering, kjøp og ombygging.
+tiltakene bransjen kan velge: oppføring, oppgradering, kjøp og transformasjon.
 Salg og utleie, avtale med kommunen (tilvisning, tildeling eller ingen),
 annen låntaker og tilskudd til utleieboliger virker som i dag.
 
@@ -52,7 +52,7 @@ utlogging etter 28 minutter.
 ## Kommune
 
 Bytt til **Oslo Kommune** i profilmenyen øverst til høyre. Da får «Hva skal
-dere gjøre?» de fem valgene en kommune har: oppføring, kjøp, ombygging,
+dere gjøre?» de fem valgene en kommune har: oppføring, kjøp, transformasjon,
 energitiltak og istandsetting. En kommune bygger, kjøper og istandsetter alltid
 for utleie, har ikke avtale med seg selv og er selv låntaker, så de spørsmålene
 er borte. Bare energitiltak spør om formål: utleie, omsorgsboliger eller
@@ -73,7 +73,7 @@ sykehjem.
   kommunen velger én og fyller ut antall soverom. Økonomi har ett felt,
   kjøpskostnad, og viser foreløpig beregnet tilskudd (10 %). Bare kjøpekontrakt
   og salgsoppgave kreves som vedlegg.
-- **Oppføring, kjøp og ombygging** bruker samme steg som for en utbygger, med
+- **Oppføring, kjøp og transformasjon** bruker samme steg som for en utbygger, med
   tilskudd til utleieboliger.
 
 Satsene for energitiltak er oppdiktede testverdier, ikke Husbankens. Det er
@@ -114,12 +114,16 @@ Prototypen er ikke lenger en ren kopi. Disse endringene er gjort med vilje:
 - **«Velg formål»** på «Opprett søknad» når tiltaket er oppføring: Klimavennlig
   bolig eller Livsløpsstandard. Livsløpsstandard gir livsløpskolonnene i
   boligtabellen, som før fulgte svaret på Bolig-steget.
-- **Bolig-steget** spør ikke lenger om kravene til miljøboliger og
-  livsløpsboliger. I stedet spør det om totalt BTA for hele prosjektet, antatt
-  kg CO₂-ekv./m² BTA med en forklaring under, og om kjelleren vil være
-  oppvarmet. Det gjelder oppføring og ombygging uten avtale med kommunen, der
-  de gamle spørsmålene sto.
+- **Bolig-steget** spør ikke lenger om kravene til miljøboliger. Når formålet
+  er Klimavennlig bolig, spør det i stedet om totalt BTA for hele prosjektet,
+  antatt kg CO₂-ekv./m² BTA med en forklaring under, og om kjelleren vil være
+  oppvarmet. En boks sier at klimagassregnskapet må sendes inn ved utbetaling.
+  Det gjelder oppføring uten avtale med kommunen. Livsløpsstandard får ikke
+  klimaspørsmålene.
 - **Klimabudsjett** er et nytt vedlegg i de samme tilfellene.
+- **Transformasjon** erstatter ombygging: «Gjøre om bygg til boligformål
+  (transformasjon)» og «Lån til transformasjon». Transformasjon har ikke
+  klimaspørsmålene.
 
 ## Avvik fra dagens løsning
 

@@ -14,14 +14,14 @@ const OK = {
       { felt: 'omkostninger', l: 'Omkostninger', navn: 'omkostninger', tegn: '+', paakrevd: true, hjelp: 'Du må dokumentere kjøpesum og omkostninger med signert kjøpekontrakt.',
         vis: p('KJOP') || (tu && (S.er(pf, 'KJOP') || (S.er(pf, 'OMBYGGING') && pf.kjop === true))) },
       { felt: 'oppgraderingsKostnad', l: 'Oppgraderingskostnader', navn: 'oppgraderingskostnader', tegn: '', paakrevd: true, hjelp: 'Du må dokumentere kostnader med signert pristilbud/anbud.', vis: p('OPPGRADERING') },
-      { felt: 'ombyggingsKostnad', l: 'Ombyggingskostnader', navn: 'ombyggingskostnader', tegn: '', paakrevd: true, hjelp: 'Du må dokumentere kostnader med signert pristilbud/anbud.', vis: p('OMBYGGING') || (tu && S.er(pf, 'OMBYGGING')) },
+      { felt: 'ombyggingsKostnad', l: 'Transformasjonskostnader', navn: 'transformasjonskostnader', tegn: '', paakrevd: true, hjelp: 'Du må dokumentere kostnader med signert pristilbud/anbud.', vis: p('OMBYGGING') || (tu && S.er(pf, 'OMBYGGING')) },
       { felt: 'byggekostnader', l: 'Byggekostnader', navn: 'byggekostnader', tegn: '', paakrevd: true, hjelp: 'Alle kostnader i prosjektet inkludert byggelånsrente som ikke knyttes til kjøp og klargjøring av tomt.', vis: p('OPPFORING') || (tu && S.er(pf, 'OPPFORING')) },
       { felt: 'tomtekostnader', l: 'Tomtekostnader', navn: 'tomtekostnader', tegn: '+', paakrevd: true, hjelp: 'Alle kostnader knyttet til kjøp og klargjøring av tomt inn til byggegrube.', vis: p('OPPFORING') || (tu && S.er(pf, 'OPPFORING')) },
       { felt: 'utbedringskostnader', l: 'Utbedringskostnader', navn: 'utbedringskostnader', tegn: '+', paakrevd: false, vis: S.er(pf, 'KJOP') && tu }
     ];
   },
   maksLan: pf => (S.utleie(pf) ? 50 : 30),
-  produktNavn: pf => (S.produkt(pf, 'OMBYGGING') ? 'ombygging' : 'oppføring'),
+  produktNavn: pf => (S.produkt(pf, 'OMBYGGING') ? 'transformasjon' : 'oppføring'),
   infotekster: pf => {
     const oo = S.produkt(pf, 'OPPFORING') || S.produkt(pf, 'OMBYGGING');
     const avtale = S.harAvtale(pf);

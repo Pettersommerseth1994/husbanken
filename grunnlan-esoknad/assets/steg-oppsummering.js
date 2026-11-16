@@ -226,7 +226,7 @@ function kortOkonomi(pf) {
   return OP.kort(pf, { tittel: 'Økonomi', ikon: 'kroner', steg: 'okonomi', kropp: `<div class="e-tre">
     <div><h3 class="e-h3">Prosjektkostnader</h3>
       ${r('Kjøpesum', o.kjopesum)}${r('Omkostninger', o.omkostninger)}${r('Utbedringskostnader', o.utbedringskostnader)}${r('Byggekostnader', o.byggekostnader)}
-      ${r('Tomtekostnader', o.tomtekostnader)}${r('Oppgraderingskostnader', o.oppgraderingsKostnad)}${r('Ombyggingskostnader', o.ombyggingsKostnad)}
+      ${r('Tomtekostnader', o.tomtekostnader)}${r('Oppgraderingskostnader', o.oppgraderingsKostnad)}${r('Transformasjonskostnader', o.ombyggingsKostnad)}
       ${r('Prosjektkostnader', S.sumProsjektkostnader(pf), true)}
       ${salg ? r('Sum salgspris for boligene i prosjektet', S.sumSalgspris(pf)) : r('Prosjektets omsetningsverdi', o.omsetningsverdi)}
       ${r('Sum gjeld', o.gjeld)}

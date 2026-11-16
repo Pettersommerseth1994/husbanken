@@ -27,8 +27,8 @@ flowchart TD
 ```mermaid
 flowchart TD
   S([Opprett søknad]) --> T{Hvem representerer du?}
-  T -->|Utbygger, AS| U1[Hva skal dere gjøre?<br/>Oppføring · Oppgradering · Kjøp · Ombygging]
-  T -->|Kommune, Oslo Kommune| K1[Hva skal dere gjøre?<br/>Oppføring · Kjøp · Ombygging · Energitiltak · Istandsetting]
+  T -->|Utbygger, AS| U1[Hva skal dere gjøre?<br/>Oppføring · Oppgradering · Kjøp · Transformasjon]
+  T -->|Kommune, Oslo Kommune| K1[Hva skal dere gjøre?<br/>Oppføring · Kjøp · Transformasjon · Energitiltak · Istandsetting]
 
   U1 --> UL{Oppføring?}
   UL -->|Ja| UL1[Velg formål<br/>Klimavennlig · Livsløpsstandard]
@@ -57,7 +57,7 @@ Finansieringsmulighetene som tilbys:
 
 | Tiltak | Kan søke om |
 | --- | --- |
-| Oppføring, kjøp, ombygging, oppgradering | Lån, og tilskudd til utleieboliger (utbygger bare ved tildelingsavtale, og ikke ved oppgradering) |
+| Oppføring, kjøp, transformasjon, oppgradering | Lån, og tilskudd til utleieboliger (utbygger bare ved tildelingsavtale, og ikke ved oppgradering) |
 | Energitiltak (kommune) | Tilskudd til energitiltak |
 | Istandsetting (kommune) | Tilskudd til istandsetting |
 
@@ -65,7 +65,7 @@ Finansieringsmulighetene som tilbys:
 
 ```mermaid
 flowchart LR
-  subgraph L[Oppføring, kjøp, ombygging, oppgradering]
+  subgraph L[Oppføring, kjøp, transformasjon, oppgradering]
     direction LR
     L1[Prosjekt] --> L2[Eiendom] --> L3[Bolig] --> L4[Økonomi] --> L5[Vedlegg] --> L6[Kundeopplysninger] --> L7[Oppsummering]
   end
@@ -91,7 +91,7 @@ Ved energitiltak med formål **sykehjem** og flere enn 0 sykehjemsplasser hoppes
 flowchart TD
   P[Prosjekt] --> P1[Prosjektnavn]
   P1 --> PX{Tiltak}
-  PX -->|Oppføring, ombygging, oppgradering| PA[Periode, kjøp eller eier fra før,<br/>sentral godkjenning, nærstående arbeid,<br/>målgrupper hvis utleie til kommune]
+  PX -->|Oppføring, transformasjon, oppgradering| PA[Periode, kjøp eller eier fra før,<br/>sentral godkjenning, nærstående arbeid,<br/>målgrupper hvis utleie til kommune]
   PX -->|Kjøp| PB[Nye eller brukte boliger,<br/>omsatt i åpent marked, nærstående selger]
   PX -->|Energitiltak| PC[Oppstart og ferdigstillelse,<br/>antall sykehjemsplasser,<br/>tidligere tilskudd og saksnummer]
   PX -->|Istandsetting| PD[Planlagt ferdigstilt,<br/>videretildeles til privat aktør,<br/>målgrupper]
@@ -100,7 +100,7 @@ flowchart TD
   P2 --> EI[Eiendom<br/>Kommune, gårds- og bruksnr. → Hent fra Matrikkelen<br/>→ velg bygg og adresser]
   EI --> BO[Bolig<br/>Etasjer og boenheter]
   BO --> BX{Tiltak}
-  BX -->|Oppføring, ombygging| BA[Klimagassavtrykk, BTA, kjeller,<br/>boligkvaliteter eller livsløp, husleie eller salgspris]
+  BX -->|Oppføring, transformasjon| BA[Klimagassavtrykk, BTA og kjeller ved klimavennlig,<br/>boligkvaliteter eller livsløp, husleie eller salgspris]
   BX -->|Oppgradering| BB[Energikarakter før og etter,<br/>boligkvalitet per bolig]
   BX -->|Energitiltak| BC[Boligbetegnelse, areal, rom, husleie]
   BX -->|Istandsetting| BD[Areal, rom, istandsettingskostnad]

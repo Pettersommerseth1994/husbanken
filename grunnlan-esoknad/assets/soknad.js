@@ -10,13 +10,13 @@ S.TILTAK = {
   OPPFORING: { valg: 'Bygge nye boliger (oppføring)', kort: 'Oppføring', produkt: 'Lån til oppføring' },
   OPPGRADERING: { valg: 'Oppgradere eksisterende boliger', kort: 'Oppgradering', produkt: 'Lån til oppgradering' },
   KJOP: { valg: 'Kjøpe boliger', kort: 'Kjøp', produkt: 'Lån til kjøp' },
-  OMBYGGING: { valg: 'Gjøre om bygg til boligformål (ombygging)', kort: 'Ombygging', produkt: 'Lån til ombygging' },
+  OMBYGGING: { valg: 'Gjøre om bygg til boligformål (transformasjon)', kort: 'Transformasjon', produkt: 'Lån til transformasjon' },
   ENERGITILSKUDD: { valg: 'Energitiltak', kort: 'Energitiltak', produkt: 'Tilskudd til energitiltak' },
   ISTANDSETTING: { valg: 'Istandsette boliger (for utleie)', kort: 'Istandsetting', produkt: 'Tilskudd til istandsetting' },
   KJOP_BORETTSLAG: { valg: 'Kjøp av borettslagsleilighet', kort: 'Kjøp av borettslagsleilighet', produkt: 'Tilskudd til kjøp av borettslagsleilighet' }
 };
 S.LANEFORMAL = { KLIMAVENNLIG: 'Klimavennlig bolig', LIVSLOPSSTANDARD: 'Livsløpsstandard' };
-S.PRODUKTNAVN = { OPPFORING: 'Lån til oppføring', KJOP: 'Lån til kjøp', OMBYGGING: 'Lån til ombygging', OPPGRADERING: 'Lån til oppgradering', TILSKUDDUTLEIE: 'Tilskudd til utleieboliger',
+S.PRODUKTNAVN = { OPPFORING: 'Lån til oppføring', KJOP: 'Lån til kjøp', OMBYGGING: 'Lån til transformasjon', OPPGRADERING: 'Lån til oppgradering', TILSKUDDUTLEIE: 'Tilskudd til utleieboliger',
   ENERGITILSKUDD: 'Tilskudd til energitiltak', TILSKUDDISTANDSETTING: 'Tilskudd til istandsetting', TILSKUDDBORETTSLAG: 'Tilskudd til kjøp av borettslagsleilighet' };
 S.VIRKEMIDDEL = { GRUNNLAN: 'Lån', TILSKUDDUTLEIE: 'Tilskudd' };
 
@@ -48,9 +48,7 @@ S.husleie = pf => S.utleie(pf) && !S.istand(pf);
 /* Kvalitetskrav og boligkonfigurasjoner gjelder ikke når det er avtale med kommunen */
 S.visBK = pf => !S.er(pf, 'ENERGITILSKUDD', 'ISTANDSETTING', 'KJOP_BORETTSLAG') && (!S.harAvtale(pf) || (S.er(pf, 'OPPFORING') && S.salg(pf)));
 S.boligsosialt = pf => S.harAvtale(pf);
-/* Totalt BTA, klimagassavtrykk og kjeller spørres om der miljø- og
-   livsløpskravene sto før: oppføring og ombygging uten avtale med kommunen. */
-S.visKlima = pf => S.oppfOmb(pf) && S.visBK(pf);
+S.visKlima = pf => S.er(pf, 'OPPFORING') && pf.laneformal === 'KLIMAVENNLIG' && S.visBK(pf);
 S.visPrimaer = pf => S.produkt(pf, 'TILSKUDDUTLEIE');
 S.virkemidler = pf => [S.lanProdukt(pf) && 'GRUNNLAN', (S.produkt(pf, 'TILSKUDDUTLEIE') || S.produkt(pf, 'ENERGITILSKUDD') || S.produkt(pf, 'TILSKUDDISTANDSETTING') || S.produkt(pf, 'TILSKUDDBORETTSLAG')) && 'TILSKUDDUTLEIE'].filter(Boolean);
 S.lantakerOrg = pf => (pf.sokerErLantaker !== false ? pf.soker : pf.lantaker) || null;
@@ -262,7 +260,7 @@ S.VEDLEGG = [
     regel: pf => !S.salg(pf) && eNum(S.okonomi(pf).andrelan) > 0 },
   { id: 'DOKUMENTASJONTILSKUDDANDRE_VEDLEGG', tittel: 'Dokumentasjon på tilskudd fra andre', hjelp: 'Skriftlig beskrivelse av tilskudd.',
     regel: pf => !S.salg(pf) && eNum(S.okonomi(pf).andreTilskudd) > 0 },
-  { id: 'KLIMABUDSJETT_VEDLEGG', tittel: 'Klimabudsjett', hjelp: 'Klimabudsjettet må være laget etter NS 3720:2018.', regel: pf => S.visKlima(pf) },
+  { id: 'KLIMABUDSJETT_VEDLEGG', tittel: 'Klimabudsjett', hjelp: 'Klimabudsjettet må være laget etter NS 3720:2018. Når dere søker om utbetaling, må dere også sende inn et klimagassregnskap.', regel: pf => S.visKlima(pf) },
   { id: 'FASADETEGNINGER_VEDLEGG', tittel: 'Fasadetegninger', hjelp: 'Fasadetegningen må ha angitt målestokk.', regel: pf => S.er(pf, 'OPPFORING', 'OPPGRADERING', 'OMBYGGING') },
   { id: 'FASADETEGNINGERFORTILTAKET_VEDLEGG', tittel: 'Fasadetegninger før tiltaket', hjelp: 'Fasadetegningen må ha angitt målestokk, og skal vise situasjonen før planlagt endring.', regel: pf => S.er(pf, 'OPPGRADERING', 'OMBYGGING') },
   { id: 'FESTEKONTRAKT_VEDLEGG', tittel: 'Festekontrakt', regel: pf => S.alleValgteBygg(pf).some(({ e }) => eNum(e.festeNr) > 0) },
@@ -271,7 +269,7 @@ S.VEDLEGG = [
   { id: 'PLANTEGNINGER_VEDLEGG', tittel: 'Plantegninger', hjelp: 'Plantegninger må ha angitt målestokk.', regel: pf => S.er(pf, 'OPPFORING', 'OPPGRADERING', 'OMBYGGING') },
   { id: 'PLANTEGNINGERFORTILTAKET_VEDLEGG', tittel: 'Plantegninger før tiltaket', hjelp: 'Plantegninger må ha angitt målestokk, og skal vise situasjonen før planlagt endring.', regel: pf => S.er(pf, 'OPPGRADERING', 'OMBYGGING') },
   { id: 'KONTRAKT_VEDLEGG', tittel: 'Pristilbud/Kontrakt/Prisoverslag på tiltaket', regel: pf => S.er(pf, 'OPPFORING', 'OPPGRADERING', 'OMBYGGING', 'ISTANDSETTING') },
-  { id: 'PROSJEKTBESKRIVELSE_VEDLEGG', tittel: 'Prosjektbeskrivelse/Byggbeskrivelse', hjelp: 'Prosjektbeskrivelsen skal inneholde en nærmere spesifisering av prosjektet. Ved oppgradering eller ombygging skal dagens tilstand beskrives.', regel: () => true },
+  { id: 'PROSJEKTBESKRIVELSE_VEDLEGG', tittel: 'Prosjektbeskrivelse/Byggbeskrivelse', hjelp: 'Prosjektbeskrivelsen skal inneholde en nærmere spesifisering av prosjektet. Ved oppgradering eller transformasjon skal dagens tilstand beskrives.', regel: () => true },
   { id: 'PROSPEKT_VEDLEGG', tittel: 'Prospekt', regel: pf => S.er(pf, 'KJOP') },
   { id: 'SALGSPROSPEKT_VEDLEGG', tittel: 'Salgsprospekt med prisliste', regel: pf => S.salg(pf) },
   { id: 'SAMARBEIDSAVTALE_VEDLEGG', tittel: 'Samarbeidsavtale', hjelp: 'Samarbeidsavtalen mellom kommunen eller det statlige helseforetaket som regulerer det løpende samarbeidet og forvaltningen av boligene.', regel: S.harAvtale },
