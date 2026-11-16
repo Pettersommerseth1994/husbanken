@@ -1,0 +1,47 @@
+.a-side{max-width:1040px;margin:0 auto;padding:32px 24px 64px}
+.a-kort{border:1px solid var(--e-ramme);padding:24px 32px;background:#fff}
+.a-spm{font-size:var(--text-lg,1.25rem);font-weight:600;margin-bottom:24px}
+.a-tittel{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:12px}
+.a-hjelp{width:26px;height:26px;border:1px solid var(--e-lenke);border-radius:50%;color:var(--e-lenke);display:inline-grid;place-items:center;font-weight:500;font-size:14px}
+.a-sok{display:flex;margin-bottom:24px}
+.a-sok input{flex:1;min-height:46px;padding:0 14px;border:1px solid var(--e-ramme-felt);border-right:0;font:inherit;border-radius:3px 0 0 3px}
+.a-sok button{padding:0 20px;border:1px solid var(--e-lenke);background:#fff;color:var(--e-lenke);font:inherit;font-weight:500;cursor:pointer;border-radius:0 3px 3px 0}
+.a-tab{width:100%;border-collapse:collapse}
+.a-tab th{text-align:left;font-weight:600;padding:10px 12px;vertical-align:bottom}
+.a-tab td{padding:16px 12px;border-bottom:1px solid var(--e-ramme);vertical-align:middle}
+.a-tab .t{text-align:right}
+.a-tab input[type=radio]{width:24px;height:24px;accent-color:var(--e-mork);margin:0}
+.a-tab input.sov{width:62px;height:46px;border:1px solid var(--e-ramme-felt);border-radius:3px;padding:0 10px;font:inherit}
+.a-tab input.sov.feil{border:2px solid var(--e-feil-kant)}
+.a-feil{display:block;color:var(--e-feil);font-size:var(--text-sm);margin-top:6px;border-left:6px solid var(--e-feil-kant);padding-left:10px;border-radius:3px}
+.a-celle{display:flex;gap:16px;align-items:flex-start}
+.a-celle.har-feil{align-items:stretch}
+.a-meta{display:flex;justify-content:space-between;align-items:center;margin:0 0 8px}
+.a-knapper{margin-top:24px;display:flex;gap:12px}
+.a-mer{margin:16px 0 0;background:none;border:0;color:var(--e-lenke);font:inherit;text-decoration:underline;cursor:pointer}
+.a-radfeil{color:var(--e-feil);margin-top:8px}
+/* V1 */
+.v1 tr.rad{transition:background .15s}
+.v1 tr.rad.valgt td{background:#ececec}
+.v1 tr.rad{cursor:pointer}
+.v1 td.sovcelle{min-width:190px;height:78px}
+/* V2 */
+.v2 tr.rad{cursor:pointer}
+.v2 tr.rad.valgt td{background:var(--e-info)}
+.a-panel{margin-top:24px;border:2px solid var(--e-lenke);background:var(--e-info);padding:20px 24px;border-radius:4px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.a-panel.tom{border:2px dashed var(--e-ramme-felt);background:var(--e-gra);color:var(--e-sekundaer);display:block}
+.a-panel h3{margin:0 0 4px}
+/* V3 */
+.v3 tr.rad{cursor:pointer}
+.v3 tr.rad.valgt td{border-bottom:0;background:var(--e-gra)}
+.v3 tr.detalj td{background:var(--e-gra);padding:0 12px 20px 60px}
+.a-steg{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.a-steg .knapp{width:46px;height:46px;border-radius:50%;border:2px solid var(--e-knapp);background:#fff;color:var(--e-knapp);font-size:26px;line-height:1;cursor:pointer}
+.a-steg .verdi{font-size:28px;font-weight:600;min-width:40px;text-align:center}
+.a-chips{display:flex;gap:8px;flex-wrap:wrap}
+.a-chips button{min-width:44px;height:44px;border:1px solid var(--e-ramme-felt);border-radius:22px;background:#fff;font:inherit;cursor:pointer}
+.a-chips button.på{background:var(--e-knapp);color:#fff;border-color:var(--e-knapp)}
+.a-nav{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 24px;font-size:var(--text-sm)}
+.a-nav a{padding:6px 12px;border:1px solid var(--e-ramme);border-radius:16px;text-decoration:none}
+.a-nav a.nå{background:var(--e-knapp);color:#fff;border-color:var(--e-knapp)}
+.a-besk{background:var(--e-advarsel);border-left:6px solid var(--e-advarsel-kant);padding:12px 16px;margin-bottom:24px;font-size:var(--text-sm)}
