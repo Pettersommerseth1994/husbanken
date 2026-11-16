@@ -45,3 +45,7 @@
 .a-nav a{padding:6px 12px;border:1px solid var(--e-ramme);border-radius:16px;text-decoration:none}
 .a-nav a.nå{background:var(--e-knapp);color:#fff;border-color:var(--e-knapp)}
 .a-besk{background:var(--e-advarsel);border-left:6px solid var(--e-advarsel-kant);padding:12px 16px;margin-bottom:24px;font-size:var(--text-sm)}
+/* Ingen tekstbrudd i tabellen */
+.a-tab td,.a-tab th{white-space:nowrap}
+.a-tab{min-width:760px}
+.a-tab td.sovcelle{min-width:190px}

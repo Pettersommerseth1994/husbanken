@@ -1,5 +1,5 @@
 (function(){
-const V=document.body.dataset.variant; // orig | v1 | v2 | v3
+const V=document.body.dataset.variant;const REN=document.body.dataset.ren==='1'; // orig | v1 | v2 | v3
 const NAV=[['index.html','Oversikt'],['original.html','Original'],['v1.html','Forslag 1'],['v2.html','Forslag 2'],['v3.html','Forslag 3']];
 const typer=[['U0101',39,2],['U0102',70,3],['U0103',56,3],['H0101',39,2],['H0102',68,3],['H0103',92,5],['H0104',100,5],['H0201',45,2],['H0202',72,3],['H0203',88,4]];
 const rader=[];let n=0;
@@ -18,7 +18,7 @@ function rad(r){
  if(V==='orig'){const f=r.id===0&&true;sovTd=`<td>${f?`<div class="a-celle har-feil"><div style="display:flex"></div><div>${sovInput(r,true)}${feilBoks()}</div></div>`:sovInput(r,false)}</td>`}
  else if(V==='v1'){sovTd=`<td class="sovcelle">${er?`<div>${sovInput(r,feilVis&&mangler(),true)}${feilVis&&mangler()?feilBoks():''}</div>`:''}</td>`}
  const head=`<th class="e-sr">Velg</th>`;
- let h=`<tr class="rad${er?' valgt':''}" data-id="${r.id}"><td><input type="radio" name="bol" ${er?'checked':''} aria-label="Velg ${r.bolig}"></td><td>${r.adr}<br>15</td><td>${r.bolig}</td><td>${r.andel}</td><td class="t">${r.areal} m²</td><td class="t">${r.rom}</td>${sovTd}</tr>`;
+ let h=`<tr class="rad${er?' valgt':''}" data-id="${r.id}"><td><input type="radio" name="bol" ${er?'checked':''} aria-label="Velg ${r.bolig}"></td><td>${r.adr}</td><td>${r.bolig}</td><td>${r.andel}</td><td class="t">${r.areal} m²</td><td class="t">${r.rom}</td>${sovTd}</tr>`;
  if(V==='v3'&&er){h+=`<tr class="detalj"><td colspan="6"><div style="font-weight:600;margin-bottom:12px">Hvor mange soverom har ${r.bolig}?</div>
   <div class="a-steg"><button class="knapp" data-d="-1" aria-label="Færre soverom">−</button><span class="verdi">${sov[r.id]||'–'}</span><button class="knapp" data-d="1" aria-label="Flere soverom">+</button>
   <div class="a-chips" role="group" aria-label="Velg antall">${[1,2,3,4,5,6].map(k=>`<button data-k="${k}" class="${sov[r.id]==k?'på':''}">${k}${k==6?'+':''}</button>`).join('')}</div></div>
@@ -33,8 +33,8 @@ function render(){
  if(V==='v2'){const r=rader[valgt];panel=r?`<div class="a-panel"><div><h3>Valgt leilighet</h3><div>${r.adr} 15 · ${r.bolig} · andelsnr. ${r.andel} · ${r.areal} m²</div></div>
   <div><label for="sovp" style="font-weight:600;display:block;margin-bottom:6px">Antall soverom</label><input id="sovp" class="sov" style="width:70px;height:46px;border:${feilVis&&mangler()?'2px solid var(--e-feil-kant)':'1px solid var(--e-ramme-felt)'};border-radius:3px;padding:0 10px;font:inherit" data-sovp inputmode="numeric" value="${esc(sov[valgt]??'')}">${feilVis&&mangler()?feilBoks():''}</div></div>`
   :`<div class="a-panel tom">Velg en leilighet i listen for å oppgi antall soverom.</div>`}
- appEl.innerHTML=`<nav class="a-nav" aria-label="Versjoner">${NAV.map(([h,t])=>`<a href="${h}" class="${location.pathname.endsWith(h)?'nå':''}">${t}</a>`).join('')}</nav>
- ${V!=='orig'?`<div class="a-besk">${{v1:'<b>Forslag 1:</b> Ingen bokser i listen. Når du velger en leilighet blir raden grå, og boksen for soverom vises bare der.',v2:'<b>Forslag 2:</b> Listen har bare radioknapper. Soverom fylles ut i et eget panel under listen for den valgte leiligheten.',v3:'<b>Forslag 3:</b> Valgt rad åpner seg med en stor tallvelger (− / +) og hurtigvalg for 1–6 soverom.'}[V]}</div>`:`<div class="a-besk"><b>Original:</b> Gjenskapt fra dagens løsning. En boks for soverom på alle rader.</div>`}
+ appEl.innerHTML=`${REN?'':`<nav class="a-nav" aria-label="Versjoner">${NAV.map(([h,t])=>`<a href="${h}" class="${location.pathname.endsWith(h)?'nå':''}">${t}</a>`).join('')}</nav>`}
+ ${REN?'':V!=='orig'?`<div class="a-besk">${{v1:'<b>Forslag 1:</b> Ingen bokser i listen. Når du velger en leilighet blir raden grå, og boksen for soverom vises bare der.',v2:'<b>Forslag 2:</b> Listen har bare radioknapper. Soverom fylles ut i et eget panel under listen for den valgte leiligheten.',v3:'<b>Forslag 3:</b> Valgt rad åpner seg med en stor tallvelger (− / +) og hurtigvalg for 1–6 soverom.'}[V]}</div>`:`<div class="a-besk"><b>Original:</b> Gjenskapt fra dagens løsning. En boks for soverom på alle rader.</div>`}
  <div class="a-kort"><p class="a-spm">Hvilken borettslagsleilighet skal kjøpes?</p>
  <div class="a-tittel">Velg leilighet <span class="a-hjelp">?</span></div>
  <label for="sok" style="font-weight:600;display:block;margin-bottom:8px">Søk etter andelsleilighet</label>
