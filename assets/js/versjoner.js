@@ -249,6 +249,16 @@ const HB_VERSJONER = [
     dato: '29. september 2026',
     endring: 'Kravlista på forsiden har fått ny tekst. «Eid eller leid helårsbolig» er uthevet, slik at eierformen står like tydelig som kravet om å bo i boligen. Siste punkt sier nå «vente med å starte arbeidet til søknaden er godkjent» i stedet for «ha fått tilsagn om tilskudd før du setter i gang arbeidet». Meningen er den samme, men ordene er hverdagslige: «tilsagn» er Husbankens ord, «godkjent» er søkerens. De fem andre punktene står som før. Utbetalingsskjemaet er bygget om etter søknaden. Forsiden har fått en egen kravliste, en kortere «Slik bruker du dette skjemaet» og fire nøkkeltall, med tidslinja under. Personalia er flyttet til side 2 som seksjon 1, «Om deg», og de andre seksjonene har rykket ett nummer ned. Samtykket har fått samme boks om personopplysninger som søknaden, og innsendingslista slutter med «Send alt i samme konvolutt». Tittelen står på to linjer i 21 pt i stedet for tre i 22 pt, og «Utbetalingen skjer ikke av seg selv» er tatt ut av ingressen. Skjemaet er nå fem sider.',
     filer: {
+      soknad: 'papirsoknad-aldersvennlig-v23.html',
+      utbetaling: 'papirsoknad-aldersvennlig-utbetaling-v23.html'
+    }
+  },
+  {
+    nr: 24,
+    navn: 'Kortere utbetalingsskjema',
+    dato: '17. november 2026',
+    endring: 'Utbetalingsskjemaet er gått gjennom punkt for punkt og kortet ned, fra fem til fire sider. Søknaden er uendret. Forsiden har ny ingress, «Før du kan be om utbetaling må arbeidet være ferdig og betalt», og kravlista, nøkkeltallene og tidslinja er tatt bort, så «Om deg» og saksnummeret står på forsiden igjen. E-postadresse har erstattet adressen til boligen. Dato og beløp fra tilsagnsbrevet, spørsmålet om noe ble annerledes enn planlagt, og spørsmålet om hvem kontoen står på er tatt ut. Kontonummeret må tilhøre søkeren, så underskriften fra kontoinnehaver er også borte. Seksjon 4 heter nå «Fortell oss hvor mye det kostet», og kostnaden skal hentes fra den spesifiserte fakturaen. Boksen om hvordan tilskuddet regnes ut er skrevet om, så den henger sammen. Saksnummeret har riktig format i eksempelet. «Dette skjer etterpå» lover ikke lenger penger på konto om tre uker, og skatt har fått sitt eget punkt.',
+    filer: {
       soknad: 'papirsoknad-aldersvennlig.html',
       utbetaling: 'papirsoknad-aldersvennlig-utbetaling.html'
     }

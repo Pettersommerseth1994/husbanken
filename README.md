@@ -101,7 +101,8 @@ deg til markeringen. Ingenting av dette kommer med i utskriften.
 | 20, 18. september 2026 | `...-v20.html` | Forskriftens overskrifter på de seks kategoriene. |
 | 21, 24. september 2026 | `...-v21.html` | Mørkere sekundærtekst, så utskriften holder. |
 | 22, 25. september 2026 | `...-v22.html` | Tilsagn, ikke innsending, er startsignalet. Se under. |
-| 23, 29.–30. september 2026 | uten suffiks | Ny tekst i kravlista, og utbetalingsskjemaet bygget om etter søknaden. Se under. |
+| 23, 29.–30. september 2026 | `...-v23.html` | Ny tekst i kravlista, og utbetalingsskjemaet bygget om etter søknaden. Se under. |
+| 24, 17. november 2026 | uten suffiks | Utbetalingsskjemaet kortet ned til fire sider. Søknaden er uendret. Se under. |
 
 Den siste iterasjonen ligger alltid på filnavnet uten suffiks, så lenker som er
 delt ut fortsetter å peke på det som er nyest.
@@ -1229,6 +1230,45 @@ nettleseren blir med. Feltkartet til den utfyllbare PDF-en er målt på nytt, al
 «Arbeidet er utført, og jeg har betalt regningen selv», i jeg-form, før resten
 går over til du-form. Og setningen om at Husbanken kan kontakte foretaket står
 fortsatt, se Slack-punktet fra 15:22.
+
+### Iterasjon 24, kortere utbetalingsskjema
+
+Utbetalingsskjemaet er gått gjennom punkt for punkt, med 28 merknader. Det
+meste er tatt bort eller sagt enklere, og skjemaet er gått fra fem til fire
+sider. Søknaden er uendret, og står som iterasjon 23.
+
+**Forsiden.** Ny ingress: «Før du kan be om utbetaling må arbeidet være ferdig
+og betalt.» Kravlista, de fire nøkkeltallene og tidslinja er tatt bort. Dermed
+er det plass til «Om deg» og saksnummeret på forsiden igjen, slik det var før
+iterasjon 23.
+
+**Om deg og tilsagnet.** E-postadresse har erstattet adressen til boligen og
+postnummer og sted. Under tilsagnet står bare saksnummeret igjen, med riktig
+format i eksempelet: 2026/43643 eller 12345678. Dato og beløp fra
+tilsagnsbrevet er tatt ut. Ingressen til seksjonen er gjort om til entall,
+siden det bare er ett felt.
+
+**Arbeidet og kostnaden.** Spørsmålet om noe ble annerledes enn planlagt er
+tatt ut. Seksjon 4 heter «Fortell oss hvor mye det kostet», og kostnaden skal
+hentes fra den spesifiserte fakturaen. Boksen om hvordan tilskuddet regnes ut
+er skrevet om, så den henger sammen: 25 prosent av den godkjente kostnaden,
+aldri mer enn tilsagnet, og mindre hvis det ble billigere. Taket på 300 000
+kroner er ikke nevnt, for det ligger allerede i tilsagnet.
+
+**Kontoen.** Seksjon 5 heter «Hvor skal vi sette inn pengene?», og kontonummeret
+må tilhøre søkeren. Spørsmålet om kontoen står i eget navn er tatt ut, og med
+det oppfølgingsspørsmålet om hvem som eier kontoen og underskriften fra
+kontoinnehaver på siste side.
+
+**Vedlegg og innsending.** Vedlegget er spesifisert faktura og dokumentasjon på
+at den er betalt. Samtykket begynner ikke lenger med «Arbeidet er utført, og
+jeg har betalt regningen selv». Punktet om å skrive saksnummeret på alle ark er
+tatt ut. «Dette skjer etterpå» lover ikke lenger penger på konto om tre uker,
+og at tilskuddet ikke er skattepliktig har fått sitt eget punkt.
+
+Feltene `adresse`, `poststed`, `tilsagn_dato`, `tilsagn_belop`, `avvik`,
+`q4_konto`, `konto_navn`, `konto_rolle` og `underskrift_konto` er borte, og
+`epost` er nytt. Feltkartet til den utfyllbare PDF-en er målt på nytt.
 
 ## Utfyllbar PDF
 
